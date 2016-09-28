@@ -10,7 +10,7 @@ Antonio's Cats Home is a skills exercise demonstration where I implement the sam
 
 Visually the implementations are identical. But behind the hood there are important differences.
 
-This project is intended to help recruiters and hiring IT managers when assessing my coding skills.
+This project is intended to help recruiters and hiring IT managers when time comes to assess my coding skills.
 
 ### Exercise statement
 
