@@ -1,0 +1,6 @@
+{
+	"line-end-style": "crlf",
+	"id-class-style": "bem",
+	"img-req-src": false,
+	"tag-bans": ["b"]
+}

@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Antonio's Cats Home - Angular 1.5 implementation</title>
+
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width" />
+
+		<style>
+			html {
+				padding: 30px 0 50px;
+				font-family: sans-serif;
+				background: #eee;
+				color: #222;
+			}
+			h2 {
+				margin-bottom: 0;
+			}
+			li {
+				margin-bottom: 5px;
+			}
+			code {
+				padding: 2px 5px;
+				display: inline-block;
+				background: #ddd;
+			}
+			img {
+				max-width: 100%;
+				margin: 20px auto;
+				display: block;
+			}
+			.main {
+				width: 70%;
+				margin: 0 auto;
+			}
+			.b {
+				font-weight: bold;
+			}
+			.i {
+				font-style: italic;
+			}
+			.screenshot {
+				max-height: 800px;
+				margin: 50px auto;
+				box-shadow: 4px 4px 15px rgba(0, 0, 0, 0.2);
+			}
+			.separator {
+				width: 70%;
+				margin: 60px auto 80px;
+				border-bottom: 2px solid lightgray;
+			}
+		</style>
+
+	</head>
+
+	<body>
+
+		<div class="main">
+			<h1>Antonio's Cats Home - Angular 1.5 implementation</h1>
+			<p class="p">
+				Hi,
+			</p>
+			<p class="p">
+				This is the <strong>Angular 1.5</strong> implementation for Antonio's Cats Home. The project is configured with <strong>NPM</strong> and <strong>Gulp</strong>. CSS code is written using the <strong>BEM</strong> arrangement and <strong>LESS</strong>. You don't need to run any NPM command or Gulp task since all the processed files are already generated in the <code>dist</code> folder.
+				<img src="http://i.imgur.com/mv8lPf8.png" class="screenshot">
+			</p>
+			<p class="p">
+				In order to see the project working:
+			</p>
+			<ul>
+				<li>
+					You can go to <a href="">http://someWebsiteWhereTheProjectIsOnlineAndWorking.com</a>.
+				</li>
+				<li>
+					Or you can, with a browser supporting the <code>file:///</code> standard with <a href="https://en.wikipedia.org/wiki/Cross-origin_resource_sharing" target="_blank">CORS</a> (like Firefox) open <a href="dist/index.htm"><code>dist/index.htm</code></a>.
+				</li>
+				<li>
+					Or you can run <code>npm i && npm start</code>, a Node.js server will start and the system default browser will open automatically at <a href="http://localhost:3000/dist/index.htm">http://localhost:3000/dist/index.htm</a>.
+				</li>
+			</ul>
+			<h2>
+				Dependencies
+			</h2>
+			<p class="p">
+				The only JavaScript dependency is core Angular 1.5. No jQuery, no Bootstrap. Internet Explorer 8 and below is not supported. No real need for polyfills like Webshim, or browser compatibility libraries like Modernizr. The Angular dependency is stored on the <code>node_modules</code> folder and concated with the rest of project JavaScript code at building time.
+			</p>
+			<p class="p">
+				The only CSS dependency are the fonts downloaded from Google Fonts.
+			</p>
+			<p class="p">
+				Due to the small JavaScript and CSS footprint the page loads fast: 4 KB of CSS and 147 KB of JavaScript (which 99% of this JS is the Angular library). See the below screenshot of Firefox Developer Tools showing the minimised version of the project (built with the <code>gulp min</code> configured task).
+
+				<img src="http://i.imgur.com/1MkWClm.png">
+			</p>
+			<h2>
+				Best practices
+			</h2>
+			<p class="p">
+				Strict practices and habits are paramount for good software development. For this project the <a href="https://github.com/johnpapa/angular-styleguide" target="_blank">Angular Style Guide</a> is followed. TDD was applied to build the project (see Testing section).
+			</p>
+			<h2>
+				Testing
+			</h2>
+			<p class="p">
+				To run the tests execute <code>npm test</code> (you must have executed <code>npm i</code> before at least once). Tests are executed with Karma and PhantomJS and have been written using Jasmine. <code>npm testautowatch</code> executes Karma on <code>autoWatch</code> mode, executing the tests whenever one JavaScript files changes. Ideal for TDD.
+			</p>
+			<p class="p">
+				The project includes a <code>.spec.js</code> file which tests the <code>$achQueries</code> Angular factory. Since the folder structure is arranged <a href="http://stackoverflow.com/a/18542354/372899" target="_blank">by component and not by type</a> there is no <code>tests</code> folder, <code>.spec.js</code> test files are next to the code they test.
+			</p>
+			<p class="p">
+				The project has also configured and working the <code>gulp lint</code> task for linting which makes use of three packages: <a href="https://www.npmjs.com/package/gulp-jshint" target="_blank"><code>gulp-jshint</code></a> to lint JavaScript, <a href="https://www.npmjs.com/package/gulp-htmllint" target="_blank"><code>gulp-htmllint</code></a> to lint HTML and <a href="https://www.npmjs.com/package/gulp-lesshint" target="_blank"><code>gulp-lesshint</code></a> to lint CSS. The <code>gulp lint</code> task is added to the default <code>gulp</code> task together with the <code>gulp build</code> task.
+			</p>
+			<h2>
+				Command tools
+			</h2>
+			<p class="p">
+				With Gulp all the separated <code>js</code> and <code>css</code> files are concatenated from the <code>src</code> folder and copied in a single file to <code>dist</code> from where they can be opened as final distributable files. For a better review the code included in the <code>dist</code> folder is not minimised, though the Gulp task <code>gulp min</code> is configured and working.
+			</p>
+			<p class="p">
+				Available NPM scripts:
+			</p>
+			<ul>
+				<li>
+					<code>npm i</code> (alias for <code>npm install</code>): installs all dependencies so that the project can be developed, tested and deployed. The <code>karma start</code> command is attached to the <code>postinstall</code> script thus tests are executed once installation has finished. You must execute <code>npm i</code> at least once before executing any other npm command or Gulp task.
+				</li>
+				<li>
+					<code>npm start</code>: initiates a Node.js server configured on <code>server.js</code> and automatically opens the default system browser with the project page.
+				</li>
+				<li>
+					<code>npm test</code>: executes <code>.spec.js</code> tests with Karma. PhantomJS and Karma will finalise once all the tests are executed. For a command which keeps Karma executing see <code>npm testautowatch</code>.
+				</li>
+				<li>
+					<code>npm testautowatch</code>: starts Karma on <a href="http://karma-runner.github.io/0.13/config/configuration-file.html" target="_blank"><code>autoWatch</code></a> mode, executing the tests whenever one JavaScript files changes. PhantomJS and Karma won't close once all the tests are executed. Ideal for TDD.
+				</li>
+			</ul>
+			<p class="p">
+				Available Gulp tasks:
+			</p>
+			<ul>
+				<li>
+					<code>gulp</code>: executes the Gulp default task. The bleow <code>gulp lint</code> and <code>gulp build</code> tasks are executed.
+				</li>
+				<li>
+					<code>gulp lint</code>: lints JavaScript, HTML and CSS code.
+				</li>
+				<li>
+					<code>gulp build</code>: generates the usable web in the <code>dist</code> folder.
+				</li>
+				<li>
+					<code>gulp min</code>: generates the usable web in the <code>dist</code> folder by minimising the JavaScript, HTML and CSS code.
+				</li>
+				<li>
+					<code>gulp watch</code>: executes the <code>default</code> task every time a file from the <code>src</code> folder is modified.
+				</li>
+				<li>
+					<code>gulp clean</code>: removes the <code>dist</code> folder with all its content.
+				</li>
+			</ul>
+			<h2>
+				Folder structure
+			</h2>
+			<p class="p">
+				Source code and distributable built code are stored in different folders (<code>src</code> and <code>dist</code> folders). Angular code is arranged <a href="http://stackoverflow.com/a/18542354/372899" target="_blank">by component rather than by type</a>. The two Angular components on the project are the <code>achQueries</code> factory and the <code>cardList</code> directive. On the project directives are modular, their folder contains all the JS, CSS and HTML code to be rendered. There is no <code>tests</code> folder, <code>.spec.js</code> test files are next to the code they test.
+			</p>
+			<h2>
+				Screen sizes
+			</h2>
+			<p class="p">
+				The page has two different layouts: one desktop view with a max-width of 1100px, and a mobile view.
+			</p>
+			<h2>
+				Browser compatibility
+			</h2>
+			<p class="p">
+				The page works on Internet Explorer 9 and above and rest of modern browsers. However, Internet Explorer 9 does not support round borders nor CSS transitions (and hence animations will not be shown). I have not had the chance to try it on Safari.
+			</p>
+			<p class="p separator">.
+			</p>
+			<p class="p">
+				I hope I have explained my approach properly. For sure you have many other doubts that you will like to solve. I am very happy to discuss them with you.
+			</p>
+			<p class="p">
+				On the project, when you see something weird or wrong I would like to please ask you not to automatically consider that part wrong. There will be a satisfactory explanation so that that code or approach has a reason to exist in peace with the rest of best web coding standards and practices.
+			</p>
+			<p class="p">
+				Regards,
+			</p>
+			<p class="p">
+				Antonio
+			</p>
+		</div>
+
+	</body>
+</html>
