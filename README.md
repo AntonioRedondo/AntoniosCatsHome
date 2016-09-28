@@ -21,9 +21,9 @@ On the below table you can compare the three different implementations. Visually
 
 | Implementation | JS (Kb minified) | CSS (Kb minified) | JS imports | CSS imports | Front-end framework | Other libraries | CSS Framework | Animations | Selectable cards | Building tools | Server | Tests | Readme file | Project ready out of the box
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| Vanilla ES5 JS | 2 | 4 | 1 | 1 | - (HTML node as template) | - | LESS (with BEM) | Yes | Yes | NPM, Gulp | Node.js | Karma, Jasmine, PhantomJS | HTML | On Dist folder |
-| Angular 1.5 | 147 | 4 | 1 | 1 | Angular 1.5 (directive) | - | LESS (with BEM) | Yes | Yes | NPM, Gulp | Node.js | Karma, Jasmine, PhantomJS | HTML | On Dist folder |
-| React | 160 | 4 | 1 | 1 | ES6 React 15 | Redux | LESS (with BEM) | Yes | Yes |  NPM, Gulp, Browserify | Node.js | Karma, Jasmine, PhantomJS | HTML | On Dist folder |
+| Vanilla ES5 JS | 2 | 4 | 1 | 1 (plus fonts) | - (HTML node as template) | - | LESS (with BEM) | Yes | Yes | NPM, Gulp | Node.js | Karma, Jasmine, PhantomJS | HTML | On Dist folder |
+| Angular 1.5 | 147 | 4 | 1 | 1 (plus fonts) | Angular 1.5 (directive) | - | LESS (with BEM) | Yes | Yes | NPM, Gulp | Node.js | Karma, Jasmine, PhantomJS | HTML | On Dist folder |
+| React | 160 | 4 | 1 | 1 (plus fonts) | ES6 React 15 | Redux | LESS (with BEM) | Yes | Yes |  NPM, Gulp, Browserify | Node.js | Karma, Jasmine, PhantomJS | HTML | On Dist folder |
 
 ### How to read this test in order to best understand my skills
 There are a few points where you can pay attention to find out the quality of the exercise and therefore my programming skills. The implementations contain a set of general technologies, software patterns and best practices normally applied on front-end software development.
