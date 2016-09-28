@@ -21,7 +21,7 @@ On the below table you can compare the three different implementations. Visually
 
 | Implementation | JS (Kb minified) | CSS (Kb minified) | JS imports | CSS imports | Front-end framework | Other libraries | CSS Framework | Animations | Selectable cards | Building tools | Server | Tests | Readme file | Project ready out of the box
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| ES5 JS | 2 | 4 | 1 | 1 | - (HTML node as template) | - | LESS (with BEM) | Yes | Yes | NPM, Gulp | Node.js | Karma, Jasmine, PhantomJS | HTML | On Dist folder |
+| Vanilla ES5 JS | 2 | 4 | 1 | 1 | - (HTML node as template) | - | LESS (with BEM) | Yes | Yes | NPM, Gulp | Node.js | Karma, Jasmine, PhantomJS | HTML | On Dist folder |
 | Angular 1.5 | 147 | 4 | 1 | 1 | Angular 1.5 (directive) | - | LESS (with BEM) | Yes | Yes | NPM, Gulp | Node.js | Karma, Jasmine, PhantomJS | HTML | On Dist folder |
 | React | 160 | 4 | 1 | 1 | ES6 React 15 | Redux | LESS (with BEM) | Yes | Yes |  NPM, Gulp, Browserify | Node.js | Karma, Jasmine, PhantomJS | HTML | On Dist folder |
 
