@@ -1,19 +1,21 @@
 ## Antonio's Cats Home
 
-<img align="center" src="http://i.imgur.com/mv8lPf8.png" height="300px" />
+<img align="center" src="http://i.imgur.com/mv8lPf8.png" height="600px" />
 
 Antonio's Cats Home is a skills test demonstration where I implement the same web project with three different front-end technologies:
 - [Vanilla ES5 JavaScript](https://antonioredondo.github.io/AntoniosCatsHome/vanillaJavaScript/README.htm) ([source files](https://github.com/AntonioRedondo/AntoniosCatsHome/tree/master/vanillaJavaScript))
 - [Angular 1.5](https://antonioredondo.github.io/AntoniosCatsHome/angular1.5/README.htm) ([source files](https://github.com/AntonioRedondo/AntoniosCatsHome/tree/master/angular1.5))
 - [React](https://antonioredondo.github.io/AntoniosCatsHome/react/README.htm) ([source files](https://github.com/AntonioRedondo/AntoniosCatsHome/tree/master/react))
 
+### Exercise statement
+
 The starting point is the below mockup:
 
-<img align="center" src="http://i.imgur.com/gouHjEJ.png" height="300px" />
+<img align="center" src="http://i.imgur.com/gouHjEJ.png" height="600px" />
 
-The exercise is simple. Given I am only provided with the below mockup, four images of cats and a JSON file containing a list of cats I have to implement a UI web interface to show a list of cats which are available to be adopted from the local cats shelter "Antonio's Cats Home". The interface must contain a input text field that when typing text it will be filtering out cats cards. On the JSON feed the cats won't be ordered by name, but when shown on screen they will need to be sorted alphabetically. The interface must also be adapted to mobile devices. An attractive design is a plus.
+The exercise is simple. Given I am only provided with the below mockup, four images of cats and a JSON file containing a list of cats I have to implement a UI web interface to show a list of cats which are available to be adopted from the local cats shelter "Antonio's Cats Home". The interface must contain an input text field that when typing text it will be filtering cats cards out. On the JSON feed the cats won't be ordered by name, but when shown on screen they will need to be sorted alphabetically. The interface must also be adapted to mobile devices. An attractive design is a plus.
 
-On the below table you can compare the three different implementations:
+On the below table you can compare the three different implementations. Visually the implementations are identical:
 
 | Implementation | JS (Kb minified) | CSS (Kb minified) | JS imports | CSS imports | Front-end framework | Other libraries | CSS Framework | Animations | Selectable cards | Building tools | Server | Tests | Readme file | Project ready out of the box
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
