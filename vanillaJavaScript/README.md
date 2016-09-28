@@ -1,0 +1,1 @@
+Read the [README.html](https://antonioredondo.github.io/AntoniosCatsHome/vanillaJavaScript/README.htm) file for more info.
