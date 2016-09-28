@@ -3,9 +3,9 @@
 <img align="center" src="http://i.imgur.com/mv8lPf8.png" height="300px" />
 
 Antonio's Cats Home is a skills test demonstration where I implement the same web project with three different front-end technologies:
-- [Vanilla ES5 JavaScript](https://antonioredondo.github.io/AntoniosCatsHome/vanillaJavaScript/README.htm)
-- [Angular 1.5](https://antonioredondo.github.io/AntoniosCatsHome/angular1.5/README.htm)
-- [React](https://antonioredondo.github.io/AntoniosCatsHome/react/README.htm)
+- [Vanilla ES5 JavaScript](https://antonioredondo.github.io/AntoniosCatsHome/vanillaJavaScript/README.htm) ([source files](https://github.com/AntonioRedondo/AntoniosCatsHome/tree/master/vanillaJavaScript))
+- [Angular 1.5](https://antonioredondo.github.io/AntoniosCatsHome/angular1.5/README.htm) ([source files](https://github.com/AntonioRedondo/AntoniosCatsHome/tree/master/angular1.5))
+- [React](https://antonioredondo.github.io/AntoniosCatsHome/react/README.htm) ([source files](https://github.com/AntonioRedondo/AntoniosCatsHome/tree/master/react))
 
 The starting point is the below mockup:
 
