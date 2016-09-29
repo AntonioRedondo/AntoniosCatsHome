@@ -4,13 +4,14 @@
 <img align="center" src="http://i.imgur.com/na8CA9S.png" height="600px" />
 
 Antonio's Cats Home is a skills exercise demonstration where I implement the same web project with three different front-end technologies:
-- [Vanilla ES5 JavaScript](https://antonioredondo.github.io/AntoniosCatsHome/vanillaJavaScript/README.htm) ([source files](https://github.com/AntonioRedondo/AntoniosCatsHome/tree/master/vanillaJavaScript))
-- [Angular 1.5](https://antonioredondo.github.io/AntoniosCatsHome/angular1.5/README.htm) ([source files](https://github.com/AntonioRedondo/AntoniosCatsHome/tree/master/angular1.5))
-- [React](https://antonioredondo.github.io/AntoniosCatsHome/react/README.htm) ([source files](https://github.com/AntonioRedondo/AntoniosCatsHome/tree/master/react))
+- [Vanilla ES5 JavaScript](https://antonioredondo.github.io/AntoniosCatsHome/vanillaJavaScript/README.htm) ([source code](https://github.com/AntonioRedondo/AntoniosCatsHome/tree/master/vanillaJavaScript))
+- [Angular 1.5](https://antonioredondo.github.io/AntoniosCatsHome/angular1.5/README.htm) ([source code](https://github.com/AntonioRedondo/AntoniosCatsHome/tree/master/angular1.5))
+- [React](https://antonioredondo.github.io/AntoniosCatsHome/react/README.htm) ([source code](https://github.com/AntonioRedondo/AntoniosCatsHome/tree/master/react))
 
-Visually the implementations are identical. But behind the hood there are important differences.
+Visually the implementations are identical. Behind the hood there are important differences.
 
 This project is intended to help recruiters and hiring IT managers when time comes to assess my coding skills.
+
 
 ### Exercise statement
 
@@ -18,18 +19,29 @@ The starting point is the below mockup:
 
 <img align="center" src="http://i.imgur.com/gouHjEJ.png" height="600px" />
 
-The exercise is simple. Given I am only provided with the below mockup, four images of cats and a JSON file containing a list of cats I have to implement an UI web interface to show a list of cats which are available to be adopted from the local cats shelter "Antonio's Cats Home". The interface must contain an input text field that when typing text it will be filtering cats cards out. On the JSON feed the cats won't be ordered by name, but when shown on screen they will need to be sorted alphabetically. A card at a time need to be selectable and show to the user that that card is selected. The interface must also be adapted to mobile devices. An attractive design is a plus.
+Given I am only provided with the below mockup, four images of cats and a JSON file containing a list of cat names and descriptions I have to implement an UI web interface to show a list of cats which are available to be adopted from the local cats shelter "Antonio's Cats Home".
+
+The interface must contain an input text field that when typing text it will be filtering cats cards out. On the JSON feed the cats won't be ordered by name, but when shown on screen they will need to be sorted alphabetically.
+
+A card at a time need to be selectable and show to the user that that card is selected.
+
+The interface must also be adapted to mobile devices. An attractive design is a plus.
+
+
+### Comparison between implementations
 
 On the below table you can compare the three different implementations:
 
-| Implementation | JS (Kb minified) | CSS (Kb minified) | JS imports | CSS imports | Front-end framework | Other libraries | CSS Framework | Animations | Selectable cards | Building tools | Server | Tests | Readme file | Project ready out of the box
+| Implementation | JS (Kb minified) | CSS (Kb minified) | JS imports | CSS imports | Front-end framework | Other libraries | CSS framework | Selectable cards | Building tools | Server | Tests | Readme file | Project ready out of the box
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| Vanilla ES5 JS | 2 | 4 | 1 | 1 (plus fonts) | - (HTML node as template) | - | LESS (with BEM) | Yes | Yes | NPM, Gulp | Node.js | Karma, Jasmine, PhantomJS | HTML | On Dist folder |
-| Angular 1.5 | 147 | 4 | 1 | 1 (plus fonts) | Angular 1.5 (directive) | - | LESS (with BEM) | Yes | Yes | NPM, Gulp | Node.js | Karma, Jasmine, PhantomJS | HTML | On Dist folder |
-| React | 160 | 4 | 1 | 1 (plus fonts) | ES6 React 15 | Redux | LESS (with BEM) | Yes | Yes |  NPM, Gulp, Browserify | Node.js | Karma, Jasmine, PhantomJS | HTML | On Dist folder |
+| Vanilla ES5 JS | 2 | 4 | 1 | 1 (plus fonts) | - (HTML template attached to DOM nodes) | - | LESS (with BEM) | Yes | NPM, Gulp | Node.js | Karma, Jasmine, PhantomJS | HTML | On Dist folder |
+| Angular 1.5 | 147 | 4 | 1 | 1 (plus fonts) | Angular 1.5 (directive) | - | LESS (with BEM) | Yes | NPM, Gulp | Node.js | Karma, Jasmine, PhantomJS | HTML | On Dist folder |
+| ES6 React 15 | 160 | 4 | 1 | 1 (plus fonts) | ES6 React 15 | Redux | LESS (with BEM) | Yes | NPM, Gulp, Browserify | Node.js | Karma, Jasmine, PhantomJS | HTML | On Dist folder |
 
-### How to read this test in order to best understand my skills
-There are a few points where you can pay attention to find out the quality of the exercise and therefore my programming skills. The implementations contain a set of general technologies, software patterns and best practices normally applied on front-end software development.
+
+### How to best understand my skills with the test
+
+There are a few points where can be paid attention to find out the quality of the exercise and therefore my programming skills. The implementations contain a set of general technologies, software patterns and best practices normally applied on front-end software development.
 
 There are a number of points to check:
 - **Code simplicity:** there is a right balance between the number of technologies used to showcase skills and the low level of requirements of the test in order to avoid feature overload. The aiming balance is quality over quantity. A couple of features well implemented counts more than five features poorly implemented ([KISS principle](https://en.wikipedia.org/wiki/KISS_principle])). On the test statement there are no explicit instructions about libraries or features I can or should implement. This gives freedom of choice at the same time interviewers have less scripted results to assess.
@@ -55,5 +67,7 @@ There are a number of points to check:
   - Lack of use of semantic HTML elements: in addition to `<div>`s and `<span>`s, elements like `<header>`, `<footer>`, `<section>`, or `<article>` should be used.
   - Many legacy/rubbish files created with a generator: the use of a generator or a reference project is a good starting base as long as the rest of not used files are removed and the files used are cleaned out from unused code.
 
+
 ### Extra information
+
 Don't forget to visit the rest of my GitHub repo. My flagship website is open for business on [antonioredondo.com](http://antonioredondo.com). And its source code is available on [GitHub](https://github.com/AntonioRedondo/antonioredondo.com-v3). Ideal to better inspect my coding skills.
