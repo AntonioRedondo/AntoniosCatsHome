@@ -30,7 +30,7 @@ The interface must also be adapted to mobile devices. An attractive design is a 
 
 ### Comparison between implementations
 
-On the below table you can compare the three different implementations:
+On the below table you can compare the implementations:
 
 | Implementation | JS (Kb minified) | CSS (Kb minified) | JS imports | CSS imports | Front-end framework | Other libraries | CSS framework | Selectable cards | Building tools | Server | Tests | Readme file | Ready out of the box
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
