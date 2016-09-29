@@ -61,7 +61,7 @@ There are a number of points to check:
       tests
 ```
 - **`Readme` file:** a readme file with explanations and instructions must be always present on the root folder. The instructions should suffice when building or opening the project. A readme file without some brief explanations makes harder for interviewers to understand a candidate approach.
-- **Random technical tricks and traps:** on the test the code will provide tips about the candidate seniority level:
+- **Technical tricks and traps:** on the test the code will provide tips about the candidate seniority level:
   - Conversion of SVG images to png: common mistake. There is no need to convert SVG to png. Even old versions of Internet Explorer support SVG. Doing so the vectorial nature of SVG is lost.
   - Many CSS and/or JavaScript imports: increases number of HTTP calls and page weight affecting execution performance and loading time.
   - Lack of use of semantic HTML elements: in addition to `<div>`s and `<span>`s, elements like `<header>`, `<footer>`, `<section>`, or `<article>` should be used.
