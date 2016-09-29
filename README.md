@@ -17,7 +17,7 @@ This project is intended to help recruiters and hiring IT managers when time com
 
 The starting point is the below mockup:
 
-<img align="center" src="http://i.imgur.com/gouHjEJ.png" height="600px" />
+<img align="center" src="http://i.imgur.com/mwwloiN.png" height="600px" />
 
 Given I am only provided with the below mockup, four images of cats and a JSON file containing a list of cat names and descriptions I have to implement an UI web interface to show a list of cats which are available to be adopted from the local cats shelter "Antonio's Cats Home".
 
@@ -34,9 +34,9 @@ On the below table you can compare the three different implementations:
 
 | Implementation | JS (Kb minified) | CSS (Kb minified) | JS imports | CSS imports | Front-end framework | Other libraries | CSS framework | Selectable cards | Building tools | Server | Tests | Readme file | Project ready out of the box
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| Vanilla ES5 JS | 2 | 4 | 1 | 1 (plus fonts) | - (HTML template attached to DOM nodes) | - | LESS (with BEM) | Yes | NPM, Gulp | Node.js | Karma, Jasmine, PhantomJS | HTML | On Dist folder |
+| Vanilla ES5 JS | 2 | 4 | 1 | 1 (plus fonts) | - (HTML attached to nodes) | - | LESS (with BEM) | Yes | NPM, Gulp | Node.js | Karma, Jasmine, PhantomJS | HTML | On Dist folder |
 | Angular 1.5 | 147 | 4 | 1 | 1 (plus fonts) | Angular 1.5 (directive) | - | LESS (with BEM) | Yes | NPM, Gulp | Node.js | Karma, Jasmine, PhantomJS | HTML | On Dist folder |
-| ES6 React 15 | 160 | 4 | 1 | 1 (plus fonts) | ES6 React 15 | Redux | LESS (with BEM) | Yes | NPM, Gulp, Browserify | Node.js | Karma, Jasmine, PhantomJS | HTML | On Dist folder |
+| ES6 React 15 | 206 | 4 | 1 | 1 (plus fonts) | ES6 React 15 | Redux | LESS (with BEM) | Yes | NPM, Gulp, Browserify | Node.js | Karma, Jasmine, PhantomJS | HTML | On Dist folder |
 
 
 ### How to best understand my skills with the test

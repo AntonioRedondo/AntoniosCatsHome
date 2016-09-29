@@ -8,5 +8,7 @@ const logger = (store) => (next) => (action) => {
   return next(action);
 }
 
-// export default createStore(Reducer, applyMiddleware(logger, Thunk));
+// export default createStore(Reducer, applyMiddleware(Thunk));
+/* prodCodeReduxStore:start */
 export default createStore(Reducer, compose(applyMiddleware(logger, Thunk), window.devToolsExtension ? window.devToolsExtension() : f => f ));
+/* prodCodeReduxStore:end */

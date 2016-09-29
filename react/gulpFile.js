@@ -3,7 +3,8 @@
 const del = require("del");
 
 const gulp = require("gulp");
-//const sourceMaps = require("gulp-sourcemaps"); // Not used but ready to do so
+// const sourceMaps = require("gulp-sourcemaps"); // Not used
+const replace = require("gulp-replace");
 
 const jsHint = require("gulp-jshint");
 const htmlLint = require("gulp-htmllint");
@@ -16,9 +17,6 @@ const less = require("gulp-less");
 const browserify = require("browserify");
 const vinylSource = require("vinyl-source-stream");
 const vinylBuffer = require("vinyl-buffer");
-const globby = require("globby");
-const through = require("through2");
-const gutil = require("gulp-util");
 
 const uglify = require("gulp-uglify");
 const htmlMin = require("gulp-htmlmin");
@@ -100,34 +98,16 @@ gulp.task("lessHint", function() {
 
 // Build
 
-// https://github.com/gulpjs/gulp/blob/master/docs/recipes/browserify-with-globs.md
 // https://www.npmjs.com/package/gulp-browserify // Deprecated
 gulp.task("browserify", function () {
-	const bundledStream = through(); // gulp expects tasks to return a stream, so we create one here.
-	bundledStream // turns the output bundle stream into a stream containing the normal attributes gulp plugins expect
+	return browserify({
+		entries: `${src}/js/main.jsx`,
+		// debug: true, // "true" writes a JS source map at the end of the js file
+		//transform: ["babelify", {presets: ["es2015", "react"]}]  // Browserify transform configuration doesn't work here. Placed on package.json instead
+	// }).bundle().pipe(bundledStream); // pipe the Browserify stream into the stream we created earlier this starts our gulp pipeline.
+	}).bundle()
 		.pipe(vinylSource("app.js"))
-		.pipe(vinylBuffer())
-		//.pipe(sourceMaps.init({loadMaps: true}))
-		.on("error", gutil.log)
-		//.pipe(sourceMaps.write("./"))
 		.pipe(gulp.dest(`${dest}`));
-	
-	globby([// "globby" replaces the normal "gulp.src" as Browserify creates its own readable stream.
-		`${src}/js/redux/*.js`,
-		`${src}/reactComponents/**/*.jsx`,
-		`${src}/js/main.jsx`,
-		`!${src}/reactComponents/**/*.spec.jsx`
-	]).then(function (entries) {
-		browserify({
-			entries: entries,
-			debug: false, // "true" writes a JS source map at the end of the js file
-			//transform: ["babelify", {presets: ["es2015", "react"]}]  // Browserify transform configuration doesn"t work here. Placed on package.json instead
-		}).bundle().pipe(bundledStream); // pipe the Browserify stream into the stream we created earlier this starts our gulp pipeline.
-	}).catch(function (err) {
-		bundledStream.emit("error", err); // ensure any errors from globby are handled
-	});
-	
-	return bundledStream; // finally, we return the stream, so gulp knows when this task is done.
 });
 
 gulp.task("copyHtml", function() {
@@ -155,26 +135,18 @@ gulp.task("copyAssets", function() {
 
 gulp.task("browserifyMin", function () {
 	process.env.NODE_ENV = "production";
-	const bundledStream = through();
-	bundledStream.pipe(vinylSource("app.js"))
-		.pipe(vinylBuffer())
-		.pipe(uglify())
-		.on("error", gutil.log)
-		.pipe(gulp.dest(`${dest}`));
 	
-	globby([
-		`${src}/reactComponents/**/*.jsx`,
-		`${src}/js/main.jsx`,
-		`!${src}/reactComponents/**/*.spec.jsx`
-	]).then(function (entries) {
-		browserify({
-			entries: entries,
-			debug: false
-		}).bundle().pipe(bundledStream);
-	}).catch(function (err) {
-		bundledStream.emit("error", err);
-	});
-	return bundledStream;
+	// return gulp.src([`${src}/reactComponents/**/redux/*.js`])
+		
+	// 	.pipe(gulp.dest(`${dest}`));
+	
+	return browserify({ entries: `${src}/js/main.jsx` }).bundle()
+		.pipe(vinylSource("app.js"))
+		.pipe(vinylBuffer())
+		.pipe(replace(/(\/\* prodCodeReduxStore:start \*\/)[\s\S]+(\/\* prodCodeReduxStore:end \*\/)/,
+			"exports.default = (0, _redux.createStore)(_reducers2.default, (0, _redux.applyMiddleware)(_reduxThunk2.default));"))
+		.pipe(uglify())
+		.pipe(gulp.dest(`${dest}`));
 });
 
 gulp.task("htmlMin", function() {

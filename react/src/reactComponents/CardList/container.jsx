@@ -22,7 +22,7 @@ export class CardList extends React.Component {
 				key={item.id}
 				id={item.id}
 				name={item.name}
-				information={item.information}
+				description={item.description}
 				itemSelected={this.props.itemSelected}
 				onSelected={this.props.setSelected.bind(this, item)}>
 			</Card>
@@ -48,7 +48,7 @@ function filter(items, filterString) {
 	if (filterString)
 		return items.filter(cat => {
 			let catKeys = Object.keys(cat);
-			for (var n=0; n<catKeys.length; ++n)
+			for (let n=0; n<catKeys.length; ++n)
 				if (cat[catKeys[n]] && cat[catKeys[n]].toLowerCase().indexOf(filterString.toLowerCase()) > -1)
 					return true;
 			return false;

@@ -11,7 +11,7 @@
 			
 			element.children[0].children[0].style.backgroundImage = "url('img\/" + data.id + ".jpg')";
 			element.children[1].children[0].innerHTML = data.name;
-			element.children[1].children[1].innerHTML = data.information;
+			element.children[1].children[1].innerHTML = data.description;
 			
 			element.addEventListener("click", function () {
 				if (oldCard && oldCard !== element)
@@ -92,6 +92,7 @@
 				cardList.render(container, cardList.data, templateString);
 		});
 		
+		// Filters list by the string typed on the input field
 		inputField.addEventListener("input", function(e) {
 			container.innerHTML = "";
 			cardList.render(container, cardList.filter(cardList.data, e.target.value), templateString);

@@ -10,7 +10,7 @@ export default (props) => (
 		</div>
 		<div className="card__body" >
 			<h1 className="card__body-title" >{props.name}</h1>
-			<p className="card__body-text" >{props.information}</p>
+			<p className="card__body-text" >{props.description}</p>
 		</div>
 	</article>
 )

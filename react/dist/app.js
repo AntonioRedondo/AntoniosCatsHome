@@ -22775,7 +22775,7 @@ exports.default = function (props) {
 			_react2.default.createElement(
 				"p",
 				{ className: "card__body-text" },
-				props.information
+				props.description
 			)
 		)
 	);
@@ -22850,7 +22850,7 @@ var CardList = exports.CardList = function (_React$Component) {
 					key: item.id,
 					id: item.id,
 					name: item.name,
-					information: item.information,
+					description: item.description,
 					itemSelected: _this2.props.itemSelected,
 					onSelected: _this2.props.setSelected.bind(_this2, item) });
 			});
@@ -23080,9 +23080,11 @@ var logger = function logger(store) {
   };
 };
 
-// export default createStore(Reducer, applyMiddleware(logger, Thunk));
+// export default createStore(Reducer, applyMiddleware(Thunk));
+/* prodCodeReduxStore:start */
 exports.default = (0, _redux.createStore)(_reducers2.default, (0, _redux.compose)((0, _redux.applyMiddleware)(logger, _reduxThunk2.default), window.devToolsExtension ? window.devToolsExtension() : function (f) {
   return f;
 }));
+/* prodCodeReduxStore:end */
 
-},{"./reducers.js":203,"redux":191,"redux-thunk":185}]},{},[198,199,200,197]);
+},{"./reducers.js":203,"redux":191,"redux-thunk":185}]},{},[197]);

@@ -1,12 +1,12 @@
 <input ng-model="filterString" ng-change="filter()" class="filter" type="text" placeholder="Type to filter by name or description" />
-<article class="card" ng-class="{ 'card--selected': $index == cardSelected }"
-		ng-click="cardClicked($index)"
-		ng-repeat="card in cards">
+
+<article class="card" ng-class="{ 'card--selected': $index == cardSelected }" ng-click="cardClicked($index)" ng-repeat="card in cards">
 	<div class="card__photo">
+	
 		<div class="card__photo-img" alt="Cat Image" ng-style="{'background-image' : 'url(img/{{card.id}}.jpg)'}"></div>
 	</div>
 	<div class="card__body" >
 		<h1 class="card__body-title" >{{card.name}}</h1>
-		<p class="card__body-text" >{{card.information}}</p>
+		<p class="card__body-text" >{{card.description}}</p>
 	</div>
 </article>

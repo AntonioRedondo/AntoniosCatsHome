@@ -23,7 +23,7 @@
 		"del": "~2.2.0",
 		"gulp": "~3.9.1",
 		"gulp-sourcemaps": "~1.6.0",
-		"gulp-util": "~3.0.7",
+		"gulp-replace": "~0.5.4",
 		
 		"jshint": "~2.9.2",
 		"jshint-stylish": "~2.1.0",
@@ -42,8 +42,6 @@
 		"babelify": "~7.2.0",
 		"vinyl-source-stream": "~1.1.0",
 		"vinyl-buffer": "~1.0.0",
-		"globby": "~4.0.0",
-		"through2": "~2.0.1",
 		"browserify": "~13.1.0",
 		
 		"connect": "~3.4.1",
