@@ -1,9 +1,9 @@
 ## Antonio's Cats Home
 
-<img align="center" src="http://i.imgur.com/mv8lPf8.png" height="600px" />
-<img align="center" src="http://i.imgur.com/na8CA9S.png" height="600px" />
+<img align="center" src="https://antonioredondo.github.io/AntoniosCatsHome/zImg/final.png" height="600px" />
+<img align="center" src="https://antonioredondo.github.io/AntoniosCatsHome/zImg/finalMobile.png" height="600px" />
 
-Antonio's Cats Home is a skills exercise demonstration where I implement the same web project with three different front-end technologies:
+Antonio's Cats Home is a skills demonstration exercise where I implement the same web project with three different front-end technologies:
 - [Vanilla ES5 JavaScript](https://antonioredondo.github.io/AntoniosCatsHome/vanillaJavaScript/README.htm) ([source code](https://github.com/AntonioRedondo/AntoniosCatsHome/tree/master/vanillaJavaScript))
 - [Angular 1.5](https://antonioredondo.github.io/AntoniosCatsHome/angular1.5/README.htm) ([source code](https://github.com/AntonioRedondo/AntoniosCatsHome/tree/master/angular1.5))
 - [ES6 React 15](https://antonioredondo.github.io/AntoniosCatsHome/react/README.htm) ([source code](https://github.com/AntonioRedondo/AntoniosCatsHome/tree/master/react))
@@ -17,7 +17,7 @@ This project is intended to help recruiters and hiring IT managers when time com
 
 The starting point is the below mockup:
 
-<img align="center" src="http://i.imgur.com/mwwloiN.png" height="600px" />
+<img align="center" src="https://antonioredondo.github.io/AntoniosCatsHome/zImg/mockup.png" height="600px" />
 
 Given I am only provided with the below mockup, four images of cats and a JSON file containing a list of cat names and descriptions I have to implement an UI web interface to show a list of cats which are available to be adopted from the local cats shelter "Antonio's Cats Home".
 
