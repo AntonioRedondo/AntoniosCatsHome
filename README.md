@@ -6,7 +6,7 @@
 Antonio's Cats Home is a skills exercise demonstration where I implement the same web project with three different front-end technologies:
 - [Vanilla ES5 JavaScript](https://antonioredondo.github.io/AntoniosCatsHome/vanillaJavaScript/README.htm) ([source code](https://github.com/AntonioRedondo/AntoniosCatsHome/tree/master/vanillaJavaScript))
 - [Angular 1.5](https://antonioredondo.github.io/AntoniosCatsHome/angular1.5/README.htm) ([source code](https://github.com/AntonioRedondo/AntoniosCatsHome/tree/master/angular1.5))
-- [React](https://antonioredondo.github.io/AntoniosCatsHome/react/README.htm) ([source code](https://github.com/AntonioRedondo/AntoniosCatsHome/tree/master/react))
+- [ES6 React 15](https://antonioredondo.github.io/AntoniosCatsHome/react/README.htm) ([source code](https://github.com/AntonioRedondo/AntoniosCatsHome/tree/master/react))
 
 Visually the implementations are identical. Behind the hood there are important differences.
 
@@ -32,7 +32,7 @@ The interface must also be adapted to mobile devices. An attractive design is a 
 
 On the below table you can compare the three different implementations:
 
-| Implementation | JS (Kb minified) | CSS (Kb minified) | JS imports | CSS imports | Front-end framework | Other libraries | CSS framework | Selectable cards | Building tools | Server | Tests | Readme file | Project ready out of the box
+| Implementation | JS (Kb minified) | CSS (Kb minified) | JS imports | CSS imports | Front-end framework | Other libraries | CSS framework | Selectable cards | Building tools | Server | Tests | Readme file | Ready out of the box
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | Vanilla ES5 JS | 2 | 4 | 1 | 1 (plus fonts) | - (HTML attached to nodes) | - | LESS (with BEM) | Yes | NPM, Gulp | Node.js | Karma, Jasmine, PhantomJS | HTML | On Dist folder |
 | Angular 1.5 | 147 | 4 | 1 | 1 (plus fonts) | Angular 1.5 (directive) | - | LESS (with BEM) | Yes | NPM, Gulp | Node.js | Karma, Jasmine, PhantomJS | HTML | On Dist folder |
