@@ -19,13 +19,13 @@ The starting point is the below mockup:
 
 <img align="center" src="https://antonioredondo.github.io/AntoniosCatsHome/zImg/mockup.png" height="600px" />
 
-Given I am only provided with the below mockup, four images of cats and a JSON file containing a list of cat names and descriptions I have to implement an UI web interface to show a list of cats which are available to be adopted from the local cats shelter "Antonio's Cats Home".
+Given I am only provided with the above mockup representing a common use case, four images of cats and a JSON file containing a list of cat names and descriptions I have to implement an UI web interface to show a list of cats which are available to be adopted from the local cats shelter "Antonio's Cats Home".
 
 The interface must contain an input text field that when typing text it will be filtering cats cards out. On the JSON feed the cats won't be ordered by name, but when shown on screen they will need to be sorted alphabetically.
 
 A card at a time need to be selectable and show to the user that that card is selected.
 
-The interface must also be adapted to mobile devices. An attractive design is a plus.
+The interface must be also responsive and adapt to mobile devices. An attractive design is a plus.
 
 
 ### Comparison between implementations
