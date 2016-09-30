@@ -98,13 +98,11 @@ gulp.task("lessHint", function() {
 
 // Build
 
-// https://www.npmjs.com/package/gulp-browserify // Deprecated
 gulp.task("browserify", function () {
 	return browserify({
 		entries: `${src}/js/main.jsx`,
 		// debug: true, // "true" writes a JS source map at the end of the js file
 		//transform: ["babelify", {presets: ["es2015", "react"]}]  // Browserify transform configuration doesn't work here. Placed on package.json instead
-	// }).bundle().pipe(bundledStream); // pipe the Browserify stream into the stream we created earlier this starts our gulp pipeline.
 	}).bundle()
 		.pipe(vinylSource("app.js"))
 		.pipe(gulp.dest(`${dest}`));
@@ -134,12 +132,7 @@ gulp.task("copyAssets", function() {
 // Minify
 
 gulp.task("browserifyMin", function () {
-	process.env.NODE_ENV = "production";
-	
-	// return gulp.src([`${src}/reactComponents/**/redux/*.js`])
-		
-	// 	.pipe(gulp.dest(`${dest}`));
-	
+	process.env.NODE_ENV = "production";	
 	return browserify({ entries: `${src}/js/main.jsx` }).bundle()
 		.pipe(vinylSource("app.js"))
 		.pipe(vinylBuffer())
