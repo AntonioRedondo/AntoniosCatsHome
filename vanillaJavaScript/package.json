@@ -1,10 +1,10 @@
 {
-	"name": "antonioRedondo.com",
+	"name": "AntoniosCatsHome Vanilla JavaScript implementation",
 	"author": "Antonio Redondo",
 	"homepage": "http://antonioredondo.com",
-	"description": "Antonio Redondo's UI test for comparethemarket.com",
+	"description": "A same web project implemented in Vanilla ES5 JavaScript, Angular 1.5 and React 15. Ideal to find out my front-end skills",
 	"version": "1.0.0",
-	"repository": "comparethemarket/ui-test",
+	"repository": "antonioredondo/antonioscatshome",
 	"license": "CC-BY-NC-ND-4.0",
 	"main": "",
 	"scripts": {
