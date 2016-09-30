@@ -2,7 +2,6 @@
 
 <article class="card" ng-class="{ 'card--selected': $index == cardSelected }" ng-click="cardClicked($index)" ng-repeat="card in cards">
 	<div class="card__photo">
-	
 		<div class="card__photo-img" alt="Cat Image" ng-style="{'background-image' : 'url(img/{{card.id}}.jpg)'}"></div>
 	</div>
 	<div class="card__body" >
