@@ -31038,22 +31038,17 @@ angular
 
 angular
 	.module("ach")
-
-	.directive("cardList", ["$achQueries", function($achQueries) {
+	
+	// Angular built-in filters are used. For pure JS filters check the Vanilla JS implementation
+	.directive("cardList", ["$achQueries", "orderByFilter", "filterFilter", function($achQueries, $orderByFilter, $filterFilter) {
 		return {
 			restrict: "E",
 			templateUrl: "angularDirectives/cardList/card.tpl.htm",
-			scope: {},
+			scope: {}, // Isolated scope
 			link: function(scope) {
 				$achQueries.cards().then(function(results) {
-					scope.cards = results.sort(function(a, b) {
-						if (a.name < b.name)
-							return -1;
-						if (a.name > b.name)
-							return 1;
-						else return 0;
-					});
-					scope.cardsOriginal = scope.cards;
+					scope.cardsOriginal = $orderByFilter(results, "name");
+					scope.cards = scope.cardsOriginal;
 				}, function(e) {
 					console.debug(e);
 				});
@@ -31066,13 +31061,7 @@ angular
 				};
 				
 				scope.filter = function() {
-					scope.cards = scope.cardsOriginal.filter(function(item) {
-						var itemKeys = Object.keys(item);
-						for (var n=0; n<itemKeys.length; ++n)
-							if (item[itemKeys[n]] && item[itemKeys[n]].toLowerCase().indexOf(scope.filterString.toLowerCase()) > -1)
-								return true;
-						return false;
-					});
+					scope.cards = $filterFilter(scope.cardsOriginal, scope.filterString);
 				};
 			}
 		};

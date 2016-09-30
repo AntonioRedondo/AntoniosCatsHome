@@ -13,7 +13,7 @@ body {
 	margin: 0;
 }
 a {
-	color: white;
+	color: @grayB;
 	text-decoration: none;
 	font-weight: bold;
 }
@@ -89,6 +89,8 @@ input:focus { /* Chrome adds its own blue outline on buttons when focus */
 	margin: 0 auto 40px;
 	padding: 50px 50px 30px;
 	
+	color: @gray3;
+	
 	@media (max-width: @mobileBreakpoint) {
 		padding: 50px 0 30px;
 	}
@@ -97,7 +99,6 @@ input:focus { /* Chrome adds its own blue outline on buttons when focus */
 		max-width: @width;
 		margin: 0px auto 60px;
 		
-		color: @gray3;
 		font-size: 1em;
 		
 		@media (max-width: @mobileBreakpoint) {
