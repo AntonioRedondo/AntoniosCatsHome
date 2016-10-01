@@ -39,7 +39,7 @@ describe("ItemContainer test", () => {
 	
 	it("Should make an AJAX call and render", () => {
 		
-		const creditCardList = ReactTestUtils.renderIntoDocument(
+		const cardList = ReactTestUtils.renderIntoDocument(
 			// <ItemContainer url="data/cats.json"/>
 			<Provider store={ReduxStore}>
 				<ItemContainer />
@@ -51,7 +51,8 @@ describe("ItemContainer test", () => {
 		expect(request.url).toBe("data/cats.json");
 		expect(request.method).toBe("GET");
 		
-		// console.log(creditCardList);
+		console.log(cardList.children);
+		console.log(ReactTestUtils.isElement(cardList));
 		// console.log(ReactTestUtils.scryRenderedDOMComponentsWithClass(creditCardList, "credit-card__title"));
 		// console.log(ReactTestUtils.scryRenderedDOMComponentsWithClass(creditCardList, "credit-card__title").length);
 		

@@ -25,7 +25,7 @@ const dest = "dist";
 
 gulp.task("default", ["watch"]);
 gulp.task("lint", ["jsHint", "htmlLint", "lessHint"]);
-gulp.task("build", ["copyJS", "copyAngularTpl", "copyHtml", "less", "copyAssets"]);
+gulp.task("build", ["copyJS", "copyTpl", "copyHtml", "less", "copyAssets"]);
 gulp.task("min", ["uglify", "htmlMin", "lessMin", "copyAssets"]);
 
 
@@ -93,13 +93,18 @@ gulp.task("lessHint", function() {
 // Build
 
 gulp.task("copyJS", function() {
-	return gulp.src(["node_modules/angular/angular.js", `${src}/js/main.js`, `${src}/js/*.js`, `!${src}/js/*.spec.js`, `${src}/angularDirectives/**/*.js`])
+	return gulp.src([
+		"node_modules/angular/angular.js",
+		"node_modules/angular-ui-router/release/angular-ui-router.js", `${src}/js/main.js`, `${src}/js/*.js`, `!${src}/js/*.spec.js`, `${src}/angularDirectives/**/*.js`])
 		.pipe(concat("app.js"))
 		.pipe(gulp.dest(`${dest}`));
 });
 
-gulp.task("copyAngularTpl", function() {
-	return gulp.src([`${src}/*angularDirectives/**/*.tpl.htm`])
+gulp.task("copyTpl", function() {
+	return gulp.src([
+			`${src}/*angularDirectives/**/*.tpl.htm`,
+			`${src}/*angularTpl/*.tpl.htm`,
+		])
 		.pipe(gulp.dest(`${dest}`));
 });
 

@@ -12,7 +12,8 @@
 		"testautowatch": "karma start --singleRun false"
 	},
 	"dependencies": {
-		"angular": "~1.5.6"
+		"angular": "~1.5.6",
+		"angular-ui-router": "0.3.1"
 	},
 	"devDependencies": {
 		"del": "~2.2.0",
