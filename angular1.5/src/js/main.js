@@ -1,11 +1,12 @@
 "use strict";
 
 angular
-	.module("ach", ["ui.router"])
+	.module("ach", ["ngAnimate", "ui.router"])
 	
-	.config(["$stateProvider", function($stateProvider) {
+	.config(["$stateProvider", "$urlRouterProvider", function($stateProvider, $urlRouterProvider) {
+		$urlRouterProvider.otherwise("/");
 		$stateProvider
-			.state("Home", {
+			.state("Cats", {
 				url: "/",
 				templateUrl: "angularTpl/cats.tpl.htm",
 				controller: "listController"
@@ -18,5 +19,5 @@ angular
 	}])
 	
 	.controller("listController", ["$scope", "$stateParams", function($scope, $stateParams) {
-		console.log("hello");
+		// console.log("hello");
 	}]);

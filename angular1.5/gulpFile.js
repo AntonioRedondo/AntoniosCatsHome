@@ -94,8 +94,14 @@ gulp.task("lessHint", function() {
 
 gulp.task("copyJS", function() {
 	return gulp.src([
-		"node_modules/angular/angular.js",
-		"node_modules/angular-ui-router/release/angular-ui-router.js", `${src}/js/main.js`, `${src}/js/*.js`, `!${src}/js/*.spec.js`, `${src}/angularDirectives/**/*.js`])
+			"node_modules/angular/angular.js",
+			"node_modules/angular-animate/angular-animate.js",
+			"node_modules/angular-ui-router/release/angular-ui-router.js",
+			`${src}/js/main.js`,
+			`${src}/js/*.js`,
+			`${src}/angularDirectives/**/*.js`,
+			`!${src}/js/*.spec.js`,
+			`!${src}/angularDirectives/**/*.spec.js`])
 		.pipe(concat("app.js"))
 		.pipe(gulp.dest(`${dest}`));
 });
@@ -114,7 +120,9 @@ gulp.task("copyHtml", function() {
 });
 
 gulp.task("less", function () {
-	return gulp.src([`${src}/style/*.less`, `${src}/angularDirectives/**/*.less`])
+	return gulp.src([`${src}/style/*.less`,
+			`${src}/angularTpl/*.less`,
+			`${src}/angularDirectives/**/*.less`])
 		.pipe(less())
 		.pipe(concat("style.css"))
 		.pipe(gulp.dest(`${dest}`));

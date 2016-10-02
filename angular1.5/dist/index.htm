@@ -18,33 +18,37 @@
 			</div>
 		</header>
 		
-		<section class="subheader" >
-			<div class="subheader__container">
-				<p class="subheader__title">
-					Adopt a kitty
+		<div class="body-container">
+		
+			<section class="subheader" >
+				<div class="subheader__container">
+					<p class="subheader__title">
+						Adopt a kitty
+					</p>
+				</div>
+			</section>
+			
+			<section class="main" ng-app="ach" ng-strict-di >
+				<p class="main__text">
+					We aim to never turn away a cat in need of help, caring for them until their owners or loving new homes can be found, no matter how long it takes. We are champions for, and supporters of, vulnerable cats, determined to create lasting changes for animals in our society. Every year, we care for over 8,000 cats.
 				</p>
-			</div>
-		</section>
-		
-		<section class="main" ng-app="ach" ng-strict-di >
-			<p class="main__text">
-				We aim to never turn away a cat in need of help, caring for them until their owners or loving new homes can be found, no matter how long it takes. We are champions for, and supporters of, vulnerable cats, determined to create lasting changes for animals in our society. Every year, we care for over 8,000 cats.
-			</p>
+				
+				<nav class="navigation">
+					<ul>
+						<li><a class="navigation__tab" ui-sref="HowToAdopt" ui-sref-active=" navigation__tab--active">How to adopt</a></li>
+						<li><a class="navigation__tab" ui-sref="Cats" ui-sref-active=" navigation__tab--active">Cats</a></li>
+					</ul>
+				</nav>
+				
+				<div ui-view class="view-loader"></div>
+				
+			</section>
 			
-			<nav class="navigation">
-				<ul>
-					<li><a class="navigation__tab" ui-sref="howToAdopt" ui-sref-active="default">How to adopt</a></li>
-					<li><a class="navigation__tab navigation__tab--active" ui-sref="how-to-adopt" ui-sref-active="active">Cats</a></li>
-				</ul>
-			</nav>
+			<footer class="footer">
+				Please check the <a href="../README.htm">README</a> file for further information. JS, HTML and CSS code is not minimised. To see a minimised build execute <code>gulp min</code>.
+			</footer>
 			
-			<ui-view></ui-view>
-			
-		</section>
-		
-		<footer class="footer">
-			Please check the <a href="../README.htm">README</a> file for further information. JS, HTML and CSS code is not minimised. To see a minimised build execute <code>gulp min</code>.
-		</footer>
+		</div>
 		
 		<script src="app.js"></script>
 		
