@@ -207,6 +207,7 @@ input:focus {
 }
 .kitten {
   width: 100%;
+  max-height: 455px;
   margin: 40px auto;
   display: block;
   box-shadow: 4px 4px 20px rgba(0, 0, 0, 0.2);
