@@ -20,6 +20,9 @@
 	
 	@media (max-width: @mobileBreakpoint) {
 		height: 150px;
+		margin: 0;
+			
+		box-shadow: 0 5px 0 @purple2 inset, 10px 10px 30px rgba(0, 0, 0, 0.2);
 	}
 	
 	&:hover {
@@ -32,12 +35,6 @@
 	&:active {
 		transform: scale(1);
 		background: lightyellow;
-	}
-	
-	@media (max-width: @mobileBreakpoint) {
-		margin: 0;
-		
-		box-shadow: 0 5px 0 @purple3 inset, 10px 10px 30px rgba(0, 0, 0, 0.2);
 	}
 	
 	&--selected {

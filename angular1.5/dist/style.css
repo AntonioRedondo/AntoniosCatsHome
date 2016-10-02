@@ -229,6 +229,8 @@ input:focus {
 @media (max-width: 800px) {
   .card {
     height: 150px;
+    margin: 0;
+    box-shadow: 0 5px 0 #b74b66 inset, 10px 10px 30px rgba(0, 0, 0, 0.2);
   }
 }
 .card:hover {
@@ -240,12 +242,6 @@ input:focus {
 .card:active {
   transform: scale(1);
   background: lightyellow;
-}
-@media (max-width: 800px) {
-  .card {
-    margin: 0;
-    box-shadow: 0 5px 0 #f86d72 inset, 10px 10px 30px rgba(0, 0, 0, 0.2);
-  }
 }
 .card--selected {
   background: papayawhip;
