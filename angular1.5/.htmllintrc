@@ -1,5 +1,6 @@
 {
 	"attr-name-ignore-regex": "ng-",
+	"attr-name-style": false,
 	"attr-req-value": false,
 	"line-end-style": "crlf",
 	"id-class-style": "bem",

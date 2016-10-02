@@ -109,7 +109,7 @@ input:focus {
 }
 @media (max-width: 800px) {
   .main {
-    padding: 50px 0 30px;
+    padding: 50px 0 250px;
     overflow: hidden;
   }
 }
@@ -126,11 +126,27 @@ input:focus {
 .navigation {
   height: 64px;
   margin-bottom: 50px;
+  overflow: hidden;
   border-bottom: 4px solid #b74b66;
 }
+@media (max-width: 800px) {
+  .navigation {
+    height: auto;
+    border: 0;
+  }
+}
+.navigation ul {
+  margin: 0;
+  padding: 0;
+}
 .navigation li {
-  float: right;
+  float: left;
   list-style: none;
+}
+@media (max-width: 800px) {
+  .navigation li {
+    width: 100%;
+  }
 }
 .navigation__tab {
   width: 240px;
@@ -146,6 +162,12 @@ input:focus {
   text-align: center;
   transition: all 0.2s;
 }
+@media (max-width: 800px) {
+  .navigation__tab {
+    width: 100%;
+    border-radius: 0;
+  }
+}
 .navigation__tab:hover {
   background: orange;
 }
@@ -153,11 +175,9 @@ input:focus {
   background: #b74b66;
 }
 .view-loader.ng-enter {
-  transition: all 0.2s ease-out;
-}
-.view-loader.ng-enter {
   opacity: 0;
   transform: translate3d(8%, 0, 0);
+  transition: all 0.2s ease-out;
 }
 .view-loader.ng-enter-active {
   opacity: 1;
@@ -176,6 +196,15 @@ input:focus {
 }
 
 
+.hta {
+  margin: 0;
+  padding: 0;
+}
+@media (max-width: 800px) {
+  .hta {
+    padding: 0 40px;
+  }
+}
 .kitten {
   width: 100%;
   margin: 40px auto;

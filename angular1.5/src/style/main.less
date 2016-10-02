@@ -135,7 +135,7 @@ input:focus { /* Chrome adds its own blue outline on buttons when focus */
 	padding: 50px 50px 160px;
 	
 	@media (max-width: @mobileBreakpoint) {
-		padding: 50px 0 30px;
+		padding: 50px 0 250px;
 		overflow: hidden;
 	}
 	
@@ -154,11 +154,27 @@ input:focus { /* Chrome adds its own blue outline on buttons when focus */
 .navigation {
 	height: 64px;
 	margin-bottom: 50px;
+	overflow: hidden;
+	
 	border-bottom: 4px solid @purple2;
 	
-	& li {		
-		float: right;
+	@media (max-width: @mobileBreakpoint) {
+		height: auto;
+		border: 0;
+	}
+	
+	& ul {
+		margin: 0;
+		padding: 0;
+	}
+	
+	& li {
+		float: left;
 		list-style: none;
+		
+		@media (max-width: @mobileBreakpoint) {
+			width: 100%;
+		}
 	}
 	
 	&__tab {
@@ -179,6 +195,11 @@ input:focus { /* Chrome adds its own blue outline on buttons when focus */
 		
 		transition: all @animTime2;
 		
+		@media (max-width: @mobileBreakpoint) {
+			width: 100%;
+			border-radius: 0;
+		}
+		
 		&:hover {
 			background: orange;
 		}
@@ -191,12 +212,9 @@ input:focus { /* Chrome adds its own blue outline on buttons when focus */
 
 .view-loader {
 	&.ng-enter {
-		transition: all 0.2s ease-out;
-	}
-	
-	&.ng-enter {
 		opacity: 0;
 		transform: translate3d(8%, 0, 0);
+		transition: all 0.2s ease-out;
 	}
 	
 	&.ng-enter-active {

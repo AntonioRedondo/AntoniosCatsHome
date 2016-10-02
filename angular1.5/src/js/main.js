@@ -6,12 +6,12 @@ angular
 	.config(["$stateProvider", "$urlRouterProvider", function($stateProvider, $urlRouterProvider) {
 		$urlRouterProvider.otherwise("/");
 		$stateProvider
-			.state("Cats", {
+			.state("cats", {
 				url: "/",
 				templateUrl: "angularTpl/cats.tpl.htm",
 				controller: "listController"
 			})
-			.state("HowToAdopt", {
+			.state("how-to-adopt", {
 				url: "/how-to-adopt",
 				templateUrl: "angularTpl/howToAdopt.tpl.htm",
 				controller: "listController"

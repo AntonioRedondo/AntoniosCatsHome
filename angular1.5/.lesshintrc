@@ -2,6 +2,7 @@
     "stringQuotes": false,
     "urlFormat": false, // It doesn't allow absolute URLs
     "propertyOrdering": false, // The only ordering deemed as correct is alphabetically
+    "qualifyingElement": true, // If not it will complain about the .ng-enter and .ng-leave classes
     "trailingWhitespace": false, // Tabs are also deemed as trailing whitespaces
     "zeroUnit": false
 }

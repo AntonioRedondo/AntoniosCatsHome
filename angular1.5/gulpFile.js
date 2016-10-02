@@ -120,7 +120,8 @@ gulp.task("copyHtml", function() {
 });
 
 gulp.task("less", function () {
-	return gulp.src([`${src}/style/*.less`,
+	return gulp.src([
+			`${src}/style/*.less`,
 			`${src}/angularTpl/*.less`,
 			`${src}/angularDirectives/**/*.less`])
 		.pipe(less())
