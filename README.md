@@ -8,7 +8,7 @@ Antonio's Cats Home is a skills demonstration exercise where I implement the sam
 - [Angular 1.5](https://antonioredondo.github.io/AntoniosCatsHome/angular1.5/README.htm) ([source code](https://github.com/AntonioRedondo/AntoniosCatsHome/tree/master/angular1.5))
 - [ES6 React 15](https://antonioredondo.github.io/AntoniosCatsHome/react/README.htm) ([source code](https://github.com/AntonioRedondo/AntoniosCatsHome/tree/master/react))
 
-Visually the implementations are identical. Behind the hood there are important differences. Implementations solve common front-end problems like model/scope/state creation, routing and animations based on component entering/leaving.
+Visually the implementations are identical. Behind the hood there are important differences. These implementations solve common front-end problems like model/scope/state creation, routing and animations based on component entering/leaving. All three implementations are a Single Page Application (SPA). They have been developed following a TDD approach.
 
 This project is intended to help recruiters and hiring IT managers when time comes to assess my coding skills.
 
