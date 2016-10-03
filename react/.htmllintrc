@@ -1,4 +1,5 @@
 {
+	"attr-name-style": false,
 	"line-end-style": "crlf",
 	"id-class-style": "bem",
 	"img-req-src": false,

@@ -1,9 +1,10 @@
 import React from "react";
+import { Provider, connect } from "react-redux";
 import ReduxStore from "./redux/store";
 import ReduxActions from "./redux/actions";
-import { connect } from "react-redux";
 import Card from "./card.jsx";
 import Filter from "./filter.jsx";
+import ReactCSSTransitionGroup from "react-addons-css-transition-group";
 
 
 export class CardList extends React.Component {
@@ -31,7 +32,12 @@ export class CardList extends React.Component {
 		return (
 			<div className="card-list-container">
 				<Filter onFilter={this.onFilter.bind(this)} />
-				{items}
+				<ReactCSSTransitionGroup 
+						transitionName="card" 
+						transitionEnterTimeout={250} 
+						transitionLeaveTimeout={250}>
+					{items}
+				</ReactCSSTransitionGroup>
 			</div>
 		);
 	}
@@ -66,5 +72,4 @@ const mapDispatchToProps = dispatch => ({
 		setSelected: item => dispatch(ReduxActions.setSelected(item)),
 		setFilterString: filterString => dispatch(ReduxActions.setFilterString(filterString))
 	});
-
 export default connect(mapStateToProps, mapDispatchToProps)(CardList);

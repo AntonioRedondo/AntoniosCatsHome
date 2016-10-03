@@ -1,0 +1,77 @@
+@import (reference) "../../style/variables";
+
+
+.navigation {
+	height: 64px;
+	margin-bottom: 50px;
+	overflow: hidden;
+	
+	border-bottom: 4px solid @purple2;
+	
+	@media (max-width: @mobileBreakpoint) {
+		height: auto;
+		border: 0;
+	}
+	
+	& ul {
+		margin: 0;
+		padding: 0;
+	}
+	
+	& li {
+		float: left;
+		list-style: none;
+		
+		@media (max-width: @mobileBreakpoint) {
+			width: 100%;
+		}
+	}
+	
+	&__tab {
+		width: 240px;
+		height: 60px;
+		
+		display: flex;	
+		justify-content: center;
+		align-items: center;
+		
+		background: @grayB;
+		border-top-left-radius: 8px;
+		border-top-right-radius: 8px;
+		
+		color: white;
+		font-size: 1.5em;
+		text-align: center;
+		
+		transition: all @animTime2;
+		
+		@media (max-width: @mobileBreakpoint) {
+			width: 100%;
+			border-radius: 0;
+		}
+		
+		&:hover {
+			background: orange;
+		}
+		
+		&--active {
+			background: @purple2;
+		}
+	}
+}
+
+.view-loader {
+	&-enter {
+		opacity: 0;
+		transform: translate3d(8%, 0, 0);
+		transition: all @animTime2 ease-out;
+	}
+	
+	&-enter&-enter-active {
+		opacity: 1;
+		transform: translate3d(0, 0, 0);
+	}
+	&-leave {
+		display: none;
+	}
+}
