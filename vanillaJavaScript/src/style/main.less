@@ -1,84 +1,129 @@
 @import (reference) "variables";
 
+
 html {
+	height: 100%;
 	min-height: 100%;
+	overflow-x: hidden;
+	overflow-y: scroll;
 	
 	background: url("img/bg.png");
 	
-	color: white;
+	color: @gray3;
 	font-family: "Open Sans", sans-serif;
 }
+
 body {
+	height: 100%;
 	min-height: 100%;
 	margin: 0;
 }
+
 a {
-	color: white;
+	color: @grayB;
 	text-decoration: none;
 	font-weight: bold;
 }
+
 input:focus { /* Chrome adds its own blue outline on buttons when focus */
 	outline: none;
 }
+
 * {
 	box-sizing: border-box;
 }
 
+
+
 .header {
 	width: 100%;
-	height: 110px;
-	margin: 0 auto;
-	padding: 20px 0 10px;
+	height: 80px;
 	z-index: 1;
 	
 	position: fixed;
 	top: 0;
 	
-	background: url("img/header.jpg") 0 38%;
-	background-size: cover;
+	background: @purple2;
 	box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 	
 	text-align: center;
 	font-size: 2em;
 	
-	&__title {
-		width: calc(~"100% - 50px");
+	&__container {
 		max-width: @width;
-		margin: 5px auto;
-		padding-left: 50px;
+		height: 80px;
+		margin: 0 auto;
+		padding: 0 50px;
+		
+		display: flex;	
+		justify-content: space-between;
+		align-items: center;
+	}
+	
+	&__title {
+		max-width: @width;
+		margin: 0;
+		
+		flex: 1;
 		
 		color: @grayE;
 		font-family: "Rokkitt", serif;
 		font-size: 1.2em;
 		line-height: 0.8em;
-		text-align: left;
 		text-shadow: 3px 3px 0px @purple1;
+		text-align: left;
 		
 		&--name {
-			font-size: 1.15em;
 			color: white;
+		}
+		
+		@media (max-width: @mobileBreakpoint) {
+			margin: 10px auto;
+			padding: 0;
+			
+			font-size: 0.9em;
+			text-align: center;
 		}
 	}
 }
 
+.body-container {
+	min-height: 100%;
+	position: relative;
+}
+
 .subheader {
 	width: 100%;
-	margin: 110px auto 0;
+	margin: 0;
 	padding: 20px 0;
 	
-	background: @purple1;
+	border-top: 80px solid;
+	
+	background: url("img/header.jpg") 0 38%;
+	background-size: cover;
 	box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 	
+	color: white;
+	
+	&__container {
+		width: 100%;
+		max-width: @width;
+		margin: 0 auto;
+	}
+	
 	&__title {
-		margin: 0.2em;
+		max-width: 800px;
+		margin: 0.2em auto;
+		padding-right: 32%;
 		
 		text-align: center;
 		font-size: 3.2em;
 		font-weight: bold;
-		text-shadow: 3px 4px 0px @purple2;
 		
 		@media (max-width: @mobileBreakpoint) {
-			font-size: 2em;
+			padding: 0 50% 0 5%;
+			
+			font-size: 1.8em;
 		}
 	}
 }
@@ -86,22 +131,81 @@ input:focus { /* Chrome adds its own blue outline on buttons when focus */
 .main {
 	width: 100%;
 	max-width: @width;
-	margin: 0 auto 40px;
-	padding: 50px 50px 30px;
+	margin: 0 auto;
+	padding: 50px 50px 160px;
 	
 	@media (max-width: @mobileBreakpoint) {
-		padding: 50px 0 30px;
+		padding: 50px 0 250px;
+		overflow: hidden;
 	}
 	
 	&__text {
 		max-width: @width;
 		margin: 0px auto 60px;
 		
-		color: @gray3;
 		font-size: 1em;
 		
 		@media (max-width: @mobileBreakpoint) {
 			padding: 0 50px;
+		}
+	}
+}
+
+.navigation {
+	height: 64px;
+	margin-bottom: 50px;
+	overflow: hidden;
+	
+	border-bottom: 4px solid @purple2;
+	
+	@media (max-width: @mobileBreakpoint) {
+		height: auto;
+		border: 0;
+	}
+	
+	& ul {
+		margin: 0;
+		padding: 0;
+	}
+	
+	& li {
+		float: left;
+		list-style: none;
+		
+		@media (max-width: @mobileBreakpoint) {
+			width: 100%;
+		}
+	}
+	
+	&__tab {
+		width: 240px;
+		height: 60px;
+		
+		display: flex;	
+		justify-content: center;
+		align-items: center;
+		
+		background: @grayB;
+		border-top-left-radius: 8px;
+		border-top-right-radius: 8px;
+		
+		color: white;
+		font-size: 1.5em;
+		text-align: center;
+		
+		transition: all @animTime2;
+		
+		@media (max-width: @mobileBreakpoint) {
+			width: 100%;
+			border-radius: 0;
+		}
+		
+		&:hover {
+			background: orange;
+		}
+		
+		&--active {
+			background: @purple2;
 		}
 	}
 }
@@ -116,7 +220,6 @@ input:focus { /* Chrome adds its own blue outline on buttons when focus */
 	background: white;
 	border-radius: 5px;
 	border: 4px solid @grayB;
-	// box-shadow: 0 0 20px rgba(255, 255, 255, 0), 0 0 10px rgba(0, 0, 0, 0.2) inset;
 	
 	color: @gray3;
 	font-size: 1.8em;
@@ -129,7 +232,7 @@ input:focus { /* Chrome adds its own blue outline on buttons when focus */
 	}
 	
 	&:focus {
-		border-color: @purple2;
+		border-color: @green1;
 		box-shadow: 0 0 20px rgba(255, 255, 255, 0.2), 0 0 10px rgba(0, 0, 0, 0.2) inset;
 	}
 	
@@ -142,9 +245,13 @@ input:focus { /* Chrome adds its own blue outline on buttons when focus */
 	width: 100%;
 	padding: 30px;
 	
-	background: @purple2;
+	position: absolute;
+	bottom: 0;
+	
+	background: @green1;
 	box-shadow: 0 0 12px rgba(0, 0, 0, 0.5);
 	
+	color: white;
 	text-align: center;
 	font-size: 0.9em;
 }
