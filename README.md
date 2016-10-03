@@ -33,7 +33,7 @@ The interface must be also responsive and adapt to mobile devices. An attractive
 On the below table you can see technical differences:
 
 | Implementation | JS (Kb minified) | CSS (Kb minified) | JS imports | CSS imports | Front-end framework | Routing | Animations | Other libraries | CSS framework | Selectable cards | Building tools | Server | Tests | Readme file | Ready out of the box
-| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | Vanilla ES5 JS | 2 | 4 | 1 | 1 (plus fonts) | - (HTML attached to nodes) | manual | - | - | LESS (with BEM) | Yes | NPM, Gulp | Node.js | Karma, Jasmine, PhantomJS | HTML | On Dist folder |
 | Angular 1.5 | 147 | 4 | 1 | 1 (plus fonts) | Angular 1.5 (directive) | [UI-Router](https://www.npmjs.com/package/angular-ui-router) | (ngAnimate)[https://docs.angularjs.org/api/ngAnimate] | - | LESS (with BEM) | Yes | NPM, Gulp | Node.js | Karma, Jasmine, PhantomJS | HTML | On Dist folder |
 | ES6 React 15 | 206 | 4 | 1 | 1 (plus fonts) | ES6 React 15 | [React Router](https://www.npmjs.com/package/react-router) | [ReactCSSTransitionGroup](https://facebook.github.io/react/docs/animation.html) | Redux | LESS (with BEM) | Yes | NPM, Gulp, Browserify | Node.js | Karma, Jasmine, PhantomJS | HTML | On Dist folder |
