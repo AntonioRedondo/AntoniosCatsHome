@@ -25,7 +25,7 @@ const dest = "dist";
 
 gulp.task("default", ["watch"]);
 gulp.task("lint", ["jsHint", "htmlLint", "lessHint"]);
-gulp.task("build", ["copyJS", "copyTpl", "copyHtml", "less", "copyAssets"]);
+gulp.task("build", ["copyJS", "copyHtml", "less", "copyAssets"]);
 gulp.task("min", ["uglify", "htmlMin", "lessMin", "copyAssets"]);
 
 
@@ -76,12 +76,20 @@ gulp.task("jsHint", function() {
 });
 
 gulp.task("htmlLint", function() {
-	return gulp.src([`${src}/*.htm`, `${src}/angularDirectives/**/*.tpl.htm`])
+	return gulp.src([
+			`${src}/*.htm`,
+			`${src}/angularTpl/*.tpl.htm`,
+			`${src}/angularDirectives/**/*.tpl.htm`
+		])
 		.pipe(htmlLint()); // https://github.com/htmllint/htmllint/wiki/Options
 });
 
 gulp.task("lessHint", function() {
-	return gulp.src([`${src}/style/*.less`, `${src}/angularDirectives/**/*.less`])
+	return gulp.src([
+			`${src}/style/*.less`,
+			`${src}/angularTpl/*.less`,
+			`${src}/angularDirectives/**/*.less`
+		])
 		.pipe(lessHint())
 		.pipe(lessHint.reporter());
 });
@@ -90,40 +98,48 @@ gulp.task("lessHint", function() {
 
 
 
-// Build
+const jsSrc = [
+		"node_modules/angular/angular.js",
+		"node_modules/angular-animate/angular-animate.js",
+		"node_modules/angular-ui-router/release/angular-ui-router.js",
+		`${src}/js/main.js`,
+		`${src}/js/*.js`,
+		`${src}/angularDirectives/**/*.js`,
+		`!${src}/js/*.spec.js`,
+		`!${src}/angularDirectives/**/*.spec.js`
+	];
+		
+const htmlSrc = [
+		`${src}/*angularDirectives/**/*.tpl.htm`,
+		`${src}/*angularTpl/*.tpl.htm`,
+		`${src}/index.htm`
+	];
+		
+const cssSrc = [
+		`${src}/style/*.less`,
+		`${src}/angularTpl/*.less`,
+		`${src}/angularDirectives/**/*.less`
+	];
 
+
+
+
+
+// Build
+		
 gulp.task("copyJS", function() {
-	return gulp.src([
-			"node_modules/angular/angular.js",
-			"node_modules/angular-animate/angular-animate.js",
-			"node_modules/angular-ui-router/release/angular-ui-router.js",
-			`${src}/js/main.js`,
-			`${src}/js/*.js`,
-			`${src}/angularDirectives/**/*.js`,
-			`!${src}/js/*.spec.js`,
-			`!${src}/angularDirectives/**/*.spec.js`])
+	return gulp.src(jsSrc)
 		.pipe(concat("app.js"))
 		.pipe(gulp.dest(`${dest}`));
 });
 
-gulp.task("copyTpl", function() {
-	return gulp.src([
-			`${src}/*angularDirectives/**/*.tpl.htm`,
-			`${src}/*angularTpl/*.tpl.htm`,
-		])
-		.pipe(gulp.dest(`${dest}`));
-});
-
 gulp.task("copyHtml", function() {
-	return gulp.src([`${src}/index.htm`])
+	return gulp.src(htmlSrc)
 		.pipe(gulp.dest(`${dest}`));
 });
 
 gulp.task("less", function () {
-	return gulp.src([
-			`${src}/style/*.less`,
-			`${src}/angularTpl/*.less`,
-			`${src}/angularDirectives/**/*.less`])
+	return gulp.src(cssSrc)
 		.pipe(less())
 		.pipe(concat("style.css"))
 		.pipe(gulp.dest(`${dest}`));
@@ -141,14 +157,14 @@ gulp.task("copyAssets", function() {
 // Minify
 
 gulp.task('uglify', function() {
-	return gulp.src(["node_modules/angular/angular.min.js", `${src}/js/main.js`, `${src}/js/*.js`, `!${src}/js/*.spec.js`, `${src}/angularDirectives/**/*.js`])
+	return gulp.src(jsSrc)
 		.pipe(uglify())
 		.pipe(concat("app.js"))
 		.pipe(gulp.dest(`${dest}`));
 });
 
 gulp.task("htmlMin", function() {
-	return gulp.src([`${src}/index.htm`, `${src}/*angularDirectives/**/*.tpl.htm`])
+	return gulp.src(htmlSrc)
 		.pipe(htmlMin({
 			collapseWhitespace: true,
 			minifyCSS: true,
@@ -160,7 +176,7 @@ gulp.task("htmlMin", function() {
 });
 
 gulp.task("lessMin", function () {
-	return gulp.src([`${src}/style/*.less`, `${src}/angularDirectives/**/*.less`])
+	return gulp.src(cssSrc)
 		.pipe(less())
 		.pipe(concat("style.css"))
 		.pipe(cleanCss())
