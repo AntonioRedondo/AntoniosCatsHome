@@ -8,7 +8,7 @@ Antonio's Cats Home is a skills demonstration exercise where I implement the sam
 - [Angular 1.5](https://antonioredondo.github.io/AntoniosCatsHome/angular1.5/README.htm) ([source code](https://github.com/AntonioRedondo/AntoniosCatsHome/tree/master/angular1.5))
 - [ES6 React 15](https://antonioredondo.github.io/AntoniosCatsHome/react/README.htm) ([source code](https://github.com/AntonioRedondo/AntoniosCatsHome/tree/master/react))
 
-Visually the implementations are identical. Behind the hood there are important differences.
+Visually the implementations are identical. Behind the hood there are important differences. Implementations solve common front-end problems like model/scope/state creation, routing and animations based on component entering/leaving.
 
 This project is intended to help recruiters and hiring IT managers when time comes to assess my coding skills.
 
@@ -32,11 +32,11 @@ The interface must be also responsive and adapt to mobile devices. An attractive
 
 On the below table you can see technical differences:
 
-| Implementation | JS (Kb minified) | CSS (Kb minified) | JS imports | CSS imports | Front-end framework | Other libraries | CSS framework | Selectable cards | Building tools | Server | Tests | Readme file | Ready out of the box
+| Implementation | JS (Kb minified) | CSS (Kb minified) | JS imports | CSS imports | Front-end framework | Routing | Animations | Other libraries | CSS framework | Selectable cards | Building tools | Server | Tests | Readme file | Ready out of the box
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| Vanilla ES5 JS | 2 | 4 | 1 | 1 (plus fonts) | - (HTML attached to nodes) | - | LESS (with BEM) | Yes | NPM, Gulp | Node.js | Karma, Jasmine, PhantomJS | HTML | On Dist folder |
-| Angular 1.5 | 147 | 4 | 1 | 1 (plus fonts) | Angular 1.5 (directive) | - | LESS (with BEM) | Yes | NPM, Gulp | Node.js | Karma, Jasmine, PhantomJS | HTML | On Dist folder |
-| ES6 React 15 | 206 | 4 | 1 | 1 (plus fonts) | ES6 React 15 | Redux | LESS (with BEM) | Yes | NPM, Gulp, Browserify | Node.js | Karma, Jasmine, PhantomJS | HTML | On Dist folder |
+| Vanilla ES5 JS | 2 | 4 | 1 | 1 (plus fonts) | - (HTML attached to nodes) | manual | - | - | LESS (with BEM) | Yes | NPM, Gulp | Node.js | Karma, Jasmine, PhantomJS | HTML | On Dist folder |
+| Angular 1.5 | 147 | 4 | 1 | 1 (plus fonts) | Angular 1.5 (directive) | [UI-Router](https://www.npmjs.com/package/angular-ui-router) | (ngAnimate)[https://docs.angularjs.org/api/ngAnimate] | - | LESS (with BEM) | Yes | NPM, Gulp | Node.js | Karma, Jasmine, PhantomJS | HTML | On Dist folder |
+| ES6 React 15 | 206 | 4 | 1 | 1 (plus fonts) | ES6 React 15 | [React Router](https://www.npmjs.com/package/react-router) | [ReactCSSTransitionGroup](https://facebook.github.io/react/docs/animation.html) | Redux | LESS (with BEM) | Yes | NPM, Gulp, Browserify | Node.js | Karma, Jasmine, PhantomJS | HTML | On Dist folder |
 
 
 ### How to best understand my skills with the test
