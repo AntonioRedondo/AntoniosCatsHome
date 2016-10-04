@@ -6,7 +6,7 @@
 Antonio's Cats Home is a skills demonstration exercise where I implement the same web project with three different front-end technologies:
 - [Vanilla ES5 JavaScript](https://antonioredondo.github.io/AntoniosCatsHome/vanillaJavaScript/README.htm) ([source code](https://github.com/AntonioRedondo/AntoniosCatsHome/tree/master/vanillaJavaScript)): no dependencies, tiny size, pure functions, functional programming.
 - [Angular 1.5](https://antonioredondo.github.io/AntoniosCatsHome/angular1.5/README.htm) ([source code](https://github.com/AntonioRedondo/AntoniosCatsHome/tree/master/angular1.5)): services, directives, isolated scopes, [UI-Router](https://www.npmjs.com/package/angular-ui-router) and [ngAnimate](https://docs.angularjs.org/api/ngAnimate).
-- [ES6 React 15](https://antonioredondo.github.io/AntoniosCatsHome/react/README.htm) ([source code](https://github.com/AntonioRedondo/AntoniosCatsHome/tree/master/react)): ES6 features (modules, classes, arrows, template literals), Redux, React Router and [ReactCSSTransitionGroup](https://facebook.github.io/react/docs/animation.html).
+- [ES6 React 15](https://antonioredondo.github.io/AntoniosCatsHome/react/README.htm) ([source code](https://github.com/AntonioRedondo/AntoniosCatsHome/tree/master/react)): ES6 features (classes, arrows, template literals), Redux, React Router and [ReactCSSTransitionGroup](https://facebook.github.io/react/docs/animation.html).
 
 Visually the implementations are identical. Behind the hood there are important differences. These implementations solve common front-end problems like model/scope/state creation, routing and animations based on component entering/leaving. All three implementations are a Single Page Application (SPA). They have been developed following a TDD approach.
 
