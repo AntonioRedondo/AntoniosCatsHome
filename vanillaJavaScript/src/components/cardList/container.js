@@ -93,10 +93,11 @@
 		});
 		
 		// Filters list by the string typed on the input field
-		inputField.addEventListener("input", function(e) {
-			container.innerHTML = "";
-			cardList.render(container, cardList.filter(cardList.data, e.target.value), templateString);
-		});
+		if (inputField)
+			inputField.addEventListener("input", function(e) {
+				container.innerHTML = "";
+				cardList.render(container, cardList.filter(cardList.data, e.target.value), templateString);
+			});
 		
 	};
 	
