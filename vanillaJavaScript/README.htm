@@ -40,9 +40,16 @@
 			.i {
 				font-style: italic;
 			}
+			.screenshotContainer {
+				text-align: center;
+			}
+			.screenshotLink {
+				margin: 50px auto;
+				display: inline-block;
+			}
 			.screenshot {
 				max-height: 800px;
-				margin: 50px auto;
+				margin: 0;
 				box-shadow: 4px 4px 15px rgba(0, 0, 0, 0.2);
 			}
 			.separator {
@@ -63,10 +70,12 @@
 			</p>
 			<p class="p">
 				This is the <strong>Vanilla ES5 JavaScript</strong> implementation for Antonio's Cats Home. The project is configured with <strong>NPM</strong> and <strong>Gulp</strong> with no JavaScript dependencies. CSS code is written using the <strong>BEM</strong> arrangement and <strong>LESS</strong>. You do not need to run any NPM command or Gulp task since all the processed files are already generated in the <code>dist</code> folder.
-				<a href="https://antonioredondo.github.io/AntoniosCatsHome/vanillaJavaScript/dist">
+			</p>
+			<div class="screenshotContainer">
+				<a class="screenshotLink" href="https://antonioredondo.github.io/AntoniosCatsHome/angular1.5/dist">
 					<img src="https://antonioredondo.github.io/AntoniosCatsHome/zImg/final.png" class="screenshot">
 				</a>
-			</p>
+			</div>
 			<p class="p">
 				In order to see the project working:
 			</p>
@@ -117,7 +126,7 @@
 				Testing
 			</h2>
 			<p class="p">
-				To run the tests execute <code>npm test</code> (you must have executed <code>npm i</code> before at least once). Tests are executed with Karma and PhantomJS and have been written using Jasmine. <code>npm testautowatch</code> executes Karma on <code>autoWatch</code> mode, executing the tests whenever one JavaScript files changes. Ideal for TDD.
+				To run the tests execute <code>npm test</code> (you must have executed <code>npm i</code> before). Tests are executed with Karma and PhantomJS and have been written using Jasmine. <code>npm run-script testautowatch</code> executes Karma on <code>autoWatch</code> mode, executing the tests whenever one JavaScript files changes. Ideal for TDD.
 			</p>
 			<p class="p">
 				The project includes a <code>.spec.js</code> file which tests the <code>cardList</code> namespace. There is no <code>tests</code> folder, <code>.spec.js</code> test files are next to the code they test.
@@ -136,13 +145,13 @@
 			</p>
 			<ul>
 				<li>
-					<code>npm i</code> (alias for <code>npm install</code>): installs all dependencies so that the project can be developed, tested and deployed. The <code>karma start</code> command is attached to the <code>postinstall</code> script thus tests are executed once installation has finished. You must execute <code>npm i</code> at least once before executing any other npm command or Gulp task.
+					<code>npm i</code> (alias for <code>npm install</code>): installs all dependencies so that the project can be developed, tested and deployed. The <code>karma start</code> command is attached to the <code>postinstall</code> script thus tests are executed once installation has finished. You must execute <code>npm i</code> before executing any other npm command or Gulp task.
 				</li>
 				<li>
 					<code>npm start</code>: initiates a Node.js server configured on <code>server.js</code> and automatically opens the default system browser with the project page.
 				</li>
 				<li>
-					<code>npm test</code>: executes <code>.spec.js</code> tests with Karma. PhantomJS and Karma will finalise once all the tests are executed. For a command which keeps Karma executing see <code>npm testautowatch</code>.
+					<code>npm test</code>: executes <code>.spec.js</code> tests with Karma. PhantomJS and Karma will finalise once all the tests are executed. For a command which keeps Karma executing see <code>npm run-script testautowatch</code>.
 				</li>
 				<li>
 					<code>npm run-script testautowatch</code>: starts Karma on <a href="http://karma-runner.github.io/0.13/config/configuration-file.html" target="_blank"><code>autoWatch</code></a> mode, executing the tests whenever one JavaScript files changes. PhantomJS and Karma won't close once all the tests are executed. Ideal for TDD.
