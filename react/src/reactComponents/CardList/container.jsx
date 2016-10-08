@@ -10,7 +10,7 @@ import ReactCSSTransitionGroup from "react-addons-css-transition-group";
 export class CardList extends React.Component {
 	
 	componentDidMount() {
-		this.props.requestItems();
+		this.props.requestItems(this.props.url);
 	}
 	
 	onFilter(e) {
@@ -68,7 +68,7 @@ const mapStateToProps = state => ({
 		filterString: state.filterString
 	});
 const mapDispatchToProps = dispatch => ({
-		requestItems: () => dispatch(ReduxActions.requestItems()),
+		requestItems: url => dispatch(ReduxActions.requestItems(url)),
 		setSelected: item => dispatch(ReduxActions.setSelected(item)),
 		setFilterString: filterString => dispatch(ReduxActions.setFilterString(filterString))
 	});

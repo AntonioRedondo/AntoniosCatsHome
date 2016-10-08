@@ -15,8 +15,8 @@ ReactDOM.render(
 	<Provider store={ReduxStore}>
 		<Router history={useRouterHistory(createHashHistory)({ queryKey: false })}>
 			<Route path="/" component={TabNavigator}>
-				<IndexRoute component={CardList} />
-				<Route path="/" key="cats" component={CardList} />
+				<IndexRoute component={() => (<CardList url="data/cats.json" />)} />
+				<Route path="/" component={() => (<CardList url="data/cats.json" />)} />
 				<Route path="/how-to-adopt" key="how-to-adopt" component={HowToAdopt} />
 			</Route>
 		</Router>

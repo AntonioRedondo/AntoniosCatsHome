@@ -11,7 +11,8 @@ module.exports = function (config) {
 		// list of files / patterns to load in the browser
 		files: [
 			"node_modules/es6-promise/dist/es6-promise.js", // https://github.com/ariya/phantomjs/issues/12401
-			"src/reactComponents/**/*.spec.jsx"
+			"src/reactComponents/**/*.spec.jsx",
+			"src/reactComponents/**/*.spec.js"
 		],
 
 		// list of files to exclude
@@ -20,14 +21,23 @@ module.exports = function (config) {
 		// preprocess matching files before serving them to the browser
 		// available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
 		preprocessors: {
-			"src/reactComponents/**/*.spec.jsx": [ "browserify" ]
+			["src/reactComponents/**/*.spec.jsx", "src/reactComponents/**/*.spec.js"]: [ "browserify" ]
 		},
 		
 		browserify: {
 			debug: true,
 			// Browserify transform configuration doesn't work here. Placed on package.json instead
 			//transform: [ "babelify", { presets: ["react", "es2015" ]}]
-			//transform: [ "babelify", {"react": true, "es2015": true} ]
+			//transform: [ "babelify", {"react": true, "es2015": true} ],
+			
+			// https://github.com/airbnb/enzyme/blob/master/docs/guides/karma.md#enzyme--karma--browserify
+			configure: function(bundle) {
+				bundle.on('prebundle', function() {
+					bundle.external('react/addons');
+					bundle.external('react/lib/ReactContext');
+					bundle.external('react/lib/ExecutionEnvironment');
+				});
+			}
 		},
 
 		// test results reporter to use

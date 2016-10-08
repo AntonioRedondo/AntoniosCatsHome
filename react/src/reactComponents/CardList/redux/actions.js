@@ -14,15 +14,27 @@ function sort(data) {
 
 
 const actions = {
-	requestItems() {
+	requestItems(url) {
 		return (dispatch) => {
 			dispatch({ type: c.REQUEST_ITEMS });
-			fetch("data/cats.json")
-				.then((response) => response.json())
-				.then(
-					(items) => dispatch({ type: c.RECEIVE_ITEMS, items: sort(items) }),
-					(error) => dispatch({ type: c.RECEIVE_ITEMS_ERROR })
-				);
+			var request = new XMLHttpRequest();
+			request.addEventListener("load", function () {
+				dispatch({ type: c.RECEIVE_ITEMS, items: sort(JSON.parse(request.responseText)) });
+			});
+			request.open("GET", url);
+			try {
+				request.send();
+			} catch (e) {
+				dispatch({ type: c.RECEIVE_ITEMS_ERROR })
+			}
+			
+			// 'fetct' doesn't work when testing with Jasmine: https://github.com/jasmine/jasmine-ajax/issues/134
+			// fetch(url)
+			// 	.then(response => response.json())
+			// 	.then(
+			// 		items => dispatch({ type: c.RECEIVE_ITEMS, items: sort(items) }),
+			// 		error => dispatch({ type: c.RECEIVE_ITEMS_ERROR })
+			// 	);
 		};
 	},
 	
