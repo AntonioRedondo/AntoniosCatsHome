@@ -17,7 +17,7 @@ ReactDOM.render(
 			<Route path="/" component={TabNavigator}>
 				<IndexRoute component={() => (<CardList url="data/cats.json" />)} />
 				<Route path="/" component={() => (<CardList url="data/cats.json" />)} />
-				<Route path="/how-to-adopt" key="how-to-adopt" component={HowToAdopt} />
+				<Route path="/how-to-adopt" component={HowToAdopt} />
 			</Route>
 		</Router>
 	</Provider>,
