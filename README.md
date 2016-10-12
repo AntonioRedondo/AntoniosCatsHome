@@ -30,7 +30,7 @@ The interface must be also responsive and adapt to mobile devices. An attractive
 
 ### Comparison between implementations
 
-On the below table you can see technical differences:
+On the below table you can see technical differences (SCROLL RIGHT TO SEE THE REST OF THE TABLE):
 
 | Implementation | JS (Kb minified) | CSS (Kb minified) | JS imports | CSS imports | Front-end framework | Routing | Animations | Other libraries | CSS framework | Selectable cards | Building tools | Server | Tests | Readme file | Ready out of the box
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
