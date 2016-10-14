@@ -1,23 +1,22 @@
 "use strict";
 
 const del = require("del");
-
 const gulp = require("gulp");
-// const sourceMaps = require("gulp-sourcemaps"); // Not used
-const replace = require("gulp-replace");
 
+// Lint
 const jsHint = require("gulp-jshint");
 const htmlLint = require("gulp-htmllint");
 const lessHint = require("gulp-lesshint");
 
+// Build
 const concat = require("gulp-concat");
+const replace = require("gulp-replace");
 const less = require("gulp-less");
-
-// Modules for Browserify: converts ES6 JS and React JSX to ES5 JS
 const browserify = require("browserify");
 const vinylSource = require("vinyl-source-stream");
 const vinylBuffer = require("vinyl-buffer");
 
+// Minify
 const uglify = require("gulp-uglify");
 const htmlMin = require("gulp-htmlmin");
 const cleanCss = require("gulp-clean-css");
@@ -56,7 +55,7 @@ gulp.task("watch", ["lint", "build"], () => {
 
 
 
-// Lint
+// ---------- LINT ---------- //
 
 gulp.task("jsHint", function() {
 	return gulp.src(`${src}/js/*.js`)
@@ -96,7 +95,7 @@ gulp.task("lessHint", function() {
 
 
 
-// Build
+// ---------- BUILD ---------- //
 
 gulp.task("browserify", function () {
 	return browserify({
@@ -129,7 +128,7 @@ gulp.task("copyAssets", function() {
 
 
 
-// Minify
+// ---------- MINIFY ---------- //
 
 gulp.task("browserifyMin", function () {
 	process.env.NODE_ENV = "production";	
@@ -144,6 +143,7 @@ gulp.task("browserifyMin", function () {
 
 gulp.task("htmlMin", function() {
 	return gulp.src(`${src}/index.htm`)
+		.pipe(replace(/(<!-- buildDev:start -->)[\s\S]+(<!-- buildDev:end -->)/, ""))
 		.pipe(htmlMin({
 			collapseWhitespace: true,
 			minifyCSS: true,

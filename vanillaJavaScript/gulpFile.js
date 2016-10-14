@@ -1,16 +1,19 @@
 "use strict";
 
 const del = require("del");
-
 const gulp = require("gulp");
 
+// Lint
 const jsHint = require("gulp-jshint");
 const htmlLint = require("gulp-htmllint");
 const lessHint = require('gulp-lesshint');
 
+// Build
 const concat = require("gulp-concat");
+const replace = require("gulp-replace");
 const less = require("gulp-less");
 
+// Minify
 const uglify = require("gulp-uglify");
 const htmlMin = require("gulp-htmlmin");
 const cleanCss = require("gulp-clean-css");
@@ -49,7 +52,7 @@ gulp.task("watch", ["lint", "build"], () => {
 
 
 
-// Lint
+// ---------- LINT ---------- //
 
 gulp.task("jsHint", function() {
 	return gulp.src(`${src}/js/*.js`)
@@ -90,7 +93,7 @@ gulp.task("lessHint", function() {
 
 
 
-// Build
+// ---------- BUILD ---------- //
 
 gulp.task("copyJS", function() {
 	return gulp.src([`${src}/components/**/*.js`, `!${src}/components/**/*.spec.js`, `${src}/js/*.js`, `!${src}/js/*.spec.js`])
@@ -119,7 +122,7 @@ gulp.task("less", function () {
 
 
 
-// Minify
+// ---------- MINIFY ---------- //
 
 gulp.task('uglify', function() {
 	return gulp.src([`${src}/components/**/*.js`, `!${src}/components/**/*.spec.js`, `${src}/js/*.js`, `!${src}/js/*.spec.js`])
@@ -130,6 +133,7 @@ gulp.task('uglify', function() {
 
 gulp.task("htmlMin", function() {
 	return gulp.src([`${src}/index.htm`, `${src}/*components/**/*.tpl.htm`])
+		.pipe(replace(/(<!-- buildDev:start -->)[\s\S]+(<!-- buildDev:end -->)/, ""))
 		.pipe(htmlMin({
 			collapseWhitespace: true,
 			minifyCSS: true,

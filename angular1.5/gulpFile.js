@@ -1,19 +1,23 @@
 "use strict";
 
 const del = require("del");
-
 const gulp = require("gulp");
 
+// Lint
 const jsHint = require("gulp-jshint");
 const htmlLint = require("gulp-htmllint");
 const lessHint = require('gulp-lesshint');
 
+// Build
 const concat = require("gulp-concat");
+const replace = require("gulp-replace");
 const less = require("gulp-less");
 
+// Minify
 const uglify = require("gulp-uglify");
 const htmlMin = require("gulp-htmlmin");
 const cleanCss = require("gulp-clean-css");
+
 
 
 const src = "src";
@@ -165,6 +169,7 @@ gulp.task('uglify', function() {
 
 gulp.task("htmlMin", function() {
 	return gulp.src(htmlSrc)
+		.pipe(replace(/(<!-- buildDev:start -->)[\s\S]+(<!-- buildDev:end -->)/, ""))
 		.pipe(htmlMin({
 			collapseWhitespace: true,
 			minifyCSS: true,
