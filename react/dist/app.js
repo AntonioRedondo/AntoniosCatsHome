@@ -29046,9 +29046,13 @@ _reactDom2.default.render(_react2.default.createElement(
 		_react2.default.createElement(
 			_reactRouter.Route,
 			{ path: "/", component: _container6.default },
-			_react2.default.createElement(_reactRouter.IndexRoute, { component: _container2.default }),
-			_react2.default.createElement(_reactRouter.Route, { path: "/", key: "cats", component: _container2.default }),
-			_react2.default.createElement(_reactRouter.Route, { path: "/how-to-adopt", key: "how-to-adopt", component: _container4.default })
+			_react2.default.createElement(_reactRouter.IndexRoute, { component: function component() {
+					return _react2.default.createElement(_container2.default, { url: "data/cats.json" });
+				} }),
+			_react2.default.createElement(_reactRouter.Route, { path: "/", component: function component() {
+					return _react2.default.createElement(_container2.default, { url: "data/cats.json" });
+				} }),
+			_react2.default.createElement(_reactRouter.Route, { path: "/how-to-adopt", component: _container4.default })
 		)
 	)
 ), document.getElementsByClassName("react-app")[0]);
@@ -29154,12 +29158,7 @@ var CardList = exports.CardList = function (_React$Component) {
 	_createClass(CardList, [{
 		key: "componentDidMount",
 		value: function componentDidMount() {
-			this.props.requestItems();
-		}
-	}, {
-		key: "onFilter",
-		value: function onFilter(e) {
-			this.props.setFilterString(e.target.value);
+			this.props.requestItems(this.props.url);
 		}
 	}, {
 		key: "render",
@@ -29179,7 +29178,7 @@ var CardList = exports.CardList = function (_React$Component) {
 			return _react2.default.createElement(
 				"div",
 				{ className: "card-list-container" },
-				_react2.default.createElement(_filter2.default, { onFilter: this.onFilter.bind(this) }),
+				_react2.default.createElement(_filter2.default, { onFilter: this.props.setFilterString.bind(this) }),
 				_react2.default.createElement(
 					_reactAddonsCssTransitionGroup2.default,
 					{
@@ -29220,14 +29219,14 @@ var mapStateToProps = function mapStateToProps(state) {
 };
 var mapDispatchToProps = function mapDispatchToProps(dispatch) {
 	return {
-		requestItems: function requestItems() {
-			return dispatch(_actions2.default.requestItems());
+		requestItems: function requestItems(url) {
+			return dispatch(_actions2.default.requestItems(url));
 		},
 		setSelected: function setSelected(item) {
 			return dispatch(_actions2.default.setSelected(item));
 		},
-		setFilterString: function setFilterString(filterString) {
-			return dispatch(_actions2.default.setFilterString(filterString));
+		setFilterString: function setFilterString(e) {
+			return dispatch(_actions2.default.setFilterString(e.target.value));
 		}
 	};
 };
@@ -29274,16 +29273,27 @@ function sort(data) {
 ;
 
 var actions = {
-	requestItems: function requestItems() {
+	requestItems: function requestItems(url) {
 		return function (dispatch) {
 			dispatch({ type: _actionsConstants2.default.REQUEST_ITEMS });
-			fetch("data/cats.json").then(function (response) {
-				return response.json();
-			}).then(function (items) {
-				return dispatch({ type: _actionsConstants2.default.RECEIVE_ITEMS, items: sort(items) });
-			}, function (error) {
-				return dispatch({ type: _actionsConstants2.default.RECEIVE_ITEMS_ERROR });
+			var request = new XMLHttpRequest();
+			request.addEventListener("load", function () {
+				dispatch({ type: _actionsConstants2.default.RECEIVE_ITEMS, items: sort(JSON.parse(request.responseText)) });
 			});
+			request.open("GET", url);
+			try {
+				request.send();
+			} catch (e) {
+				dispatch({ type: _actionsConstants2.default.RECEIVE_ITEMS_ERROR });
+			}
+
+			// 'fetch' doesn't work when testing with Jasmine: https://github.com/jasmine/jasmine-ajax/issues/134
+			// fetch(url)
+			// 	.then(response => response.json())
+			// 	.then(
+			// 		items => dispatch({ type: c.RECEIVE_ITEMS, items: sort(items) }),
+			// 		error => dispatch({ type: c.RECEIVE_ITEMS_ERROR })
+			// 	);
 		};
 	},
 	setSelected: function setSelected(card) {

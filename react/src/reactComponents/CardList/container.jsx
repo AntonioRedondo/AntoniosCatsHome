@@ -13,10 +13,6 @@ export class CardList extends React.Component {
 		this.props.requestItems(this.props.url);
 	}
 	
-	onFilter(e) {
-		this.props.setFilterString(e.target.value);
-	}
-	
 	render() {
 		let items = this.props.items.map((item) =>
 			<Card
@@ -31,7 +27,7 @@ export class CardList extends React.Component {
 		
 		return (
 			<div className="card-list-container">
-				<Filter onFilter={this.onFilter.bind(this)} />
+				<Filter onFilter={this.props.setFilterString.bind(this)} />
 				<ReactCSSTransitionGroup 
 						transitionName="card" 
 						transitionEnterTimeout={250} 
@@ -70,6 +66,6 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => ({
 		requestItems: url => dispatch(ReduxActions.requestItems(url)),
 		setSelected: item => dispatch(ReduxActions.setSelected(item)),
-		setFilterString: filterString => dispatch(ReduxActions.setFilterString(filterString))
+		setFilterString: e => dispatch(ReduxActions.setFilterString(e.target.value))
 	});
 export default connect(mapStateToProps, mapDispatchToProps)(CardList);

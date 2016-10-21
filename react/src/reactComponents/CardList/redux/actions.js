@@ -28,7 +28,7 @@ const actions = {
 				dispatch({ type: c.RECEIVE_ITEMS_ERROR })
 			}
 			
-			// 'fetct' doesn't work when testing with Jasmine: https://github.com/jasmine/jasmine-ajax/issues/134
+			// 'fetch' doesn't work when testing with Jasmine: https://github.com/jasmine/jasmine-ajax/issues/134
 			// fetch(url)
 			// 	.then(response => response.json())
 			// 	.then(
