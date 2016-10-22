@@ -54,7 +54,7 @@ gulp.task("watch", ["lint", "build"], () => {
 
 // Lint
 
-gulp.task("jsHint", function() {
+gulp.task("jsHint", () => {
 	return gulp.src([`${src}/js/*.js`, `${src}/angularDirectives/**/*.js`])
 		.pipe(jsHint({
 			lookup: false,
@@ -79,7 +79,7 @@ gulp.task("jsHint", function() {
 		.pipe(jsHint.reporter("fail"));
 });
 
-gulp.task("htmlLint", function() {
+gulp.task("htmlLint", () => {
 	return gulp.src([
 			`${src}/*.htm`,
 			`${src}/angularTpl/*.tpl.htm`,
@@ -88,7 +88,7 @@ gulp.task("htmlLint", function() {
 		.pipe(htmlLint()); // https://github.com/htmllint/htmllint/wiki/Options
 });
 
-gulp.task("lessHint", function() {
+gulp.task("lessHint", () => {
 	return gulp.src([
 			`${src}/style/*.less`,
 			`${src}/angularTpl/*.less`,
@@ -131,25 +131,25 @@ const cssSrc = [
 
 // Build
 		
-gulp.task("copyJS", function() {
+gulp.task("copyJS", () => {
 	return gulp.src(jsSrc)
 		.pipe(concat("app.js"))
 		.pipe(gulp.dest(`${dest}`));
 });
 
-gulp.task("copyHtml", function() {
+gulp.task("copyHtml", () => {
 	return gulp.src(htmlSrc)
 		.pipe(gulp.dest(`${dest}`));
 });
 
-gulp.task("less", function () {
+gulp.task("less", () => {
 	return gulp.src(cssSrc)
 		.pipe(less())
 		.pipe(concat("style.css"))
 		.pipe(gulp.dest(`${dest}`));
 });
 
-gulp.task("copyAssets", function() {
+gulp.task("copyAssets", () => {
 	return gulp.src([`${src}/*img/*`, `${src}/*data/*`])
 		.pipe(gulp.dest(`${dest}`));
 });
@@ -160,14 +160,14 @@ gulp.task("copyAssets", function() {
 
 // Minify
 
-gulp.task('uglify', function() {
+gulp.task("uglify", () => {
 	return gulp.src(jsSrc)
 		.pipe(uglify())
 		.pipe(concat("app.js"))
 		.pipe(gulp.dest(`${dest}`));
 });
 
-gulp.task("htmlMin", function() {
+gulp.task("htmlMin", () => {
 	return gulp.src(htmlSrc)
 		.pipe(replace(/(<!-- buildDev:start -->)[\s\S]+(<!-- buildDev:end -->)/, ""))
 		.pipe(htmlMin({
@@ -180,7 +180,7 @@ gulp.task("htmlMin", function() {
 		.pipe(gulp.dest(`${dest}`));
 });
 
-gulp.task("lessMin", function () {
+gulp.task("lessMin", () => {
 	return gulp.src(cssSrc)
 		.pipe(less())
 		.pipe(concat("style.css"))

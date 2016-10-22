@@ -57,7 +57,7 @@ gulp.task("watch", ["lint", "build"], () => {
 
 // ---------- LINT ---------- //
 
-gulp.task("jsHint", function() {
+gulp.task("jsHint", () => {
 	return gulp.src(`${src}/js/*.js`)
 		.pipe(jsHint({
 			lookup: false,
@@ -80,12 +80,12 @@ gulp.task("jsHint", function() {
 		.pipe(jsHint.reporter("fail"));
 });
 
-gulp.task("htmlLint", function() {
+gulp.task("htmlLint", () => {
 	return gulp.src([`${src}/index.htm`])
 		.pipe(htmlLint()); // http://validator.github.io/validator/#options
 });
 
-gulp.task("lessHint", function() {
+gulp.task("lessHint", () => {
 	return gulp.src([`${src}/style/*.less`, `${src}/reactComponents/**/*.less`])
 		.pipe(lessHint())
 		.pipe(lessHint.reporter());
@@ -97,7 +97,7 @@ gulp.task("lessHint", function() {
 
 // ---------- BUILD ---------- //
 
-gulp.task("browserify", function () {
+gulp.task("browserify", () => {
 	return browserify({
 		entries: `${src}/js/main.jsx`,
 		// debug: true, // "true" writes a JS source map at the end of the js file
@@ -107,19 +107,19 @@ gulp.task("browserify", function () {
 		.pipe(gulp.dest(`${dest}`));
 });
 
-gulp.task("copyHtml", function() {
+gulp.task("copyHtml", () => {
 	return gulp.src([`${src}/index.htm`])
 		.pipe(gulp.dest(`${dest}`));
 });
 
-gulp.task("less", function () {
+gulp.task("less", () => {
 	return gulp.src([`${src}/style/*.less`, `${src}/reactComponents/**/*.less`])
 		.pipe(less())
 		.pipe(concat("style.css"))
 		.pipe(gulp.dest(`${dest}`));
 });
 
-gulp.task("copyAssets", function() {
+gulp.task("copyAssets", () => {
 	return gulp.src([`${src}/*img/*`, `${src}/*data/*`])
 		.pipe(gulp.dest(`${dest}`));
 });
@@ -130,18 +130,18 @@ gulp.task("copyAssets", function() {
 
 // ---------- MINIFY ---------- //
 
-gulp.task("browserifyMin", function () {
+gulp.task("browserifyMin", () => {
 	process.env.NODE_ENV = "production";	
 	return browserify({ entries: `${src}/js/main.jsx` }).bundle()
 		.pipe(vinylSource("app.js"))
 		.pipe(vinylBuffer())
 		.pipe(replace(/(\/\* prodCodeReduxStore:start \*\/)[\s\S]+(\/\* prodCodeReduxStore:end \*\/)/,
-			"exports.default = (0, _redux.createStore)(_reducers2.default, (0, _redux.applyMiddleware)(_reduxThunk2.default));"))
+			"var store = (0, _redux.createStore)(_reducers2.default, localStorage.getItem(\"reduxState\") ? JSON.parse(localStorage.getItem(\"reduxState\")) : {}, (0, _redux.applyMiddleware)(_reduxThunk2.default));"))
 		.pipe(uglify())
 		.pipe(gulp.dest(`${dest}`));
 });
 
-gulp.task("htmlMin", function() {
+gulp.task("htmlMin", () => {
 	return gulp.src(`${src}/index.htm`)
 		.pipe(replace(/(<!-- buildDev:start -->)[\s\S]+(<!-- buildDev:end -->)/, ""))
 		.pipe(htmlMin({
@@ -154,7 +154,7 @@ gulp.task("htmlMin", function() {
 		.pipe(gulp.dest(`${dest}`));
 });
 
-gulp.task("lessMin", function () {
+gulp.task("lessMin", () => {
 	return gulp.src([`${src}/style/*.less`, `${src}/reactComponents/**/*.less`])
 		.pipe(less())
 		.pipe(concat("style.css"))
