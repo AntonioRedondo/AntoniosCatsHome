@@ -63,7 +63,19 @@
 				Hi,
 			</p>
 			<p class="p">
-				This is the <strong>React</strong> implementation for Antonio's Cats Home. The project is configured with <strong>NPM</strong> and <strong>Gulp</strong>. CSS code is written using the <strong>BEM</strong> arrangement and <strong>LESS</strong>. To implement React components <strong>ES6 features</strong> like classes, arrows and modules are used on JSX files. In order to transform ES6 JSX to ES5 JavaScript that can be executed on browsers Browserify with Babelify Gulp tasks are used. <strong>Redux</strong> is used to implement the model layer and decouple state from React views. Routing between tabs is implemented with <strong>React Router</strong>. You do not need to run any NPM command or Gulp task since all the processed files are already generated in the <code>dist</code> folder.
+				This is the <strong>React</strong> implementation for Antonio's Cats Home. The project is configured with <strong>npm</strong> and <strong>Gulp</strong>. CSS code is written using the <strong>BEM</strong> arrangement and <strong>LESS</strong>.
+			</p>
+			<p class="p">
+				To implement React components <strong>ES6 features</strong> like classes, arrows and modules are used on JSX files. In order to transform ES6 JSX to ES5 JavaScript that can be executed on browsers Browserify with the Babelify transform is used.
+			</p>
+			<p class="p">
+				<strong>Redux</strong> with <strong>Reselect</strong> is used to implement the model layer and decouple state from React views. The app stores the state on <code>localStorage</code>. So if you refresh the window or reopen it on another tab the cat selected and the filtering string will load automatically.
+			</p>
+			<p class="p">
+				<strong>React Router</strong> is used to implement routing between tabs. Every of the two tabs can be accessed straightaway from its URL.
+			</p>
+			<p class="p">
+				You do not need to run any npm command or Gulp task since all the processed files are already generated in the <code>dist</code> folder.
 			</p>
 			<div class="screenshotContainer">
 				<a class="screenshotLink" href="https://antonioredondo.github.io/AntoniosCatsHome/react/dist">
@@ -123,7 +135,7 @@
 				With the default Gulp task, Browserify and its Babelify transform are fired and all <code>jsx</code> React files are transpiled and concatenated into a single ES5 Javascript file. <code>less</code> files are processed and concatenated from <code>src</code> to a single file in <code>dist</code>. For a better review the code included in the <code>dist</code> folder isn't minimised, though the Gulp task <code>gulp min</code> is configured and working.
 			</p>
 			<p class="p">
-				Available NPM scripts:
+				Available npm scripts:
 			</p>
 			<ul>
 				<li>
