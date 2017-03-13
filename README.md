@@ -1,7 +1,7 @@
 ## Antonio's Cats Home
 
-<img align="center" src="https://antonioredondo.github.io/AntoniosCatsHome/zImg/final.png" height="600px" />
-<img align="center" src="https://antonioredondo.github.io/AntoniosCatsHome/zImg/finalMobile.png" height="600px" />
+<img align="center" src="https://github.com/AntonioRedondo/AntoniosCatsHome/raw/master/readmeImages/final.png" height="600px" />
+<img align="center" src="https://github.com/AntonioRedondo/AntoniosCatsHome/raw/master/readmeImages/finalMobile.png" height="600px" />
 
 Antonio's Cats Home is a skills demonstration exercise where I implement the same web project with three different front-end technologies:
 - [Vanilla ES5 JavaScript](https://antonioredondo.github.io/AntoniosCatsHome/vanillaJavaScript/README.htm) ([source code](https://github.com/AntonioRedondo/AntoniosCatsHome/tree/master/vanillaJavaScript)): no dependencies, tiny size, pure functions, functional programming.
@@ -17,7 +17,7 @@ This project is intended to help recruiters and hiring IT managers when time com
 
 The starting point is the below mockup:
 
-<img align="center" src="https://antonioredondo.github.io/AntoniosCatsHome/zImg/mockup.png" height="600px" />
+<img align="center" src="https://github.com/AntonioRedondo/AntoniosCatsHome/raw/master/readmeImages/mockup.png" height="600px" />
 
 Given I am only provided with the above mockup representing a common use case, four images of cats and a JSON file containing a list of cat names and descriptions I have to implement an UI web interface to show a list of cats which are available to be adopted from the local cats shelter "Antonio's Cats Home".
 
@@ -36,7 +36,7 @@ On the below table you can see technical differences (SCROLL RIGHT TO SEE THE RE
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | Vanilla ES5 JS | 2 | 5 | 1 | 1 (plus fonts) | - (HTML attached to nodes) | - | - | - | LESS (with BEM) | Yes | NPM, Gulp | Node.js | Karma, Jasmine, PhantomJS | HTML | On Dist folder |
 | Angular 1.5 | 222 | 5 | 1 | 1 (plus fonts) | Angular 1.5 (directive) | [UI-Router](https://www.npmjs.com/package/angular-ui-router) | [ngAnimate](https://docs.angularjs.org/api/ngAnimate) | - | LESS (with BEM) | Yes | NPM, Gulp | Node.js | Karma, Jasmine, PhantomJS | HTML | On Dist folder |
-| ES6 React 15 | 282 | 6 | 1 | 1 (plus fonts) | ES6 React 15 | [React Router](https://www.npmjs.com/package/react-router) | [ReactCSSTransitionGroup](https://facebook.github.io/react/docs/animation.html) | Redux | LESS (with BEM) | Yes | NPM, Gulp, Browserify | Node.js | Karma, Jasmine, PhantomJS | HTML | On Dist folder |
+| ES6 React 15 | 282 | 6 | 1 | 1 (plus fonts) | ES6 React 15 | [React Router](https://www.npmjs.com/package/react-router) | [ReactCSSTransitionGroup](https://facebook.github.io/react/docs/animation.html) | Redux, Reselect | LESS (with BEM) | Yes | NPM, Gulp, Browserify | Node.js | Karma, Jasmine, PhantomJS | HTML | On Dist folder |
 
 
 ### How to best understand my skills with the test
