@@ -1,4 +1,6 @@
 
+
+console.error('from imported script 1');
 // export function abtesting () {
 let enabled = true;
 
