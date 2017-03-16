@@ -34,4 +34,10 @@ function callback(args) {
 	// console.error(x);
 }
 // }
-console.error('from imported script');
+if (typeof window !== 'undefined') {
+	window.overrideFunction = overrideFunction;
+	window.callback = callback;
+	window.enableOverrideFunction = enableOverrideFunction;
+}
+
+console.error('from imported script 2');
