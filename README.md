@@ -1,6 +1,6 @@
 ## Antonio's Cats Home
 
-<img src="readmeImages/final.png" height="600px" />
+. <img src="readmeImages/final.png" height="600px" />
 <img src="readmeImages/finalMobile.png" height="600px" />
 
 Antonio's Cats Home is a skills demonstration exercise where I implement the same web project with three different front-end technologies:
