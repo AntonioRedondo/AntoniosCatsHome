@@ -1,5 +1,5 @@
-import { combineReducers } from 'redux';
-// import ReactUpdate from 'react-addons-update';
+import { combineReducers } from "redux";
+
 import c from "./actionsConstants";
 
 
@@ -14,7 +14,7 @@ const reducerItems = (state = [], action) => {
 
 const reducerItemSelected = (state = "", action) => {
 	switch (action.type) {
-		case c.SET_CARD_SELECTED:	return state === action.card.id ? "" : action.card.id;
+		case c.SET_CARD_SELECTED:	return state === action.id ? "" : action.id;
 		default:					return state;
 	}
 };

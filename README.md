@@ -6,7 +6,7 @@
 Antonio's Cats Home is a skills demonstration exercise where I implement the same web project with three different front-end technologies:
 - [Vanilla ES5 JavaScript](https://antonioredondo.github.io/AntoniosCatsHome/vanillaJavaScript/README.htm) ([source code](https://github.com/AntonioRedondo/AntoniosCatsHome/tree/master/vanillaJavaScript)): no dependencies, tiny size, pure functions, functional programming.
 - [Angular 1.5](https://antonioredondo.github.io/AntoniosCatsHome/angular1.5/README.htm) ([source code](https://github.com/AntonioRedondo/AntoniosCatsHome/tree/master/angular1.5)): services, directives, isolated scopes, [UI-Router](https://www.npmjs.com/package/angular-ui-router) and [ngAnimate](https://docs.angularjs.org/api/ngAnimate).
-- [ES6 React 15](https://antonioredondo.github.io/AntoniosCatsHome/react/README.htm) ([source code](https://github.com/AntonioRedondo/AntoniosCatsHome/tree/master/react)): ES6 features (modules, classes, arrows, template literals), Redux, React Router and [ReactCSSTransitionGroup](https://facebook.github.io/react/docs/animation.html).
+- [React 15.5](https://antonioredondo.github.io/AntoniosCatsHome/react/README.htm) ([source code](https://github.com/AntonioRedondo/AntoniosCatsHome/tree/master/react)): ES6 features (modules, classes, arrows, template literals), Redux, React Router and [ReactCSSTransitionGroup](https://facebook.github.io/react/docs/animation.html).
 
 Visually the implementations are identical. Behind the hood there are important differences. These implementations solve common front-end problems like model/scope/state creation, routing and animations based on component entering/leaving. All three implementations are a Single Page Application (SPA). They have been developed following a TDD approach.
 
@@ -32,11 +32,11 @@ The interface must be also responsive and adapt to mobile devices. An attractive
 
 On the below table you can see technical differences (SCROLL RIGHT TO SEE THE REST OF THE TABLE):
 
-| Implementation | JS (Kb minified) | CSS (Kb minified) | JS imports | CSS imports | Front-end framework | Routing | Animations | Other libraries | CSS framework | Selectable cards | Building tools | Server | Tests | Readme file | Ready out of the box
+| Implementation | JS (Kb minified) | CSS (Kb minified) | JS imports | CSS imports | Front-end framework | Routing | Animations | Other libraries | CSS framework | Building tools | Linting | Tests | Server | Readme file | Ready out of the box
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| Vanilla ES5 JS | 2 | 5 | 1 | 1 (plus fonts) | - (HTML attached to nodes) | - | - | - | LESS (with BEM) | Yes | NPM, Gulp | Node.js | Karma, Jasmine, PhantomJS | HTML | On [`dist`](vanillaJavaScript/dist) folder |
-| Angular 1.5 | 222 | 5 | 1 | 1 (plus fonts) | Angular 1.5 (directive) | [UI-Router](https://www.npmjs.com/package/angular-ui-router) | [ngAnimate](https://docs.angularjs.org/api/ngAnimate) | - | LESS (with BEM) | Yes | NPM, Gulp | Node.js | Karma, Jasmine, PhantomJS | HTML | On [`dist`](angular1.5/dist) folder |
-| ES6 React 15 | 282 | 6 | 1 | 1 (plus fonts) | ES6 React 15 | [React Router](https://www.npmjs.com/package/react-router) | [ReactCSSTransitionGroup](https://facebook.github.io/react/docs/animation.html) | Redux, Reselect | LESS (with BEM) | Yes | NPM, Gulp, Browserify | Node.js | Karma, Jasmine, PhantomJS | HTML | On [`dist`](react/dist) folder |
+| Vanilla ES5 JavaScript | 2 | 5 | 1 | 1 (plus fonts) | - (HTML attached to nodes) | - | - | - | Less (with BEM) | npm, Gulp | [JSHint](https://www.npmjs.com/package/gulp-jshint), [HTMLLint](https://www.npmjs.com/package/gulp-htmllint), [lesshint](https://www.npmjs.com/package/lesshint) | Karma, Jasmine, PhantomJS | Node.js | HTML | On [`dist`](vanillaJavaScript/dist) folder |
+| AngularJS | 222 | 5 | 1 | 1 (plus fonts) | Angular 1.5 (directive) | [UI-Router](https://www.npmjs.com/package/angular-ui-router) | [ngAnimate](https://docs.angularjs.org/api/ngAnimate) | - | Less (with BEM) | npm, Gulp | JSHint, HTMLLint, lesshint | Karma, Jasmine, PhantomJS | Node.js | HTML | On [`dist`](angular1.5/dist) folder |
+| React | 282 | 6 | 1 | 1 (plus fonts) | ES6 React 15.5 | [React Router](https://www.npmjs.com/package/react-router) | [ReactTransitionGroup](https://www.npmjs.com/package/react-transition-group) | Redux, Reselect | Less (with BEM) | npm, Gulp, Browserify | [ESLint](https://www.npmjs.com/package/gulp-eslint), lesshint | Karma, Jasmine, PhantomJS | Node.js | HTML | On [`dist`](react/dist) folder |
 
 
 ### How to best understand my skills with the test

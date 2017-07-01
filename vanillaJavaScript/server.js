@@ -1,7 +1,10 @@
-var connect = require("connect");
-var serveStatic = require("serve-static");
-var open = require("open");
-var url = "http://localhost:3000/dist/index.htm";
-connect().use(serveStatic(".")).listen(3000);
+const connect = require("connect");
+const serveStatic = require("serve-static");
+const open = require("open");
+
+const url = "http://localhost:3000";
+
+connect().use(serveStatic("dist", { index: "index.htm" })).listen(3000);
 open(url);
-console.info("App started on " + url + "\nThe system default browser should open automatically.");
+
+console.info("App started on " + url + "\nThe system default browser should open automatically."); // eslint-disable-line no-console

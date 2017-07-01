@@ -60,18 +60,28 @@
 	}
 }
 
-.view-loader {
+.navigation-loader {
+	position: relative;
+	display: block;
+	
 	&-enter {
+		position: absolute;
 		opacity: 0;
 		transform: translate3d(8%, 0, 0);
-		transition: all @animTime2 ease-out;
+		transition: all @animTime2;
 	}
 	
 	&-enter&-enter-active {
 		opacity: 1;
 		transform: translate3d(0, 0, 0);
 	}
+	
 	&-leave {
-		display: none;
+		opacity: 1;
+		transition: all @animTime2;
+	}
+	
+	&-leave&-leave-active {
+		opacity: 0;
 	}
 }
