@@ -122,6 +122,9 @@
 			<p class="p">
 				The project lints JavaScript and CSS code with <a href="https://www.npmjs.com/package/gulp-eslint" target="_blank"><code>ESLint</code></a> and <a href="https://www.npmjs.com/package/gulp-lesshint" target="_blank"><code>lesshint</code></a> repectively. The linting tasks are executed with its own task <code>npm run lint</code> or with the <code>npm run build:watch</code> task. Project ESLint linting configuration also works within the most common IDEs if you have them properly configured.
 			</p>
+			<p class="p">
+				Thanks to <a href="https://www.npmjs.com/package/husky" target="_blank">Husky</a> the linting task is also executed when commiting or pushing changes. If linting fails changes aren't commited or pushed.
+			</p>
 			<h2>
 				Testing
 			</h2>
@@ -133,6 +136,9 @@
 			</p>
 			<p class="p">
 				Jasmine is the testing framework. Thanks to <a href="https://www.npmjs.com/package/xmlhttprequest" target="_blank"><code>xmlhttprequest</code></a> tests are executed on Node.js, not in the browser (faster and no need for Karma and PhamtonJS).
+			</p>
+			<p class="p">
+				Thanks to <a href="https://www.npmjs.com/package/husky" target="_blank">Husky</a> the testing task is also executed when commiting or pushing changes. If tests fail changes aren't commited or pushed.
 			</p>
 			<h2>
 				Command tools
