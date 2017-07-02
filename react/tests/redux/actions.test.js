@@ -20,20 +20,17 @@ describe("Given the Redux actions", () => {
 			nock(/\*/).get("/data/cats.json").reply(200, { body: { response: { mockCatList } } });
 		});
 		
-		it("Should dispatch the expected action with the expected data load", (done) => {
-			
+		it("Should dispatch the expected action with the expected data load", () => {
 			store.dispatch(actions.requestItems("http://localhost:3000/data/cats.json")).then(() => {
 				expect(store.getActions()[0]).toEqual(expectedAction);
-				done();
 			});
 		});
 	});
 	
 	describe("When a SET_CARD_SELECTED disptacher is executed", () => {
-		it("Should dispatch the expected action with the expected data load", (done) => {
+		it("Should dispatch the expected action with the expected data load", () => {
 			store.dispatch(actions.requestItems("http://localhost:3000/data/cats.json")).then(() => {
 				expect(store.getActions()[0]).toEqual(expectedAction);
-				done();
 			});
 		});
 	});

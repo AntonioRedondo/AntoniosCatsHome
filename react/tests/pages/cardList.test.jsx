@@ -6,10 +6,10 @@ import mockCatList from "../../src/data/cats.json";
 
 
 describe("Given the CardList component", () => {
-	let mockEmptyFunction;
+	let mockRequiredPropFunction;
 	
 	beforeAll(() => {
-		mockEmptyFunction = () => {};
+		mockRequiredPropFunction = () => {};
 	});
 	
 	describe("When the component is mounted", () => {
@@ -17,8 +17,8 @@ describe("Given the CardList component", () => {
 			const wrapper = shallow(
 				<CardList
 					items={ mockCatList }
-					setFilterString={ mockEmptyFunction }
-					setSelected={ mockEmptyFunction }  />
+					setFilterString={ mockRequiredPropFunction }
+					setSelected={ mockRequiredPropFunction }  />
 			);
 			
 			expect(wrapper.name()).toBe("div");
