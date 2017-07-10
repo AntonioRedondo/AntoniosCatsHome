@@ -1,0 +1,17 @@
+{
+	"extends": "stylelint-config-standard",
+	"//": "http://stylelint.io/user-guide/rules",
+	"//": "http://stackoverflow.com/questions/38462937/cannot-set-block-no-empty-to-false-in-stylelint",
+	"rules": {
+		"at-rule-empty-line-before": "never",
+		"comment-empty-line-before": null,
+		"declaration-empty-line-before": null,
+		"indentation": "tab",
+		"max-empty-lines": 5,
+		"no-eol-whitespace": [true, {
+			"ignore": [ "empty-lines" ]
+		}],
+		"rule-empty-line-before": null,
+		"selector-list-comma-newline-after": "always-multi-line"
+	}
+}

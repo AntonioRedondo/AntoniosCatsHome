@@ -26,7 +26,7 @@ export class CardList extends React.Component {
 			<div>
 				<CardFilter onChange={ this.setFilterStringBound } value={ this.props.filterString } />
 				<CSSTransitionGroup
-					transitionName="card"
+					transitionName="card-list"
 					transitionEnterTimeout={ 250 }
 					transitionLeaveTimeout={ 250 } >
 					{

@@ -18,7 +18,9 @@ const inline = require("gulp-inline");
 const less = require("gulp-less");
 
 // Minify and inline
+const uglify = require("gulp-uglify");
 const htmlMin = require("gulp-htmlmin");
+const cleanCss = require("gulp-clean-css");
 
 
 
@@ -77,7 +79,12 @@ gulp.task("buildHtml", () => {
 });
 
 gulp.task("buildCss", () => {
-	return gulp.src([`${SRC}/style/*.less`, `${SRC}/js/**/*.less`])
+	return gulp.src([
+		`${SRC}/style/variables.less`,
+		`${SRC}/style/fonts.less`,
+		`${SRC}/style/*.less`,
+		`${SRC}/js/**/*.less`
+	])
 		.pipe(sourcemaps.init())
 		.pipe(less())
 		.pipe(concat("style.css"))
@@ -120,4 +127,20 @@ gulp.task("min", () => {
 			}))
 			.pipe(gulp.dest(DEST));
 	});
+});
+
+gulp.task("minSeparated", () => {
+	runSequence("setProdEnv", "build", "uglify", "lessMin");
+});
+
+gulp.task("uglify", () => {
+	return gulp.src(`${DEST}/bundle.js`)
+		.pipe(uglify())
+		.pipe(gulp.dest(`${DEST}`));
+});
+
+gulp.task("lessMin", () => {
+	return gulp.src(`${DEST}/style.css`)
+		.pipe(cleanCss())
+		.pipe(gulp.dest(`${DEST}`));
 });

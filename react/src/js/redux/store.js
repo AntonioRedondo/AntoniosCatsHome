@@ -9,7 +9,8 @@ let store;
 store = createStore(
 	reducers,
 	localStorage.getItem("reduxState") ? JSON.parse(localStorage.getItem("reduxState")) : {},
-	applyMiddleware(thunk));
+	applyMiddleware(thunk)
+);
 
 	
 /* buildDev:start */
@@ -21,7 +22,8 @@ const logger = store => next => action => { // eslint-disable-line no-unused-var
 store = createStore(
 	reducers,
 	localStorage.getItem("reduxState") ? JSON.parse(localStorage.getItem("reduxState")) : {},
-	compose(applyMiddleware(logger, thunk), window.devToolsExtension ? window.devToolsExtension() : f => f ));
+	compose(applyMiddleware(logger, thunk), window.devToolsExtension ? window.devToolsExtension() : f => f )
+);
 /* buildDev:end */
 
 store.subscribe(() => {
