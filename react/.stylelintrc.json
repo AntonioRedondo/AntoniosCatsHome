@@ -1,5 +1,7 @@
 {
 	"extends": "stylelint-config-standard",
+	"syntax": "scss",
+	"processors": ["stylelint-processor-styled-components"],
 	"//": "http://stylelint.io/user-guide/rules",
 	"//": "http://stackoverflow.com/questions/38462937/cannot-set-block-no-empty-to-false-in-stylelint",
 	"rules": {

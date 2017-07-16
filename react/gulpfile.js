@@ -7,7 +7,7 @@ const sourcemaps = require("gulp-sourcemaps");
 
 // Lint
 const esLint = require("gulp-eslint");
-const lessHint = require("gulp-lesshint");
+const cssLint = require("gulp-stylelint");
 
 // Build
 const browserify = require("browserify");
@@ -15,7 +15,9 @@ const vinylSource = require("vinyl-source-stream");
 const concat = require("gulp-concat");
 const replace = require("gulp-replace");
 const inline = require("gulp-inline");
-const less = require("gulp-less");
+const postCss = require("gulp-postcss");
+const preCss = require("precss");
+const autoprefixer = require("autoprefixer");
 
 // Minify and inline
 const uglify = require("gulp-uglify");
@@ -32,10 +34,10 @@ const DEST = "dist";
 gulp.task("watch", ["lint", "build"], () => {
 	gulp.watch([`${SRC}/js/**/*.jsx`, `${SRC}/js/**/*.js`, ".eslintrc.json"], ["esLint", "buildJs"]);
 	gulp.watch([`${SRC}/index.htm`], ["buildHtml"]);
-	gulp.watch([`${SRC}/style/*.less`, `${SRC}/js/**/*.less`, ".lesshintrc"], ["lessHint", "buildCss"]);
+	gulp.watch([`${SRC}/style/*.scss`, `${SRC}/js/**/*.jsx`, ".stylelintrc.json"], ["styleLint", "buildCss"]);
 	gulp.watch([`${SRC}/img/**`], ["copyAssets"]);
 });
-gulp.task("lint", ["esLint", "lessHint"]);
+gulp.task("lint", ["esLint", "styleLint"]);
 gulp.task("build", ["buildJs", "buildHtml", "buildCss", "copyAssets"]);
 gulp.task("default", ["watch"]);
 
@@ -52,11 +54,19 @@ gulp.task("esLint", () => {
 		.pipe(esLint.failOnError());
 });
 
-gulp.task("lessHint", () => {
-	return gulp.src([`${SRC}/style/*.less`, `${SRC}/js/**/*.less`])
-		.pipe(lessHint())
-		.pipe(lessHint.reporter())
-		.pipe(lessHint.failOnError());
+gulp.task("styleLintJSX", () => {
+	return gulp.src([`${SRC}/js/**/*.jsx`])
+		.pipe(cssLint({
+			reporters: [{ formatter: "string", console: true }]
+		}));
+});
+
+gulp.task("styleLint", () => {
+	return gulp.src([`${SRC}/style/*.scss`])
+		.pipe(cssLint({
+			// failAfterError: false, // It defaults to true
+			reporters: [{ formatter: "string", console: true }]
+		}));
 });
 
 
@@ -80,16 +90,18 @@ gulp.task("buildHtml", () => {
 
 gulp.task("buildCss", () => {
 	return gulp.src([
-		`${SRC}/style/variables.less`,
-		`${SRC}/style/fonts.less`,
-		`${SRC}/style/*.less`,
-		`${SRC}/js/**/*.less`
+		`${SRC}/style/fonts.scss`,
+		`${SRC}/style/variables.scss`,
+		`${SRC}/style/*.scss`
 	])
 		.pipe(sourcemaps.init())
-		.pipe(less())
 		.pipe(concat("style.css"))
+		.pipe(postCss([
+			preCss({ extension: "scss" }),
+			autoprefixer({ browsers: ["safari 9", "ie 11"] }), // https://github.com/ai/browserslist
+		]))
 		.pipe(sourcemaps.write())
-		.pipe(gulp.dest(`${DEST}`));
+		.pipe(gulp.dest(DEST));
 });
 
 gulp.task("copyAssets", () => {

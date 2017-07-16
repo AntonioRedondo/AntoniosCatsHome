@@ -63,10 +63,10 @@
 				Hi,
 			</p>
 			<p class="p">
-				This is the <strong>React</strong> implementation for Antonio's Cats Home. The project is configured with <strong>npm</strong> and <strong>Gulp</strong>. CSS code is written with  <strong>LESS</strong> using the <strong>BEM</strong> arrangement. <a href="https://www.npmjs.com/package/styled-components"><strong>styled-components</strong></a> is used for the CSS only used on React components.
+				This is the <strong>React</strong> implementation for Antonio's Cats Home. The project is configured with <strong>npm</strong> and <strong>Gulp</strong>. CSS code is written with  <strong>PostCSS</strong> using the <strong>BEM</strong> arrangement. <a href="https://www.npmjs.com/package/styled-components"><strong>styled-components</strong></a> is used for the styling on React components. Most of the CSS is on the React components. Just a few classes dealing with edge cases are on `scss` files.
 			</p>
 			<p class="p">
-				The JavaScript written makes use of <strong>ES6 features</strong>. To converd from ES6 modules to a single JavaScript file Browserify is used. In order to transform ES6 JSX to ES5 JavaScript the Browserify's Babelify transform is used.
+				The JavaScript written makes use of <strong>ES6 features</strong>. To convert from ES6 modules to a single JavaScript file Browserify is used. In order to transform ES6 JSX to ES5 JavaScript the Browserify's Babelify transform is used.
 			</p>
 			<p class="p">
 				<strong>Redux</strong> with <strong>Reselect</strong> is used to implement the model layer and decouple state from React views. The app stores the state on <code>localStorage</code>. So if you refresh the window or reopen it on another tab the cat selected and the filtering string will load automatically.
@@ -90,7 +90,7 @@
 					Visit <a href="https://antonioredondo.github.io/AntoniosCatsHome/react/dist">https://antonioredondo.github.io/AntoniosCatsHome/react/dist</a>.
 				</li>
 				<li>
-					Or download the repository and with a browser supporting the <code>file:///</code> standard with <a href="https://en.wikipedia.org/wiki/Cross-origin_resource_sharing" target="_blank">CORS</a> (Firefox supports it, not Chrome) open <a href="dist/index.htm"><code>dist/index.htm</code></a>.
+					Or download the repository and with a browser supporting the <code>file:///</code> standard with <a href="https://en.wikipedia.org/wiki/Cross-origin_resource_sharing" target="_blank">CORS</a> (Firefox on Windows supports it) open <a href="dist/index.htm"><code>dist/index.htm</code></a>.
 				</li>
 				<li>
 					Or download the repository and run <code>npm i &amp;&amp; npm start</code>. A Node.js server will start and the system default browser will open automatically at <a href="http://localhost:3000/dist/index.htm">http://localhost:3000/dist/index.htm</a>.
@@ -100,13 +100,13 @@
 				Dependencies
 			</h2>
 			<p class="p">
-				JavaScript dependencies are React, Redux, React Router, some supporting libs and a couple of shims (see <code>package.json</code> for details). No jQuery, no Bootstrap. No real need for polyfills like Webshim, or browser compatibility libraries like Modernizr.
+				JavaScript dependencies are React, Redux, React Router, some supporting libs and a couple of shims (see <code>package.json</code> for details). No jQuery, no Bootstrap. No real need for polyfills like Webshim or babel-polyfill, or browser compatibility libraries like Modernizr.
 			</p>
 			<p class="p">
 				The only CSS dependency are the fonts downloaded from Google Fonts.
 			</p>
 			<p class="p">
-				Due to the small JavaScript and CSS footprint the page loads fast: 6 KB of CSS and 282 KB of JavaScript. See the below screenshot of Firefox Developer Tools showing the <strong>minified</strong> version of the project (built with the <code>gulp min</code> configured task).
+				The application have a medium size on code loaded: 6 KB of CSS and 340 KB of minified JavaScript. See the below screenshot of Firefox Developer Tools showing the <strong>minified</strong> version of the project (built with the <code>gulp min</code> configured task).
 				
 				<img src="sizeReact.png">
 			</p>
@@ -120,7 +120,7 @@
 				Linting
 			</h2>
 			<p class="p">
-				The project lints JavaScript and CSS code with <a href="https://www.npmjs.com/package/gulp-eslint" target="_blank"><code>ESLint</code></a> and <a href="https://www.npmjs.com/package/gulp-lesshint" target="_blank"><code>lesshint</code></a> repectively. The linting tasks are executed with its own task <code>npm run lint</code> or with the <code>npm run build:watch</code> task. Project ESLint linting configuration also works within the most common IDEs if you have them properly configured.
+				The project lints JavaScript and CSS code with <a href="https://www.npmjs.com/package/gulp-eslint" target="_blank"><code>ESLint</code></a> and <a href="https://www.npmjs.com/package/gulp-stylelint" target="_blank"><code>stylelint</code></a> repectively. The linting tasks are executed with its own task <code>npm run lint</code> or with the <code>npm run build:watch</code> task. JavaScript linting also works within the most common IDEs if you have them properly configured. CSS within the React components is also linted with <a href="https://www.npmjs.com/package/stylelint-processor-styled-components" target="_blank"><code>stylelint-processor-styled-components</code></a>.
 			</p>
 			<p class="p">
 				Thanks to <a href="https://www.npmjs.com/package/husky" target="_blank">Husky</a> the linting task is also executed when commiting or pushing changes. If linting fails changes aren't commited or pushed.
@@ -135,16 +135,16 @@
 				To run the tests execute <code>npm t</code> (you must have executed <code>npm i</code> before).
 			</p>
 			<p class="p">
-				Jasmine is the testing framework. Thanks to <a href="https://www.npmjs.com/package/xmlhttprequest" target="_blank"><code>xmlhttprequest</code></a> tests are executed on Node.js, not in the browser (faster and no need for Karma and PhamtonJS).
+				Jest is the testing framework. Snapshots are used to test components. Code coverage information is shown after tests have run. Thanks to <a href="https://www.npmjs.com/package/xmlhttprequest" target="_blank"><code>xmlhttprequest</code></a> tests are executed on Node.js, not in the browser (faster and no need for Karma and PhamtonJS).
 			</p>
 			<p class="p">
-				Thanks to <a href="https://www.npmjs.com/package/husky" target="_blank">Husky</a> the testing task is also executed when commiting or pushing changes. If tests fail changes aren't commited or pushed.
+				Thanks to <a href="https://www.npmjs.com/package/husky" target="_blank">Husky</a> the testing task is also executed when pushing changes. If tests fail changes aren't pushed.
 			</p>
 			<h2>
 				Command tools
 			</h2>
 			<p class="p">
-				There are several npm script configured dealing with project tasks. The project makes uses of Gulp but it's not necessary to have installed Gulp globally since Gulp tasks are mapped to npm tasks which call Gulp from the <code>node_modules</code> folder:
+				There are several npm scripts configured dealing with project tasks. The project makes uses of Gulp but it's not necessary to have it installed globally since Gulp tasks are mapped to npm tasks which call Gulp from the <code>node_modules</code> folder:
 			</p>
 			<p class="p">
 				Available npm scripts:
@@ -172,6 +172,12 @@
 					<code>npm t</code> (alias for <code>npm test</code>): executes <code>.test.jsx</code> tests.
 				</li>
 				<li>
+					<code>npm run test:watch</code>: runs tests in watch mode.
+				</li>
+				<li>
+					<code>npm run test:update</code>: updates Jest snapshots.
+				</li>
+				<li>
 					<code>npm start</code>: initiates a Node.js server configured on <code>server.js</code> and automatically opens the default system browser with the project page.
 				</li>
 			</ul>
@@ -179,7 +185,7 @@
 				Folder structure
 			</h2>
 			<p class="p">
-				Source code and distributable built code are stored in different folders (<code>src</code> and <code>dist</code> folders). Tests are on the <code>tests</code> folder with <code>.test.jsx</code> extension. This folder copies <code>src</code> folder structure.
+				Source code and distributable code are stored in <code>src</code> and <code>dist</code> folders respectively. Tests are on the <code>tests</code> folder with <code>.test.jsx</code> extension. This folder copies <code>src</code> folder structure.
 			</p>
 			<h2>
 				Screen sizes

@@ -1,37 +1,45 @@
 import React from "react";
-import { shallow } from "enzyme";
+import renderer from "react-test-renderer";
+import "jest-styled-components";
 
 import Card from "../../src/js/components/card.jsx";
+import v from "../../src/js/variables";
 
 
 describe("Given the Card component", () => {
-	let wrapper;
+	let component;
+	let tree;
 	
 	beforeEach(() => {
-		wrapper = shallow(
+		component = renderer.create(
 			<Card
 				id="2"
 				name="Fluffy"
 				onClick={ function() {} } />
 		);
+		tree = component.toJSON();
 	});
 	
 	describe("When the component is mounted", () => {
 		it("Should render children", () => {
-			expect(wrapper.name()).toBe("article");
-			expect(wrapper.childAt(0).name()).toBe("div");
-			expect(wrapper.childAt(1).name()).toBe("div");
-			expect(wrapper.find(".card__body-title").text()).toBe("Fluffy");
+			expect(tree).toMatchSnapshot();
 		});
 	});
 	
 	describe("When the card is clicked", () => {
 		it("Should select the card", () => {
-			expect(wrapper.hasClass("card--selected")).toBe(false);
+			expect(tree).toHaveStyleRule("background", v.grayE);
 			
-			wrapper.setProps({ itemSelected: "2" });
+			component = renderer.create(
+				<Card
+					id="2"
+					name="Fluffy"
+					onClick={ function() {} }
+					itemSelected="2" />
+			);
+			tree = component.toJSON();
 			
-			expect(wrapper.hasClass("card--selected")).toBe(true);
+			expect(tree).toHaveStyleRule("background", "papayawhip");
 		});
 	});
 	

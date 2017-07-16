@@ -1,8 +1,0 @@
-{
-    "stringQuotes": false,
-    "urlFormat": false, // It doesn't allow absolute URLs
-    "propertyOrdering": false, // The only ordering deemed as correct is alphabetically
-    "trailingWhitespace": false, // Tabs are also deemed trailing whitespaces
-    "universalSelector": false, // Tabs are also deemed trailing whitespaces
-    "zeroUnit": false
-}

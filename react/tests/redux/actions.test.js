@@ -15,13 +15,13 @@ describe("Given the Redux actions", () => {
 	const expectedAction = { type: c.RECEIVE_ITEMS, items: mockCatListSorted };
 	
 	describe("When a RECEIVE_ITEMS disptacher is executed", () => {
-		beforeAll(()=> {
+		beforeAll(() => {
 			XMLHttpRequest = XML.XMLHttpRequest; // eslint-disable-line no-global-assign
-			nock(/\*/).get("/data/cats.json").reply(200, { body: { response: { mockCatList } } });
+			nock(/localhost:3000/).get("/data/cats.json").reply(200, mockCatList);
 		});
 		
 		it("Should dispatch the expected action with the expected data load", () => {
-			store.dispatch(actions.requestItems("http://localhost:3000/data/cats.json")).then(() => {
+			return store.dispatch(actions.requestItems("http://localhost:3000/data/cats.json")).then(() => {
 				expect(store.getActions()[0]).toEqual(expectedAction);
 			});
 		});
@@ -29,7 +29,7 @@ describe("Given the Redux actions", () => {
 	
 	describe("When a SET_CARD_SELECTED disptacher is executed", () => {
 		it("Should dispatch the expected action with the expected data load", () => {
-			store.dispatch(actions.requestItems("http://localhost:3000/data/cats.json")).then(() => {
+			return store.dispatch(actions.requestItems("http://localhost:3000/data/cats.json")).then(() => {
 				expect(store.getActions()[0]).toEqual(expectedAction);
 			});
 		});

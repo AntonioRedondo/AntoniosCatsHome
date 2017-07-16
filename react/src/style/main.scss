@@ -1,6 +1,3 @@
-@import (reference) "variables";
-
-
 html {
 	height: 100%;
 	min-height: 100%;
@@ -9,7 +6,7 @@ html {
 	
 	background: url("img/bg.png");
 	
-	color: @gray3;
+	color: $gray3;
 	font-family: "Open Sans", sans-serif;
 }
 
@@ -20,7 +17,7 @@ body {
 }
 
 a {
-	color: @grayB;
+	color: $grayB;
 	text-decoration: none;
 	font-weight: bold;
 }
@@ -43,41 +40,41 @@ input:focus { /* Chrome adds its own blue outline on buttons when focus */
 	position: fixed;
 	top: 0;
 	
-	background: @purple2;
+	background: $purple2;
 	box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 	
 	text-align: center;
 	font-size: 2em;
 	
 	&__container {
-		max-width: @width;
+		max-width: $width;
 		height: 80px;
 		margin: 0 auto;
 		padding: 0 50px;
 		
-		display: flex;	
+		display: flex;
 		justify-content: space-between;
 		align-items: center;
 	}
 	
 	&__title {
-		max-width: @width;
+		max-width: $width;
 		margin: 0;
 		
 		flex: 1;
 		
-		color: @grayE;
+		color: $grayE;
 		font-family: "Rokkitt", serif;
 		font-size: 1.2em;
 		line-height: 0.8em;
-		text-shadow: 3px 3px 0px @purple1;
+		text-shadow: 3px 3px 0 $purple1;
 		text-align: left;
 		
 		&--name {
 			color: white;
 		}
 		
-		@media (max-width: @mobileBreakpoint) {
+		@media (max-width: $mobileBreakpoint) {
 			margin: 10px auto;
 			padding: 0;
 			
@@ -107,7 +104,7 @@ input:focus { /* Chrome adds its own blue outline on buttons when focus */
 	
 	&__container {
 		width: 100%;
-		max-width: @width;
+		max-width: $width;
 		margin: 0 auto;
 	}
 	
@@ -120,7 +117,7 @@ input:focus { /* Chrome adds its own blue outline on buttons when focus */
 		font-size: 3.2em;
 		font-weight: bold;
 		
-		@media (max-width: @mobileBreakpoint) {
+		@media (max-width: $mobileBreakpoint) {
 			padding: 0 50% 0 5%;
 			
 			font-size: 1.8em;
@@ -130,22 +127,22 @@ input:focus { /* Chrome adds its own blue outline on buttons when focus */
 
 .main {
 	width: 100%;
-	max-width: @width;
+	max-width: $width;
 	margin: 0 auto;
 	padding: 50px 50px 160px;
 	
-	@media (max-width: @mobileBreakpoint) {
+	@media (max-width: $mobileBreakpoint) {
 		padding: 50px 0 250px;
 		overflow: hidden;
 	}
 	
 	&__text {
-		max-width: @width;
-		margin: 0px auto 60px;
+		max-width: $width;
+		margin: 0 auto 60px;
 		
 		font-size: 1em;
 		
-		@media (max-width: @mobileBreakpoint) {
+		@media (max-width: $mobileBreakpoint) {
 			padding: 0 50px;
 		}
 	}
@@ -158,7 +155,7 @@ input:focus { /* Chrome adds its own blue outline on buttons when focus */
 	position: absolute;
 	bottom: 0;
 	
-	background: @green1;
+	background: $green1;
 	box-shadow: 0 0 12px rgba(0, 0, 0, 0.5);
 	
 	color: white;

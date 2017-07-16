@@ -10,7 +10,7 @@ const CardContainer = styled.article`
 	margin: 0 0 40px;
 	overflow: hidden;
 	
-	display: flex;	
+	display: flex;
 	justify-content: space-between;
 	align-items: center;
 	
@@ -70,11 +70,11 @@ const Img = styled.div`
 const Body = styled.div`
 	padding: 40px;
 	overflow: hidden;
-
+	
 	flex: 1;
-
+	
 	font-size: 1em;
-
+	
 	@media (max-width: @mobileBreakpoint) {
 		padding-right: 0;
 	}
@@ -82,7 +82,7 @@ const Body = styled.div`
 
 const BodyTitle = styled.h1`
 	margin: 0;
-
+	
 	font-family: "Rokkitt", serif;
 	font-size: 2.5em;
 `;

@@ -1,26 +1,27 @@
 import React from "react";
-import { shallow } from "enzyme";
+import ReactShallowRenderer  from "react-test-renderer/shallow";
+import "jest-styled-components";
 
 import TabNavigator from "../../src/js/components/tabNavigator.jsx";
 
 
 describe("Given the TabNavigator component", () => {
+	const shallowRenderer = new ReactShallowRenderer ();
+	let tree;
 	const mockProps = {
 		location: { pathname: "/how-to-adopt" }
 	};
+
+	beforeEach(() => {
+		shallowRenderer.render(
+			<TabNavigator { ...mockProps } />
+		);
+		tree = shallowRenderer.getRenderOutput();
+	});
 	
 	describe("When the component is mounted", () => {
 		it("Should render children", () => {
-			const wrapper = shallow(
-				<TabNavigator { ...mockProps } />
-			);
-			
-			expect(wrapper.name()).toBe("div");
-			expect(wrapper.childAt(0).name()).toBe("nav");
-			expect(wrapper.find("NavLink").length).toBe(2);
-			expect(wrapper.childAt(1).name()).toBe("CSSTransitionGroup");
-			expect(wrapper.childAt(1).childAt(0).name()).toBe("FadeElement");
-			expect(wrapper.find("FadeElement").prop("pathname")).toBe("/how-to-adopt");
+			expect(tree).toMatchSnapshot();
 		});
 	});
 	

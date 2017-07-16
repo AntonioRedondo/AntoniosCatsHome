@@ -6,7 +6,7 @@ import v from "../variables";
 const Text = styled.p`
 	margin: 0;
 	padding: 0;
-
+	
 	@media (max-width: ${ v.mobileBreakpoint }) {
 		padding: 0 40px;
 	}
@@ -17,7 +17,7 @@ const Image = styled.img`
 	height: 455px;
 	margin: 0 auto 40px;
 	display: block;
-
+	
 	box-shadow: 4px 4px 20px rgba(0, 0, 0, 0.2);
 `;
 

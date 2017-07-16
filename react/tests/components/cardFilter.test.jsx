@@ -1,20 +1,25 @@
 import React from "react";
-import { shallow } from "enzyme";
+import ReactShallowRenderer  from "react-test-renderer/shallow";
+import "jest-styled-components";
 
 import CardFilter from "../../src/js/components/cardFilter.jsx";
 
 
 describe("Given the CardFilter component", () => {
+	const shallowRenderer = new ReactShallowRenderer ();
+	let tree;
+
+	beforeEach(() => {
+		shallowRenderer.render(
+			<CardFilter
+				onChange={ function() {} } />
+		);
+		tree = shallowRenderer.getRenderOutput();
+	});
+	
 	describe("When the component is mounted", () => {
 		it("Should render children", () => {
-			const wrapper = shallow(
-				<CardFilter
-					onChange={ function() {} } />
-			);
-			
-			expect(wrapper.name()).toBe("input");
-			expect(wrapper.prop("placeholder")).toBe("Type to filter by name or description");
-			expect(wrapper.prop("onChange")).toEqual(jasmine.any(Function));
+			expect(tree).toMatchSnapshot();
 		});
 	});
 	

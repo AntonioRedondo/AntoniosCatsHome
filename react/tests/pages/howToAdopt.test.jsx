@@ -1,20 +1,24 @@
 import React from "react";
-import { shallow } from "enzyme";
+import ReactShallowRenderer  from "react-test-renderer/shallow";
+import "jest-styled-components";
 
 import HowToAdopt from "../../src/js/pages/howToAdopt.jsx";
 
 
 describe("Given the HowToAdopt component", () => {
+	const shallowRenderer = new ReactShallowRenderer ();
+	let tree;
+
+	beforeEach(() => {
+		shallowRenderer.render(
+			<HowToAdopt />
+		);
+		tree = shallowRenderer.getRenderOutput();
+	});
+	
 	describe("When the component is mounted", () => {
 		it("Should render children", () => {
-			const wrapper = shallow(
-				<HowToAdopt />
-			);
-			
-			expect(wrapper.name()).toBe("div");
-			expect(wrapper.childAt(0).name()).toBe("img");
-			expect(wrapper.childAt(1).name()).toBe("p");
-			expect(wrapper.childAt(1).text()).toContain("their profile");
+			expect(tree).toMatchSnapshot();
 		});
 	});
 	

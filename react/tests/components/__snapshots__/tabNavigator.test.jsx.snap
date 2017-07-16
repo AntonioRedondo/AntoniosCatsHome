@@ -1,0 +1,37 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Given the TabNavigator component When the component is mounted Should render children 1`] = `
+<div>
+  <styled.nav>
+    <ul>
+      <li>
+        <Styled(NavLink)
+          activeClassName="tab-navigator--active"
+          exact={true}
+          to="/"
+        >
+          Cats
+        </Styled(NavLink)>
+      </li>
+      <li>
+        <Styled(NavLink)
+          activeClassName="tab-navigator--active"
+          className="tab-navigator"
+          to="/how-to-adopt"
+        >
+          How to adopt
+        </Styled(NavLink)>
+      </li>
+    </ul>
+  </styled.nav>
+  <Styled(CSSTransitionGroup)
+    transitionEnterTimeout={200}
+    transitionLeaveTimeout={200}
+    transitionName="navigation-loader"
+  >
+    <FadeElement
+      pathname="/how-to-adopt"
+    />
+  </Styled(CSSTransitionGroup)>
+</div>
+`;

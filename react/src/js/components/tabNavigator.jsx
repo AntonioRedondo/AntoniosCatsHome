@@ -12,19 +12,19 @@ const Navigation = styled.nav`
 	height: 64px;
 	margin-bottom: 50px;
 	overflow: hidden;
-
+	
 	border-bottom: 4px solid ${ v.purple2 };
-
+	
 	@media (max-width: ${ v.mobileBreakpoint }) {
 		height: auto;
 		border: 0;
 	}
-
+	
 	& ul {
 		margin: 0;
 		padding: 0;
 	}
-
+	
 	& li {
 		float: left;
 		list-style: none;
@@ -38,26 +38,26 @@ const Navigation = styled.nav`
 const NavLinkStyled = styled(NavLink)`
 	width: 240px;
 	height: 60px;
-
-	display: flex;	
+	
+	display: flex;
 	justify-content: center;
 	align-items: center;
-
+	
 	background: ${ v.grayB };
 	border-top-left-radius: 8px;
 	border-top-right-radius: 8px;
-
+	
 	color: white;
 	font-size: 1.5em;
 	text-align: center;
-
+	
 	transition: all ${ v.animTime2 };
-
+	
 	@media (max-width: ${ v.mobileBreakpoint }) {
 		width: 100%;
 		border-radius: 0;
 	}
-
+	
 	&:hover {
 		background: orange;
 	}
