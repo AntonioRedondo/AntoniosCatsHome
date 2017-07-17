@@ -66,7 +66,7 @@
 				This is the <strong>React</strong> implementation for Antonio's Cats Home. The project is configured with <strong>npm</strong> and <strong>Gulp</strong>. CSS code is written with  <strong>PostCSS</strong> using the <strong>BEM</strong> arrangement. <a href="https://www.npmjs.com/package/styled-components"><strong>styled-components</strong></a> is used for the styling on React components. Most of the CSS is on the React components. Just a few classes dealing with edge cases are on `scss` files.
 			</p>
 			<p class="p">
-				The JavaScript written makes use of <strong>ES6 features</strong>. To convert from ES6 modules to a single JavaScript file Browserify is used. In order to transform ES6 JSX to ES5 JavaScript the Browserify's Babelify transform is used.
+				The JavaScript written makes use of ES6 features. In order to transform ES6 JSX to ES5 JavaScript <strong>Babel</strong> is used. <strong>Rollup</strong> is used to bundle all modules together.
 			</p>
 			<p class="p">
 				<strong>Redux</strong> with <strong>Reselect</strong> is used to implement the model layer and decouple state from React views. The app stores the state on <code>localStorage</code>. So if you refresh the window or reopen it on another tab the cat selected and the filtering string will load automatically.
@@ -100,13 +100,13 @@
 				Dependencies
 			</h2>
 			<p class="p">
-				JavaScript dependencies are React, Redux, React Router, some supporting libs and a couple of shims (see <code>package.json</code> for details). No jQuery, no Bootstrap. No real need for polyfills like Webshim or babel-polyfill, or browser compatibility libraries like Modernizr.
+				JavaScript dependencies are React, Redux, React Router, styled-components, some supporting libs and a couple of shims (see <code>package.json</code> for details). No jQuery, no Bootstrap. No real need for polyfills like Webshim or babel-polyfill, or browser compatibility libraries like Modernizr.
 			</p>
 			<p class="p">
 				The only CSS dependency are the fonts downloaded from Google Fonts.
 			</p>
 			<p class="p">
-				The application have a medium size on code loaded: 6 KB of CSS and 340 KB of minified JavaScript. See the below screenshot of Firefox Developer Tools showing the <strong>minified</strong> version of the project (built with the <code>gulp min</code> configured task).
+				The application has a medium code size: 6 KB of CSS and 336 KB of minified JavaScript. See the below screenshot of Firefox Developer Tools showing the <strong>minified</strong> version of the project (built with the <code>gulp min</code> configured task).
 				
 				<img src="sizeReact.png">
 			</p>

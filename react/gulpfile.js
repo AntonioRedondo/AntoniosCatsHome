@@ -10,8 +10,11 @@ const esLint = require("gulp-eslint");
 const cssLint = require("gulp-stylelint");
 
 // Build
-const browserify = require("browserify");
-const vinylSource = require("vinyl-source-stream");
+const rollup = require("rollup");
+const rollupBabel = require("rollup-plugin-babel");
+const rollupNodeResolve = require("rollup-plugin-node-resolve");
+const rollupCommonjs = require("rollup-plugin-commonjs");
+const rollupReplace = require("rollup-plugin-replace");
 const concat = require("gulp-concat");
 const replace = require("gulp-replace");
 const inline = require("gulp-inline");
@@ -74,13 +77,33 @@ gulp.task("styleLint", () => {
 // ---------- BUILD ---------- //
 
 gulp.task("buildJs", () => {
-	return browserify({
-		entries: `${SRC}/js/index.jsx`,
-		debug: true, // Writes a JS source map at the end of the js file
-		//transform: ["babelify", {presets: ["es2015", "react"]}]  // Browserify transform configuration doesn"t work here. Placed on package.json instead
-	}).bundle()
-		.pipe(vinylSource("bundle.js"))
-		.pipe(gulp.dest(DEST));
+	return rollup.rollup({
+		entry: `${SRC}/js/index.jsx`,
+		plugins: [
+			rollupReplace({
+				"process.env.NODE_ENV": JSON.stringify("production")
+			}),
+			rollupBabel({
+				babelrc: false,
+				exclude: "node_modules/**",
+				presets: [ [ "es2015", { modules: false } ], "react" ],
+				plugins: [ "external-helpers" ]
+			}),
+			rollupNodeResolve({ jsnext: true }),
+			rollupCommonjs({
+				include: "node_modules/**",
+				namedExports: {
+					"node_modules/react/react.js": [ "cloneElement", "createElement", "Children", "Component" ]
+				}
+			})
+		]
+	}).then(bundle => {
+		return bundle.write({
+			format: "iife",
+			dest: `${DEST}/bundle.js`,
+			sourceMap: true
+		});
+	});
 });
 
 gulp.task("buildHtml", () => {
@@ -142,7 +165,7 @@ gulp.task("min", () => {
 });
 
 gulp.task("minSeparated", () => {
-	runSequence("setProdEnv", "build", "uglify", "lessMin");
+	runSequence("setProdEnv", "build", "uglify", "cssMin");
 });
 
 gulp.task("uglify", () => {
@@ -151,7 +174,7 @@ gulp.task("uglify", () => {
 		.pipe(gulp.dest(`${DEST}`));
 });
 
-gulp.task("lessMin", () => {
+gulp.task("cssMin", () => {
 	return gulp.src(`${DEST}/style.css`)
 		.pipe(cleanCss())
 		.pipe(gulp.dest(`${DEST}`));
