@@ -1,4 +1,4 @@
-const keyMirror = require("keyMirror");
+import keyMirror from "keymirror";
 
 export default keyMirror({
 	REQUEST_ITEMS: null,
