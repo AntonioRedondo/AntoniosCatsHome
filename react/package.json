@@ -20,7 +20,6 @@
 		"prepush": "gulp lint && npm t"
 	},
 	"dependencies": {
-		"classnames": "2.2",
 		"keymirror": "0.1",
 		"prop-types": "15.5",
 		"react": "15.6",
@@ -34,6 +33,7 @@
 		"styled-components": "2.1",
 		"whatwg-fetch": "2.0"
 	},
+	"//": "Grouped by concern: basics, lint, build, test, server",
 	"devDependencies": {
 		"del": "3.0",
 		"gulp": "3.9",
@@ -44,7 +44,6 @@
 		"gulp-eslint": "4.0",
 		"eslint-plugin-react": "7.1",
 		"eslint-plugin-import": "2.7",
-		"redux-immutable-state-invariant": "2.0",
 		"gulp-stylelint": "3.9",
 		"stylelint-config-standard": "17.0",
 		"stylelint-processor-styled-components": "0.1",
