@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import styled from "styled-components";
 
-import v from "../variables";
+import v from "../style/variables";
 
 const Filter = styled.input`
 	width: 100%;
@@ -31,7 +31,7 @@ const Filter = styled.input`
 	}
 	
 	@media (max-width: ${ v.mobileBreakpoint }) {
-		width: calc(~"100% - 100px");
+		width: calc(100% - 100px);
 	}
 `;
 

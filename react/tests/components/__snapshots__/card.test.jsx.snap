@@ -21,8 +21,8 @@ exports[`Given the Card component When the component is mounted Should render ch
   background: #eeeeee;
   box-shadow: 0 -5px 0 #b74b66, 0 0 10px rgba(0, 0, 0, 0.5);
   color: #333333;
-  -webkit-transition: all 0.1s ease-out;
-  transition: all 0.1s ease-out;
+  -webkit-transition: all 100ms ease-out;
+  transition: all 100ms ease-out;
 }
 
 .c0:hover {
@@ -94,13 +94,13 @@ exports[`Given the Card component When the component is mounted Should render ch
   }
 }
 
-@media (max-width: @mobileBreakpoint) {
+@media (max-width: 800px) {
   .c3 {
     padding-right: 0;
   }
 }
 
-@media (max-width: @mobileBreakpoint) {
+@media (max-width: 800px) {
   .c5 {
     display: none;
   }

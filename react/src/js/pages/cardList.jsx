@@ -1,12 +1,13 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { CSSTransitionGroup } from "react-transition-group";
+import { TransitionGroup, CSSTransition } from "react-transition-group";
 import { connect } from "react-redux";
 
 import actions from "../redux/actions";
 import { filterItems } from "../redux/selectors";
 import Card from "../components/card.jsx";
 import CardFilter from "../components/cardFilter.jsx";
+import v from "../style/variables";
 
 export class CardList extends React.Component {
 	constructor(props) {
@@ -25,23 +26,25 @@ export class CardList extends React.Component {
 		return (
 			<div>
 				<CardFilter onChange={ this.setFilterStringBound } value={ this.props.filterString } />
-				<CSSTransitionGroup
-					transitionName="card-list"
-					transitionEnterTimeout={ 250 }
-					transitionLeaveTimeout={ 250 } >
+				<TransitionGroup>
 					{
 						this.props.items.map(item =>
-							<Card
+							<CSSTransition
 								key={ item.id }
-								id={ item.id }
-								name={ item.name }
-								description={ item.description }
-								itemSelected={ this.props.itemSelected }
-								onClick={ this.setSelectedBound } >
-							</Card>
+								classNames="card-list"
+								timeout={ v.time2 } >
+								<Card
+									key={ item.id }
+									id={ item.id }
+									name={ item.name }
+									description={ item.description }
+									itemSelected={ this.props.itemSelected }
+									onClick={ this.setSelectedBound } >
+								</Card>
+							</CSSTransition>
 						)
 					}
-				</CSSTransitionGroup>
+				</TransitionGroup>
 			</div>
 		);
 	}

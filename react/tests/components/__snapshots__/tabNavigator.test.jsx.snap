@@ -24,14 +24,13 @@ exports[`Given the TabNavigator component When the component is mounted Should r
       </li>
     </ul>
   </styled.nav>
-  <Styled(CSSTransitionGroup)
-    transitionEnterTimeout={200}
-    transitionLeaveTimeout={200}
-    transitionName="navigation-loader"
-  >
-    <FadeElement
-      pathname="/how-to-adopt"
-    />
-  </Styled(CSSTransitionGroup)>
+  <Styled(TransitionGroup)>
+    <CSSTransition
+      classNames="navigation-loader"
+      timeout={200}
+    >
+      <HowToAdopt />
+    </CSSTransition>
+  </Styled(TransitionGroup)>
 </div>
 `;

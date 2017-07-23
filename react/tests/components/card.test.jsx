@@ -3,7 +3,7 @@ import renderer from "react-test-renderer";
 import "jest-styled-components";
 
 import Card from "../../src/js/components/card.jsx";
-import v from "../../src/js/variables";
+import v from "../../src/js/style/variables";
 
 
 describe("Given the Card component", () => {

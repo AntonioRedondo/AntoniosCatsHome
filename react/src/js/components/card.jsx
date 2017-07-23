@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import styled from "styled-components";
 
-import v from "../variables";
+import v from "../style/variables";
 
 const CardContainer = styled.article`
 	width: 100%;
@@ -19,7 +19,7 @@ const CardContainer = styled.article`
 	
 	color: ${ v.gray3 };
 	
-	transition: all ${ v.animTime1 } ease-out;
+	transition: all ${ v.time1 + v.ms } ease-out;
 	
 	@media (max-width: ${ v.mobileBreakpoint }) {
 		height: 150px;
@@ -75,7 +75,7 @@ const Body = styled.div`
 	
 	font-size: 1em;
 	
-	@media (max-width: @mobileBreakpoint) {
+	@media (max-width: ${ v.mobileBreakpoint }) {
 		padding-right: 0;
 	}
 `;
@@ -92,7 +92,7 @@ const BodyText = styled.div`
 	
 	color: ${ v.gray6 };
 	
-	@media (max-width: @mobileBreakpoint) {
+	@media (max-width: ${ v.mobileBreakpoint }) {
 		display: none;
 	}
 `;

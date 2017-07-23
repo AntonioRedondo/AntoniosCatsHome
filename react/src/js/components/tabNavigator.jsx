@@ -1,10 +1,10 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { CSSTransitionGroup } from "react-transition-group";
+import { TransitionGroup, CSSTransition } from "react-transition-group";
 import { NavLink } from "react-router-dom";
 import styled from "styled-components";
 
-import v from "../variables";
+import v from "../style/variables";
 import HowToAdopt from "../pages/howToAdopt.jsx";
 import CardList from "../pages/cardList.jsx";
 
@@ -51,7 +51,7 @@ const NavLinkStyled = styled(NavLink)`
 	font-size: 1.5em;
 	text-align: center;
 	
-	transition: all ${ v.animTime2 };
+	transition: all ${ v.time2 + v.ms };
 	
 	@media (max-width: ${ v.mobileBreakpoint }) {
 		width: 100%;
@@ -63,23 +63,24 @@ const NavLinkStyled = styled(NavLink)`
 	}
 `;
 
-const CSSTransitionGroupStyled = styled(CSSTransitionGroup)`
+const TransitionGroupStyled = styled(TransitionGroup)`
 	position: relative;
-	display: block;
 `;
 
 /* eslint-disable react/prop-types, react/display-name */
-const FadeElement = ({ pathname }) => {
+function getPage(pathname) {
+	let component;
+	
 	switch (pathname) {
-		case "/": return <CardList url="data/cats.json"/>;
-		case "/how-to-adopt": return <HowToAdopt/>;
+		case "/": component = <CardList/>; break;
+		case "/how-to-adopt": component = <HowToAdopt/>;
 	}
-};
-/* eslint-enable */
+	
+	return <CSSTransition key={ pathname } timeout={ v.time2 } classNames="navigation-loader">{ component }</CSSTransition>;
+}
+/* eslint-disable react/prop-types, react/display-name */
 
 function TabNavigator({ location }) {
-	const animationTime = 200;
-	
 	return (
 		<div>
 			<Navigation>
@@ -96,12 +97,7 @@ function TabNavigator({ location }) {
 					</li>
 				</ul>
 			</Navigation>
-			<CSSTransitionGroupStyled
-				transitionName="navigation-loader"
-				transitionEnterTimeout={ animationTime }
-				transitionLeaveTimeout={ animationTime } >
-				<FadeElement pathname={ location.pathname } key={ location.pathname } />
-			</CSSTransitionGroupStyled>
+			<TransitionGroupStyled>{ getPage(location.pathname) }</TransitionGroupStyled>
 		</div>
 	);
 }

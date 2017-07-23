@@ -11,6 +11,8 @@ export default {
 	width: "1100px",
 	mobileBreakpoint: "800px",
 	
-	animTime1: "0.1s",
-	animTime2: "0.2s"
+	time1: 100,
+	time2: 200,
+	
+	ms: "ms"
 };
