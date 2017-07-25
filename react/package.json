@@ -46,7 +46,6 @@
 		"eslint-plugin-import": "2.7",
 		"gulp-stylelint": "3.9",
 		"stylelint-config-standard": "17.0",
-		"stylelint-processor-styled-components": "0.1",
 		"husky": "0.14",
 		
 		"gulp-concat": "2.6",

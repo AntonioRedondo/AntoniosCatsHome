@@ -57,13 +57,6 @@ gulp.task("esLint", () => {
 		.pipe(esLint.failOnError());
 });
 
-gulp.task("styleLintJSX", () => {
-	return gulp.src([`${SRC}/js/**/*.jsx`])
-		.pipe(cssLint({
-			reporters: [{ formatter: "string", console: true }]
-		}));
-});
-
 gulp.task("styleLint", () => {
 	return gulp.src([`${SRC}/style/*.scss`])
 		.pipe(cssLint({
