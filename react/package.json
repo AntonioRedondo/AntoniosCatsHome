@@ -46,6 +46,7 @@
 		"eslint-plugin-import": "2.7",
 		"gulp-stylelint": "3.9",
 		"stylelint-config-standard": "17.0",
+		"why-did-you-update": "0.0",
 		"husky": "0.14",
 		
 		"gulp-concat": "2.6",

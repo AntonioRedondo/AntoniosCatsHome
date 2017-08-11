@@ -12,7 +12,7 @@ store = createStore(
 	applyMiddleware(thunk)
 );
 
-	
+
 /* buildDev:start */
 const logger = store => next => action => { // eslint-disable-line no-unused-vars
 	console.log("dispatching:", action); // eslint-disable-line no-console
