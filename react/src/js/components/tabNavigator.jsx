@@ -6,7 +6,7 @@ import styled from "styled-components";
 
 import v from "../style/variables";
 import HowToAdopt from "../pages/howToAdopt.jsx";
-import CardList from "../pages/cardList.jsx";
+import Cats from "../pages/cats.jsx";
 
 const Navigation = styled.nav`
 	height: 64px;
@@ -72,7 +72,7 @@ function getPage(pathname) {
 	let component;
 	
 	switch (pathname) {
-		case "/": component = <CardList/>; break;
+		case "/": component = <Cats/>; break;
 		case "/how-to-adopt": component = <HowToAdopt/>;
 	}
 	

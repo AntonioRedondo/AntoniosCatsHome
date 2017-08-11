@@ -28730,6 +28730,21 @@ var actions = {
 	}
 };
 
+var _templateObject$3 = taggedTemplateLiteral(["\n\twidth: 100%;\n\tmax-width: 100%;\n\tmargin: 0 auto 50px;\n\tpadding: 8px 20px 10px;\n\tdisplay: block;\n\t\n\tbackground: white;\n\tborder-radius: 5px;\n\tborder: 4px solid ", ";\n\t\n\tcolor: ", ";\n\tfont-size: 1.8em;\n\tfont-family: \"Open Sans\", san-serif;\n\t\n\ttransition: all 0.3s ease-out;\n\t\n\t&:hover {\n\t\tborder-color: orange;\n\t}\n\t\n\t&:focus {\n\t\tborder-color: ", ";\n\t\tbox-shadow: 0 0 20px rgba(255, 255, 255, 0.2), 0 0 10px rgba(0, 0, 0, 0.2) inset;\n\t}\n\t\n\t@media (max-width: ", ") {\n\t\twidth: calc(100% - 100px);\n\t}\n"], ["\n\twidth: 100%;\n\tmax-width: 100%;\n\tmargin: 0 auto 50px;\n\tpadding: 8px 20px 10px;\n\tdisplay: block;\n\t\n\tbackground: white;\n\tborder-radius: 5px;\n\tborder: 4px solid ", ";\n\t\n\tcolor: ", ";\n\tfont-size: 1.8em;\n\tfont-family: \"Open Sans\", san-serif;\n\t\n\ttransition: all 0.3s ease-out;\n\t\n\t&:hover {\n\t\tborder-color: orange;\n\t}\n\t\n\t&:focus {\n\t\tborder-color: ", ";\n\t\tbox-shadow: 0 0 20px rgba(255, 255, 255, 0.2), 0 0 10px rgba(0, 0, 0, 0.2) inset;\n\t}\n\t\n\t@media (max-width: ", ") {\n\t\twidth: calc(100% - 100px);\n\t}\n"]);
+
+var Filter = styled.input(_templateObject$3, v.grayB, v.gray3, v.green1, v.mobileBreakpoint);
+
+function CardFilter(props) {
+	return react.createElement(Filter, { type: "text", placeholder: "Filter by name or description", onChange: props.onChange, value: props.value });
+}
+
+CardFilter.displayName = "CardFilter";
+
+CardFilter.propTypes = {
+	onChange: index$4.func.isRequired,
+	value: index$4.string
+};
+
 function defaultEqualityCheck(a, b) {
   return a === b;
 }
@@ -28843,14 +28858,14 @@ var filterItems = createSelector([function (state) {
 	return items;
 });
 
-var _templateObject$3 = taggedTemplateLiteral(["\n\twidth: 100%;\n\theight: 250px;\n\tmargin: 0 0 40px;\n\toverflow: hidden;\n\t\n\tdisplay: flex;\n\tjustify-content: space-between;\n\talign-items: center;\n\t\n\tbackground: ", ";\n\tbox-shadow: 0 -5px 0 ", ", 0 0 10px rgba(0, 0, 0, 0.5);\n\t\n\tcolor: ", ";\n\t\n\ttransition: all ", " ease-out;\n\t\n\t@media (max-width: ", ") {\n\t\theight: 150px;\n\t\tmargin: 0;\n\t\t\t\n\t\tbox-shadow: 0 5px 0 ", " inset, 10px 10px 30px rgba(0, 0, 0, 0.2);\n\t}\n\t\n\t&:hover {\n\t\tbackground: ", ";\n\t\tbox-shadow: 0 -5px 0 orange, 10px 10px 30px rgba(0, 0, 0, 0.2);\n\t\tcursor: pointer;\n\t\ttransform: scale(1.025);\n\t}\n\t\n\t&:active {\n\t\ttransform: scale(1);\n\t\tbackground: lightyellow;\n\t}\n"], ["\n\twidth: 100%;\n\theight: 250px;\n\tmargin: 0 0 40px;\n\toverflow: hidden;\n\t\n\tdisplay: flex;\n\tjustify-content: space-between;\n\talign-items: center;\n\t\n\tbackground: ", ";\n\tbox-shadow: 0 -5px 0 ", ", 0 0 10px rgba(0, 0, 0, 0.5);\n\t\n\tcolor: ", ";\n\t\n\ttransition: all ", " ease-out;\n\t\n\t@media (max-width: ", ") {\n\t\theight: 150px;\n\t\tmargin: 0;\n\t\t\t\n\t\tbox-shadow: 0 5px 0 ", " inset, 10px 10px 30px rgba(0, 0, 0, 0.2);\n\t}\n\t\n\t&:hover {\n\t\tbackground: ", ";\n\t\tbox-shadow: 0 -5px 0 orange, 10px 10px 30px rgba(0, 0, 0, 0.2);\n\t\tcursor: pointer;\n\t\ttransform: scale(1.025);\n\t}\n\t\n\t&:active {\n\t\ttransform: scale(1);\n\t\tbackground: lightyellow;\n\t}\n"]);
+var _templateObject$4 = taggedTemplateLiteral(["\n\twidth: 100%;\n\theight: 250px;\n\tmargin: 0 0 40px;\n\toverflow: hidden;\n\t\n\tdisplay: flex;\n\tjustify-content: space-between;\n\talign-items: center;\n\t\n\tbackground: ", ";\n\tbox-shadow: 0 -5px 0 ", ", 0 0 10px rgba(0, 0, 0, 0.5);\n\t\n\tcolor: ", ";\n\t\n\ttransition: all ", " ease-out;\n\t\n\t@media (max-width: ", ") {\n\t\theight: 150px;\n\t\tmargin: 0;\n\t\t\t\n\t\tbox-shadow: 0 5px 0 ", " inset, 10px 10px 30px rgba(0, 0, 0, 0.2);\n\t}\n\t\n\t&:hover {\n\t\tbackground: ", ";\n\t\tbox-shadow: 0 -5px 0 orange, 10px 10px 30px rgba(0, 0, 0, 0.2);\n\t\tcursor: pointer;\n\t\ttransform: scale(1.025);\n\t}\n\t\n\t&:active {\n\t\ttransform: scale(1);\n\t\tbackground: lightyellow;\n\t}\n"], ["\n\twidth: 100%;\n\theight: 250px;\n\tmargin: 0 0 40px;\n\toverflow: hidden;\n\t\n\tdisplay: flex;\n\tjustify-content: space-between;\n\talign-items: center;\n\t\n\tbackground: ", ";\n\tbox-shadow: 0 -5px 0 ", ", 0 0 10px rgba(0, 0, 0, 0.5);\n\t\n\tcolor: ", ";\n\t\n\ttransition: all ", " ease-out;\n\t\n\t@media (max-width: ", ") {\n\t\theight: 150px;\n\t\tmargin: 0;\n\t\t\t\n\t\tbox-shadow: 0 5px 0 ", " inset, 10px 10px 30px rgba(0, 0, 0, 0.2);\n\t}\n\t\n\t&:hover {\n\t\tbackground: ", ";\n\t\tbox-shadow: 0 -5px 0 orange, 10px 10px 30px rgba(0, 0, 0, 0.2);\n\t\tcursor: pointer;\n\t\ttransform: scale(1.025);\n\t}\n\t\n\t&:active {\n\t\ttransform: scale(1);\n\t\tbackground: lightyellow;\n\t}\n"]);
 var _templateObject2$2 = taggedTemplateLiteral(["\n\twidth: 250px;\n\theight: 250px;\n\t\n\tposition: relative;\n\t\n\t@media (max-width: ", ") {\n\t\twidth: 150px;\n\t\tmin-width: 150px;\n\t\theight: 150px;\n\t}\n"], ["\n\twidth: 250px;\n\theight: 250px;\n\t\n\tposition: relative;\n\t\n\t@media (max-width: ", ") {\n\t\twidth: 150px;\n\t\tmin-width: 150px;\n\t\theight: 150px;\n\t}\n"]);
 var _templateObject3$1 = taggedTemplateLiteral(["\n\twidth: 100%;\n\theight: 100%;\n\tdisplay: block;\n\t\n\tposition: absolute;\n\ttop: 0;\n\tleft: 0;\n\t\n\tbackground-image: url('img/", ".jpg');\n\tbackground-size: cover;\n"], ["\n\twidth: 100%;\n\theight: 100%;\n\tdisplay: block;\n\t\n\tposition: absolute;\n\ttop: 0;\n\tleft: 0;\n\t\n\tbackground-image: url('img/", ".jpg');\n\tbackground-size: cover;\n"]);
 var _templateObject4 = taggedTemplateLiteral(["\n\tpadding: 40px;\n\toverflow: hidden;\n\t\n\tflex: 1;\n\t\n\tfont-size: 1em;\n\t\n\t@media (max-width: ", ") {\n\t\tpadding-right: 0;\n\t}\n"], ["\n\tpadding: 40px;\n\toverflow: hidden;\n\t\n\tflex: 1;\n\t\n\tfont-size: 1em;\n\t\n\t@media (max-width: ", ") {\n\t\tpadding-right: 0;\n\t}\n"]);
 var _templateObject5 = taggedTemplateLiteral(["\n\tmargin: 0;\n\t\n\tfont-family: \"Rokkitt\", serif;\n\tfont-size: 2.5em;\n"], ["\n\tmargin: 0;\n\t\n\tfont-family: \"Rokkitt\", serif;\n\tfont-size: 2.5em;\n"]);
 var _templateObject6 = taggedTemplateLiteral(["\n\tmargin: 0 0 20px;\n\t\n\tcolor: ", ";\n\t\n\t@media (max-width: ", ") {\n\t\tdisplay: none;\n\t}\n"], ["\n\tmargin: 0 0 20px;\n\t\n\tcolor: ", ";\n\t\n\t@media (max-width: ", ") {\n\t\tdisplay: none;\n\t}\n"]);
 
-var CardContainer = styled.article(_templateObject$3, function (props) {
+var CardContainer = styled.article(_templateObject$4, function (props) {
 	return props.itemSelected ? "papayawhip" : v.grayE;
 }, v.purple2, v.gray3, v.time1 + v.ms, v.mobileBreakpoint, v.purple2, function (props) {
 	return props.itemSelected ? "papayawhip" : "white";
@@ -28904,21 +28919,6 @@ Card.propTypes = {
 	onClick: index$4.func.isRequired
 };
 
-var _templateObject$4 = taggedTemplateLiteral(["\n\twidth: 100%;\n\tmax-width: 100%;\n\tmargin: 0 auto 50px;\n\tpadding: 8px 20px 10px;\n\tdisplay: block;\n\t\n\tbackground: white;\n\tborder-radius: 5px;\n\tborder: 4px solid ", ";\n\t\n\tcolor: ", ";\n\tfont-size: 1.8em;\n\tfont-family: \"Open Sans\", san-serif;\n\t\n\ttransition: all 0.3s ease-out;\n\t\n\t&:hover {\n\t\tborder-color: orange;\n\t}\n\t\n\t&:focus {\n\t\tborder-color: ", ";\n\t\tbox-shadow: 0 0 20px rgba(255, 255, 255, 0.2), 0 0 10px rgba(0, 0, 0, 0.2) inset;\n\t}\n\t\n\t@media (max-width: ", ") {\n\t\twidth: calc(100% - 100px);\n\t}\n"], ["\n\twidth: 100%;\n\tmax-width: 100%;\n\tmargin: 0 auto 50px;\n\tpadding: 8px 20px 10px;\n\tdisplay: block;\n\t\n\tbackground: white;\n\tborder-radius: 5px;\n\tborder: 4px solid ", ";\n\t\n\tcolor: ", ";\n\tfont-size: 1.8em;\n\tfont-family: \"Open Sans\", san-serif;\n\t\n\ttransition: all 0.3s ease-out;\n\t\n\t&:hover {\n\t\tborder-color: orange;\n\t}\n\t\n\t&:focus {\n\t\tborder-color: ", ";\n\t\tbox-shadow: 0 0 20px rgba(255, 255, 255, 0.2), 0 0 10px rgba(0, 0, 0, 0.2) inset;\n\t}\n\t\n\t@media (max-width: ", ") {\n\t\twidth: calc(100% - 100px);\n\t}\n"]);
-
-var Filter = styled.input(_templateObject$4, v.grayB, v.gray3, v.green1, v.mobileBreakpoint);
-
-function CardFilter(props) {
-	return react.createElement(Filter, { type: "text", placeholder: "Filter by name or description", onChange: props.onChange, value: props.value });
-}
-
-CardFilter.displayName = "CardFilter";
-
-CardFilter.propTypes = {
-	onChange: index$4.func.isRequired,
-	value: index$4.string
-};
-
 var CardList = function (_React$Component) {
 	inherits$1(CardList, _React$Component);
 
@@ -28928,7 +28928,6 @@ var CardList = function (_React$Component) {
 		var _this = possibleConstructorReturn$1(this, (CardList.__proto__ || Object.getPrototypeOf(CardList)).call(this));
 
 		_this.setSelectedBound = props.setSelected.bind(_this);
-		_this.setFilterStringBound = props.setFilterString.bind(_this);
 		return _this;
 	}
 
@@ -28938,34 +28937,37 @@ var CardList = function (_React$Component) {
 			if (this.props.items.length === 0) this.props.requestItems();
 		}
 	}, {
+		key: "shouldComponentUpdate",
+		value: function shouldComponentUpdate(_ref) {
+			var items = _ref.items,
+			    itemSelected = _ref.itemSelected;
+
+			return items.length !== this.props.items.length || itemSelected !== this.props.itemSelected;
+		}
+	}, {
 		key: "render",
 		value: function render() {
 			var _this2 = this;
 
 			return react.createElement(
-				"div",
+				index_2,
 				null,
-				react.createElement(CardFilter, { onChange: this.setFilterStringBound, value: this.props.filterString }),
-				react.createElement(
-					index_2,
-					null,
-					this.props.items.map(function (item) {
-						return react.createElement(
-							index_3,
-							{
-								key: item.id,
-								classNames: "card-list",
-								timeout: v.time2 },
-							react.createElement(Card, {
-								key: item.id,
-								id: item.id,
-								name: item.name,
-								description: item.description,
-								itemSelected: _this2.props.itemSelected,
-								onClick: _this2.setSelectedBound })
-						);
-					})
-				)
+				this.props.items.map(function (item) {
+					return react.createElement(
+						index_3,
+						{
+							key: item.id,
+							classNames: "card-list",
+							timeout: v.time2 },
+						react.createElement(Card, {
+							key: item.id,
+							id: item.id,
+							name: item.name,
+							description: item.description,
+							itemSelected: _this2.props.itemSelected,
+							onClick: _this2.setSelectedBound })
+					);
+				})
 			);
 		}
 	}]);
@@ -28975,22 +28977,19 @@ var CardList = function (_React$Component) {
 CardList.displayName = "CardList";
 
 CardList.propTypes = {
-	filterString: index$4.string,
 	itemSelected: index$4.string,
-	items: index$4.array,
+	items: index$4.array.isRequired,
 	requestItems: index$4.func,
-	setFilterString: index$4.func,
 	setSelected: index$4.func
 };
 
-var mapStateToProps = function mapStateToProps(state) {
+var mapStateToProps$1 = function mapStateToProps(state) {
 	return {
 		items: filterItems(state),
-		itemSelected: state.itemSelected,
-		filterString: state.filterString
+		itemSelected: state.itemSelected
 	};
 };
-var mapDispatchToProps = function mapDispatchToProps(dispatch) {
+var mapDispatchToProps$1 = function mapDispatchToProps(dispatch) {
 	return {
 		requestItems: function requestItems() {
 			return dispatch(actions.requestItems());
@@ -28999,14 +28998,59 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
 			return function () {
 				return dispatch(actions.setSelected(id));
 			};
-		},
+		}
+	};
+};
+
+var CardList$1 = connect(mapStateToProps$1, mapDispatchToProps$1)(CardList);
+
+var Cats = function (_React$Component) {
+	inherits$1(Cats, _React$Component);
+
+	function Cats(props) {
+		classCallCheck$1(this, Cats);
+
+		var _this = possibleConstructorReturn$1(this, (Cats.__proto__ || Object.getPrototypeOf(Cats)).call(this));
+
+		_this.setFilterStringBound = props.setFilterString.bind(_this);
+		return _this;
+	}
+
+	createClass$3(Cats, [{
+		key: "render",
+		value: function render() {
+			return react.createElement(
+				"div",
+				null,
+				react.createElement(CardFilter, { onChange: this.setFilterStringBound, value: this.props.filterString }),
+				react.createElement(CardList$1, null)
+			);
+		}
+	}]);
+	return Cats;
+}(react.Component);
+
+Cats.displayName = "Cats";
+
+Cats.propTypes = {
+	filterString: index$4.string,
+	setFilterString: index$4.func
+};
+
+var mapStateToProps = function mapStateToProps(state) {
+	return {
+		filterString: state.filterString
+	};
+};
+var mapDispatchToProps = function mapDispatchToProps(dispatch) {
+	return {
 		setFilterString: function setFilterString(event) {
 			return dispatch(actions.setFilterString(event.target.value));
 		}
 	};
 };
 
-var CardList$1 = connect(mapStateToProps, mapDispatchToProps)(CardList);
+var Cats$1 = connect(mapStateToProps, mapDispatchToProps)(Cats);
 
 var _templateObject$1 = taggedTemplateLiteral(["\n\theight: 64px;\n\tmargin-bottom: 50px;\n\toverflow: hidden;\n\t\n\tborder-bottom: 4px solid ", ";\n\t\n\t@media (max-width: ", ") {\n\t\theight: auto;\n\t\tborder: 0;\n\t}\n\t\n\t& ul {\n\t\tmargin: 0;\n\t\tpadding: 0;\n\t}\n\t\n\t& li {\n\t\tfloat: left;\n\t\tlist-style: none;\n\t\t\n\t\t@media (max-width: ", ") {\n\t\t\twidth: 100%;\n\t\t}\n\t}\n"], ["\n\theight: 64px;\n\tmargin-bottom: 50px;\n\toverflow: hidden;\n\t\n\tborder-bottom: 4px solid ", ";\n\t\n\t@media (max-width: ", ") {\n\t\theight: auto;\n\t\tborder: 0;\n\t}\n\t\n\t& ul {\n\t\tmargin: 0;\n\t\tpadding: 0;\n\t}\n\t\n\t& li {\n\t\tfloat: left;\n\t\tlist-style: none;\n\t\t\n\t\t@media (max-width: ", ") {\n\t\t\twidth: 100%;\n\t\t}\n\t}\n"]);
 var _templateObject2 = taggedTemplateLiteral(["\n\twidth: 240px;\n\theight: 60px;\n\t\n\tdisplay: flex;\n\tjustify-content: center;\n\talign-items: center;\n\t\n\tbackground: ", ";\n\tborder-top-left-radius: 8px;\n\tborder-top-right-radius: 8px;\n\t\n\tcolor: white;\n\tfont-size: 1.5em;\n\ttext-align: center;\n\t\n\ttransition: all ", ";\n\t\n\t@media (max-width: ", ") {\n\t\twidth: 100%;\n\t\tborder-radius: 0;\n\t}\n\t\n\t&:hover {\n\t\tbackground: orange;\n\t}\n"], ["\n\twidth: 240px;\n\theight: 60px;\n\t\n\tdisplay: flex;\n\tjustify-content: center;\n\talign-items: center;\n\t\n\tbackground: ", ";\n\tborder-top-left-radius: 8px;\n\tborder-top-right-radius: 8px;\n\t\n\tcolor: white;\n\tfont-size: 1.5em;\n\ttext-align: center;\n\t\n\ttransition: all ", ";\n\t\n\t@media (max-width: ", ") {\n\t\twidth: 100%;\n\t\tborder-radius: 0;\n\t}\n\t\n\t&:hover {\n\t\tbackground: orange;\n\t}\n"]);
@@ -29024,7 +29068,7 @@ function getPage(pathname) {
 
 	switch (pathname) {
 		case "/":
-			component = react.createElement(CardList$1, null);break;
+			component = react.createElement(Cats$1, null);break;
 		case "/how-to-adopt":
 			component = react.createElement(HowToAdopt, null);
 	}

@@ -1,9 +1,8 @@
 import React from "react";
 import ReactShallowRenderer  from "react-test-renderer/shallow";
-import "jest-styled-components";
 
-import { CardList } from "../../src/js/pages/cardList.jsx";
 import mockCatList from "../../src/data/cats.json";
+import { CardList } from "../../src/js/components/cardList.jsx";
 
 
 describe("Given the CardList component", () => {
@@ -15,8 +14,7 @@ describe("Given the CardList component", () => {
 		shallowRenderer.render(
 			<CardList
 				items={ mockCatList }
-				setFilterString={ mockRequiredPropFunction }
-				setSelected={ mockRequiredPropFunction }  />
+				setSelected={ mockRequiredPropFunction } />
 		);
 		tree = shallowRenderer.getRenderOutput();
 	});
