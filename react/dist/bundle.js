@@ -26857,7 +26857,7 @@ var c = index$19({
 	SET_FILTER_STRING: null
 });
 
-var reducerItems = function reducerItems() {
+function items() {
 	var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
 	var action = arguments[1];
 
@@ -26871,9 +26871,9 @@ var reducerItems = function reducerItems() {
 		default:
 			return state;
 	}
-};
+}
 
-var reducerItemSelected = function reducerItemSelected() {
+function itemSelected() {
 	var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : "";
 	var action = arguments[1];
 
@@ -26883,9 +26883,9 @@ var reducerItemSelected = function reducerItemSelected() {
 		default:
 			return state;
 	}
-};
+}
 
-var reducerFilterString = function reducerFilterString() {
+function filterString() {
 	var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : "";
 	var action = arguments[1];
 
@@ -26895,12 +26895,12 @@ var reducerFilterString = function reducerFilterString() {
 		default:
 			return state;
 	}
-};
+}
 
 var reducers = combineReducers({
-	items: reducerItems,
-	itemSelected: reducerItemSelected,
-	filterString: reducerFilterString
+	items: items,
+	itemSelected: itemSelected,
+	filterString: filterString
 });
 
 var store = void 0;
