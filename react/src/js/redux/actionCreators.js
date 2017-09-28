@@ -1,6 +1,6 @@
 import "whatwg-fetch"; // https://github.com/github/fetch/issues/275#issuecomment-181784694
 
-import c from "./actionsConstants";
+import c from "./actionTypes";
 
 
 function sortByName(items) {

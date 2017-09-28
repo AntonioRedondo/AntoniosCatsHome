@@ -1,6 +1,6 @@
 import { combineReducers } from "redux";
 
-import c from "./actionsConstants";
+import c from "./actionTypes";
 
 
 const reducerItems = (state = [], action) => {

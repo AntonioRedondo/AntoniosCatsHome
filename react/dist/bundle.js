@@ -28700,7 +28700,7 @@ function sortByName(items) {
 	});
 }
 
-var actions = {
+var actionCreators = {
 	requestItems: function requestItems() {
 		var url = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : "data/cats.json";
 
@@ -28927,7 +28927,7 @@ var CardList = function (_React$Component) {
 
 		var _this = possibleConstructorReturn$1(this, (CardList.__proto__ || Object.getPrototypeOf(CardList)).call(this));
 
-		_this.setSelectedBound = props.setSelected.bind(_this);
+		_this.setSelected = props.setSelected.bind(_this);
 		return _this;
 	}
 
@@ -28965,7 +28965,7 @@ var CardList = function (_React$Component) {
 							name: item.name,
 							description: item.description,
 							itemSelected: _this2.props.itemSelected,
-							onClick: _this2.setSelectedBound })
+							onClick: _this2.setSelected })
 					);
 				})
 			);
@@ -28992,11 +28992,11 @@ var mapStateToProps$1 = function mapStateToProps(state) {
 var mapDispatchToProps$1 = function mapDispatchToProps(dispatch) {
 	return {
 		requestItems: function requestItems() {
-			return dispatch(actions.requestItems());
+			return dispatch(actionCreators.requestItems());
 		},
 		setSelected: function setSelected(id) {
 			return function () {
-				return dispatch(actions.setSelected(id));
+				return dispatch(actionCreators.setSelected(id));
 			};
 		}
 	};
@@ -29045,7 +29045,7 @@ var mapStateToProps = function mapStateToProps(state) {
 var mapDispatchToProps = function mapDispatchToProps(dispatch) {
 	return {
 		setFilterString: function setFilterString(event) {
-			return dispatch(actions.setFilterString(event.target.value));
+			return dispatch(actionCreators.setFilterString(event.target.value));
 		}
 	};
 };

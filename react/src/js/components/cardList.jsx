@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { TransitionGroup, CSSTransition } from "react-transition-group";
 
-import actions from "../redux/actions";
+import actionCreators from "../redux/actionCreators";
 import { filterItems } from "../redux/selectors";
 import Card from "../components/card.jsx";
 import v from "../style/variables";
@@ -12,7 +12,7 @@ export class CardList extends React.Component {
 	constructor(props) {
 		super();
 		
-		this.setSelectedBound = props.setSelected.bind(this);
+		this.setSelected = props.setSelected.bind(this);
 	}
 	
 	componentDidMount() {
@@ -40,7 +40,7 @@ export class CardList extends React.Component {
 								name={ item.name }
 								description={ item.description }
 								itemSelected={ this.props.itemSelected }
-								onClick={ this.setSelectedBound } >
+								onClick={ this.setSelected } >
 							</Card>
 						</CSSTransition>
 					)
@@ -64,8 +64,8 @@ const mapStateToProps = state => ({
 	itemSelected: state.itemSelected
 });
 const mapDispatchToProps = dispatch => ({
-	requestItems: () => dispatch(actions.requestItems()),
-	setSelected: id => () => dispatch(actions.setSelected(id))
+	requestItems: () => dispatch(actionCreators.requestItems()),
+	setSelected: id => () => dispatch(actionCreators.setSelected(id))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(CardList);

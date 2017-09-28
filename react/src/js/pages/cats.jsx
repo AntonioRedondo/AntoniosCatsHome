@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 
-import actions from "../redux/actions";
+import actionCreators from "../redux/actionCreators";
 import CardFilter from "../components/cardFilter.jsx";
 import CardList from "../components/cardList.jsx";
 
@@ -34,7 +34,7 @@ const mapStateToProps = state => ({
 	filterString: state.filterString
 });
 const mapDispatchToProps = dispatch => ({
-	setFilterString: event => dispatch(actions.setFilterString(event.target.value))
+	setFilterString: event => dispatch(actionCreators.setFilterString(event.target.value))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Cats);
