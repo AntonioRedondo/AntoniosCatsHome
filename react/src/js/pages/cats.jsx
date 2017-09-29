@@ -10,13 +10,13 @@ export class Cats extends React.Component {
 	constructor(props) {
 		super();
 		
-		this.setFilterStringBound = props.setFilterString.bind(this);
+		this.setFilterString = props.setFilterString.bind(this);
 	}
 	
 	render() {
 		return (
 			<div>
-				<CardFilter onChange={ this.setFilterStringBound } value={ this.props.filterString } />
+				<CardFilter onChange={ this.setFilterString } value={ this.props.filterString } />
 				<CardList/>
 			</div>
 		);
