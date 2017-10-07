@@ -6,7 +6,7 @@
 Antonio's Cats Home is a skills' demonstration exercise where I implement the same web project with three different front-end technologies:
 - [Vanilla ES5 JavaScript](https://antonioredondo.github.io/AntoniosCatsHome/vanillaJavaScript/README.htm) ([source code](https://github.com/AntonioRedondo/AntoniosCatsHome/tree/master/vanillaJavaScript)): no dependencies, tiny size, pure functions, functional programming.
 - [AngularJS 1.5](https://antonioredondo.github.io/AntoniosCatsHome/angular1.5/README.htm) ([source code](https://github.com/AntonioRedondo/AntoniosCatsHome/tree/master/angular1.5)): services, directives, isolated scopes, [UI-Router](https://www.npmjs.com/package/angular-ui-router) and [ngAnimate](https://docs.angularjs.org/api/ngAnimate).
-- [React 15.6](https://antonioredondo.github.io/AntoniosCatsHome/react/README.htm) ([source code](https://github.com/AntonioRedondo/AntoniosCatsHome/tree/master/react)): ES6 features (modules, classes, arrows, template literals), Redux, React Router and [styled-components](https://www.styled-components.com/).
+- [React 15.6](https://antonioredondo.github.io/AntoniosCatsHome/react/README.htm) ([source code](https://github.com/AntonioRedondo/AntoniosCatsHome/tree/master/react)): ES6 features, Redux, React Router and [styled-components](https://www.styled-components.com/).
 
 Visually the implementations are identical. Under the hood there are important differences. These implementations solve common front-end problems like model/scope/state creation, routing and animations based on component entering/leaving states. All three implementations are Single-page Applications (SPAs). They have been developed following a TDD approach.
 
@@ -21,9 +21,11 @@ The starting point is the below mockup:
 
 Given I am only provided with the above mockup representing a common use case, four images of cats and a JSON file containing a list of cat names and descriptions:
 
-- A web GUI has to be implemented to show a list of cats which are available for adopting from the local cats shelter "Antonio's Cats Home":
+- A web GUI has to be implemented to show a list of cats which are available for adopting from the local cats shelter "Antonio's Cats Home".
 
-- The interface must contain an input text field that when typing on it it will filter cats' cards out. On the JSON feed the cats won't be ordered by name, but when shown on screen they will need to be sorted alphabetically.
+- The interface must contain an input text field that when typing on it it will filter cats' cards out.
+
+- On the JSON feed the cats won't be ordered by name, but when shown on screen they will need to be sorted alphabetically.
 
 - A card at a time can be selected. There must be some visual hint to distinguish the selected card.
 
