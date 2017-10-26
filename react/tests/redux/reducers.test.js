@@ -5,7 +5,7 @@ import catList from "../../src/data/cats.json";
 describe("Given reducer functions", () => {
 	describe("When the RECEIVE_ITEMS action is received", () => {
 		it("It should modify state accordingly", () => {
-			let state = combinedReducers(
+			const state = combinedReducers(
 				{
 					items: [],
 					itemSelected: "",
@@ -25,7 +25,7 @@ describe("Given reducer functions", () => {
 	
 	describe("When the SET_CARD_SELECTED action is received", () => {
 		it("It should modify state accordingly", () => {
-			let state = combinedReducers(
+			const state = combinedReducers(
 				{
 					itemSelected: "",
 					filterString: ""
@@ -41,17 +41,17 @@ describe("Given reducer functions", () => {
 	
 	describe("When the SET_FILTER_STRING action is received", () => {
 		it("It should modify state accordingly", () => {
-			let state = combinedReducers(
+			const state = combinedReducers(
 				{
 					items: catList	,
 					itemSelected: "",
 					filterString: ""
 				}, {
 					type: "SET_FILTER_STRING",
-					filterString: "lit"
+					filterString: "fuffly"
 				});
 				
-			expect(state.filterString).toEqual("lit");
+			expect(state.filterString).toEqual("fuffly");
 		});
 	});
 });
