@@ -1,17 +1,7 @@
 import "whatwg-fetch"; // https://github.com/github/fetch/issues/275#issuecomment-181784694
 
+import { sortByName } from "../helpers";
 import c from "./actionTypes";
-
-
-function sortByName(items) {
-	return items.sort((a, b) => {
-		if (a.name < b.name)
-			return -1;
-		if (a.name > b.name)
-			return 1;
-		else return 0;
-	});
-}
 
 
 export default {

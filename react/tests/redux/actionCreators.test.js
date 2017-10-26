@@ -5,8 +5,8 @@ import XML from "xmlhttprequest";
 
 import actionCreators from "../../src/js/redux/actionCreators.js";
 import c from "../../src/js/redux/actionTypes.js";
-import mockCatList from "../../src/data/cats.json";
-import mockCatListSorted from "../../tests/catsSortedByName.json";
+import catList from "../../src/data/cats.json";
+import catListSorted from "../../tests/catsSortedByName.json";
 
 
 describe("Given Redux actionCreators", () => {
@@ -16,7 +16,7 @@ describe("Given Redux actionCreators", () => {
 	describe("When the requestItems action creator is executed", () => {
 		beforeAll(() => {
 			XMLHttpRequest = XML.XMLHttpRequest; // eslint-disable-line no-global-assign
-			nock(/localhost:3000/).get("/data/cats.json").reply(200, mockCatList);
+			nock(/localhost:3000/).get("/data/cats.json").reply(200, catList);
 		});
 		
 		beforeEach(() => {
@@ -25,7 +25,7 @@ describe("Given Redux actionCreators", () => {
 		
 		it("Should dispatch the RECEIVE_ITEMS action with expected type and data load", () => {
 			return store.dispatch(actionCreators.requestItems("http://localhost:3000/data/cats.json")).then(() => {
-				expect(store.getActions()[0]).toEqual({ type: c.RECEIVE_ITEMS, items: mockCatListSorted });
+				expect(store.getActions()[0]).toEqual({ type: c.RECEIVE_ITEMS, items: catListSorted });
 			});
 		});
 		
