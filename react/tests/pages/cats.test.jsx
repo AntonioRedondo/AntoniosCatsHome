@@ -12,8 +12,7 @@ describe("Given the CardList component", () => {
 
 	beforeEach(() => {
 		shallowRenderer.render(
-			<Cats
-				setFilterString={ mockRequiredPropFunction } />
+			<Cats setFilterString={ mockRequiredPropFunction } />
 		);
 		tree = shallowRenderer.getRenderOutput();
 	});
