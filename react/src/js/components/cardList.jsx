@@ -17,7 +17,7 @@ export class CardList extends React.Component {
 	
 	componentDidMount() {
 		if (this.props.items.length === 0)
-			this.props.requestItems();
+			this.props.requestCatList();
 	}
 	
 	shouldComponentUpdate({ items, itemSelected }) {
@@ -55,7 +55,7 @@ CardList.displayName = "CardList";
 CardList.propTypes = {
 	itemSelected: PropTypes.string,
 	items: PropTypes.array.isRequired,
-	requestItems: PropTypes.func,
+	requestCatList: PropTypes.func,
 	setSelected: PropTypes.func,
 };
 
@@ -64,7 +64,7 @@ const mapStateToProps = state => ({
 	itemSelected: state.itemSelected
 });
 const mapDispatchToProps = dispatch => ({
-	requestItems: () => dispatch(actionCreators.requestItems()),
+	requestCatList: () => dispatch(actionCreators.requestCatList()),
 	setSelected: id => () => dispatch(actionCreators.setSelected(id))
 });
 

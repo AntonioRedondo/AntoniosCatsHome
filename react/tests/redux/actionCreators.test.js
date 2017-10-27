@@ -13,7 +13,7 @@ describe("Given Redux actionCreators", () => {
 	const mockStore = configureMockStore([ thunk ]);
 	const store = mockStore({ transactions: [] });
 	
-	describe("When the requestItems action creator is executed", () => {
+	describe("When the requestCatList action creator is executed", () => {
 		beforeAll(() => {
 			XMLHttpRequest = XML.XMLHttpRequest; // eslint-disable-line no-global-assign
 			nock(/localhost:3000/).get("/data/cats.json").reply(200, catList);
@@ -24,14 +24,14 @@ describe("Given Redux actionCreators", () => {
 		});
 		
 		it("Should dispatch the RECEIVE_ITEMS action with expected type and data load", () => {
-			return store.dispatch(actionCreators.requestItems("http://localhost:3000/data/cats.json")).then(() => {
+			return store.dispatch(actionCreators.requestCatList("http://localhost:3000/data/cats.json")).then(() => {
 				expect(store.getActions()[0]).toEqual({ type: c.RECEIVE_ITEMS, items: catListSorted });
 			});
 		});
 		
 		describe("When there is some connection error", () => {
 			it("Should dispatch the RECEIVE_ITEMS_ERROR action with expected type and data load", () => {
-				return store.dispatch(actionCreators.requestItems("http://localhost:3000/datddda/cats.json")).then(() => {
+				return store.dispatch(actionCreators.requestCatList("http://wrongurl.bad")).then(() => {
 					expect(store.getActions()[0].type).toEqual(c.RECEIVE_ITEMS_ERROR);
 				});
 			});

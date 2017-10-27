@@ -6,9 +6,9 @@ import { Cats } from "../../src/js/pages/cats.jsx";
 
 
 describe("Given the CardList component", () => {
-	const shallowRenderer = new ReactShallowRenderer ();
+	const shallowRenderer = new ReactShallowRenderer();
+	const mockRequiredPropFunction = () => {};
 	let tree;
-	let mockRequiredPropFunction = () => {};
 
 	beforeEach(() => {
 		shallowRenderer.render(

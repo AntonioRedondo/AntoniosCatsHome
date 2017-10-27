@@ -1,11 +1,11 @@
-import "whatwg-fetch"; // https://github.com/github/fetch/issues/275#issuecomment-181784694
+import "isomorphic-fetch"; // https://github.com/github/fetch/issues/275#issuecomment-181784694
 
 import { sortByName } from "../helpers";
 import c from "./actionTypes";
 
 
 export default {
-	requestItems(url = "data/cats.json") {
+	requestCatList(url = "data/cats.json") {
 		return dispatch => {
 			return fetch(url)
 				// If only one .then() 'Promise { <pending> }' is returned
