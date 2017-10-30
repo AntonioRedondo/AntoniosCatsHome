@@ -15,7 +15,6 @@ const rollupBabel = require("rollup-plugin-babel");
 const rollupNodeResolve = require("rollup-plugin-node-resolve");
 const rollupCommonjs = require("rollup-plugin-commonjs");
 const rollupReplace = require("rollup-plugin-replace");
-const rollupJson = require("rollup-plugin-json");
 const concat = require("gulp-concat");
 const replace = require("gulp-replace");
 const inline = require("gulp-inline");
@@ -43,7 +42,7 @@ gulp.task("watch", ["lint", "build"], () => {
 });
 gulp.task("lint", ["esLint", "styleLint"]);
 gulp.task("build", ["buildJs", "buildHtml", "buildCss", "copyAssets"]);
-gulp.task("default", ["watch"]);
+gulp.task("default", ["build"]);
 
 gulp.task("clean", () => del(DEST));
 
@@ -89,8 +88,7 @@ gulp.task("buildJs", () => {
 				namedExports: {
 					"node_modules/react/react.js": [ "cloneElement", "createElement", "Children", "Component" ]
 				}
-			}),
-			rollupJson()
+			})
 		]
 	}).then(bundle => {
 		return bundle.write({

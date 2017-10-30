@@ -1,5 +1,5 @@
 import React from "react";
-import ReactShallowRenderer  from "react-test-renderer/shallow";
+import ReactShallowRenderer from "react-test-renderer/shallow";
 
 import mockCatList from "../../src/data/cats.json";
 import { CardList } from "../../src/js/components/cardList.jsx";
@@ -8,7 +8,7 @@ import { CardList } from "../../src/js/components/cardList.jsx";
 describe("Given the CardList component", () => {
 	const shallowRenderer = new ReactShallowRenderer ();
 	let tree;
-	let mockRequiredPropFunction = () => {};
+	const mockRequiredPropFunction = () => {};
 
 	beforeEach(() => {
 		shallowRenderer.render(

@@ -138,46 +138,38 @@
 				Command tools
 			</h2>
 			<p class="p">
-				With Gulp all the separated <code>js</code> and <code>css</code> files are concatenated from the <code>src</code> folder and copied in a single file to <code>dist</code> from where they can be opened as final distributable files. For a better review the code included in the <code>dist</code> folder is not minimised, though the Gulp task <code>gulp min</code> is configured and working.
+				There are several npm scripts configured dealing with project tasks. The project makes uses of Gulp but it's not necessary to have it installed globally since Gulp tasks are mapped to npm scripts which call Gulp from the <code>node_modules</code> folder:
 			</p>
 			<p class="p">
 				Available npm scripts:
 			</p>
 			<ul>
 				<li>
-					<code>npm i</code> (alias for <code>npm install</code>): installs all dependencies so that the project can be developed, tested and deployed. The <code>karma start</code> command is attached to the <code>postinstall</code> script thus tests are executed once installation has finished. You must execute <code>npm i</code> before executing any other npm command or Gulp task.
+					<code>npm i</code> (alias for <code>npm install</code>): installs all dependencies so that the project can be developed, tested and deployed. You must execute <code>npm i</code> before executing any other npm command or Gulp task.
+				</li>
+				<li>
+					<code>npm run clean</code>: removes the <code>dist</code> folder with all its content.
+				</li>
+				<li>
+					<code>npm run lint</code>: lints JavaScript and CSS code.
+				</li>
+				<li>
+					<code>npm run build</code>: generates the usable web in the <code>dist</code> folder.
+				</li>
+				<li>
+					<code>npm run build:watch</code>: executes the <code>default</code> task every time a file from the <code>src</code> folder is modified.
+				</li>
+				<li>
+					<code>npm run build:prod</code>: generates the usable web in the <code>dist</code> folder by minimising the JavaScript, HTML and CSS code, removing dev code and inlining JavaScript, CSS and SVGs files. This script execute the <coded>npm run build</coded> script first.
+				</li>
+				<li>
+					<code>npm t</code> (alias for <code>npm test</code>): executes <code>.test.jsx</code> tests.
+				</li>
+				<li>
+					<code>npm run test:watch</code>: runs tests in watch mode.
 				</li>
 				<li>
 					<code>npm start</code>: initiates a Node.js server configured on <code>server.js</code> and automatically opens the default system browser with the project page.
-				</li>
-				<li>
-					<code>npm test</code>: executes <code>.spec.js</code> tests with Karma. PhantomJS and Karma will finalise once all the tests are executed. For a command which keeps Karma executing see <code>npm run-script testautowatch</code>.
-				</li>
-				<li>
-					<code>npm run testautowatch</code>: starts Karma on <a href="http://karma-runner.github.io/0.13/config/configuration-file.html" target="_blank"><code>autoWatch</code></a> mode, executing the tests whenever one JavaScript files changes. PhantomJS and Karma won't close once all the tests are executed. Ideal for TDD.
-				</li>
-			</ul>
-			<p class="p">
-				Available Gulp tasks:
-			</p>
-			<ul>
-				<li>
-					<code>gulp</code>: executes the Gulp default task. The bleow <code>gulp lint</code> and <code>gulp build</code> tasks are executed.
-				</li>
-				<li>
-					<code>gulp lint</code>: lints JavaScript, HTML and CSS code.
-				</li>
-				<li>
-					<code>gulp build</code>: generates the usable web in the <code>dist</code> folder.
-				</li>
-				<li>
-					<code>gulp min</code>: generates the usable web in the <code>dist</code> folder by minimising the JavaScript, HTML and CSS code.
-				</li>
-				<li>
-					<code>gulp watch</code>: executes the <code>default</code> task every time a file from the <code>src</code> folder is modified.
-				</li>
-				<li>
-					<code>gulp clean</code>: removes the <code>dist</code> folder with all its content.
 				</li>
 			</ul>
 			<h2>

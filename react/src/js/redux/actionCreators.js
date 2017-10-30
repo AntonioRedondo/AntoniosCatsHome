@@ -1,4 +1,4 @@
-import "isomorphic-fetch"; // https://github.com/github/fetch/issues/275#issuecomment-181784694
+import "whatwg-fetch"; // https://github.com/github/fetch/issues/275#issuecomment-181784694
 
 import { sortByName } from "../helpers";
 import c from "./actionTypes";

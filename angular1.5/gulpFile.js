@@ -13,7 +13,7 @@ const concat = require("gulp-concat");
 const replace = require("gulp-replace");
 const less = require("gulp-less");
 
-// Minify
+// Production
 const uglify = require("gulp-uglify");
 const htmlMin = require("gulp-htmlmin");
 const cleanCss = require("gulp-clean-css");
@@ -27,10 +27,10 @@ const dest = "dist";
 
 
 
-gulp.task("default", ["watch"]);
+gulp.task("default", ["build"]);
 gulp.task("lint", ["jsHint", "htmlLint", "lessHint"]);
 gulp.task("build", ["copyJS", "copyHtml", "less", "copyAssets"]);
-gulp.task("min", ["uglify", "htmlMin", "lessMin", "copyAssets"]);
+gulp.task("prod", ["uglify", "htmlMin", "lessMin", "copyAssets"]);
 
 
 
@@ -158,7 +158,7 @@ gulp.task("copyAssets", () => {
 
 
 
-// Minify
+// Production
 
 gulp.task("uglify", () => {
 	return gulp.src(jsSrc)

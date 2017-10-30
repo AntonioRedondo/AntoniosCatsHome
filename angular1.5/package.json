@@ -8,8 +8,14 @@
 	"license": "CC-BY-NC-ND-4.0",
 	"main": "",
 	"scripts": {
+		"clean": "gulp clean",
+		"lint": "gulp lint",
+		"build": "gulp",
+		"build:watch": "gulp watch",
+		"build:prod": "gulp prod",
 		"test": "karma start",
-		"testautowatch": "karma start --singleRun false"
+		"test:watch": "karma start --singleRun false",
+		"precommit": "gulp lint"
 	},
 	"dependencies": {
 		"angular": "~1.5.6",
