@@ -13,6 +13,8 @@
 		"build:watch": "gulp watch",
 		"build:min": "gulp min",
 		"build:minSeparated": "gulp minSeparated",
+		"build:server": "gulp buildJsServer",
+		"serve": "node dist/bundleServer.js",
 		"test": "jest --coverage",
 		"test:watch": "jest --watch",
 		"test:update": "jest --updateSnapshot",
@@ -78,6 +80,7 @@
 		
 		"connect": "3.6",
 		"serve-static": "1.12",
+		"express": "4.16",
 		"open": "0.0"
 	},
 	"babel": {

@@ -22,7 +22,7 @@ const postCss = require("gulp-postcss");
 const preCss = require("precss");
 const autoprefixer = require("autoprefixer");
 
-// Minify and inline
+// Production
 const uglify = require("gulp-uglify");
 const htmlMin = require("gulp-htmlmin");
 const cleanCss = require("gulp-clean-css");
@@ -128,7 +128,7 @@ gulp.task("copyAssets", () => {
 
 
 
-// ---------- MINIFY ---------- //
+// ---------- PRODUCTION ---------- //
 
 gulp.task("setProdEnv", () => {
 	process.env.NODE_ENV = "production";
@@ -171,4 +171,34 @@ gulp.task("cssMin", () => {
 	return gulp.src(`${DEST}/style.css`)
 		.pipe(cleanCss())
 		.pipe(gulp.dest(`${DEST}`));
+});
+
+gulp.task("buildJsServer", () => {
+	return rollup.rollup({
+		entry: "serverProduction.jsx",
+		plugins: [
+			rollupReplace({
+				"process.env.NODE_ENV": JSON.stringify("production")
+			}),
+			rollupBabel({
+				babelrc: false,
+				exclude: "node_modules/**",
+				presets: [ [ "es2015", { modules: false } ], "react" ],
+				plugins: [ "external-helpers" ]
+			}),
+			rollupNodeResolve({ jsnext: true }),
+			rollupCommonjs({
+				include: "node_modules/**",
+				namedExports: {
+					"node_modules/react/react.js": [ "cloneElement", "createElement", "Children", "Component" ]
+				}
+			})
+		]
+	}).then(bundle => {
+		return bundle.write({
+			format: "iife",
+			dest: `${DEST}/bundleServer.js`,
+			sourceMap: true
+		});
+	});
 });

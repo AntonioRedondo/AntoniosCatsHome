@@ -1,14 +1,14 @@
-import React from "react";
+import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { TransitionGroup, CSSTransition } from "react-transition-group";
 
 import actionCreators from "../redux/actionCreators";
 import { filterItems } from "../redux/selectors";
-import Card from "../components/card.jsx";
+import Card from "./card.jsx";
 import v from "../style/variables";
 
-export class CardList extends React.Component {
+export class CardList extends Component {
 	constructor(props) {
 		super();
 		

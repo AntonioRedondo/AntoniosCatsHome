@@ -27,7 +27,7 @@ const Filter = styled.input`
 	
 	&:focus {
 		border-color: ${ v.green1 };
-		box-shadow: 0 0 20px rgba(255, 255, 255, 0.2), 0 0 10px rgba(0, 0, 0, 0.2) inset;
+		box-shadow: 0 0 20px rgba(255, 255, 255, 0.2), 0 0 10px  ${ v.shadow2 } inset;
 	}
 	
 	@media (max-width: ${ v.mobileBreakpoint }) {

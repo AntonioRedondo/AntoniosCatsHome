@@ -8,6 +8,9 @@ export default {
 	gray6: "#666666",
 	green1: "#336600",
 	
+	shadow1: "rgba(0, 0, 0, 0.5)",
+	shadow2: "rgba(0, 0, 0, 0.2)",
+	
 	width: "1100px",
 	mobileBreakpoint: "800px",
 	

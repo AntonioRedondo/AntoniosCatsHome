@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { TransitionGroup, CSSTransition } from "react-transition-group";
 import { NavLink } from "react-router-dom";
@@ -67,39 +67,39 @@ const TransitionGroupStyled = styled(TransitionGroup)`
 	position: relative;
 `;
 
-/* eslint-disable react/prop-types, react/display-name */
-function getPage(pathname) {
-	let component;
-	
-	switch (pathname) {
-		case "/": component = <Cats/>; break;
-		case "/how-to-adopt": component = <HowToAdopt/>;
+export class TabNavigator extends Component {
+	_getPage(pathname) {
+		let component;
+		
+		switch (pathname) {
+			case "/": component = <Cats/>; break;
+			case "/how-to-adopt": component = <HowToAdopt/>;
+		}
+		
+		return <CSSTransition key={ pathname } timeout={ v.time2 } classNames="navigation-loader">{ component }</CSSTransition>;
 	}
 	
-	return <CSSTransition key={ pathname } timeout={ v.time2 } classNames="navigation-loader">{ component }</CSSTransition>;
-}
-/* eslint-disable react/prop-types, react/display-name */
-
-function TabNavigator({ location }) {
-	return (
-		<div>
-			<Navigation>
-				<ul>
-					<li>
-						<NavLinkStyled to="/" exact activeClassName="tab-navigator--active">
-							Cats
-						</NavLinkStyled>
-					</li>
-					<li>
-						<NavLinkStyled to="/how-to-adopt" activeClassName="tab-navigator--active" className="tab-navigator">
-							How to adopt
-						</NavLinkStyled>
-					</li>
-				</ul>
-			</Navigation>
-			<TransitionGroupStyled>{ getPage(location.pathname) }</TransitionGroupStyled>
-		</div>
-	);
+	render() {
+		return (
+			<div>
+				<Navigation>
+					<ul>
+						<li>
+							<NavLinkStyled to="/" exact activeClassName="tab-navigator--active">
+								Cats
+							</NavLinkStyled>
+						</li>
+						<li>
+							<NavLinkStyled to="/how-to-adopt" activeClassName="tab-navigator--active" className="tab-navigator">
+								How to adopt
+							</NavLinkStyled>
+						</li>
+					</ul>
+				</Navigation>
+				<TransitionGroupStyled>{ this._getPage(this.props.location.pathname) }</TransitionGroupStyled>
+			</div>
+		);
+	}
 }
 
 TabNavigator.displayName = "TabNavigator";

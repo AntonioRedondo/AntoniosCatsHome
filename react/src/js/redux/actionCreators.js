@@ -8,7 +8,6 @@ export default {
 	requestCatList(url = "data/cats.json") {
 		return dispatch => {
 			return fetch(url)
-				// If only one .then() 'Promise { <pending> }' is returned
 				.then(response => response.json())
 				.then(
 					items => dispatch({ type: c.RECEIVE_ITEMS, items: sortByName(items) }),

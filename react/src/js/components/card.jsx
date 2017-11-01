@@ -15,7 +15,7 @@ const CardContainer = styled.article`
 	align-items: center;
 	
 	background: ${ props => props.itemSelected ? "papayawhip" : v.grayE };
-	box-shadow: 0 -5px 0 ${ v.purple2 }, 0 0 10px rgba(0, 0, 0, 0.5);
+	box-shadow: 0 -5px 0 ${ v.purple2 }, 0 0 10px ${ v.shadow1 };
 	
 	color: ${ v.gray3 };
 	
@@ -25,12 +25,12 @@ const CardContainer = styled.article`
 		height: 150px;
 		margin: 0;
 			
-		box-shadow: 0 5px 0 ${ v.purple2 } inset, 10px 10px 30px rgba(0, 0, 0, 0.2);
+		box-shadow: 0 5px 0 ${ v.purple2 } inset, 10px 10px 30px ${ v.shadow2 };
 	}
 	
 	&:hover {
 		background: ${ props => props.itemSelected ? "papayawhip" : "white" };
-		box-shadow: 0 -5px 0 orange, 10px 10px 30px rgba(0, 0, 0, 0.2);
+		box-shadow: 0 -5px 0 orange, 10px 10px 30px ${ v.shadow2 };
 		cursor: pointer;
 		transform: scale(1.025);
 	}
@@ -41,9 +41,12 @@ const CardContainer = styled.article`
 	}
 `;
 
-const PhotoContainer = styled.div`
+const Photo = styled.div`
 	width: 250px;
 	height: 250px;
+	
+	background-image: url('img/${ props => props.id }.jpg');
+	background-size: cover;
 	
 	position: relative;
 	
@@ -52,19 +55,6 @@ const PhotoContainer = styled.div`
 		min-width: 150px;
 		height: 150px;
 	}
-`;
-	
-const Img = styled.div`
-	width: 100%;
-	height: 100%;
-	display: block;
-	
-	position: absolute;
-	top: 0;
-	left: 0;
-	
-	background-image: url('img/${ props => props.id }.jpg');
-	background-size: cover;
 `;
 	
 const Body = styled.div`
@@ -100,9 +90,7 @@ const BodyText = styled.div`
 function Card(props) {
 	return (
 		<CardContainer onClick={ props.onClick(props.id) } itemSelected={ props.itemSelected === props.id }>
-			<PhotoContainer>
-				<Img alt="Cat Image" id={ props.id }></Img>
-			</PhotoContainer>
+			<Photo id={ props.id }></Photo>
 			<Body>
 				<BodyTitle>{ props.name }</BodyTitle>
 				<BodyText>{ props.description }</BodyText>
