@@ -7,3 +7,7 @@ export function sortByName(itemsArray) {
 		return 0;
 	});
 }
+
+export function isNode() {
+	return typeof module !== "undefined" && module.exports && !window;
+}

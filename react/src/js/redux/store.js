@@ -1,14 +1,21 @@
 import { createStore, applyMiddleware, compose } from "redux";
 import thunk from "redux-thunk";
 
+import { isNode } from "../helpers";
 import reducers from "./reducers.js";
+
+function useLocalStorage() {
+	if (!isNode()) {
+		return localStorage.getItem("reduxState") ? JSON.parse(localStorage.getItem("reduxState")) : {};
+	} else return undefined;
+}
 
 
 let store;
 
 store = createStore(
 	reducers,
-	localStorage.getItem("reduxState") ? JSON.parse(localStorage.getItem("reduxState")) : {},
+	useLocalStorage(),
 	applyMiddleware(thunk)
 );
 
@@ -21,13 +28,15 @@ const logger = store => next => action => { // eslint-disable-line no-unused-var
 
 store = createStore(
 	reducers,
-	localStorage.getItem("reduxState") ? JSON.parse(localStorage.getItem("reduxState")) : {},
+	useLocalStorage(),
 	compose(applyMiddleware(logger, thunk), window.devToolsExtension ? window.devToolsExtension() : f => f )
 );
 /* buildDev:end */
 
-store.subscribe(() => {
-	localStorage.setItem("reduxState", JSON.stringify(store.getState()));
-});
+if (!isNode()) {
+	store.subscribe(() => {
+		localStorage.setItem("reduxState", JSON.stringify(store.getState()));
+	});
+}
 
 export default store;
