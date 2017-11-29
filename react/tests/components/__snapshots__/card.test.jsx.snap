@@ -10,16 +10,16 @@ exports[`Given the Card component When the component is mounted Should render ch
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: space-between;
+  -webkit-box-pack: justify;
   -webkit-justify-content: space-between;
-  -ms-flex-pack: space-between;
+  -ms-flex-pack: justify;
   justify-content: space-between;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
   background: #eeeeee;
-  box-shadow: 0 -5px 0 #b74b66, 0 0 10px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 -5px 0 #b74b66,0 0 10px rgba(0,0,0,0.5);
   color: #333333;
   -webkit-transition: all 100ms ease-out;
   transition: all 100ms ease-out;
@@ -27,7 +27,7 @@ exports[`Given the Card component When the component is mounted Should render ch
 
 .c0:hover {
   background: white;
-  box-shadow: 0 -5px 0 orange, 10px 10px 30px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 -5px 0 orange,10px 10px 30px rgba(0,0,0,0.2);
   cursor: pointer;
   -webkit-transform: scale(1.025);
   -ms-transform: scale(1.025);
@@ -60,7 +60,7 @@ exports[`Given the Card component When the component is mounted Should render ch
 
 .c3 {
   margin: 0;
-  font-family: "Rokkitt", serif;
+  font-family: "Rokkitt",serif;
   font-size: 2.5em;
 }
 
@@ -69,15 +69,15 @@ exports[`Given the Card component When the component is mounted Should render ch
   color: #666666;
 }
 
-@media (max-width: 800px) {
+@media (max-width:800px) {
   .c0 {
     height: 150px;
     margin: 0;
-    box-shadow: 0 5px 0 #b74b66 inset, 10px 10px 30px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 5px 0 #b74b66 inset,10px 10px 30px rgba(0,0,0,0.2);
   }
 }
 
-@media (max-width: 800px) {
+@media (max-width:800px) {
   .c1 {
     width: 150px;
     min-width: 150px;
@@ -85,13 +85,13 @@ exports[`Given the Card component When the component is mounted Should render ch
   }
 }
 
-@media (max-width: 800px) {
+@media (max-width:800px) {
   .c2 {
     padding-right: 0;
   }
 }
 
-@media (max-width: 800px) {
+@media (max-width:800px) {
   .c4 {
     display: none;
   }

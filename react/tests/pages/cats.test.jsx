@@ -1,12 +1,12 @@
 import React from "react";
-import ReactShallowRenderer  from "react-test-renderer/shallow";
+import Renderer  from "react-test-renderer/shallow";
 import "jest-styled-components";
 
 import { Cats } from "../../src/js/pages/cats.jsx";
 
 
 describe("Given the CardList component", () => {
-	const shallowRenderer = new ReactShallowRenderer();
+	const shallowRenderer = new Renderer();
 	const mockRequiredPropFunction = () => {};
 	let tree;
 

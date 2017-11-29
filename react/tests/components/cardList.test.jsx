@@ -1,12 +1,12 @@
 import React from "react";
-import ReactShallowRenderer from "react-test-renderer/shallow";
+import Renderer from "react-test-renderer/shallow";
 
 import mockCatList from "../../src/data/cats.json";
 import { CardList } from "../../src/js/components/cardList.jsx";
 
 
 describe("Given the CardList component", () => {
-	const shallowRenderer = new ReactShallowRenderer ();
+	const shallowRenderer = new Renderer();
 	let tree;
 	const mockRequiredPropFunction = () => {};
 
@@ -14,6 +14,7 @@ describe("Given the CardList component", () => {
 		shallowRenderer.render(
 			<CardList
 				items={ mockCatList }
+				requestCatList={ mockRequiredPropFunction }
 				setSelected={ mockRequiredPropFunction } />
 		);
 		tree = shallowRenderer.getRenderOutput();

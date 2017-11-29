@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 
@@ -6,28 +6,20 @@ import actionCreators from "../redux/actionCreators";
 import CardFilter from "../components/cardFilter.jsx";
 import CardList from "../components/cardList.jsx";
 
-export class Cats extends Component {
-	constructor(props) {
-		super();
-		
-		this.setFilterString = props.setFilterString.bind(this);
-	}
-	
-	render() {
-		return (
-			<div>
-				<CardFilter onChange={ this.setFilterString } value={ this.props.filterString } />
-				<CardList/>
-			</div>
-		);
-	}
+export function Cats(props) {
+	return (
+		<div>
+			<CardFilter onChange={ props.setFilterString } value={ props.filterString } />
+			<CardList/>
+		</div>
+	);
 }
 
 Cats.displayName = "Cats";
 
 Cats.propTypes = {
 	filterString: PropTypes.string,
-	setFilterString: PropTypes.func,
+	setFilterString: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = state => ({

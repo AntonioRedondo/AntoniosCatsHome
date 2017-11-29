@@ -25,28 +25,26 @@ export class CardList extends Component {
 				|| itemSelected !== this.props.itemSelected;
 	}
 	
-	render() {
-		return (
-			<TransitionGroup>
-				{
-					this.props.items.map(item =>
-						<CSSTransition
-							key={ item.id }
-							classNames="card-list"
-							timeout={ v.time2 } >
-							<Card
-								key={ item.id }
-								id={ item.id }
-								name={ item.name }
-								description={ item.description }
-								itemSelected={ this.props.itemSelected }
-								onClick={ this.setSelected } >
-							</Card>
-						</CSSTransition>
-					)
-				}
-			</TransitionGroup>
+	_renderCards() {
+		return this.props.items.map(item =>
+			<CSSTransition
+				key={ item.id }
+				classNames="card-list"
+				timeout={ v.time2 } >
+				<Card
+					key={ item.id }
+					id={ item.id }
+					name={ item.name }
+					description={ item.description }
+					itemSelected={ this.props.itemSelected }
+					onClick={ this.props.setSelected } >
+				</Card>
+			</CSSTransition>
 		);
+	}
+	
+	render() {
+		return <TransitionGroup>{ this._renderCards() }</TransitionGroup>;
 	}
 }
 

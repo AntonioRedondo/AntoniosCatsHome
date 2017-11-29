@@ -71,30 +71,31 @@ gulp.task("styleLint", () => {
 
 gulp.task("buildJs", () => {
 	return rollup.rollup({
-		entry: `${SRC}/js/index.jsx`,
+		input: `${SRC}/js/index.jsx`,
 		plugins: [
 			rollupReplace({
-				"process.env.NODE_ENV": JSON.stringify("production")
+				"process.env.NODE_ENV": JSON.stringify("development")
+				// "process.env.NODE_ENV": JSON.stringify(process.env.NODE_ENV)
 			}),
 			rollupBabel({
 				babelrc: false,
 				exclude: "node_modules/**",
 				presets: [ [ "es2015", { modules: false } ], "react" ],
-				plugins: [ "external-helpers" ]
+				plugins: [ "external-helpers", "transform-class-properties" ]
 			}),
 			rollupNodeResolve({ jsnext: true }),
 			rollupCommonjs({
 				include: "node_modules/**",
 				namedExports: {
-					"node_modules/react/react.js": [ "cloneElement", "createElement", "Children", "Component" ]
+					"node_modules/react/index.js": [ "cloneElement", "createElement", "Children", "Component" ]
 				}
 			})
 		]
 	}).then(bundle => {
 		return bundle.write({
 			format: "iife",
-			dest: `${DEST}/bundle.js`,
-			sourceMap: true
+			file: `${DEST}/bundle.js`,
+			sourcemap: true
 		});
 	});
 });
@@ -175,10 +176,10 @@ gulp.task("cssMin", () => {
 
 gulp.task("buildJsServer", () => {
 	return rollup.rollup({
-		entry: "serverProduction.jsx",
+		input: "serverProduction.jsx",
 		plugins: [
 			rollupReplace({
-				"process.env.NODE_ENV": JSON.stringify("production")
+				"process.env.NODE_ENV": JSON.stringify("developer")
 			}),
 			rollupBabel({
 				babelrc: false,
@@ -197,8 +198,8 @@ gulp.task("buildJsServer", () => {
 	}).then(bundle => {
 		return bundle.write({
 			format: "iife",
-			dest: `${DEST}/bundleServer.js`,
-			sourceMap: true
+			file: `${DEST}/bundleServer.js`,
+			sourcemap: true
 		});
 	});
 });

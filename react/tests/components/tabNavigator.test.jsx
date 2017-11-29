@@ -1,12 +1,12 @@
 import React from "react";
-import ReactShallowRenderer  from "react-test-renderer/shallow";
+import Renderer  from "react-test-renderer/shallow";
 import "jest-styled-components";
 
 import TabNavigator from "../../src/js/components/tabNavigator.jsx";
 
 
 describe("Given the TabNavigator component", () => {
-	const shallowRenderer = new ReactShallowRenderer ();
+	const shallowRenderer = new Renderer();
 	let tree;
 	const mockProps = {
 		location: { pathname: "/how-to-adopt" }

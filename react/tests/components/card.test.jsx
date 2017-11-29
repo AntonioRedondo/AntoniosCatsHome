@@ -1,5 +1,5 @@
 import React from "react";
-import renderer from "react-test-renderer";
+import Renderer from "react-test-renderer";
 import "jest-styled-components";
 
 import Card from "../../src/js/components/card.jsx";
@@ -10,17 +10,17 @@ describe("Given the Card component", () => {
 	let component;
 	let tree;
 	
-	beforeEach(() => {
-		component = renderer.create(
-			<Card
-				id="2"
-				name="Fluffy"
-				onClick={ function() {} } />
-		);
-		tree = component.toJSON();
-	});
-	
 	describe("When the component is mounted", () => {
+		beforeEach(() => {
+			component = Renderer.create(
+				<Card
+					id="2"
+					name="Fluffy"
+					onClick={ function() {} } />
+			);
+			tree = component.toJSON();
+		});
+		
 		it("Should render children", () => {
 			expect(tree).toMatchSnapshot();
 		});
@@ -30,7 +30,7 @@ describe("Given the Card component", () => {
 		it("Should select the card", () => {
 			expect(tree).toHaveStyleRule("background", v.grayE);
 			
-			component = renderer.create(
+			component = Renderer.create(
 				<Card
 					id="2"
 					name="Fluffy"

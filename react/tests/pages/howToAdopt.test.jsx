@@ -1,12 +1,12 @@
 import React from "react";
-import ReactShallowRenderer  from "react-test-renderer/shallow";
+import Renderer  from "react-test-renderer/shallow";
 import "jest-styled-components";
 
 import HowToAdopt from "../../src/js/pages/howToAdopt.jsx";
 
 
 describe("Given the HowToAdopt component", () => {
-	const shallowRenderer = new ReactShallowRenderer ();
+	const shallowRenderer = new Renderer();
 	let tree;
 
 	beforeEach(() => {
