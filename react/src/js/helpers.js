@@ -9,5 +9,5 @@ export function sortByName(itemsArray) {
 }
 
 export function isNode() {
-	return typeof module !== "undefined" && module.exports && !window;
+	return typeof module !== "undefined" && module.exports && typeof window === "undefined";
 }

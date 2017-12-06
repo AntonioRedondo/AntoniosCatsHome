@@ -20,20 +20,20 @@ store = createStore(
 );
 
 
-/* buildDev:start */
-const logger = store => next => action => { // eslint-disable-line no-unused-vars
-	console.log("dispatching:", action); // eslint-disable-line no-console
-	return next(action);
-};
-
-store = createStore(
-	reducers,
-	useLocalStorage(),
-	compose(applyMiddleware(logger, thunk), window.devToolsExtension ? window.devToolsExtension() : f => f )
-);
-/* buildDev:end */
-
 if (!isNode()) {
+	/* buildDev:start */
+	const logger = store => next => action => { // eslint-disable-line no-unused-vars
+		console.log("dispatching:", action); // eslint-disable-line no-console
+		return next(action);
+	};
+
+	store = createStore(
+		reducers,
+		useLocalStorage(),
+		compose(applyMiddleware(logger, thunk), window.devToolsExtension ? window.devToolsExtension() : f => f )
+	);
+	/* buildDev:end */
+	
 	store.subscribe(() => {
 		localStorage.setItem("reduxState", JSON.stringify(store.getState()));
 	});

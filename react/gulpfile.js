@@ -11,10 +11,13 @@ const cssLint = require("gulp-stylelint");
 
 // Build
 const rollup = require("rollup");
+const rollupReplace = require("rollup-plugin-replace");
 const rollupBabel = require("rollup-plugin-babel");
 const rollupNodeResolve = require("rollup-plugin-node-resolve");
+const rollupGlobals = require("rollup-plugin-node-globals");
+const rollupBuiltins = require("rollup-plugin-node-builtins");
 const rollupCommonjs = require("rollup-plugin-commonjs");
-const rollupReplace = require("rollup-plugin-replace");
+const rollupUglify = require("rollup-plugin-uglify");
 const concat = require("gulp-concat");
 const replace = require("gulp-replace");
 const inline = require("gulp-inline");
@@ -74,22 +77,24 @@ gulp.task("buildJs", () => {
 		input: `${SRC}/js/index.jsx`,
 		plugins: [
 			rollupReplace({
-				"process.env.NODE_ENV": JSON.stringify("development")
-				// "process.env.NODE_ENV": JSON.stringify(process.env.NODE_ENV)
+				"process.env.NODE_ENV": JSON.stringify(process.env.NODE_ENV === "production" ? "production" : "development")
 			}),
 			rollupBabel({
 				babelrc: false,
 				exclude: "node_modules/**",
-				presets: [ [ "es2015", { modules: false } ], "react" ],
+				presets: [ [ "env", { modules: false } ], "react" ],
 				plugins: [ "external-helpers", "transform-class-properties" ]
 			}),
 			rollupNodeResolve({ jsnext: true }),
+			// rollupGlobals(),
+			// rollupBuiltins(),
 			rollupCommonjs({
 				include: "node_modules/**",
 				namedExports: {
 					"node_modules/react/index.js": [ "cloneElement", "createElement", "Children", "Component" ]
 				}
-			})
+			}),
+			// rollupUglify()
 		]
 	}).then(bundle => {
 		return bundle.write({
@@ -131,13 +136,8 @@ gulp.task("copyAssets", () => {
 
 // ---------- PRODUCTION ---------- //
 
-gulp.task("setProdEnv", () => {
-	process.env.NODE_ENV = "production";
-	return gulp.src("");
-});
-
 gulp.task("min", () => {
-	runSequence("setProdEnv", "build", () => {
+	runSequence("build", () => {
 		return gulp.src([`${DEST}/index.htm`])
 			.pipe(inline({
 				// base: DEST,
@@ -149,7 +149,7 @@ gulp.task("min", () => {
 			.pipe(htmlMin({
 				collapseWhitespace: true,
 				minifyCSS: true,
-				minifyJS: true,
+				minifyJS: false,
 				removeAttributeQuotes: true,
 				removeComments: true,
 				removeRedundantAttributes: true
@@ -179,19 +179,21 @@ gulp.task("buildJsServer", () => {
 		input: "serverProduction.jsx",
 		plugins: [
 			rollupReplace({
-				"process.env.NODE_ENV": JSON.stringify("developer")
+				"process.env.NODE_ENV": JSON.stringify(process.env.NODE_ENV === "production" ? "production" : "development")
 			}),
 			rollupBabel({
 				babelrc: false,
 				exclude: "node_modules/**",
-				presets: [ [ "es2015", { modules: false } ], "react" ],
-				plugins: [ "external-helpers" ]
+				presets: [ [ "env", { modules: false } ], "react" ],
+				plugins: [ "external-helpers", "transform-class-properties" ]
 			}),
-			rollupNodeResolve({ jsnext: true }),
+			rollupNodeResolve({ jsnext: true, preferBuiltins: true }),
+			rollupGlobals(),
+			rollupBuiltins(),
 			rollupCommonjs({
 				include: "node_modules/**",
 				namedExports: {
-					"node_modules/react/react.js": [ "cloneElement", "createElement", "Children", "Component" ]
+					"node_modules/react/index.js": [ "cloneElement", "createElement", "Children", "Component" ]
 				}
 			})
 		]

@@ -53,8 +53,8 @@ CardList.displayName = "CardList";
 CardList.propTypes = {
 	itemSelected: PropTypes.string,
 	items: PropTypes.array.isRequired,
-	requestCatList: PropTypes.func,
-	setSelected: PropTypes.func,
+	requestCatList: PropTypes.func.isRequired,
+	setSelected: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = state => ({
