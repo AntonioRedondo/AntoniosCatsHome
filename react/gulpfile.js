@@ -86,7 +86,7 @@ gulp.task("buildJs", () => {
 				presets: [ [ "env", { modules: false } ], "react" ],
 				plugins: [ "external-helpers", "transform-class-properties" ]
 			}),
-			rollupNodeResolve({ jsnext: true, preferBuiltins: true }),
+			rollupNodeResolve({ jsnext: true, preferBuiltins: true, browser: true }),
 			rollupCommonjs({
 				include: "node_modules/**",
 				namedExports: {
