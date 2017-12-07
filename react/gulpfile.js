@@ -15,6 +15,7 @@ const rollupReplace = require("rollup-plugin-replace");
 const rollupBabel = require("rollup-plugin-babel");
 const rollupNodeResolve = require("rollup-plugin-node-resolve");
 const rollupGlobals = require("rollup-plugin-node-globals");
+const rollupJson = require("rollup-plugin-json");
 const rollupBuiltins = require("rollup-plugin-node-builtins");
 const rollupCommonjs = require("rollup-plugin-commonjs");
 const rollupUglify = require("rollup-plugin-uglify");
@@ -77,7 +78,7 @@ gulp.task("buildJs", () => {
 		input: `${SRC}/js/index.jsx`,
 		plugins: [
 			rollupReplace({
-				"process.env.NODE_ENV": JSON.stringify(process.env.NODE_ENV === "production" ? "production" : "development")
+				"process.env.NODE_ENV": JSON.stringify(process.env.NODE_ENV || "development")
 			}),
 			rollupBabel({
 				babelrc: false,
@@ -85,16 +86,17 @@ gulp.task("buildJs", () => {
 				presets: [ [ "env", { modules: false } ], "react" ],
 				plugins: [ "external-helpers", "transform-class-properties" ]
 			}),
-			rollupNodeResolve({ jsnext: true }),
-			// rollupGlobals(),
-			// rollupBuiltins(),
+			rollupNodeResolve({ jsnext: true, preferBuiltins: true }),
 			rollupCommonjs({
 				include: "node_modules/**",
 				namedExports: {
 					"node_modules/react/index.js": [ "cloneElement", "createElement", "Children", "Component" ]
 				}
 			}),
-			// rollupUglify()
+			rollupJson(),
+			rollupGlobals(),
+			rollupBuiltins(),
+			process.env.NODE_ENV === "production" && rollupUglify()
 		]
 	}).then(bundle => {
 		return bundle.write({
