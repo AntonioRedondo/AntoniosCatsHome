@@ -1,10 +1,13 @@
 import React from "react";
 import ReactDOM from "react-dom";
+import { Provider } from "react-redux";
+import { HashRouter } from "react-router-dom";
 import { injectGlobal } from "styled-components";
 import { whyDidYouUpdate } from "why-did-you-update";
 
-import globalCss from "./style/global.js";
-import App from "./components/app.jsx";
+import Store from "./redux/store";
+import globalCss from "./style/global";
+import Routes from "./routes.jsx";
 
 /* buildDev:start */
 whyDidYouUpdate(React);
@@ -12,4 +15,10 @@ whyDidYouUpdate(React);
 
 injectGlobal`${ globalCss }`;
 
-ReactDOM.render(<App/>, document.getElementsByClassName("react-app")[0]);
+ReactDOM.render(
+	<Provider store={ Store } >
+		<HashRouter >
+			<Routes/>
+		</HashRouter>
+	</Provider>
+	, document.getElementsByClassName("react-app")[0]);

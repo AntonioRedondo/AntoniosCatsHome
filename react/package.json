@@ -11,10 +11,10 @@
 		"lint": "gulp lint",
 		"build": "gulp",
 		"build:watch": "gulp watch",
-		"build:min": "gulp min",
-		"build:minSeparated": "gulp minSeparated",
-		"build:server": "gulp buildJsServer",
-		"serve": "node dist/bundleServer.js",
+		"build:min": "cross-env NODE_ENV=production gulp min",
+		"build:minSeparated": "cross-env NODE_ENV=production gulp minSeparated",
+		"build:ssr": "cross-env NODE_ENV=productions gulp buildSSR",
+		"serve": "node dist/bundleSSR.js",
 		"test": "jest --coverage",
 		"test:watch": "jest --watch",
 		"test:update": "jest --updateSnapshot"
@@ -35,6 +35,7 @@
 	},
 	"//": "Grouped by concern: basics, lint, build, test, server",
 	"devDependencies": {
+		"cross-env": "5.1",
 		"del": "3.0",
 		"gulp": "3.9",
 		"gulp-newer": "1.3",
@@ -85,7 +86,7 @@
 		"connect": "3.6",
 		"serve-static": "1.13",
 		"express": "4.16",
-		"open": "0.0"
+		"opn": "5.1"
 	},
 	"babel": {
 		"presets": ["react", "es2015-without-strict"]

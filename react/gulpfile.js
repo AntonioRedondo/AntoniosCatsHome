@@ -138,30 +138,62 @@ gulp.task("copyAssets", () => {
 
 // ---------- PRODUCTION ---------- //
 
-gulp.task("min", () => {
-	runSequence("build", () => {
-		return gulp.src([`${DEST}/index.htm`])
-			.pipe(inline({
-				// base: DEST,
-				disabledTypes: ["img"/*, "svg", "js", "css"*/],
-				// ignore: [""]
-			}))
-			.pipe(replace(/(\/\* buildDev:start \*\/)[\s\S]+(\/\* buildDev:end \*\/)/, ""))
-			.pipe(replace(/(<!-- buildDev:start -->)[\s\S]+(<!-- buildDev:end -->)/, ""))
-			.pipe(htmlMin({
-				collapseWhitespace: true,
-				minifyCSS: true,
-				minifyJS: false,
-				removeAttributeQuotes: true,
-				removeComments: true,
-				removeRedundantAttributes: true
-			}))
-			.pipe(gulp.dest(DEST));
+gulp.task("min", ["build"], () => {
+	return gulp.src([`${DEST}/index.htm`])
+		.pipe(inline({
+			// base: DEST,
+			disabledTypes: ["img"/*, "svg", "js", "css"*/],
+			// ignore: [""]
+		}))
+		.pipe(replace(/(\/\* buildDev:start \*\/)[\s\S]+(\/\* buildDev:end \*\/)/, ""))
+		.pipe(replace(/(<!-- buildDev:start -->)[\s\S]+(<!-- buildDev:end -->)/, ""))
+		.pipe(htmlMin({
+			collapseWhitespace: true,
+			minifyCSS: true,
+			minifyJS: false,
+			removeAttributeQuotes: true,
+			removeComments: true,
+			removeRedundantAttributes: true
+		}))
+		.pipe(gulp.dest(DEST));
+});
+
+gulp.task("buildSSR", () => {
+	return rollup.rollup({
+		input: "serverSSR.jsx",
+		plugins: [
+			rollupReplace({
+				"process.env.NODE_ENV": JSON.stringify(process.env.NODE_ENV || "development")
+			}),
+			rollupBabel({
+				babelrc: false,
+				exclude: "node_modules/**",
+				presets: [ [ "env", { modules: false } ], "react" ],
+				plugins: [ "external-helpers", "transform-class-properties" ]
+			}),
+			rollupNodeResolve({ jsnext: true, preferBuiltins: true, browser: true }),
+			rollupCommonjs({
+				include: "node_modules/**",
+				namedExports: {
+					"node_modules/react/index.js": [ "cloneElement", "createElement", "Children", "Component" ]
+				}
+			}),
+			rollupJson(),
+			rollupGlobals(),
+			rollupBuiltins(),
+			process.env.NODE_ENV === "production" && rollupUglify()
+		]
+	}).then(bundle => {
+		return bundle.write({
+			format: "iife",
+			file: `${DEST}/bundleSSR.js`,
+			sourcemap: true
+		});
 	});
 });
 
 gulp.task("minSeparated", () => {
-	runSequence("setProdEnv", "build", "uglify", "cssMin");
+	runSequence("build", "uglify", "cssMin");
 });
 
 gulp.task("uglify", () => {
@@ -174,36 +206,4 @@ gulp.task("cssMin", () => {
 	return gulp.src(`${DEST}/style.css`)
 		.pipe(cleanCss())
 		.pipe(gulp.dest(`${DEST}`));
-});
-
-gulp.task("buildJsServer", () => {
-	return rollup.rollup({
-		input: "serverProduction.jsx",
-		plugins: [
-			rollupReplace({
-				"process.env.NODE_ENV": JSON.stringify(process.env.NODE_ENV === "production" ? "production" : "development")
-			}),
-			rollupBabel({
-				babelrc: false,
-				exclude: "node_modules/**",
-				presets: [ [ "env", { modules: false } ], "react" ],
-				plugins: [ "external-helpers", "transform-class-properties" ]
-			}),
-			rollupNodeResolve({ jsnext: true, preferBuiltins: true }),
-			rollupGlobals(),
-			rollupBuiltins(),
-			rollupCommonjs({
-				include: "node_modules/**",
-				namedExports: {
-					"node_modules/react/index.js": [ "cloneElement", "createElement", "Children", "Component" ]
-				}
-			})
-		]
-	}).then(bundle => {
-		return bundle.write({
-			format: "iife",
-			file: `${DEST}/bundleServer.js`,
-			sourcemap: true
-		});
-	});
 });
