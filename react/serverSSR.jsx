@@ -1,52 +1,44 @@
 import React from "react";
-import PropTypes from "prop-types";
 import ReactDOMServer from "react-dom/server";
-import { Provider } from "react-redux";
-import { StaticRouter } from "react-router-dom";
 import { ServerStyleSheet } from "styled-components";
 
-const express = require("express");
-// const opn = require("opn");
 const fs = require("fs");
 const path = require("path");
+const express = require("express");
+const axios = require("axios");
+// const opn = require("opn");
 
-import Store from "./src/js/redux/store";
-import Routes from "./src/js/routes.jsx";
+import App from "./src/js/appSSR.jsx";
 
 const url = "http://localhost:3000";
 const indexTemplate = fs.readFileSync(path.join(__dirname, "index.htm"), { encoding: "utf8" });
+const stateToHydrate = {};
 
-function App(props) {
-	const context = {};
-	
-	return (
-		<Provider store={ Store } >
-			<StaticRouter location={ props.url } context={ context }>
-				<Routes/>
-			</StaticRouter>
-		</Provider>
-	);
-}
-App.displayName = "App";
-App.propTypes = {
-	url: PropTypes.string.isRequired
-};
+axios.get("http://localhost:3000/data/cats.json")
+	.then(results => {
+		stateToHydrate.cats = results.data;
+	})
+	.catch(error => {
+		console.error(error);
+	});
 
 const app = express();
 
-
-const sheet = new ServerStyleSheet();
-
-// app.use(express.static(path.join(__dirname, "/")));
+app.use(express.static(path.join(__dirname, "/")));
 
 app.get("/", (req, res) => {
-	console.log("express req.url:", req.url);
-	
+	const sheet = new ServerStyleSheet();
 	const reactApp = ReactDOMServer.renderToString(sheet.collectStyles(<App url={ req.url } />));
-	// const css = sheet.getStyleTags();
+	const css = sheet.getStyleTags();
 	
-	// res.send(indexTemplate.replace("<div class=\"react-app\">", `<div class="react-app">${reactApp}`));
-	res.send(indexTemplate.replace(`<div class="react-app">${reactApp}</div>`));
+	let finalString = indexTemplate.replace(`<div class="react-app"></div>`,
+		`<div class="react-app">${reactApp}</div>`);
+	finalString = finalString.replace(`<script src="bundle.js"></script>`,
+		`<script>window.stateToHydrate=${JSON.stringify(stateToHydrate)}</script><script src="bundle.js"></script>`);
+	finalString = finalString.replace(`<link href="style.css" rel="stylesheet" />`,
+		`${css}<link href="style.css" rel="stylesheet" />`);
+	
+	res.send(finalString);
 });
 
 app.listen(3000, () => {

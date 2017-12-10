@@ -1,20 +1,20 @@
 import { createSelector } from "reselect";
 
 
-export const filterItems = createSelector(
+export const filterCats = createSelector(
 	[
-		state => state.items,
+		state => state.cats,
 		state => state.filterString
 	],
-	(items, filterString) => {
+	(cats, filterString) => {
 		if (filterString)
-			return items.filter(item => {
-				let itemKeys = Object.keys(item);
-				for (let n=0; n<itemKeys.length; ++n)
-					if (item[itemKeys[n]] && item[itemKeys[n]].toLowerCase().indexOf(filterString.toLowerCase()) > -1)
+			return cats.filter(cat => {
+				let catKeys = Object.keys(cat);
+				for (let n=0; n<catKeys.length; ++n)
+					if (cat[catKeys[n]] && cat[catKeys[n]].toLowerCase().indexOf(filterString.toLowerCase()) > -1)
 						return true;
 				return false;
 			});
-		return items;
+		return cats;
 	}
 );

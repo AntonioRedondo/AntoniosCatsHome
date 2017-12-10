@@ -14,7 +14,7 @@ describe("Given the CardList component", () => {
 		shallowRenderer.render(
 			<CardList
 				items={ mockCatList }
-				requestCatList={ mockRequiredPropFunction }
+				requestCats={ mockRequiredPropFunction }
 				setSelected={ mockRequiredPropFunction } />
 		);
 		tree = shallowRenderer.getRenderOutput();

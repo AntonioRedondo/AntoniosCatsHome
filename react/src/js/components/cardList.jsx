@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 import { TransitionGroup, CSSTransition } from "react-transition-group";
 
 import actionCreators from "../redux/actionCreators";
-import { filterItems } from "../redux/selectors";
+import { filterCats } from "../redux/selectors";
 import Card from "./card.jsx";
 import v from "../style/variables";
 
@@ -16,27 +16,27 @@ export class CardList extends Component {
 	}
 	
 	componentDidMount() {
-		if (this.props.items.length === 0)
-			this.props.requestCatList();
+		if (this.props.cats.length === 0)
+			this.props.requestCats();
 	}
 	
-	shouldComponentUpdate({ items, itemSelected }) {
-		return items.length !== this.props.items.length
-				|| itemSelected !== this.props.itemSelected;
+	shouldComponentUpdate({ cats, catSelected }) {
+		return cats.length !== this.props.cats.length
+				|| catSelected !== this.props.catSelected;
 	}
 	
 	_renderCards() {
-		return this.props.items.map(item =>
+		return this.props.cats.map(cat =>
 			<CSSTransition
-				key={ item.id }
+				key={ cat.id }
 				classNames="card-list"
 				timeout={ v.time2 } >
 				<Card
-					key={ item.id }
-					id={ item.id }
-					name={ item.name }
-					description={ item.description }
-					itemSelected={ this.props.itemSelected }
+					key={ cat.id }
+					id={ cat.id }
+					name={ cat.name }
+					description={ cat.description }
+					catSelected={ this.props.catSelected }
 					onClick={ this.props.setSelected } >
 				</Card>
 			</CSSTransition>
@@ -51,18 +51,18 @@ export class CardList extends Component {
 CardList.displayName = "CardList";
 
 CardList.propTypes = {
-	itemSelected: PropTypes.string,
-	items: PropTypes.array.isRequired,
-	requestCatList: PropTypes.func.isRequired,
+	catSelected: PropTypes.string,
+	cats: PropTypes.array.isRequired,
+	requestCats: PropTypes.func.isRequired,
 	setSelected: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = state => ({
-	items: filterItems(state),
-	itemSelected: state.itemSelected
+	cats: filterCats(state),
+	catSelected: state.catSelected
 });
 const mapDispatchToProps = dispatch => ({
-	requestCatList: () => dispatch(actionCreators.requestCatList()),
+	requestCats: () => dispatch(actionCreators.requestCats()),
 	setSelected: id => () => dispatch(actionCreators.setSelected(id))
 });
 

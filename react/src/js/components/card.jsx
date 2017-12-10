@@ -14,7 +14,7 @@ const CardContainer = styled.article`
 	justify-content: space-between;
 	align-items: center;
 	
-	background: ${ props => props.itemSelected ? "papayawhip" : v.grayE };
+	background: ${ props => props.catSelected ? "papayawhip" : v.grayE };
 	box-shadow: 0 -5px 0 ${ v.purple2 }, 0 0 10px ${ v.shadow1 };
 	
 	color: ${ v.gray3 };
@@ -29,7 +29,7 @@ const CardContainer = styled.article`
 	}
 	
 	&:hover {
-		background: ${ props => props.itemSelected ? "papayawhip" : "white" };
+		background: ${ props => props.catSelected ? "papayawhip" : "white" };
 		box-shadow: 0 -5px 0 orange, 10px 10px 30px ${ v.shadow2 };
 		cursor: pointer;
 		transform: scale(1.025);
@@ -89,7 +89,7 @@ const BodyText = styled.div`
 
 function Card(props) {
 	return (
-		<CardContainer onClick={ props.onClick(props.id) } itemSelected={ props.itemSelected === props.id }>
+		<CardContainer onClick={ props.onClick(props.id) } catSelected={ props.catSelected === props.id }>
 			<Photo id={ props.id }></Photo>
 			<Body>
 				<BodyTitle>{ props.name }</BodyTitle>
@@ -102,9 +102,9 @@ function Card(props) {
 Card.displayName = "Card";
 
 Card.propTypes = {
+catSelected: PropTypes.string,
 	description: PropTypes.string,
 	id: PropTypes.string.isRequired,
-	itemSelected: PropTypes.string,
 	name: PropTypes.string.isRequired,
 	onClick: PropTypes.func.isRequired
 };

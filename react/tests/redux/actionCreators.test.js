@@ -13,7 +13,7 @@ describe("Given Redux actionCreators", () => {
 	const mockStore = configureMockStore([ thunk ]);
 	const store = mockStore({ transactions: [] });
 	
-	describe("When the requestCatList action creator is executed", () => {
+	describe("When the requestCats action creator is executed", () => {
 		beforeAll(() => {
 			XMLHttpRequest = XML.XMLHttpRequest; // eslint-disable-line no-global-assign
 			nock(/localhost:3000/).get("/data/cats.json").reply(200, catList);
@@ -23,24 +23,24 @@ describe("Given Redux actionCreators", () => {
 			store.clearActions();
 		});
 		
-		it("Should dispatch the RECEIVE_ITEMS action with expected type and data load", () => {
-			return store.dispatch(actionCreators.requestCatList("http://localhost:3000/data/cats.json")).then(() => {
-				expect(store.getActions()[0]).toEqual({ type: c.RECEIVE_ITEMS, items: catListSorted });
+		it("Should dispatch the RECEIVE_CATS action with expected type and data load", () => {
+			return store.dispatch(actionCreators.requestCats("http://localhost:3000/data/cats.json")).then(() => {
+				expect(store.getActions()[0]).toEqual({ type: c.RECEIVE_CATS, items: catListSorted });
 			});
 		});
 		
 		describe("When there is some connection error", () => {
-			it("Should dispatch the RECEIVE_ITEMS_ERROR action with expected type and data load", () => {
-				return store.dispatch(actionCreators.requestCatList("http://wrongurl.bad")).then(() => {
-					expect(store.getActions()[0].type).toEqual(c.RECEIVE_ITEMS_ERROR);
+			it("Should dispatch the RECEIVE_CATS_ERROR action with expected type and data load", () => {
+				return store.dispatch(actionCreators.requestCats("http://wrongurl.bad")).then(() => {
+					expect(store.getActions()[0].type).toEqual(c.RECEIVE_CATS_ERROR);
 				});
 			});
 		});
 	});
 	
 	describe("When the setSelected action creator is executed", () => {
-		it("Should dispatch the SET_CARD_SELECTED action with expected type and data load", () => {
-			expect(actionCreators.setSelected("2")).toEqual({ type: c.SET_CARD_SELECTED, id: "2" });
+		it("Should dispatch the SET_CAT_SELECTED action with expected type and data load", () => {
+			expect(actionCreators.setSelected("2")).toEqual({ type: c.SET_CAT_SELECTED, id: "2" });
 		});
 	});
 	

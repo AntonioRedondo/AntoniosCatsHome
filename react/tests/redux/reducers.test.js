@@ -3,7 +3,7 @@ import catList from "../../src/data/cats.json";
 
 
 describe("Given reducer functions", () => {
-	describe("When the RECEIVE_ITEMS action is received", () => {
+	describe("When the RECEIVE_CATS action is received", () => {
 		it("It should modify state accordingly", () => {
 			const state = combinedReducers(
 				{
@@ -12,7 +12,7 @@ describe("Given reducer functions", () => {
 					filterString: ""
 				},
 				{
-					type:"RECEIVE_ITEMS",
+					type:"RECEIVE_CATS",
 					items: catList
 				});
 				
@@ -23,7 +23,7 @@ describe("Given reducer functions", () => {
 		});
 	});
 	
-	describe("When the SET_CARD_SELECTED action is received", () => {
+	describe("When the SET_CAT_SELECTED action is received", () => {
 		it("It should modify state accordingly", () => {
 			const state = combinedReducers(
 				{
@@ -31,7 +31,7 @@ describe("Given reducer functions", () => {
 					filterString: ""
 				},
 				{
-					type: "SET_CARD_SELECTED",
+					type: "SET_CAT_SELECTED",
 					id: "4"
 				});
 			

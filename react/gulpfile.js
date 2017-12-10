@@ -86,7 +86,10 @@ gulp.task("buildJs", () => {
 				presets: [ [ "env", { modules: false } ], "react" ],
 				plugins: [ "external-helpers", "transform-class-properties" ]
 			}),
-			rollupNodeResolve({ jsnext: true, preferBuiltins: true, browser: true }),
+			rollupNodeResolve({
+				jsnext: true,
+				preferBuiltins: true,
+				browser: true }),
 			rollupCommonjs({
 				include: "node_modules/**",
 				namedExports: {
@@ -102,7 +105,7 @@ gulp.task("buildJs", () => {
 		return bundle.write({
 			format: "iife",
 			file: `${DEST}/bundle.js`,
-			sourcemap: true
+			sourcemap: process.env.NODE_ENV !== "production"
 		});
 	});
 });
@@ -187,7 +190,7 @@ gulp.task("buildSSR", () => {
 		return bundle.write({
 			format: "iife",
 			file: `${DEST}/bundleSSR.js`,
-			sourcemap: true
+			sourcemap: process.env.NODE_ENV !== "production"
 		});
 	});
 });

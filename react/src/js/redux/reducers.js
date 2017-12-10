@@ -3,18 +3,18 @@ import { combineReducers } from "redux";
 import c from "./actionTypes";
 
 
-function items(state = [], action) {
+function cats(state = [], action) {
 	switch (action.type) {
-		case c.REQUEST_ITEMS:		return state;
-		case c.RECEIVE_ITEMS:		return action.items;
-		case c.RECEIVE_ITEMS_ERROR:	return state;
+		case c.REQUEST_CATS:		return state;
+		case c.RECEIVE_CATS:		return action.payload;
+		case c.RECEIVE_CATS_ERROR:	return state;
 		default:					return state;
 	}
 }
 
-function itemSelected(state = "", action) {
+function catSelected(state = "", action) {
 	switch (action.type) {
-		case c.SET_CARD_SELECTED:	return state === action.id ? "" : action.id;
+		case c.SET_CAT_SELECTED:	return state === action.id ? "" : action.id;
 		default:					return state;
 	}
 }
@@ -27,7 +27,7 @@ function filterString(state = "", action) {
 }
 
 export default combineReducers({
-	items,
-	itemSelected,
+	cats,
+	catSelected,
 	filterString
 });

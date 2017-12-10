@@ -5,17 +5,17 @@ import c from "./actionTypes";
 
 
 export default {
-	requestCatList(url = "data/cats.json") {
+	requestCats(url = "data/cats.json") {
 		return dispatch => {
 			return axios.get(url)
-				.then(response => dispatch({ type: c.RECEIVE_ITEMS, items: sortByName(response.data) }))
-				.catch(error => dispatch({ type: c.RECEIVE_ITEMS_ERROR, error }));
+				.then(response => dispatch({ type: c.RECEIVE_CATS, payload: sortByName(response.data) }))
+				.catch(error => dispatch({ type: c.RECEIVE_CATS_ERROR, error }));
 		};
 	},
 	
 	setSelected(id) {
 		return {
-			type: c.SET_CARD_SELECTED,
+			type: c.SET_CAT_SELECTED,
 			id
 		};
 	},

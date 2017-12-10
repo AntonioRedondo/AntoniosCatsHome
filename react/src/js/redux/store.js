@@ -4,10 +4,14 @@ import thunk from "redux-thunk";
 import { isNode } from "../helpers";
 import reducers from "./reducers.js";
 
-function useLocalStorage() {
+function setInitialState() {
 	if (!isNode()) {
-		return localStorage.getItem("reduxState") ? JSON.parse(localStorage.getItem("reduxState")) : {};
-	} else return undefined;
+		let initialState = localStorage.getItem("reduxState") ? JSON.parse(localStorage.getItem("reduxState")) : {};
+		if (window.stateToHydrate) {
+			initialState = Object.assign(initialState, window.stateToHydrate);
+		}
+		return initialState;
+	} else return;
 }
 
 
@@ -15,7 +19,7 @@ let store;
 
 store = createStore(
 	reducers,
-	useLocalStorage(),
+	setInitialState(),
 	applyMiddleware(thunk)
 );
 
@@ -29,7 +33,7 @@ if (!isNode()) {
 
 	store = createStore(
 		reducers,
-		useLocalStorage(),
+		setInitialState(),
 		compose(applyMiddleware(logger, thunk), window.devToolsExtension ? window.devToolsExtension() : f => f )
 	);
 	/* buildDev:end */

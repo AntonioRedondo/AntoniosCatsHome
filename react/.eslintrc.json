@@ -19,14 +19,14 @@
 	"env": {
 		"browser": true,
 		"es6": true,
-		"jasmine": true,
 		"node": true
 	},
 	"rules": {
 		"comma-dangle": [2, "only-multiline"],
+		"no-console": [1, { "allow": ["error"] } ],
 		"eol-last": 2,
 		"indent": [2, "tab", { "SwitchCase": 1}],
-		"quotes": [2, "double"],
+		"quotes": [2, "double", { "allowTemplateLiterals": true }],
 		"jsx-quotes": 2,
 		"no-console": 1,
 		"no-debugger": 1,
