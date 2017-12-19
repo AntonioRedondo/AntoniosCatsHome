@@ -1,10 +1,10 @@
-   - Universal app
+OK - SSR
 OK - Rollup
 OK - indentation on the React tests, Given, when, then
 OK - Make the app work again with redux
 OK - Move to ESLint
 OK - gulpFile is gulpfile.js! on antonioredondo.com
-OK - className={ “card” + props.itemSelected === props.id ? " card--selected" : ""}>
-OK -connect().use(serveStatic("dist", { index: "index.htm" })).listen(3000);
+OK - className={ ï¿½cardï¿½ + props.itemSelected === props.id ? " card--selected" : ""}>
+OK - connect().use(serveStatic("dist", { index: "index.htm" })).listen(3000);
 OK - capital letter of the React component
-OK - Linting column after ‘Selectable cards column’.
+OK - Linting column after ï¿½Selectable cards columnï¿½.

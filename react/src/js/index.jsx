@@ -6,9 +6,9 @@ import { whyDidYouUpdate } from "why-did-you-update";
 import globalCss from "./style/global";
 import App from "./app.jsx";
 
-/* buildDev:start */
+// #if DEV
 whyDidYouUpdate(React);
-/* buildDev:end */
+// #endif
 
 injectGlobal`${ globalCss }`;
 

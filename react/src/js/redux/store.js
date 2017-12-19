@@ -23,9 +23,8 @@ store = createStore(
 	applyMiddleware(thunk)
 );
 
-
 if (!isNode()) {
-	/* buildDev:start */
+	// #if DEV
 	const logger = store => next => action => { // eslint-disable-line no-unused-vars
 		console.log("dispatching:", action); // eslint-disable-line no-console
 		return next(action);
@@ -36,7 +35,7 @@ if (!isNode()) {
 		setInitialState(),
 		compose(applyMiddleware(logger, thunk), window.devToolsExtension ? window.devToolsExtension() : f => f )
 	);
-	/* buildDev:end */
+	// #endif
 	
 	store.subscribe(() => {
 		localStorage.setItem("reduxState", JSON.stringify(store.getState()));

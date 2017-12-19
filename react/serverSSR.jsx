@@ -11,7 +11,7 @@ const axios = require("axios");
 import App from "./src/js/appSSR.jsx";
 
 const url = "http://localhost:3000";
-const indexTemplate = fs.readFileSync(path.join(__dirname, "index.htm"), { encoding: "utf8" });
+const indexTemplate = fs.readFileSync(path.join(__dirname, "indexSSR.htm"), { encoding: "utf8" });
 const stateToHydrate = {};
 
 axios.get("http://localhost:3000/data/cats.json")
@@ -31,12 +31,9 @@ app.get("/", (req, res) => {
 	const reactApp = ReactDOMServer.renderToString(sheet.collectStyles(<App url={ req.url } />));
 	const css = sheet.getStyleTags();
 	
-	let finalString = indexTemplate.replace(`<div class="react-app"></div>`,
-		`<div class="react-app">${reactApp}</div>`);
-	finalString = finalString.replace(`<script src="bundle.js"></script>`,
-		`<script>window.stateToHydrate=${JSON.stringify(stateToHydrate)}</script><script src="bundle.js"></script>`);
-	finalString = finalString.replace(`<link href="style.css" rel="stylesheet" />`,
-		`${css}<link href="style.css" rel="stylesheet" />`);
+	let finalString = indexTemplate.replace(`<!-- #reactApp -->`, reactApp);
+	finalString = finalString.replace(`<!-- #stateToHydrate -->`, `<script>window.stateToHydrate=${JSON.stringify(stateToHydrate)}</script>`);
+	finalString = finalString.replace(`<!-- #reactCSS -->`, css);
 	
 	res.send(finalString);
 });

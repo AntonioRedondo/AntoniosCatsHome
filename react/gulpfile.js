@@ -2,7 +2,6 @@
 const del = require("del");
 const gulp = require("gulp");
 const newer = require("gulp-newer");
-const runSequence = require("run-sequence");
 const sourcemaps = require("gulp-sourcemaps");
 
 // Lint
@@ -11,14 +10,15 @@ const cssLint = require("gulp-stylelint");
 
 // Build
 const rollup = require("rollup");
-const rollupReplace = require("rollup-plugin-replace");
+// const rollupReplace = require("rollup-plugin-replace");
+const rollupRe = require("rollup-plugin-re");
 const rollupBabel = require("rollup-plugin-babel");
 const rollupNodeResolve = require("rollup-plugin-node-resolve");
 const rollupGlobals = require("rollup-plugin-node-globals");
 const rollupJson = require("rollup-plugin-json");
 const rollupBuiltins = require("rollup-plugin-node-builtins");
 const rollupCommonjs = require("rollup-plugin-commonjs");
-const rollupUglify = require("rollup-plugin-uglify");
+// const rollupUglify = require("rollup-plugin-uglify");
 const concat = require("gulp-concat");
 const replace = require("gulp-replace");
 const inline = require("gulp-inline");
@@ -27,9 +27,7 @@ const preCss = require("precss");
 const autoprefixer = require("autoprefixer");
 
 // Production
-const uglify = require("gulp-uglify");
 const htmlMin = require("gulp-htmlmin");
-const cleanCss = require("gulp-clean-css");
 
 
 
@@ -77,8 +75,19 @@ gulp.task("buildJs", () => {
 	return rollup.rollup({
 		input: `${SRC}/js/index.jsx`,
 		plugins: [
-			rollupReplace({
-				"process.env.NODE_ENV": JSON.stringify(process.env.NODE_ENV || "development")
+		// rollupReplace({
+		// 	"process.env.NODE_ENV": JSON.stringify(process.env.NODE_ENV || "development"),
+		// 	"/(\/\* buildDev:start \*\/)[\s\S]+(\/\* buildDev:end \*\/)/" : "" // eslint-disable-line
+		// }),
+			rollupRe({
+				// exclude: "node_modules/**",
+				defines: {
+					DEV: process.env.NODE_ENV === "production",
+					PROD: process.env.NODE_ENV !== "production",
+				},
+				replaces: {
+					"process.env.NODE_ENV": JSON.stringify(process.env.NODE_ENV || "development")
+				}
 			}),
 			rollupBabel({
 				babelrc: false,
@@ -99,7 +108,7 @@ gulp.task("buildJs", () => {
 			rollupJson(),
 			rollupGlobals(),
 			rollupBuiltins(),
-			process.env.NODE_ENV === "production" && rollupUglify()
+			// process.env.NODE_ENV === "production" && rollupUglify()
 		]
 	}).then(bundle => {
 		return bundle.write({
@@ -148,12 +157,12 @@ gulp.task("min", ["build"], () => {
 			disabledTypes: ["img"/*, "svg", "js", "css"*/],
 			// ignore: [""]
 		}))
-		.pipe(replace(/(\/\* buildDev:start \*\/)[\s\S]+(\/\* buildDev:end \*\/)/, ""))
+		// .pipe(replace(/\/\* buildDev:start \*\/[\s\S]*\/\* buildDev:end \*\//, ""))
 		.pipe(replace(/(<!-- buildDev:start -->)[\s\S]+(<!-- buildDev:end -->)/, ""))
 		.pipe(htmlMin({
 			collapseWhitespace: true,
 			minifyCSS: true,
-			minifyJS: false,
+			minifyJS: true,
 			removeAttributeQuotes: true,
 			removeComments: true,
 			removeRedundantAttributes: true
@@ -165,8 +174,14 @@ gulp.task("buildSSR", () => {
 	return rollup.rollup({
 		input: "serverSSR.jsx",
 		plugins: [
-			rollupReplace({
-				"process.env.NODE_ENV": JSON.stringify(process.env.NODE_ENV || "development")
+			rollupRe({
+				defines: {
+					DEV: true,
+					PROD: process.env.NODE_ENV !== "production",
+				},
+				replaces: {
+					"process.env.NODE_ENV": JSON.stringify(process.env.NODE_ENV || "development")
+				}
 			}),
 			rollupBabel({
 				babelrc: false,
@@ -183,8 +198,7 @@ gulp.task("buildSSR", () => {
 			}),
 			rollupJson(),
 			rollupGlobals(),
-			rollupBuiltins(),
-			process.env.NODE_ENV === "production" && rollupUglify()
+			rollupBuiltins()
 		]
 	}).then(bundle => {
 		return bundle.write({
@@ -193,20 +207,4 @@ gulp.task("buildSSR", () => {
 			sourcemap: process.env.NODE_ENV !== "production"
 		});
 	});
-});
-
-gulp.task("minSeparated", () => {
-	runSequence("build", "uglify", "cssMin");
-});
-
-gulp.task("uglify", () => {
-	return gulp.src(`${DEST}/bundle.js`)
-		.pipe(uglify())
-		.pipe(gulp.dest(`${DEST}`));
-});
-
-gulp.task("cssMin", () => {
-	return gulp.src(`${DEST}/style.css`)
-		.pipe(cleanCss())
-		.pipe(gulp.dest(`${DEST}`));
 });

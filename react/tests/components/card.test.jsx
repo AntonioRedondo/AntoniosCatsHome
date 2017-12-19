@@ -9,6 +9,7 @@ import v from "../../src/js/style/variables";
 describe("Given the Card component", () => {
 	let component;
 	let tree;
+	let mockFunction = () => {};
 	
 	describe("When the component is mounted", () => {
 		beforeEach(() => {
@@ -16,7 +17,7 @@ describe("Given the Card component", () => {
 				<Card
 					id="2"
 					name="Fluffy"
-					onClick={ function() {} } />
+					onClick={ mockFunction } />
 			);
 			tree = component.toJSON();
 		});
@@ -34,8 +35,8 @@ describe("Given the Card component", () => {
 				<Card
 					id="2"
 					name="Fluffy"
-					onClick={ function() {} }
-					itemSelected="2" />
+					onClick={ mockFunction }
+					catSelected="2" />
 			);
 			tree = component.toJSON();
 			

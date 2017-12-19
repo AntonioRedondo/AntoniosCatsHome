@@ -8,14 +8,14 @@ import { CardList } from "../../src/js/components/cardList.jsx";
 describe("Given the CardList component", () => {
 	const shallowRenderer = new Renderer();
 	let tree;
-	const mockRequiredPropFunction = () => {};
+	let mockFunction = () => {};
 
 	beforeEach(() => {
 		shallowRenderer.render(
 			<CardList
-				items={ mockCatList }
-				requestCats={ mockRequiredPropFunction }
-				setSelected={ mockRequiredPropFunction } />
+				cats={ mockCatList }
+				requestCats={ mockFunction }
+				setSelected={ mockFunction } />
 		);
 		tree = shallowRenderer.getRenderOutput();
 	});

@@ -102,7 +102,7 @@ function Card(props) {
 Card.displayName = "Card";
 
 Card.propTypes = {
-catSelected: PropTypes.string,
+	catSelected: PropTypes.string,
 	description: PropTypes.string,
 	id: PropTypes.string.isRequired,
 	name: PropTypes.string.isRequired,

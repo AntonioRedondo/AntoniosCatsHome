@@ -23,30 +23,30 @@ describe("Given Redux actionCreators", () => {
 			store.clearActions();
 		});
 		
-		it("Should dispatch the RECEIVE_CATS action with expected type and data load", () => {
+		it("Should dispatch the CATS_RECEIVED action with expected type and data load", () => {
 			return store.dispatch(actionCreators.requestCats("http://localhost:3000/data/cats.json")).then(() => {
-				expect(store.getActions()[0]).toEqual({ type: c.RECEIVE_CATS, items: catListSorted });
+				expect(store.getActions()[0]).toEqual({ type: c.CATS_RECEIVED, payload: catListSorted });
 			});
 		});
 		
 		describe("When there is some connection error", () => {
-			it("Should dispatch the RECEIVE_CATS_ERROR action with expected type and data load", () => {
+			it("Should dispatch the CATS_RECEIVED_ERROR action with expected type and data load", () => {
 				return store.dispatch(actionCreators.requestCats("http://wrongurl.bad")).then(() => {
-					expect(store.getActions()[0].type).toEqual(c.RECEIVE_CATS_ERROR);
+					expect(store.getActions()[0].type).toEqual(c.CATS_RECEIVED_ERROR);
 				});
 			});
 		});
 	});
 	
 	describe("When the setSelected action creator is executed", () => {
-		it("Should dispatch the SET_CAT_SELECTED action with expected type and data load", () => {
-			expect(actionCreators.setSelected("2")).toEqual({ type: c.SET_CAT_SELECTED, id: "2" });
+		it("Should dispatch the CAT_SELECTED action with expected type and data load", () => {
+			expect(actionCreators.setSelected("2")).toEqual({ type: c.CAT_SELECTED, id: "2" });
 		});
 	});
 	
 	describe("When the setFilterString action creator is executed", () => {
-		it("Should dispatch the SET_FILTER_STRING action with expected type and data load", () => {
-			expect(actionCreators.setFilterString("flu")).toEqual({ type: c.SET_FILTER_STRING, filterString: "flu" });
+		it("Should dispatch the FILTER_STRING_SET action with expected type and data load", () => {
+			expect(actionCreators.setFilterString("flu")).toEqual({ type: c.FILTER_STRING_SET, filterString: "flu" });
 		});
 	});
 });

@@ -1,53 +1,53 @@
-import combinedReducers from "../../src/js/redux/reducers";
+import reducers from "../../src/js/redux/reducers";
 import catList from "../../src/data/cats.json";
 
 
 describe("Given reducer functions", () => {
-	describe("When the RECEIVE_CATS action is received", () => {
+	describe("When the CATS_RECEIVED action is received", () => {
 		it("It should modify state accordingly", () => {
-			const state = combinedReducers(
+			const state = reducers(
 				{
-					items: [],
-					itemSelected: "",
+					cats: [],
+					catSelected: "",
 					filterString: ""
 				},
 				{
-					type:"RECEIVE_CATS",
-					items: catList
+					type: "CATS_RECEIVED",
+					payload: catList
 				});
 				
-			expect(state.items.length).toBe(4);
-			expect(state.items[1].name).toBe("Fluffy");
-			expect(state.items[2].name).toBe("Luna");
-			expect(state.items[3].name).toBe("Bella");
+			expect(state.cats.length).toBe(4);
+			expect(state.cats[1].name).toBe("Fluffy");
+			expect(state.cats[2].name).toBe("Luna");
+			expect(state.cats[3].name).toBe("Bella");
 		});
 	});
 	
-	describe("When the SET_CAT_SELECTED action is received", () => {
+	describe("When the CAT_SELECTED action is received", () => {
 		it("It should modify state accordingly", () => {
-			const state = combinedReducers(
+			const state = reducers(
 				{
-					itemSelected: "",
+					catSelected: "",
 					filterString: ""
 				},
 				{
-					type: "SET_CAT_SELECTED",
+					type: "CAT_SELECTED",
 					id: "4"
 				});
 			
-			expect(state.itemSelected).toBe("4");
+			expect(state.catSelected).toBe("4");
 		});
 	});
 	
-	describe("When the SET_FILTER_STRING action is received", () => {
+	describe("When the FILTER_STRING_SET action is received", () => {
 		it("It should modify state accordingly", () => {
-			const state = combinedReducers(
+			const state = reducers(
 				{
-					items: catList	,
-					itemSelected: "",
+					cats: catList,
+					catSelected: "",
 					filterString: ""
 				}, {
-					type: "SET_FILTER_STRING",
+					type: "FILTER_STRING_SET",
 					filterString: "fuffly"
 				});
 				
