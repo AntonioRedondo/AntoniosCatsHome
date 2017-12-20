@@ -82,8 +82,8 @@ gulp.task("buildJs", () => {
 			rollupRe({
 				// exclude: "node_modules/**",
 				defines: {
-					DEV: process.env.NODE_ENV === "production",
-					PROD: process.env.NODE_ENV !== "production",
+					DEV: process.env.NODE_ENV !== "production",
+					PROD: process.env.NODE_ENV === "production",
 				},
 				replaces: {
 					"process.env.NODE_ENV": JSON.stringify(process.env.NODE_ENV || "development")
@@ -168,15 +168,14 @@ gulp.task("min", ["build"], () => {
 		}))
 		.pipe(gulp.dest(DEST));
 });
-
 gulp.task("buildSsrJs", () => {
 	return rollup.rollup({
 		input: "serverSSR.jsx",
 		plugins: [
 			rollupRe({
 				defines: {
-					DEV: true,
-					PROD: process.env.NODE_ENV !== "production",
+					DEV: process.env.NODE_ENV !== "production",
+					PROD: process.env.NODE_ENV === "production",
 				},
 				replaces: {
 					"process.env.NODE_ENV": JSON.stringify(process.env.NODE_ENV || "development")

@@ -8,7 +8,7 @@ const express = require("express");
 const axios = require("axios");
 const opn = require("opn");
 
-import App from "./src/js/appSSR.jsx";
+import AppSSR from "./src/js/appSSR.jsx";
 
 const url = "http://localhost:3000";
 const indexTemplate = fs.readFileSync(path.join(__dirname, "indexSSR.htm"), { encoding: "utf8" });
@@ -28,7 +28,7 @@ app.use(express.static(path.join(__dirname, "/")));
 
 app.get("/", (req, res) => {
 	const sheet = new ServerStyleSheet();
-	const reactApp = ReactDOMServer.renderToString(sheet.collectStyles(<App url={ req.url } />));
+	const reactApp = ReactDOMServer.renderToString(sheet.collectStyles(<AppSSR url={ req.url } />));
 	const css = sheet.getStyleTags();
 	
 	let finalString = indexTemplate.replace(`<!-- #reactApp -->`, reactApp);
