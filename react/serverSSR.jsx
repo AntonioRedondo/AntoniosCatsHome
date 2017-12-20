@@ -6,7 +6,7 @@ const fs = require("fs");
 const path = require("path");
 const express = require("express");
 const axios = require("axios");
-// const opn = require("opn");
+const opn = require("opn");
 
 import App from "./src/js/appSSR.jsx";
 
@@ -39,6 +39,6 @@ app.get("/", (req, res) => {
 });
 
 app.listen(3000, () => {
-	// opn(url);
+	opn(url);
 	console.log("App started on " + url + "\nThe system default browser should open automatically."); // eslint-disable-line no-console
 });

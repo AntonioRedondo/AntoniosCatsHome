@@ -3,6 +3,7 @@ const del = require("del");
 const gulp = require("gulp");
 const newer = require("gulp-newer");
 const sourcemaps = require("gulp-sourcemaps");
+const runSequence = require("run-sequence");
 
 // Lint
 const esLint = require("gulp-eslint");
@@ -10,7 +11,6 @@ const cssLint = require("gulp-stylelint");
 
 // Build
 const rollup = require("rollup");
-// const rollupReplace = require("rollup-plugin-replace");
 const rollupRe = require("rollup-plugin-re");
 const rollupBabel = require("rollup-plugin-babel");
 const rollupNodeResolve = require("rollup-plugin-node-resolve");
@@ -18,7 +18,7 @@ const rollupGlobals = require("rollup-plugin-node-globals");
 const rollupJson = require("rollup-plugin-json");
 const rollupBuiltins = require("rollup-plugin-node-builtins");
 const rollupCommonjs = require("rollup-plugin-commonjs");
-// const rollupUglify = require("rollup-plugin-uglify");
+const rollupUglify = require("rollup-plugin-uglify");
 const concat = require("gulp-concat");
 const replace = require("gulp-replace");
 const inline = require("gulp-inline");
@@ -107,8 +107,7 @@ gulp.task("buildJs", () => {
 			}),
 			rollupJson(),
 			rollupGlobals(),
-			rollupBuiltins(),
-			// process.env.NODE_ENV === "production" && rollupUglify()
+			rollupBuiltins()
 		]
 	}).then(bundle => {
 		return bundle.write({
@@ -120,7 +119,7 @@ gulp.task("buildJs", () => {
 });
 
 gulp.task("buildHtml", () => {
-	return gulp.src([`${SRC}/index.htm`])
+	return gulp.src([`${SRC}/index.htm`, `${SRC}/indexSSR.htm`])
 		.pipe(gulp.dest(`${DEST}`));
 });
 
@@ -170,7 +169,7 @@ gulp.task("min", ["build"], () => {
 		.pipe(gulp.dest(DEST));
 });
 
-gulp.task("buildSSR", () => {
+gulp.task("buildSsrJs", () => {
 	return rollup.rollup({
 		input: "serverSSR.jsx",
 		plugins: [
@@ -198,7 +197,8 @@ gulp.task("buildSSR", () => {
 			}),
 			rollupJson(),
 			rollupGlobals(),
-			rollupBuiltins()
+			rollupBuiltins(),
+			process.env.NODE_ENV === "production" && rollupUglify()
 		]
 	}).then(bundle => {
 		return bundle.write({
@@ -206,5 +206,23 @@ gulp.task("buildSSR", () => {
 			file: `${DEST}/bundleSSR.js`,
 			sourcemap: process.env.NODE_ENV !== "production"
 		});
+	});
+});
+
+gulp.task("buildSsr", () => {
+	runSequence("build", "buildSsrJs", () => {
+		return gulp.src([`${DEST}/indexSSR.htm`])
+			.pipe(inline({
+				disabledTypes: ["img"],
+			}))
+			.pipe(htmlMin({
+				collapseWhitespace: true,
+				minifyCSS: true,
+				minifyJS: true,
+				removeAttributeQuotes: true,
+				removeComments: true,
+				removeRedundantAttributes: true
+			}))
+			.pipe(gulp.dest(DEST));
 	});
 });
