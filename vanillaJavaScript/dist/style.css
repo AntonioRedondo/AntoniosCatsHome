@@ -219,125 +219,23 @@ input:focus {
   }
 }
 
-.hta {
+.how-to-adopt__text {
   margin: 0;
   padding: 0;
 }
 @media (max-width: 800px) {
-  .hta {
+  .how-to-adopt__text {
     padding: 0 40px;
   }
 }
-.kitten {
+.how-to-adopt__image {
   width: 100%;
   height: 455px;
-  margin: 40px auto;
+  margin: 0 auto 40px;
   display: block;
   box-shadow: 4px 4px 20px rgba(0, 0, 0, 0.2);
 }
 
-
-.card {
-  width: 100%;
-  height: 250px;
-  margin: 0 0 40px;
-  overflow: hidden;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background: #eeeeee;
-  box-shadow: 0 -5px 0 #b74b66, 0 0 10px rgba(0, 0, 0, 0.5);
-  color: #333333;
-  transition: all 0.1s ease-out;
-}
-@media (max-width: 800px) {
-  .card {
-    height: 150px;
-    margin: 0;
-    box-shadow: 0 5px 0 #b74b66 inset, 10px 10px 30px rgba(0, 0, 0, 0.2);
-  }
-}
-.card:hover {
-  background: white;
-  box-shadow: 0 -5px 0 orange, 10px 10px 30px rgba(0, 0, 0, 0.2);
-  cursor: pointer;
-  transform: scale(1.025);
-}
-.card:active {
-  transform: scale(1);
-  background: lightyellow;
-}
-.card--selected {
-  background: papayawhip;
-}
-.card--selected:hover {
-  background: papayawhip;
-}
-.card__photo {
-  width: 250px;
-  height: 250px;
-  position: relative;
-}
-@media (max-width: 800px) {
-  .card__photo {
-    width: 150px;
-    min-width: 150px;
-    height: 150px;
-  }
-}
-.card__photo-img {
-  width: 100%;
-  height: 100%;
-  display: block;
-  position: absolute;
-  top: 0;
-  left: 0;
-  background-size: cover;
-}
-.card__body {
-  padding: 40px;
-  overflow: hidden;
-  flex: 1;
-  font-size: 1em;
-}
-@media (max-width: 800px) {
-  .card__body {
-    padding-right: 0;
-  }
-}
-.card__body-title {
-  margin: 0;
-  font-family: "Rokkitt", serif;
-  font-size: 2.5em;
-}
-.card__body-text {
-  margin: 0 0 20px;
-  color: #666666;
-}
-@media (max-width: 800px) {
-  .card__body-text {
-    display: none;
-  }
-}
-.card.ng-enter {
-  height: 0;
-  margin: 0;
-  opacity: 0;
-  transition: all 0.2s ease-out;
-}
-.card.ng-enter-active {
-  height: 250px;
-  margin: 0 0 40px;
-  opacity: 1;
-}
-.card.ng-leave {
-  transition: all 0.2s ease-in;
-}
-.card.ng-leave-active {
-  height: 0;
-  margin: 0;
-  opacity: 0;
-}
 
 .card {
   width: 100%;

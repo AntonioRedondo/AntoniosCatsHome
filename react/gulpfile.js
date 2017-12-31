@@ -107,7 +107,8 @@ gulp.task("buildJs", () => {
 			}),
 			rollupJson(),
 			rollupGlobals(),
-			rollupBuiltins()
+			rollupBuiltins(),
+			process.env.NODE_ENV === "production" && rollupUglify()
 		]
 	}).then(bundle => {
 		return bundle.write({
@@ -149,7 +150,7 @@ gulp.task("copyAssets", () => {
 
 // ---------- PRODUCTION ---------- //
 
-gulp.task("min", ["build"], () => {
+gulp.task("prod", ["build"], () => {
 	return gulp.src([`${DEST}/index.htm`])
 		.pipe(inline({
 			// base: DEST,

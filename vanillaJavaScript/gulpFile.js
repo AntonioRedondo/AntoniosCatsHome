@@ -30,7 +30,7 @@ const dest = "dist";
 gulp.task("default", ["watch"]);
 gulp.task("lint", ["jsHint", "htmlLint", "lessHint"]);
 gulp.task("build", ["copyJS", "copyHtml", "less", "copyAssets"]);
-gulp.task("min", ["uglify", "htmlMin", "lessMin", "copyAssets"]);
+gulp.task("prod", ["uglify", "htmlMin", "lessMin", "copyAssets"]);
 
 
 

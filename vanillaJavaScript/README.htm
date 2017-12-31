@@ -72,7 +72,7 @@
 				This is the <strong>Vanilla ES5 JavaScript</strong> implementation for Antonio's Cats Home. The project is configured with <strong>NPM</strong> and <strong>Gulp</strong> with no JavaScript dependencies.
 			</p>
 			<p class="p">
-				CSS code is written using the <strong>BEM</strong> arrangement and <strong>LESS</strong>.
+				CSS code is written using the <strong>BEM</strong> pattern and <strong>LESS</strong>.
 			</p>
 			<p class="p">
 				You do not need to run any npm command or Gulp task since all the processed files are already generated in the <code>dist</code> folder.
@@ -120,7 +120,7 @@
 				Principles of <strong>functional programming</strong> have been used to write the business logic for the card list. The JavaScript logic has been encapsulated into the <code>cardList</code> namespace. This namespace has five functions. <code>sortData()</code> is a <a href="https://en.wikipedia.org/wiki/Pure_function" target="_blank">pure function</a>: it does not rely on global variables, does not create side effects on input parameters and always return the same output given the same input. The rest of functions have been coded in a way that always return an expected value and they do not make references to private variables. Like this testing of these functions is an easier and cleaner task.
 			</p>
 			<p class="p">
-				To create the <code>cardList</code> namespace I have extended <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object" target="_blank"><code>Object</code></a> rather than <a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Inheritance_and_the_prototype_chain" target="_blank">populate its prototype</a>. Libraries like <a href="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.2/angular.js" target="_blank">Angular 1.x</a> use this approach, and Douglas Crockford –being once a prototype inheritance championer– has changed his mind and he now rather prefers to simply <a href="https://youtu.be/bo36MrBfTk4?t=31m35s" target="_blank">extend objects</a>. <a href="https://youtu.be/wfMtDGfHWpA" target="_blank"> Composition over inheritance</a>.
+				To create the <code>cardList</code> namespace I have added extra properties rather than <a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Inheritance_and_the_prototype_chain" target="_blank">populate its prototype</a>. Libraries like <a href="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.2/angular.js" target="_blank">Angular 1.x</a> use this approach, and Douglas Crockford –being once a prototype inheritance championer– has changed his mind and he now rather prefers to simply <a href="https://youtu.be/bo36MrBfTk4?t=31m35s" target="_blank">add properties</a>. <a href="https://youtu.be/wfMtDGfHWpA" target="_blank"> Composition over inheritance</a>.
 			</p>
 			<p class="p">
 				In addition, to create the collapsible cards I have used a modular component-based approach. Tests, JavaScript, template's HTML and CSS for the card list are stored in the <code>components</code> folder. Then, once the JSON is retrieved it is provided to a mapping function that will take care of writing the data into the right place on the template. I thought of using Moustache.js or Handlebars.js, their footprint is small (<a href="https://github.com/janl/mustache.js/blob/master/mustache.min.js" target="_blank">9</a> and <a href="http://builds.handlebarsjs.com.s3.amazonaws.com/bucket-listing.html?sort=lastmod&sortdir=desc" target="_blank">13</a> KB each respectively), but I am performance junkie and I decided instead to write my own solution with mapping functions.
@@ -144,46 +144,38 @@
 				Command tools
 			</h2>
 			<p class="p">
-				With Gulp all the separated <code>js</code> and <code>css</code> files are concatenated from the <code>src</code> folder and copied in a single file to <code>dist</code> from where they can be opened as final distributable files. For a better review the code included in the <code>dist</code> folder is not minimised, though the Gulp task <code>gulp min</code> is configured and working.
+				There are several npm scripts configured dealing with project tasks. The project makes uses of Gulp but it's not necessary to have it installed globally since Gulp tasks are mapped to npm scripts which call Gulp from the <code>node_modules</code> folder:
 			</p>
 			<p class="p">
-				Available NPM scripts:
+				Available npm scripts:
 			</p>
 			<ul>
 				<li>
 					<code>npm i</code> (alias for <code>npm install</code>): installs all dependencies so that the project can be developed, tested and deployed. The <code>karma start</code> command is attached to the <code>postinstall</code> script thus tests are executed once installation has finished. You must execute <code>npm i</code> before executing any other npm command or Gulp task.
 				</li>
 				<li>
-					<code>npm start</code>: initiates a Node.js server configured on <code>server.js</code> and automatically opens the default system browser with the project page.
+					<code>npm run clean</code>: removes the <code>dist</code> folder with all its content.
 				</li>
 				<li>
-					<code>npm test</code>: executes <code>.spec.js</code> tests with Karma. PhantomJS and Karma will finalise once all the tests are executed. For a command which keeps Karma executing see <code>npm run-script testautowatch</code>.
+					<code>npm run lint</code>: lints JavaScript, HTML and CSS code.
 				</li>
 				<li>
-					<code>npm run testautowatch</code>: starts Karma on <a href="http://karma-runner.github.io/0.13/config/configuration-file.html" target="_blank"><code>autoWatch</code></a> mode, executing the tests whenever one JavaScript files changes. PhantomJS and Karma won't close once all the tests are executed. Ideal for TDD.
-				</li>
-			</ul>
-			<p class="p">
-				Available Gulp tasks:
-			</p>
-			<ul>
-				<li>
-					<code>gulp</code>: executes the Gulp default task. The bleow <code>gulp lint</code> and <code>gulp build</code> tasks are executed.
+					<code>npm run build</code>: generates the usable web in the <code>dist</code> folder.
 				</li>
 				<li>
-					<code>gulp lint</code>: lints JavaScript, HTML and CSS code.
+					<code>npm run build:watch</code>: executes the <code>default</code> task every time a file from the <code>src</code> folder is modified. This is the script you should run most of the time when developing together with the script <code>npm start</code>.
 				</li>
 				<li>
-					<code>gulp build</code>: generates the usable web in the <code>dist</code> folder.
+					<code>npm run build:prod</code>: generates the usable web in the <code>dist</code> folder by minimising the JavaScript, HTML and CSS code.
 				</li>
 				<li>
-					<code>gulp min</code>: generates the usable web in the <code>dist</code> folder by minimising the JavaScript, HTML and CSS code.
+					<code>npm t</code> (alias for <code>npm test</code>): executes <code>.spec.js</code> tests with Karma. PhantomJS and Karma will finalise once all the tests are executed. For a command which keeps Karma executing see <code>npm run-script testautowatch</code>.
 				</li>
 				<li>
-					<code>gulp watch</code>: executes the <code>default</code> task every time a file from the <code>src</code> folder is modified.
+					<code>npm run test:watch</code>: starts Karma on <a href="http://karma-runner.github.io/0.13/config/configuration-file.html" target="_blank"><code>autoWatch</code></a> mode, executing the tests whenever one JavaScript files changes. PhantomJS and Karma won't close once all the tests are executed. Ideal for TDD.
 				</li>
 				<li>
-					<code>gulp clean</code>: removes the <code>dist</code> folder with all its content.
+					<code>npm start</code>: initiates a Node.js server configured on <code>server.js</code> and automatically opens the default browser with the project page.
 				</li>
 			</ul>
 			<h2>

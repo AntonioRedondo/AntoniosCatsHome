@@ -4,5 +4,6 @@
     "propertyOrdering": false, // The only ordering deemed as correct is alphabetically
     "qualifyingElement": true, // If not it will complain about the .ng-enter and .ng-leave classes
     "trailingWhitespace": false, // Tabs are also deemed as trailing whitespaces
+    "universalSelector": false,
     "zeroUnit": false
 }

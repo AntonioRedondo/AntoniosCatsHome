@@ -63,7 +63,7 @@
 				Hi,
 			</p>
 			<p class="p">
-				This is the <strong>React</strong> implementation for Antonio's Cats Home. The project is configured with <strong>npm</strong> and <strong>Gulp</strong>. CSS code is written with  <strong>PostCSS</strong> using the <strong>BEM</strong> arrangement. <a href="https://www.npmjs.com/package/styled-components"><strong>styled-components</strong></a> is used for the styling on React components. Most of the CSS is on the React components. Just a few classes dealing with edge cases are on `scss` files.
+				This is the <strong>React</strong> implementation for Antonio's Cats Home. The project is configured with <strong>npm</strong> and <strong>Gulp</strong>. CSS code is written with  <strong>PostCSS</strong> using the <strong>BEM</strong> pattern. <a href="https://www.npmjs.com/package/styled-components"><strong>styled-components</strong></a> is used for the styling on React components. Most of the CSS is on the React components. Just a few classes dealing with edge cases are on `scss` files.
 			</p>
 			<p class="p">
 				The JavaScript written makes use of ES6 features. In order to transform ES6 JSX to ES5 JavaScript <strong>Babel</strong> is used. <strong>Rollup</strong> is used to bundle all modules together.
@@ -73,6 +73,9 @@
 			</p>
 			<p class="p">
 				<strong>React Router</strong> is used to implement routing between tabs. Every of the two tabs can be accessed straightaway from its URL.
+			</p>
+			<p class="p">
+				The projects implements <strong>server-side rendering</strong>. In order to make it work firstly a bundle is created for the server with the <code>npm run build:ssr</code>. Then this bundled is execuded on a Node.js server with <code>npm run serve</code> accessible from <code>http://localhost:3000</code>.
 			</p>
 			<p class="p">
 				You do not need to run any npm command or Gulp task since all the processed files are already generated in the <code>dist</code> folder.
@@ -93,7 +96,7 @@
 					Or download the repository and with a browser supporting the <code>file:///</code> standard with <a href="https://en.wikipedia.org/wiki/Cross-origin_resource_sharing" target="_blank">CORS</a> (Firefox on Windows supports it) open <a href="dist/index.htm"><code>dist/index.htm</code></a>.
 				</li>
 				<li>
-					Or download the repository and run <code>npm i &amp;&amp; npm start</code>. A Node.js server will start and the system default browser will open automatically at <a href="http://localhost:3000/dist/index.htm">http://localhost:3000/dist/index.htm</a>.
+					Or download the repository and run <code>npm i &amp;&amp; npm start</code>. A Node.js server will start and the system default browser will open automatically at <a href="http://localhost:3000/dist/index.htm">http://localhost:3000/dist/index.htm</a>. A server with React server-side rendering can be started with <code>npm run serve</code>.
 				</li>
 			</ul>
 			<h2>
@@ -107,8 +110,6 @@
 			</p>
 			<p class="p">
 				The application has a medium code size: 6 KB of CSS and 336 KB of minified JavaScript. See the below screenshot of Firefox Developer Tools showing the <strong>minified</strong> version of the project (built with the <code>gulp min</code> configured task).
-				
-				<img src="sizeReact.png">
 			</p>
 			<h2>
 				Best practices
@@ -163,10 +164,13 @@
 					<code>npm run build</code>: generates the usable web in the <code>dist</code> folder.
 				</li>
 				<li>
-					<code>npm run build:watch</code>: executes the <code>default</code> task every time a file from the <code>src</code> folder is modified.
+					<code>npm run build:watch</code>: executes the <code>default</code> task every time a file from the <code>src</code> folder is modified. This is the script you should run most of the time when developing together with the script <code>npm start</code>.
 				</li>
 				<li>
 					<code>npm run build:prod</code>: generates the usable web in the <code>dist</code> folder by minimising the JavaScript, HTML and CSS code, removing dev code and inlining JavaScript, CSS and SVGs files. This script execute the <coded>npm run build</coded> script first.
+				</li>
+				<li>
+					<code>npm run build:ssr</code>: creates the bundle used for server-side rendering. The server using this bundled is started with <code>npm run serve</code>.
 				</li>
 				<li>
 					<code>npm t</code> (alias for <code>npm test</code>): executes <code>.test.jsx</code> tests.
@@ -178,7 +182,7 @@
 					<code>npm run test:update</code>: updates Jest snapshots.
 				</li>
 				<li>
-					<code>npm start</code>: initiates a Node.js server configured on <code>server.js</code> and automatically opens the default system browser with the project page.
+					<code>npm start</code>: initiates a Node.js server configured on <code>server.js</code> and automatically opens the default browser with the project page.
 				</li>
 			</ul>
 			<h2>

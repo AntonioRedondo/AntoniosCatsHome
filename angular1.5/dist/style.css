@@ -196,19 +196,19 @@ input:focus {
 }
 
 
-.hta {
+.how-to-adopt__text {
   margin: 0;
   padding: 0;
 }
 @media (max-width: 800px) {
-  .hta {
+  .how-to-adopt__text {
     padding: 0 40px;
   }
 }
-.kitten {
+.how-to-adopt__image {
   width: 100%;
   height: 455px;
-  margin: 40px auto;
+  margin: 0 auto 40px;
   display: block;
   box-shadow: 4px 4px 20px rgba(0, 0, 0, 0.2);
 }

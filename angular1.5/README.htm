@@ -72,7 +72,7 @@
 				This is the <strong>Angular 1.5</strong> implementation for Antonio's Cats Home. The project is configured with <strong>npm</strong> and <strong>Gulp</strong>.
 			</p>
 			<p class="p">
-				CSS code is written using the <strong>BEM</strong> arrangement and <strong>LESS</strong>.
+				CSS code is written using the <strong>BEM</strong> pattern and <strong>LESS</strong>.
 			</p>
 			<p class="p">
 				<strong>Redux</strong> with <strong>Reselect</strong> is used to implement the model layer and decouple state from React views. The app stores the state on <code>localStorage</code>. So if you refresh the window or reopen it on another tab the cat selected and the filtering string will load automatically.
@@ -157,7 +157,7 @@
 					<code>npm run build</code>: generates the usable web in the <code>dist</code> folder.
 				</li>
 				<li>
-					<code>npm run build:watch</code>: executes the <code>default</code> task every time a file from the <code>src</code> folder is modified.
+					<code>npm run build:watch</code>: executes the <code>default</code> task every time a file from the <code>src</code> folder is modified. This is the script you should run most of the time when developing together with the script <code>npm start</code>.
 				</li>
 				<li>
 					<code>npm run build:prod</code>: generates the usable web in the <code>dist</code> folder by minimising the JavaScript, HTML and CSS code, removing dev code and inlining JavaScript, CSS and SVGs files. This script execute the <coded>npm run build</coded> script first.
@@ -169,7 +169,7 @@
 					<code>npm run test:watch</code>: runs tests in watch mode.
 				</li>
 				<li>
-					<code>npm start</code>: initiates a Node.js server configured on <code>server.js</code> and automatically opens the default system browser with the project page.
+					<code>npm start</code>: initiates a Node.js server configured on <code>server.js</code> and automatically opens the default browser with the project page.
 				</li>
 			</ul>
 			<h2>
