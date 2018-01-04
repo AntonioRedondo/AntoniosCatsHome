@@ -30,10 +30,9 @@ app.get("/", (req, res) => {
 	const sheet = new ServerStyleSheet();
 	const reactApp = ReactDOMServer.renderToString(sheet.collectStyles(<AppSSR url={ req.url } />));
 	const css = sheet.getStyleTags();
-	
-	let finalString = indexTemplate.replace(`<!-- #reactApp -->`, reactApp);
-	finalString = finalString.replace(`<!-- #stateToHydrate -->`, `<script>window.stateToHydrate=${JSON.stringify(stateToHydrate)}</script>`);
-	finalString = finalString.replace(`<!-- #reactCSS -->`, css);
+	const finalString = indexTemplate.replace(`<!-- #reactApp -->`, reactApp)
+		.replace(`<!-- #stateToHydrate -->`, `<script>window.stateToHydrate=${JSON.stringify(stateToHydrate)}</script>`)
+		.replace(`<!-- #reactCSS -->`, css);
 	
 	res.send(finalString);
 });

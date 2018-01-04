@@ -35,7 +35,7 @@
 		try {
 			request.send();
 		} catch (e) {
-			console.log(e);                                        
+			console.log(e);
 		}
 	};
 	
@@ -65,10 +65,8 @@
 	
 	
 	
-	cardList.render = function(container, data, template, mappingFunction) {
-		if (mappingFunction)
-			return cardList.mappingFunction(container, data, template, mappingFunction);
-		return cardList.mappingFunction(container, data, template, cardList.mappingFunction);
+	cardList.render = function(container, data, template) {
+		return cardList.mappingFunction(container, data, template);
 	};
 	
 	
@@ -94,9 +92,9 @@
 		
 		// Filters list by the string typed on the input field
 		if (inputField)
-			inputField.addEventListener("input", function(e) {
+			inputField.addEventListener("input", function(event) {
 				container.innerHTML = "";
-				cardList.render(container, cardList.filter(cardList.data, e.target.value), templateString);
+				cardList.render(container, cardList.filter(cardList.data, event.target.value), templateString);
 			});
 		
 	};
