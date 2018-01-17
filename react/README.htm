@@ -30,6 +30,16 @@
 				display: block;
 				border: none;
 			}
+			table {
+				margin: 30px 0;
+				font-size: 0.6em;
+			}
+			thead {
+				background-color: lightgray;
+			}
+			td {
+				padding: 5px;
+			}
 			.main {
 				width: 70%;
 				margin: 0 auto;
@@ -65,6 +75,48 @@
 			<p class="p">
 				This is the <strong>React</strong> implementation for Antonio's Cats Home. The project is configured with <strong>npm</strong> and <strong>Gulp</strong>. CSS code is written with  <strong>PostCSS</strong> using the <strong>BEM</strong> pattern. <a href="https://www.npmjs.com/package/styled-components"><strong>styled-components</strong></a> is used for the styling on React components. Most of the CSS is on the React components. Just a few classes dealing with edge cases are on `scss` files.
 			</p>
+			<table>
+				<thead>
+					<tr>
+						<td>JS (Kb minified)</td>
+						<td>CSS (Kb minified)</td>
+						<td>JS imports</td>
+						<td>CSS imports</td>
+						<td>Front-end framework</td>
+						<td>HTTP requests</td>
+						<td>Routing</td>
+						<td>Transitions</td>
+						<td>Other libraries</td>
+						<td>CSS framework</td>
+						<td>Building tools</td>
+						<td>Linting</td>
+						<td>Tests</td>
+						<td>Server-side rendering</td>
+						<td>Server</td>
+						<td>Readme file</td>
+						<td>Ready out of the box</td>
+					</tr>
+				</thead>
+				<tr>
+					<td>250</td>
+					<td>3</td>
+					<td>1</td>
+					<td>1 (plus fonts)</td>
+					<td>React 16.2</td>
+					<td><a href="https://www.npmjs.com/package/axios" target="_blank">Axios</a></td>
+					<td><a href="https://www.npmjs.com/package/react-router" target="_blank">React Router</a></td>
+					<td><a href="https://www.npmjs.com/package/react-transition-group" target="_blank">ReactTransitionGroup</a></td>
+					<td>Redux, Reselect</td>
+					<td><a href="https://www.npmjs.com/package/styled-components" target="_blank">styled-components</a> and <a href="https://www.npmjs.com/package/postcss" target="_blank">PostCSS</a> using <a href="http://getbem.com/naming/" target="_blank">BEM</a></td>
+					<td>npm, Gulp, Rollup</td>
+					<td><a href="https://www.npmjs.com/package/gulp-eslint" target="_blank">ESLint</a>, <a href="https://stylelint.io" target="_blank">stylelint</a></td>
+					<td>Jest on Node.js</td>
+					<td>Yes</td>
+					<td>Node.js</td>
+					<td>In HTML</td>
+					<td>On <code>dist</code> folder</td>
+				</tr>
+			</table>
 			<p class="p">
 				The JavaScript written makes use of ES6 features. In order to transform ES6 JSX to ES5 JavaScript <strong>Babel</strong> is used. <strong>Rollup</strong> is used to bundle all modules together.
 			</p>
@@ -99,6 +151,9 @@
 					Or download the repository and run <code>npm i &amp;&amp; npm start</code>. A Node.js server will start and the system default browser will open automatically at <a href="http://localhost:3000/dist/index.htm">http://localhost:3000/dist/index.htm</a>. A server with React server-side rendering can be started with <code>npm run serve</code>.
 				</li>
 			</ul>
+			<p class="p">
+				JavaScript dependencies are React, Redux, React Router, styled-components, some supporting libs and a couple of shims (see <code>package.json</code> for details). No jQuery, no Bootstrap. No real need for polyfills like Webshim or babel-polyfill, or browser compatibility libraries like Modernizr.
+			</p>
 			<h2>
 				Dependencies
 			</h2>
@@ -152,7 +207,7 @@
 			</p>
 			<ul>
 				<li>
-					<code>npm i</code> (alias for <code>npm install</code>): installs all dependencies so that the project can be developed, tested and deployed. You must execute <code>npm i</code> before executing any other npm command or Gulp task.
+					<code>npm i</code> (alias for <code>npm install</code>): installs all dependencies so that the project can be developed, tested and deployed. You must execute <code>npm i</code> before executing any other npm command.
 				</li>
 				<li>
 					<code>npm run clean</code>: removes the <code>dist</code> folder with all its content.
