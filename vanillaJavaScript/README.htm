@@ -24,6 +24,16 @@
 				display: inline-block;
 				background: #ddd;
 			}
+			table {
+				margin: 30px 0;
+				font-size: 0.6em;
+			}
+			thead {
+				background-color: lightgray;
+			}
+			td {
+				padding: 5px;
+			}
 			img {
 				max-width: 100%;
 				margin: 20px auto;
@@ -71,6 +81,48 @@
 			<p class="p">
 				This is the <strong>Vanilla ES5 JavaScript</strong> implementation for Antonio's Cats Home. The project is configured with <strong>NPM</strong> and <strong>Gulp</strong> with no JavaScript dependencies.
 			</p>
+			<table>
+				<thead>
+					<tr>
+						<td>JS (Kb minified)</td>
+						<td>CSS (Kb minified)</td>
+						<td>JS imports</td>
+						<td>CSS imports</td>
+						<td>Front-end framework</td>
+						<td>HTTP requests</td>
+						<td>Routing</td>
+						<td>Transitions</td>
+						<td>Other libraries</td>
+						<td>CSS framework</td>
+						<td>Building tools</td>
+						<td>Linting</td>
+						<td>Tests</td>
+						<td>Server-side rendering</td>
+						<td>Server</td>
+						<td>Readme file</td>
+						<td>Ready out of the box</td>
+					</tr>
+				</thead>
+				<tr>
+					<td>2</td>
+					<td>5</td>
+					<td>1</td>
+					<td>1 (plus fonts)</td>
+					<td>- (HTML strings with <a href="https://developer.mozilla.org/en-US/docs/Web/API/Element/insertAdjacentHTML" target="_blank"><code>insertAdjacentHTML</code></a>)</td>
+					<td>XMLHttpRequest</td>
+					<td>-</td>
+					<td>-</td>
+					<td>-</td>
+					<td><a href="https://www.npmjs.com/package/less" target="_blank">Less</a> using <a href="http://getbem.com/naming" target="_blank">BEM</a></td>
+					<td>npm, Gulp</td>
+					<td><a href="https://www.npmjs.com/package/gulp-jshint" target="_blank">JSHint</a>, <a href="https://www.npmjs.com/package/gulp-htmllint" target="_blank">HTMLLint</a> and <a href="https://www.npmjs.com/package/lesshint" target="_blank">lesshint</a></td>
+					<td>Jasmine and Karma on PhantomJS</td>
+					<td>No</td>
+					<td>Node.js</td>
+					<td>In HTML</td>
+					<td>On <code>dist</code> folder</td>
+				</tr>
+			</table>
 			<p class="p">
 				CSS code is written using the <strong>BEM</strong> pattern and <strong>LESS</strong>.
 			</p>

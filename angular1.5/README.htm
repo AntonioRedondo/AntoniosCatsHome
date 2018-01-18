@@ -24,6 +24,16 @@
 				display: inline-block;
 				background: #ddd;
 			}
+			table {
+				margin: 30px 0;
+				font-size: 0.6em;
+			}
+			thead {
+				background-color: lightgray;
+			}
+			td {
+				padding: 5px;
+			}
 			img {
 				max-width: 100%;
 				margin: 20px auto;
@@ -64,18 +74,57 @@
 	<body>
 
 		<div class="main">
-			<h1>Antonio's Cats Home - Angular 1.5 implementation</h1>
+			<h1>Antonio's Cats Home - AngularJS 1.6 implementation</h1>
 			<p class="p">
 				Hi,
 			</p>
 			<p class="p">
-				This is the <strong>Angular 1.5</strong> implementation for Antonio's Cats Home. The project is configured with <strong>npm</strong> and <strong>Gulp</strong>.
+				This is the <strong>AngularJS</strong> implementation for Antonio's Cats Home. The project is configured with <strong>npm</strong> and <strong>Gulp</strong>.
 			</p>
+			<table>
+				<thead>
+					<tr>
+						<td>JS (Kb minified)</td>
+						<td>CSS (Kb minified)</td>
+						<td>JS imports</td>
+						<td>CSS imports</td>
+						<td>Front-end framework</td>
+						<td>HTTP requests</td>
+						<td>Routing</td>
+						<td>Transitions</td>
+						<td>Other libraries</td>
+						<td>CSS framework</td>
+						<td>Building tools</td>
+						<td>Linting</td>
+						<td>Tests</td>
+						<td>Server-side rendering</td>
+						<td>Server</td>
+						<td>Readme file</td>
+						<td>Ready out of the box</td>
+					</tr>
+				</thead>
+				<tr>
+					<td>222</td>
+					<td>5</td>
+					<td>1</td>
+					<td>1 (plus fonts)</td>
+					<td>AngularJS 1.6 (directive)</td>
+					<td><a href="https://docs.angularjs.org/api/ng/service/$http" target="_blank">$http</a></td>
+					<td><a href="https://www.npmjs.com/package/angular-ui-router" target="_blank">UI-Router</a></td>
+					<td><a href="https://docs.angularjs.org/api/ngAnimate" target="_blank">ngAnimate</a></td>
+					<td>-</td>
+					<td><a href="https://www.npmjs.com/package/less" target="_blank">Less</a> using <a href="http://getbem.com/naming" target="_blank">BEM</a></td>
+					<td>npm, Gulp</td>
+					<td><a href="https://www.npmjs.com/package/gulp-jshint" target="_blank">JSHint</a>, <a href="https://www.npmjs.com/package/gulp-htmllint" target="_blank">HTMLLint</a> and <a href="https://www.npmjs.com/package/lesshint" target="_blank">lesshint</a></td>
+					<td>Jasmine and Karma on PhantomJS</td>
+					<td>No</td>
+					<td>Node.js</td>
+					<td>In HTML</td>
+					<td>On <code>dist</code> folder</td>
+				</tr>
+			</table>
 			<p class="p">
 				CSS code is written using the <strong>BEM</strong> pattern and <strong>LESS</strong>.
-			</p>
-			<p class="p">
-				<strong>Redux</strong> with <strong>Reselect</strong> is used to implement the model layer and decouple state from React views. The app stores the state on <code>localStorage</code>. So if you refresh the window or reopen it on another tab the cat selected and the filtering string will load automatically.
 			</p>
 			<p class="p">
 				<strong>UI-Router</strong> is used to implement routing between tabs. Every of the two tabs can be accessed straightaway from its URL.
