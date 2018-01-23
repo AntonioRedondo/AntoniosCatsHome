@@ -33,6 +33,7 @@ const htmlMin = require("gulp-htmlmin");
 
 const SRC = "src";
 const DEST = "dist";
+const isProduction = process.env.NODE_ENV === "production";
 
 
 
@@ -82,8 +83,8 @@ gulp.task("buildJs", () => {
 			rollupRe({
 				// exclude: "node_modules/**",
 				defines: {
-					DEV: process.env.NODE_ENV !== "production",
-					PROD: process.env.NODE_ENV === "production",
+					DEV: !isProduction,
+					PROD: isProduction,
 				},
 				replaces: {
 					"process.env.NODE_ENV": JSON.stringify(process.env.NODE_ENV || "development")
@@ -108,13 +109,13 @@ gulp.task("buildJs", () => {
 			rollupJson(),
 			rollupGlobals(),
 			rollupBuiltins(),
-			process.env.NODE_ENV === "production" && rollupUglify()
+			isProduction && rollupUglify()
 		]
 	}).then(bundle => {
 		return bundle.write({
 			format: "iife",
 			file: `${DEST}/bundle.js`,
-			sourcemap: process.env.NODE_ENV !== "production"
+			sourcemap: !isProduction
 		});
 	});
 });
@@ -175,8 +176,8 @@ gulp.task("buildSsrJs", () => {
 		plugins: [
 			rollupRe({
 				defines: {
-					DEV: process.env.NODE_ENV !== "production",
-					PROD: process.env.NODE_ENV === "production",
+					DEV: !isProduction,
+					PROD: isProduction,
 				},
 				replaces: {
 					"process.env.NODE_ENV": JSON.stringify(process.env.NODE_ENV || "development")
@@ -198,13 +199,13 @@ gulp.task("buildSsrJs", () => {
 			rollupJson(),
 			rollupGlobals(),
 			rollupBuiltins(),
-			process.env.NODE_ENV === "production" && rollupUglify()
+			isProduction && rollupUglify()
 		]
 	}).then(bundle => {
 		return bundle.write({
 			format: "iife",
 			file: `${DEST}/bundleSSR.js`,
-			sourcemap: process.env.NODE_ENV !== "production"
+			sourcemap: !isProduction
 		});
 	});
 });
