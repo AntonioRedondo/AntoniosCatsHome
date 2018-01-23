@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>Antonio's Cats Home - Angular 1.5 implementation</title>
+		<title>Antonio's Cats Home - AngularJS implementation</title>
 
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width" />
@@ -136,7 +136,7 @@
 				You do not need to run any npm command or Gulp task since all the processed files are already generated in the <code>dist</code> folder.
 			</p>
 			<div class="screenshotContainer">
-				<a class="screenshotLink" href="https://antonioredondo.github.io/AntoniosCatsHome/angular1.5/dist">
+				<a class="screenshotLink" href="https://antonioredondo.github.io/AntoniosCatsHome/angularJS/dist">
 					<img src="https://github.com/AntonioRedondo/AntoniosCatsHome/raw/master/readmeImages/final.png" class="screenshot">
 				</a>
 			</div>
@@ -145,7 +145,7 @@
 			</p>
 			<ul>
 				<li>
-					You can visit <a href="https://antonioredondo.github.io/AntoniosCatsHome/angular1.5/dist">https://antonioredondo.github.io/AntoniosCatsHome/angular1.5/dist</a>.
+					You can visit <a href="https://antonioredondo.github.io/AntoniosCatsHome/angularJS/dist">https://antonioredondo.github.io/AntoniosCatsHome/angularJS/dist</a>.
 				</li>
 				<li>
 					Or you can download the repository and with a browser supporting the <code>file:///</code> standard with <a href="https://en.wikipedia.org/wiki/Cross-origin_resource_sharing" target="_blank">CORS</a> (like Firefox) open <a href="dist/index.htm"><code>dist/index.htm</code></a>.
@@ -158,13 +158,13 @@
 				Dependencies
 			</h2>
 			<p class="p">
-				JavaScript dependencies are core Angular 1.5, ngAnimate 1.5 and UI-Router 0.3. No jQuery, no Bootstrap. Internet Explorer 8 and below is not supported. No real need for polyfills like Webshim, or browser compatibility libraries like Modernizr. The Angular dependency is stored on the <code>node_modules</code> folder and concated with the rest of project JavaScript code at building time.
+				JavaScript dependencies are core AngularJS, ngAnimate and UI-Router. No jQuery, no Bootstrap. Internet Explorer 8 and below is not supported. No real need for polyfills like Webshim, or browser compatibility libraries like Modernizr. The AngularJS dependency is stored on the <code>node_modules</code> folder and concated with the rest of project JavaScript code at building time.
 			</p>
 			<p class="p">
 				The only CSS dependency are the fonts downloaded from Google Fonts.
 			</p>
 			<p class="p">
-				Due to the small JavaScript and CSS footprint the page loads fast: 5 KB of CSS and 222 KB of JavaScript (which 99% of this JS is the Angular library). See the below screenshot of Firefox Developer Tools showing the <strong>minimised</strong> version of the project (built with the <code>gulp min</code> configured task).
+				Due to the small JavaScript and CSS footprint the page loads fast: 5 KB of CSS and 222 KB of JavaScript (which 99% of this JS is the AngularJS library). See the below screenshot of Firefox Developer Tools showing the <strong>minimised</strong> version of the project (built with the <code>gulp min</code> configured task).
 				
 				<img src="sizeAngular.png">
 			</p>
@@ -181,7 +181,7 @@
 				To run the tests execute <code>npm test</code> (you must have executed <code>npm i</code> before). Tests are executed with Karma and PhantomJS and have been written using Jasmine. <code>npm run-script testautowatch</code> executes Karma on <code>autoWatch</code> mode, executing the tests whenever one JavaScript files changes. Ideal for TDD.
 			</p>
 			<p class="p">
-				The project includes a <code>.spec.js</code> file which tests the <code>$achQueries</code> Angular factory. Since the folder structure is arranged <a href="http://stackoverflow.com/a/18542354/372899" target="_blank">by component and not by type</a> there is no <code>tests</code> folder, <code>.spec.js</code> test files are next to the code they test.
+				The project includes a <code>.spec.js</code> file which tests the <code>$achQueries</code> AngularJS factory. Since the folder structure is arranged <a href="http://stackoverflow.com/a/18542354/372899" target="_blank">by component and not by type</a> there is no <code>tests</code> folder, <code>.spec.js</code> test files are next to the code they test.
 			</p>
 			<p class="p">
 				The project has also configured and working the <code>gulp lint</code> task for linting which makes use of three packages: <a href="https://www.npmjs.com/package/gulp-jshint" target="_blank"><code>gulp-jshint</code></a> to lint JavaScript, <a href="https://www.npmjs.com/package/gulp-htmllint" target="_blank"><code>gulp-htmllint</code></a> to lint HTML and <a href="https://www.npmjs.com/package/gulp-lesshint" target="_blank"><code>gulp-lesshint</code></a> to lint CSS. The <code>gulp lint</code> task is added to the default <code>gulp</code> task together with the <code>gulp build</code> task.
@@ -228,7 +228,7 @@
 				Folder structure
 			</h2>
 			<p class="p">
-				Source code and distributable built code are stored in different folders (<code>src</code> and <code>dist</code> folders). Angular code is arranged <a href="http://stackoverflow.com/a/18542354/372899" target="_blank">by component rather than by type</a>. The two Angular components on the project are the <code>achQueries</code> factory and the <code>cardList</code> directive. On the project directives are modular, their folder contains all the JS, CSS and HTML code to be rendered. There is no <code>tests</code> folder, <code>.spec.js</code> test files are next to the code they test.
+				Source code and distributable built code are stored in different folders (<code>src</code> and <code>dist</code> folders). AngularJS code is arranged <a href="http://stackoverflow.com/a/18542354/372899" target="_blank">by component rather than by type</a>. The two AngularJS components on the project are the <code>achQueries</code> factory and the <code>cardList</code> directive. On the project directives are modular, their folder contains all the JS, CSS and HTML code to be rendered. There is no <code>tests</code> folder, <code>.spec.js</code> test files are next to the code they test.
 			</p>
 			<h2>
 				Screen sizes
