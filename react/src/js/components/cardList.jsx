@@ -9,15 +9,15 @@ import Card from "./card.jsx";
 import v from "../style/variables";
 
 export class CardList extends Component {
-	constructor(props) {
-		super();
-		
-		this.setSelected = props.setSelected.bind(this);
+	static propTypes = {
+		catSelected: PropTypes.string,
+		cats: PropTypes.array.isRequired,
+		requestCats: PropTypes.func.isRequired,
+		setSelected: PropTypes.func.isRequired,
 	}
 	
 	componentDidMount() {
-		if (this.props.cats.length === 0)
-			this.props.requestCats();
+		!this.props.cats.length && this.props.requestCats();
 	}
 	
 	shouldComponentUpdate({ cats, catSelected }) {
@@ -47,15 +47,6 @@ export class CardList extends Component {
 		return <TransitionGroup>{ this._renderCards() }</TransitionGroup>;
 	}
 }
-
-CardList.displayName = "CardList";
-
-CardList.propTypes = {
-	catSelected: PropTypes.string,
-	cats: PropTypes.array.isRequired,
-	requestCats: PropTypes.func.isRequired,
-	setSelected: PropTypes.func.isRequired,
-};
 
 const mapStateToProps = state => ({
 	cats: filterCats(state),

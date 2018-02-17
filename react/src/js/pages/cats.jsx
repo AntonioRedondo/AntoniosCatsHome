@@ -15,8 +15,6 @@ export function Cats(props) {
 	);
 }
 
-Cats.displayName = "Cats";
-
 Cats.propTypes = {
 	filterString: PropTypes.string,
 	setFilterString: PropTypes.func.isRequired,

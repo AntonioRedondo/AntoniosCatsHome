@@ -41,8 +41,6 @@ function CardFilter(props) {
 	);
 }
 
-CardFilter.displayName = "CardFilter";
-
 CardFilter.propTypes = {
 	onChange: PropTypes.func.isRequired,
 	value: PropTypes.string

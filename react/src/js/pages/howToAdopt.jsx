@@ -30,5 +30,3 @@ export default function HowToAdopt() {
 		</div>
 	);
 }
-
-HowToAdopt.displayName = "HowToAdopt";

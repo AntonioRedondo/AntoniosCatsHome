@@ -99,8 +99,6 @@ function Card(props) {
 	);
 }
 
-Card.displayName = "Card";
-
 Card.propTypes = {
 	catSelected: PropTypes.string,
 	description: PropTypes.string,

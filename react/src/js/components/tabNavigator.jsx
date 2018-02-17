@@ -68,6 +68,10 @@ const TransitionGroupStyled = styled(TransitionGroup)`
 `;
 
 export class TabNavigator extends Component {
+	static propTypes = {
+		location: PropTypes.object
+	}
+	
 	_getPage(pathname) {
 		let component;
 		
@@ -101,11 +105,5 @@ export class TabNavigator extends Component {
 		);
 	}
 }
-
-TabNavigator.displayName = "TabNavigator";
-
-TabNavigator.propTypes = {
-	location: PropTypes.object
-};
 
 export default TabNavigator;

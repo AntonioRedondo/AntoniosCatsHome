@@ -18,7 +18,6 @@ function AppSSR(props) {
 	);
 }
 
-AppSSR.displayName = "AppSSR";
 AppSSR.propTypes = {
 	url: PropTypes.string.isRequired
 };

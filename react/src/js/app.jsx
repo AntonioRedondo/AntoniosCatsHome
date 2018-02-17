@@ -5,7 +5,9 @@ import { HashRouter } from "react-router-dom";
 import Store from "./redux/store";
 import Routes from "./routes.jsx";
 
-function App() {
+
+
+export default function App() {
 	return (
 		<Provider store={ Store } >
 			<HashRouter >
@@ -14,7 +16,3 @@ function App() {
 		</Provider>
 	);
 }
-
-App.displayName = "App";
-
-export default App;

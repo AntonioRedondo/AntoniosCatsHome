@@ -19,6 +19,7 @@ const rollupJson = require("rollup-plugin-json");
 const rollupBuiltins = require("rollup-plugin-node-builtins");
 const rollupCommonjs = require("rollup-plugin-commonjs");
 const rollupUglify = require("rollup-plugin-uglify");
+// const rollupClosure = require("rollup-plugin-closure-compiler-js"); // https://github.com/google/closure-compiler-js/issues/23
 const concat = require("gulp-concat");
 const replace = require("gulp-replace");
 const inline = require("gulp-inline");
@@ -94,7 +95,7 @@ gulp.task("buildJs", () => {
 				babelrc: false,
 				exclude: "node_modules/**",
 				presets: [ [ "env", { modules: false } ], "react" ],
-				plugins: [ "external-helpers", "transform-class-properties" ]
+				plugins: [ "external-helpers", "babel-plugin-transform-react-display-name", "transform-class-properties" ]
 			}),
 			rollupNodeResolve({
 				jsnext: true,
@@ -109,6 +110,7 @@ gulp.task("buildJs", () => {
 			rollupJson(),
 			rollupGlobals(),
 			rollupBuiltins(),
+			// isProduction && rollupClosure(),
 			isProduction && rollupUglify()
 		]
 	}).then(bundle => {
@@ -187,7 +189,7 @@ gulp.task("buildSsrJs", () => {
 				babelrc: false,
 				exclude: "node_modules/**",
 				presets: [ [ "env", { modules: false } ], "react" ],
-				plugins: [ "external-helpers", "transform-class-properties" ]
+				plugins: [ "external-helpers", "transform-react-display-name", "transform-class-properties" ]
 			}),
 			rollupNodeResolve({ jsnext: true, preferBuiltins: true, browser: true }),
 			rollupCommonjs({
