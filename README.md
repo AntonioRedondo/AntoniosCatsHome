@@ -8,9 +8,11 @@ Antonio's Cats Home is a skills' demonstration exercise where I implement the sa
 - [AngularJS 1.6](https://antonioredondo.github.io/AntoniosCatsHome/angularJS/README.htm) ([source code](https://github.com/AntonioRedondo/AntoniosCatsHome/tree/master/angularJS)): services, directives, isolated scopes, [UI-Router](https://www.npmjs.com/package/angular-ui-router) and [ngAnimate](https://docs.angularjs.org/api/ngAnimate).
 - [React 16.2](https://antonioredondo.github.io/AntoniosCatsHome/react/README.htm) ([source code](https://github.com/AntonioRedondo/AntoniosCatsHome/tree/master/react)): Redux, React Router, [styled-components](https://www.styled-components.com/) and server-side rendering.
 
-Visually the implementations are identical. Under the hood there are important differences. These implementations solve common front-end problems like model/scope/state creation, routing and animations based on component entering/leaving states. All three implementations are Single-page Applications (SPAs). They have been developed following a TDD approach.
+Visually the implementations are identical. Under the hood there are important differences. These implementations solve common front-end problems like model/scope/state creation, routing and transitions based on component states. All three implementations are Single-page Applications (SPAs). They have been developed following a TDD approach.
 
 This project is intended to help recruiters and hiring IT managers when time comes to assess my coding skills.
+
+I also use these implementations as best-practices reference and skeleton code base for new projects. None of the three implementations use boilerplate projects for its creation. They have been coded from scratch.
 
 
 ### Exercise statement
@@ -41,7 +43,7 @@ Implementation | JS (Kb minified) | CSS (Kb minified) | JS imports | CSS imports
 --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | ---
 Vanilla ES5 JavaScript | 2 | 5 | 1 | 1 (plus fonts) | - (HTML strings with [`insertAdjacentHTML`](https://developer.mozilla.org/en-US/docs/Web/API/Element/insertAdjacentHTML)) | XMLHttpRequest | - | - | - | Less using [BEM](http://getbem.com/naming) | npm, Gulp | [JSHint](https://www.npmjs.com/package/gulp-jshint), [HTMLLint](https://www.npmjs.com/package/gulp-htmllint), [lesshint](https://www.npmjs.com/package/lesshint) | Jasmine and Karma on PhantomJS | :x: | Node.js | [HTML](https://antonioredondo.github.io/AntoniosCatsHome/vanillaJavaScript/README.htm) | On [`dist`](vanillaJavaScript/dist) folder
 AngularJS | 222 | 5 | 1 | 1 (plus fonts) | AngularJS 1.6 (directive) | [$http](https://docs.angularjs.org/api/ng/service/$http) | [UI-Router](https://www.npmjs.com/package/angular-ui-router) | [ngAnimate](https://docs.angularjs.org/api/ngAnimate) | - | Less using BEM | npm, Gulp | JSHint, HTMLLint, lesshint | Jasmine and Karma on PhantomJS | :x: | Node.js | [HTML](https://antonioredondo.github.io/AntoniosCatsHome/angularJS/README.htm) | On [`dist`](angularJS/dist) folder
-React | 250 | 3 | 1 | 1 (plus fonts) | React 16.2 | [Axios](https://www.npmjs.com/package/axios) | [React Router](https://www.npmjs.com/package/react-router) | [ReactTransitionGroup](https://www.npmjs.com/package/react-transition-group) | Redux, Reselect | [styled-components](https://www.npmjs.com/package/styled-components) and PostCSS using BEM | npm, Gulp, Rollup | [ESLint](https://www.npmjs.com/package/gulp-eslint), [stylelint](https://stylelint.io) | Jest on Node.js | :heavy_check_mark: | Node.js | [HTML](https://antonioredondo.github.io/AntoniosCatsHome/react/README.htm) | On [`dist`](react/dist) folder
+React | 250 | 3 | 1 | 1 (plus fonts) | React 16.2 | [Axios](https://www.npmjs.com/package/axios) | [React Router](https://www.npmjs.com/package/react-router) | [ReactTransitionGroup](https://www.npmjs.com/package/react-transition-group) | Redux, Reselect | [styled-components](https://www.npmjs.com/package/styled-components) using BEM | npm, Gulp, Rollup | [ESLint](https://www.npmjs.com/package/gulp-eslint), [stylelint](https://stylelint.io) | Jest on Node.js | :heavy_check_mark: | Node.js | [HTML](https://antonioredondo.github.io/AntoniosCatsHome/react/README.htm) | On [`dist`](react/dist) folder
 
 
 ### How to best understand my skills with the test

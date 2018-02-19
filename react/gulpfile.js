@@ -6,7 +6,7 @@ const runSequence = require("run-sequence");
 
 // Lint
 const esLint = require("gulp-eslint");
-const cssLint = require("gulp-stylelint");
+const stylelint = require("gulp-stylelint");
 
 // Build
 const rollup = require("rollup");
@@ -34,11 +34,12 @@ const isProduction = process.env.NODE_ENV === "production";
 
 
 gulp.task("watch", ["lint", "build"], () => {
-	gulp.watch([`${SRC}/js/**/*.jsx`, `${SRC}/js/**/*.js`, ".eslintrc.json"], ["esLint", "buildJs"]);
+	gulp.watch([`${SRC}/js/**/*.jsx`, `${SRC}/js/**/*.js`], ["esLint", "buildJs"]);
+	gulp.watch([`${SRC}/js/**/*.jsx`], ["stylelint"]);
 	gulp.watch([`${SRC}/index.htm`], ["buildHtml"]);
 	gulp.watch([`${SRC}/img/**`], ["copyAssets"]);
 });
-gulp.task("lint", ["esLint", "styleLint"]);
+gulp.task("lint", ["esLint", "stylelint"]);
 gulp.task("build", ["buildJs", "buildHtml", "copyAssets"]);
 gulp.task("default", ["build"]);
 
@@ -55,12 +56,9 @@ gulp.task("esLint", () => {
 		.pipe(esLint.failOnError());
 });
 
-gulp.task("styleLint", () => {
-	return gulp.src([`${SRC}/style/*.scss`])
-		.pipe(cssLint({
-			// failAfterError: false, // It defaults to true
-			reporters: [{ formatter: "string", console: true }]
-		}));
+gulp.task("stylelint", () => {
+	return gulp.src([`${SRC}/js/**/*.jsx`])
+		.pipe(stylelint());
 });
 
 
