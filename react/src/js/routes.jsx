@@ -1,12 +1,16 @@
 import React from "react";
 import { Route } from "react-router-dom";
 
-import TabNavigator from "./components/tabNavigator.jsx";
+import Footer from "./components/footer.jsx";
+import Header from "./components/header.jsx";
+import Home from "./pages/home.jsx";
 
 export default function Routes() {
 	return (
 		<div>
-			<Route path="/" component={ TabNavigator } />
+			<Header/>
+			<Route path="/" component={ Home } />
+			<Footer/>
 		</div>
 	);
 }

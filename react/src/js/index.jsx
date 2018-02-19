@@ -4,6 +4,7 @@ import { injectGlobal } from "styled-components";
 import { whyDidYouUpdate } from "why-did-you-update";
 
 import globalCss from "./style/global";
+
 import App from "./app.jsx";
 
 // #if DEV

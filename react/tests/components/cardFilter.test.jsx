@@ -8,11 +8,11 @@ import CardFilter from "../../src/js/components/cardFilter.jsx";
 describe("Given the CardFilter component", () => {
 	const shallowRenderer = new Renderer();
 	let tree;
+	let mockFunction = () => {};
 
 	beforeEach(() => {
 		shallowRenderer.render(
-			<CardFilter
-				onChange={ function() {} } />
+			<CardFilter onChange={ mockFunction } />
 		);
 		tree = shallowRenderer.getRenderOutput();
 	});

@@ -17,6 +17,7 @@ const stateToHydrate = {};
 axios.get("http://localhost:3000/data/cats.json")
 	.then(results => {
 		stateToHydrate.cats = results.data;
+		console.log(stateToHydrate);
 	})
 	.catch(error => {
 		console.error(error);
@@ -30,6 +31,8 @@ app.get("/", (req, res) => {
 	const sheet = new ServerStyleSheet();
 	const reactApp = ReactDOMServer.renderToString(sheet.collectStyles(<AppSSR url={ req.url } />));
 	const css = sheet.getStyleTags();
+	console.log("heeeeeeeey");
+	console.log(css);
 	const finalString = indexTemplate.replace(`<!-- #reactApp -->`, reactApp)
 		.replace(`<!-- #stateToHydrate -->`, `<script>window.stateToHydrate=${JSON.stringify(stateToHydrate)}</script>`)
 		.replace(`<!-- #reactCSS -->`, css);

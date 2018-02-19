@@ -2,7 +2,6 @@
 const del = require("del");
 const gulp = require("gulp");
 const newer = require("gulp-newer");
-const sourcemaps = require("gulp-sourcemaps");
 const runSequence = require("run-sequence");
 
 // Lint
@@ -20,12 +19,8 @@ const rollupBuiltins = require("rollup-plugin-node-builtins");
 const rollupCommonjs = require("rollup-plugin-commonjs");
 const rollupUglify = require("rollup-plugin-uglify");
 // const rollupClosure = require("rollup-plugin-closure-compiler-js"); // https://github.com/google/closure-compiler-js/issues/23
-const concat = require("gulp-concat");
 const replace = require("gulp-replace");
 const inline = require("gulp-inline");
-const postCss = require("gulp-postcss");
-const preCss = require("precss");
-const autoprefixer = require("autoprefixer");
 
 // Production
 const htmlMin = require("gulp-htmlmin");
@@ -41,11 +36,10 @@ const isProduction = process.env.NODE_ENV === "production";
 gulp.task("watch", ["lint", "build"], () => {
 	gulp.watch([`${SRC}/js/**/*.jsx`, `${SRC}/js/**/*.js`, ".eslintrc.json"], ["esLint", "buildJs"]);
 	gulp.watch([`${SRC}/index.htm`], ["buildHtml"]);
-	gulp.watch([`${SRC}/style/*.scss`, `${SRC}/js/**/*.jsx`, ".stylelintrc.json"], ["styleLint", "buildCss"]);
 	gulp.watch([`${SRC}/img/**`], ["copyAssets"]);
 });
 gulp.task("lint", ["esLint", "styleLint"]);
-gulp.task("build", ["buildJs", "buildHtml", "buildCss", "copyAssets"]);
+gulp.task("build", ["buildJs", "buildHtml", "copyAssets"]);
 gulp.task("default", ["build"]);
 
 gulp.task("clean", () => del(DEST));
@@ -127,22 +121,6 @@ gulp.task("buildHtml", () => {
 		.pipe(gulp.dest(`${DEST}`));
 });
 
-gulp.task("buildCss", () => {
-	return gulp.src([
-		`${SRC}/style/fonts.scss`,
-		`${SRC}/style/variables.scss`,
-		`${SRC}/style/*.scss`
-	])
-		.pipe(sourcemaps.init())
-		.pipe(concat("style.css"))
-		.pipe(postCss([
-			preCss({ extension: "scss" }),
-			autoprefixer({ browsers: ["safari 9", "ie 11"] }), // https://github.com/ai/browserslist
-		]))
-		.pipe(sourcemaps.write())
-		.pipe(gulp.dest(DEST));
-});
-
 gulp.task("copyAssets", () => {
 	return gulp.src([`${SRC}/*img/*`, `${SRC}/*data/*`])
 		.pipe(newer(DEST))
@@ -172,6 +150,7 @@ gulp.task("prod", ["build"], () => {
 		}))
 		.pipe(gulp.dest(DEST));
 });
+
 gulp.task("buildSsrJs", () => {
 	return rollup.rollup({
 		input: "serverSSR.jsx",
@@ -223,7 +202,7 @@ gulp.task("buildSsr", () => {
 				minifyCSS: true,
 				minifyJS: true,
 				removeAttributeQuotes: true,
-				removeComments: true,
+				removeComments: false,
 				removeRedundantAttributes: true
 			}))
 			.pipe(gulp.dest(DEST));

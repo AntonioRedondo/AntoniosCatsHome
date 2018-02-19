@@ -11,7 +11,7 @@ describe("Given the TabNavigator component", () => {
 	const mockProps = {
 		location: { pathname: "/how-to-adopt" }
 	};
-
+	
 	beforeEach(() => {
 		shallowRenderer.render(
 			<TabNavigator { ...mockProps } />
@@ -24,5 +24,4 @@ describe("Given the TabNavigator component", () => {
 			expect(tree).toMatchSnapshot();
 		});
 	});
-	
 });

@@ -43,5 +43,4 @@ describe("Given the Card component", () => {
 			expect(tree).toHaveStyleRule("background", "papayawhip");
 		});
 	});
-	
 });

@@ -9,7 +9,7 @@ describe("Given the CardList component", () => {
 	const shallowRenderer = new Renderer();
 	let tree;
 	let mockFunction = () => {};
-
+	
 	beforeEach(() => {
 		shallowRenderer.render(
 			<CardList
@@ -25,5 +25,4 @@ describe("Given the CardList component", () => {
 			expect(tree).toMatchSnapshot();
 		});
 	});
-	
 });

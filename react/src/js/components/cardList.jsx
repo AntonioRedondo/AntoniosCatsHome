@@ -5,6 +5,7 @@ import { TransitionGroup, CSSTransition } from "react-transition-group";
 
 import actionCreators from "../redux/actionCreators";
 import { filterCats } from "../redux/selectors";
+
 import Card from "./card.jsx";
 import v from "../style/variables";
 
@@ -25,7 +26,7 @@ export class CardList extends Component {
 				|| catSelected !== this.props.catSelected;
 	}
 	
-	_renderCards() {
+	_renderCards = () => {
 		return this.props.cats.map(cat =>
 			<CSSTransition
 				key={ cat.id }

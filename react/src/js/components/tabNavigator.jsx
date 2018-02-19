@@ -1,10 +1,11 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { TransitionGroup, CSSTransition } from "react-transition-group";
-import { NavLink } from "react-router-dom";
+import { NavLink, withRouter } from "react-router-dom";
 import styled from "styled-components";
 
 import v from "../style/variables";
+
 import HowToAdopt from "../pages/howToAdopt.jsx";
 import Cats from "../pages/cats.jsx";
 
@@ -72,7 +73,7 @@ export class TabNavigator extends Component {
 		location: PropTypes.object
 	}
 	
-	_getPage(pathname) {
+	_getPage = pathname => {
 		let component;
 		
 		switch (pathname) {
@@ -106,4 +107,4 @@ export class TabNavigator extends Component {
 	}
 }
 
-export default TabNavigator;
+export default withRouter(TabNavigator);

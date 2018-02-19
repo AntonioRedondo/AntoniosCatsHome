@@ -1,6 +1,35 @@
 import v from "./variables";
 
 export default `
+	@import "https://fonts.googleapis.com/css?family=Open+Sans:300,400,800|Rokkitt:400,700";
+
+	body {
+		height: 100%;
+		min-height: 100%;
+		margin: 0;
+		overflow-x: hidden;
+		overflow-y: scroll;
+		
+		background: url("img/bg.png");
+		
+		color: ${ v.gray3 };
+		font-family: "Open Sans", sans-serif;
+	}
+
+	a {
+		color: ${ v.grayB };
+		text-decoration: none;
+		font-weight: bold;
+	}
+
+	input:focus {
+		outline: none;
+	}
+
+	* {
+		box-sizing: border-box;
+	}
+	
 	.tab-navigator--active {
 		background: ${ v.purple2 };
 	}
