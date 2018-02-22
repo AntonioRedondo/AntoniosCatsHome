@@ -1,4 +1,5 @@
 import reducers from "../../src/js/redux/reducers";
+import actionTypes from "../../src/js/redux/actionTypes";
 import catList from "../../src/data/cats.json";
 
 
@@ -6,13 +7,9 @@ describe("Given reducer functions", () => {
 	describe("When the CATS_RECEIVED action is received", () => {
 		it("It should modify state accordingly", () => {
 			const state = reducers(
+				{},
 				{
-					cats: [],
-					catSelected: "",
-					filterString: ""
-				},
-				{
-					type: "CATS_RECEIVED",
+					type: actionTypes.CATS_RECEIVED,
 					payload: catList
 				});
 				
@@ -26,12 +23,9 @@ describe("Given reducer functions", () => {
 	describe("When the CAT_SELECTED action is received", () => {
 		it("It should modify state accordingly", () => {
 			const state = reducers(
+				{},
 				{
-					catSelected: "",
-					filterString: ""
-				},
-				{
-					type: "CAT_SELECTED",
+					type: actionTypes.CAT_SELECTED,
 					id: "4"
 				});
 			
@@ -42,12 +36,9 @@ describe("Given reducer functions", () => {
 	describe("When the FILTER_STRING_SET action is received", () => {
 		it("It should modify state accordingly", () => {
 			const state = reducers(
+				{},
 				{
-					cats: catList,
-					catSelected: "",
-					filterString: ""
-				}, {
-					type: "FILTER_STRING_SET",
+					type: actionTypes.FILTER_STRING_SET,
 					filterString: "fuffly"
 				});
 				
