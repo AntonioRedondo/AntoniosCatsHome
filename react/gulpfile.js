@@ -58,7 +58,7 @@ gulp.task("esLint", () => {
 
 gulp.task("stylelint", () => {
 	return gulp.src([`${SRC}/js/**/*.jsx`])
-		.pipe(stylelint());
+		.pipe(stylelint({ reporters: [{ formatter: "string", console: true }] }));
 });
 
 

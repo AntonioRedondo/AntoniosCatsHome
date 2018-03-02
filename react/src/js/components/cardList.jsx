@@ -17,11 +17,11 @@ export class CardList extends Component {
 		setSelected: PropTypes.func.isRequired,
 	}
 	
-	componentDidMount() {
+	componentDidMount = () => {
 		!this.props.cats.length && this.props.requestCats();
 	}
 	
-	shouldComponentUpdate({ cats, catSelected }) {
+	shouldComponentUpdate = ({ cats, catSelected }) => {
 		return cats.length !== this.props.cats.length
 				|| catSelected !== this.props.catSelected;
 	}
@@ -44,7 +44,7 @@ export class CardList extends Component {
 		);
 	}
 	
-	render() {
+	render = () => {
 		return <TransitionGroup>{ this._renderCards() }</TransitionGroup>;
 	}
 }

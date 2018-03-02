@@ -17,7 +17,7 @@ const Filter = styled.input`
 	
 	color: ${ v.gray3 };
 	font-size: 1.8em;
-	font-family: "Open Sans", san-serif;
+	font-family: "Open Sans", sans-serif;
 	
 	transition: all 0.3s ease-out;
 	
@@ -36,9 +36,7 @@ const Filter = styled.input`
 `;
 
 function CardFilter(props) {
-	return (
-		<Filter type="text" placeholder="Filter by name or description" onChange={ props.onChange } value={ props.value } />
-	);
+	return <Filter type="text" placeholder="Filter by name or description" onChange={ props.onChange } value={ props.value } />;
 }
 
 CardFilter.propTypes = {

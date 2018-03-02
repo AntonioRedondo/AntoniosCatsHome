@@ -84,7 +84,7 @@ export class TabNavigator extends Component {
 		return <CSSTransition key={ pathname } timeout={ v.time2 } classNames="navigation-loader">{ component }</CSSTransition>;
 	}
 	
-	render() {
+	render = () => {
 		return (
 			<div>
 				<Navigation>
