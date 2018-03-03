@@ -30688,24 +30688,6 @@ var classCallCheck$1 = function (instance, Constructor) {
   }
 };
 
-var createClass$1 = function () {
-  function defineProperties(target, props) {
-    for (var i = 0; i < props.length; i++) {
-      var descriptor = props[i];
-      descriptor.enumerable = descriptor.enumerable || false;
-      descriptor.configurable = true;
-      if ("value" in descriptor) descriptor.writable = true;
-      Object.defineProperty(target, descriptor.key, descriptor);
-    }
-  }
-
-  return function (Constructor, protoProps, staticProps) {
-    if (protoProps) defineProperties(Constructor.prototype, protoProps);
-    if (staticProps) defineProperties(Constructor, staticProps);
-    return Constructor;
-  };
-}();
-
 var inherits$1 = function (subClass, superClass) {
   if (typeof superClass !== "function" && superClass !== null) {
     throw new TypeError("Super expression must either be null or a function, not " + typeof superClass);
@@ -30758,13 +30740,13 @@ function Footer() {
 
 var _templateObject$1 = taggedTemplateLiteral(["\n\twidth: 100%;\n\theight: 80px;\n\tz-index: 1;\n\t\n\tposition: fixed;\n\ttop: 0;\n\tleft: 0;\n\t\n\tbackground: ", ";\n\tbox-shadow: 0 0 10px ", ";\n\t\n\ttext-align: center;\n\tfont-size: 2em;\n"], ["\n\twidth: 100%;\n\theight: 80px;\n\tz-index: 1;\n\t\n\tposition: fixed;\n\ttop: 0;\n\tleft: 0;\n\t\n\tbackground: ", ";\n\tbox-shadow: 0 0 10px ", ";\n\t\n\ttext-align: center;\n\tfont-size: 2em;\n"]),
     _templateObject2 = taggedTemplateLiteral(["\n\tmax-width: ", ";\n\theight: 80px;\n\tmargin: 0 auto;\n\tpadding: 0 50px;\n\t\n\tdisplay: flex;\n\tjustify-content: space-between;\n\talign-items: center;\n"], ["\n\tmax-width: ", ";\n\theight: 80px;\n\tmargin: 0 auto;\n\tpadding: 0 50px;\n\t\n\tdisplay: flex;\n\tjustify-content: space-between;\n\talign-items: center;\n"]),
-    _templateObject3 = taggedTemplateLiteral(["\n\tmax-width: ", ";\n\tmargin: 0;\n\t\n\tflex: 1;\n\t\n\tcolor: white;\n\tfont-family: \"Rokkitt\", serif;\n\tfont-size: 1.2em;\n\tline-height: 0.8em;\n\ttext-shadow: 3px 3px 0 $purple1;\n\ttext-align: left;\n\t\n\t@media (max-width: ", ") {\n\t\tmargin: 10px auto;\n\t\tpadding: 0;\n\t\t\n\t\tfont-size: 0.9em;\n\t\ttext-align: center;\n\t}\n"], ["\n\tmax-width: ", ";\n\tmargin: 0;\n\t\n\tflex: 1;\n\t\n\tcolor: white;\n\tfont-family: \"Rokkitt\", serif;\n\tfont-size: 1.2em;\n\tline-height: 0.8em;\n\ttext-shadow: 3px 3px 0 $purple1;\n\ttext-align: left;\n\t\n\t@media (max-width: ", ") {\n\t\tmargin: 10px auto;\n\t\tpadding: 0;\n\t\t\n\t\tfont-size: 0.9em;\n\t\ttext-align: center;\n\t}\n"]);
+    _templateObject3 = taggedTemplateLiteral(["\n\tmax-width: ", ";\n\tmargin: 0;\n\t\n\tflex: 1;\n\t\n\tcolor: white;\n\tfont-family: \"Rokkitt\", sans-serif;\n\tfont-size: 1.2em;\n\tline-height: 0.8em;\n\ttext-shadow: 3px 3px 0 ", ";\n\ttext-align: left;\n\t\n\t@media (max-width: ", ") {\n\t\tmargin: 10px auto;\n\t\tpadding: 0;\n\t\t\n\t\tfont-size: 0.9em;\n\t\ttext-align: center;\n\t}\n"], ["\n\tmax-width: ", ";\n\tmargin: 0;\n\t\n\tflex: 1;\n\t\n\tcolor: white;\n\tfont-family: \"Rokkitt\", sans-serif;\n\tfont-size: 1.2em;\n\tline-height: 0.8em;\n\ttext-shadow: 3px 3px 0 ", ";\n\ttext-align: left;\n\t\n\t@media (max-width: ", ") {\n\t\tmargin: 10px auto;\n\t\tpadding: 0;\n\t\t\n\t\tfont-size: 0.9em;\n\t\ttext-align: center;\n\t}\n"]);
 
 var HeaderBlock = styled.header(_templateObject$1, v.purple2, v.shadow1);
 
 var HeaderContainer = styled.div(_templateObject2, v.width);
 
-var HeaderH1 = styled.h1(_templateObject3, v.width, v.mobileBreakpoint);
+var HeaderH1 = styled.h1(_templateObject3, v.width, v.purple1, v.mobileBreakpoint);
 
 function Header() {
 	return react.createElement(
@@ -32853,9 +32835,7 @@ var buildURL = function buildURL(url, params, paramsSerializer) {
 
       if (utils.isArray(val)) {
         key = key + '[]';
-      }
-
-      if (!utils.isArray(val)) {
+      } else {
         val = [val];
       }
 
@@ -33312,6 +33292,10 @@ var defaults$1 = {
     return data;
   }],
 
+  /**
+   * A timeout in milliseconds to abort a request. If set to 0 (default) a
+   * timeout is not created.
+   */
   timeout: 0,
 
   xsrfCookieName: 'XSRF-TOKEN',
@@ -33541,7 +33525,7 @@ Axios.prototype.request = function request(config) {
     }, arguments[1]);
   }
 
-  config = utils.merge(defaults_1, this.defaults, { method: 'get' }, config);
+  config = utils.merge(defaults_1, {method: 'get'}, this.defaults, config);
   config.method = config.method.toLowerCase();
 
   // Hook up interceptors middleware
@@ -33760,7 +33744,7 @@ var actionCreators = {
 	}
 };
 
-var _templateObject$3 = taggedTemplateLiteral(["\n\twidth: 100%;\n\tmax-width: 100%;\n\tmargin: 0 auto 50px;\n\tpadding: 8px 20px 10px;\n\tdisplay: block;\n\t\n\tbackground: white;\n\tborder-radius: 5px;\n\tborder: 4px solid ", ";\n\t\n\tcolor: ", ";\n\tfont-size: 1.8em;\n\tfont-family: \"Open Sans\", san-serif;\n\t\n\ttransition: all 0.3s ease-out;\n\t\n\t&:hover {\n\t\tborder-color: orange;\n\t}\n\t\n\t&:focus {\n\t\tborder-color: ", ";\n\t\tbox-shadow: 0 0 20px rgba(255, 255, 255, 0.2), 0 0 10px  ", " inset;\n\t}\n\t\n\t@media (max-width: ", ") {\n\t\twidth: calc(100% - 100px);\n\t}\n"], ["\n\twidth: 100%;\n\tmax-width: 100%;\n\tmargin: 0 auto 50px;\n\tpadding: 8px 20px 10px;\n\tdisplay: block;\n\t\n\tbackground: white;\n\tborder-radius: 5px;\n\tborder: 4px solid ", ";\n\t\n\tcolor: ", ";\n\tfont-size: 1.8em;\n\tfont-family: \"Open Sans\", san-serif;\n\t\n\ttransition: all 0.3s ease-out;\n\t\n\t&:hover {\n\t\tborder-color: orange;\n\t}\n\t\n\t&:focus {\n\t\tborder-color: ", ";\n\t\tbox-shadow: 0 0 20px rgba(255, 255, 255, 0.2), 0 0 10px  ", " inset;\n\t}\n\t\n\t@media (max-width: ", ") {\n\t\twidth: calc(100% - 100px);\n\t}\n"]);
+var _templateObject$3 = taggedTemplateLiteral(["\n\twidth: 100%;\n\tmax-width: 100%;\n\tmargin: 0 auto 50px;\n\tpadding: 8px 20px 10px;\n\tdisplay: block;\n\t\n\tbackground: white;\n\tborder-radius: 5px;\n\tborder: 4px solid ", ";\n\t\n\tcolor: ", ";\n\tfont-size: 1.8em;\n\tfont-family: \"Open Sans\", sans-serif;\n\t\n\ttransition: all 0.3s ease-out;\n\t\n\t&:hover {\n\t\tborder-color: orange;\n\t}\n\t\n\t&:focus {\n\t\tborder-color: ", ";\n\t\tbox-shadow: 0 0 20px rgba(255, 255, 255, 0.2), 0 0 10px  ", " inset;\n\t}\n\t\n\t@media (max-width: ", ") {\n\t\twidth: calc(100% - 100px);\n\t}\n"], ["\n\twidth: 100%;\n\tmax-width: 100%;\n\tmargin: 0 auto 50px;\n\tpadding: 8px 20px 10px;\n\tdisplay: block;\n\t\n\tbackground: white;\n\tborder-radius: 5px;\n\tborder: 4px solid ", ";\n\t\n\tcolor: ", ";\n\tfont-size: 1.8em;\n\tfont-family: \"Open Sans\", sans-serif;\n\t\n\ttransition: all 0.3s ease-out;\n\t\n\t&:hover {\n\t\tborder-color: orange;\n\t}\n\t\n\t&:focus {\n\t\tborder-color: ", ";\n\t\tbox-shadow: 0 0 20px rgba(255, 255, 255, 0.2), 0 0 10px  ", " inset;\n\t}\n\t\n\t@media (max-width: ", ") {\n\t\twidth: calc(100% - 100px);\n\t}\n"]);
 
 var Filter = styled.input(_templateObject$3, v.grayB, v.gray3, v.green1, v.shadow2, v.mobileBreakpoint);
 
@@ -33976,19 +33960,15 @@ var CardList = function (_Component) {
 						onClick: _this.props.setSelected })
 				);
 			});
-		}, _temp), possibleConstructorReturn$1(_this, _ret);
-	}
-
-	createClass$1(CardList, [{
-		key: "render",
-		value: function render() {
+		}, _this.render = function () {
 			return react.createElement(
 				reactTransitionGroup_2,
 				null,
-				this._renderCards()
+				_this._renderCards()
 			);
-		}
-	}]);
+		}, _temp), possibleConstructorReturn$1(_this, _ret);
+	}
+
 	return CardList;
 }(react_4);
 

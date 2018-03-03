@@ -37,10 +37,10 @@ const HeaderH1 = styled.h1`
 	flex: 1;
 	
 	color: white;
-	font-family: "Rokkitt", serif;
+	font-family: "Rokkitt", sans-serif;
 	font-size: 1.2em;
 	line-height: 0.8em;
-	text-shadow: 3px 3px 0 $purple1;
+	text-shadow: 3px 3px 0 ${ v.purple1 };
 	text-align: left;
 	
 	@media (max-width: ${ v.mobileBreakpoint }) {
