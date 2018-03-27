@@ -2,7 +2,7 @@
 	"name": "AntoniosCatsHomeReact",
 	"author": "Antonio Redondo",
 	"homepage": "http://antonioredondo.com",
-	"description": "A same web project implemented in Vanilla ES5 JavaScript, AngularJS and React. Ideal to find out my front-end skills",
+	"description": "A same web project implemented in vanilla ES5 JavaScript, AngularJS 1.6 and React 16.2",
 	"version": "1.0.0",
 	"repository": "antonioredondo/antonioscatshome",
 	"license": "CC-BY-NC-ND-4.0",
@@ -35,6 +35,7 @@
 		"reselect": "3.0",
 		"styled-components": "3.1"
 	},
+	"//": "https://github.com/facebook/jest/issues/2081#issuecomment-362900691",
 	"//": "Grouped by concern: basics, lint, build, test, server",
 	"devDependencies": {
 		"cross-env": "5.1",
@@ -92,13 +93,9 @@
 		"express": "4.16",
 		"opn": "5.2"
 	},
+	"//": "Just for tests",
 	"babel": {
 		"presets": ["react", "es2015-without-strict"],
 		"plugins": ["transform-class-properties"]
-	},
-	"//": "https://github.com/facebook/jest/issues/2081#issuecomment-362900691",
-	"//": "https://stackoverflow.com/questions/43604058/requestanimationframe-polyfill-error-in-jest-tests",
-	"jest": {
-		"setupFiles": ["./tests/jestHelpers.js"]
 	}
 }

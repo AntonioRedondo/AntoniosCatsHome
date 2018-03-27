@@ -2,7 +2,7 @@
 	"name": "AntoniosCatsHomeVanillaJavaScript",
 	"author": "Antonio Redondo",
 	"homepage": "http://antonioredondo.com",
-	"description": "A same web project implemented in Vanilla ES5 JavaScript, Angular 1.5 and React 15. Ideal to find out my front-end skills",
+	"description": "A same web project implemented in vanilla ES5 JavaScript, AngularJS 1.6 and React 16.2",
 	"version": "1.0.0",
 	"repository": "antonioredondo/antonioscatshome",
 	"license": "CC-BY-NC-ND-4.0",
@@ -13,26 +13,34 @@
 		"build:watch": "gulp",
 		"build:prod": "gulp prod",
 		"test": "karma start",
-		"test:watch": "karma start --singleRun false"
+		"test:watch": "karma start --singleRun false",
+		"precommit": "npm run lint",
+		"prepush": "npm run lint && npm t"
 	},
 	"dependencies": {},
+	"//": "Grouped by concern: basics, lint, build, test, server",
 	"devDependencies": {
 		"del": "~3.0.0",
 		"gulp": "~3.9.1",
+		
 		"jshint": "~2.9.2",
 		"jshint-stylish": "~2.2.1",
 		"gulp-jshint": "~2.1.0",
 		"gulp-htmllint": "~0.0.8",
 		"gulp-lesshint": "~4.0.0",
+		"husky": "~0.14.0",
+		
 		"gulp-concat": "~2.6.0",
 		"gulp-replace": "~0.6.1",
 		"gulp-less": "~3.4.0",
 		"gulp-uglify": "~3.0.0",
 		"gulp-htmlmin": "~4.0.0",
 		"gulp-clean-css": "~3.9.2",
+		
 		"connect": "~3.6.5",
 		"serve-static": "~1.13.1",
 		"opn": "~5.1.0",
+		
 		"jasmine-core": "~2.8.0",
 		"phantomjs": "~2.1.3",
 		"phantomjs-prebuilt": "~2.1.4",
