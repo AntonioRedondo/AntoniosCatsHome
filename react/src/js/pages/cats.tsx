@@ -7,7 +7,12 @@ import actionCreators from "../redux/actionCreators";
 import CardFilter from "../components/cardFilter.jsx";
 import CardList from "../components/cardList.jsx";
 
-export function Cats(props) {
+interface CatsProps {
+	filterString?: string,
+	setFilterString: Function,
+}
+
+export function Cats(props: CatsProps) {
 	return (
 		<div>
 			<CardFilter onChange={ props.setFilterString } value={ props.filterString } />
@@ -15,11 +20,6 @@ export function Cats(props) {
 		</div>
 	);
 }
-
-Cats.propTypes = {
-	filterString: PropTypes.string,
-	setFilterString: PropTypes.func.isRequired,
-};
 
 const mapStateToProps = state => ({
 	filterString: state.filterString

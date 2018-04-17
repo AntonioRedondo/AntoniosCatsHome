@@ -1,13 +1,17 @@
 import React, { Component, Fragment } from "react";
 import PropTypes from "prop-types";
 import { TransitionGroup, CSSTransition } from "react-transition-group";
-import { NavLink, withRouter } from "react-router-dom";
+import { NavLink, withRouter, RouteComponentProps } from "react-router-dom";
 import styled from "styled-components";
 
 import v from "../style/variables";
 
 import HowToAdopt from "../pages/howToAdopt.jsx";
 import Cats from "../pages/cats.jsx";
+
+interface TOwnProps extends RouteComponentProps<{}> {
+    username: string;
+}
 
 const Navigation = styled.nav`
 	height: 64px;
@@ -68,12 +72,12 @@ const TransitionGroupStyled = styled(TransitionGroup)`
 	position: relative;
 `;
 
-export class TabNavigator extends Component {
+export class TabNavigator extends Component<RouteComponentProps, undefined> {
 	static propTypes = {
 		location: PropTypes.object
 	}
 	
-	_getPage = pathname => {
+	private getPage = (pathname: string) => {
 		let component;
 		
 		switch (pathname) {
@@ -84,7 +88,7 @@ export class TabNavigator extends Component {
 		return <CSSTransition key={ pathname } timeout={ v.time2 } classNames="navigation-loader">{ component }</CSSTransition>;
 	}
 	
-	render = () => {
+	render() {
 		return (
 			<Fragment>
 				<Navigation>
@@ -101,7 +105,7 @@ export class TabNavigator extends Component {
 						</li>
 					</ul>
 				</Navigation>
-				<TransitionGroupStyled>{ this._getPage(this.props.location.pathname) }</TransitionGroupStyled>
+				<TransitionGroupStyled>{ this.getPage(this.props.location.pathname) }</TransitionGroupStyled>
 			</Fragment>
 		);
 	}

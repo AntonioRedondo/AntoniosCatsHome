@@ -35,13 +35,13 @@ const Filter = styled.input`
 	}
 `;
 
-function CardFilter(props) {
-	return <Filter type="text" placeholder="Filter by name or description" onChange={ props.onChange } value={ props.value } />;
+interface CardFilterProps {
+	onChange: Function,
+	value?: string,
 }
 
-CardFilter.propTypes = {
-	onChange: PropTypes.func.isRequired,
-	value: PropTypes.string
-};
+function CardFilter(props: CardFilterProps) {
+	return <Filter type="text" placeholder="Filter by name or description" onChange={ props.onChange } value={ props.value } />;
+}
 
 export default CardFilter;

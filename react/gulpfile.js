@@ -11,13 +11,14 @@ const stylelint = require("gulp-stylelint");
 // Build
 const rollup = require("rollup");
 const rollupRe = require("rollup-plugin-re");
-const rollupBabel = require("rollup-plugin-babel");
 const rollupNodeResolve = require("rollup-plugin-node-resolve");
+const rollupBabel = require("rollup-plugin-babel");
 const rollupGlobals = require("rollup-plugin-node-globals");
 const rollupJson = require("rollup-plugin-json");
 const rollupBuiltins = require("rollup-plugin-node-builtins");
 const rollupCommonjs = require("rollup-plugin-commonjs");
 const rollupUglify = require("rollup-plugin-uglify");
+const rollupTypeScript = require("rollup-plugin-typescript2");
 // const rollupClosure = require("rollup-plugin-closure-compiler-js"); // https://github.com/google/closure-compiler-js/issues/23
 const replace = require("gulp-replace");
 const inline = require("gulp-inline");
@@ -67,7 +68,7 @@ gulp.task("stylelint", () => {
 
 gulp.task("buildJs", () => {
 	return rollup.rollup({
-		input: `${SRC}/js/index.jsx`,
+		input: `${SRC}/js/index.tsx`,
 		plugins: [
 		// rollupReplace({
 		// 	"process.env.NODE_ENV": JSON.stringify(process.env.NODE_ENV || "development"),
@@ -83,12 +84,12 @@ gulp.task("buildJs", () => {
 					"process.env.NODE_ENV": JSON.stringify(process.env.NODE_ENV || "development")
 				}
 			}),
-			rollupBabel({
-				babelrc: false,
-				exclude: "node_modules/**",
-				presets: [ [ "env", { modules: false } ], "react" ],
-				plugins: [ "external-helpers", "babel-plugin-transform-react-display-name", "transform-class-properties" ]
-			}),
+			// rollupBabel({
+			// 	babelrc: false,
+			// 	exclude: "node_modules/**",
+			// 	presets: [ [ "env", { modules: false } ], "react" ],
+			// 	plugins: [ "external-helpers", "babel-plugin-transform-react-display-name", "transform-class-properties" ]
+			// }),
 			rollupNodeResolve({
 				jsnext: true,
 				preferBuiltins: true,
@@ -98,6 +99,10 @@ gulp.task("buildJs", () => {
 				namedExports: {
 					"node_modules/react/index.js": [ "createElement", "cloneElement", "Children", "Component", "PureComponent", "Fragment" ]
 				}
+			}),
+			rollupTypeScript({
+				rollupCommonJSResolveHack: true,
+				include: [ "*.ts+(|x)", "**/*.ts+(|x)" ]
 			}),
 			rollupJson(),
 			rollupGlobals(),

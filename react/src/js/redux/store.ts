@@ -7,8 +7,8 @@ import reducers from "./reducers.js";
 function setInitialState() {
 	if (!isNode()) {
 		let initialState = localStorage.getItem("reduxState") ? JSON.parse(localStorage.getItem("reduxState")) : {};
-		if (window.stateToHydrate) {
-			initialState = Object.assign(initialState, window.stateToHydrate);
+		if ((window as any).stateToHydrate) {
+			initialState = Object.assign(initialState, (window as any).stateToHydrate);
 		}
 		return initialState;
 	} else return;
@@ -33,7 +33,7 @@ if (!isNode()) {
 	store = createStore(
 		reducers,
 		setInitialState(),
-		compose(applyMiddleware(logger, thunk), window.devToolsExtension ? window.devToolsExtension() : f => f )
+		compose(applyMiddleware(logger, thunk), (window as any).devToolsExtension ? (window as any).devToolsExtension() : f => f )
 	);
 	// #endif
 	

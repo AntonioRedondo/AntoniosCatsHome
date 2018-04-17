@@ -17,8 +17,6 @@
 		"test": "jest --coverage",
 		"test:watch": "jest --watch",
 		"test:update": "jest --updateSnapshot",
-		"precommit": "npm run lint",
-		"prepush": "npm run lint && npm t"
 
 	},
 	"dependencies": {
@@ -63,6 +61,7 @@
 		"gulp-htmlmin": "4.0",
 		
 		"rollup": "0.58",
+		"rollup-plugin-typescript2": "0.13",
 		"rollup-plugin-babel": "3.0",
 		"rollup-plugin-node-resolve": "3.3",
 		"rollup-plugin-commonjs": "9.1",
@@ -77,6 +76,11 @@
 		"babel-plugin-transform-class-properties": "6.24",
 		"babel-plugin-transform-react-display-name": "6.25",
 		"babel-plugin-external-helpers": "6.22",
+		"typescript": "2.8",
+    "@types/react": "16.3",
+    "@types/react-dom": "16.0",
+    "@types/react-redux": "5.0",
+    "@types/react-router": "4.0",
 		
 		"jest": "22.4",
 		"enzyme": "3.3",
