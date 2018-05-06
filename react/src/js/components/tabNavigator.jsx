@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component, Fragment } from "react";
 import PropTypes from "prop-types";
 import { TransitionGroup, CSSTransition } from "react-transition-group";
 import { NavLink, withRouter } from "react-router-dom";
@@ -86,7 +86,7 @@ export class TabNavigator extends Component {
 	
 	render = () => {
 		return (
-			<div>
+			<Fragment>
 				<Navigation>
 					<ul>
 						<li>
@@ -102,7 +102,7 @@ export class TabNavigator extends Component {
 					</ul>
 				</Navigation>
 				<TransitionGroupStyled>{ this._getPage(this.props.location.pathname) }</TransitionGroupStyled>
-			</div>
+			</Fragment>
 		);
 	}
 }

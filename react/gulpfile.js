@@ -96,7 +96,7 @@ gulp.task("buildJs", () => {
 			rollupCommonjs({
 				include: "node_modules/**",
 				namedExports: {
-					"node_modules/react/index.js": [ "cloneElement", "createElement", "Children", "Component" ]
+					"node_modules/react/index.js": [ "createElement", "cloneElement", "Children", "Component", "PureComponent", "Fragment" ]
 				}
 			}),
 			rollupJson(),
