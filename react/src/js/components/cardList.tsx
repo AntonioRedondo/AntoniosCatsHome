@@ -6,24 +6,25 @@ import { TransitionGroup, CSSTransition } from "react-transition-group";
 import actionCreators from "../redux/actionCreators";
 import { filterCats } from "../redux/selectors";
 
-import Card from "./card.jsx";
+import Card, { CardProps } from "./card";
 import v from "../style/variables";
 
-export class CardList extends Component {
-	static propTypes = {
-		catSelected: PropTypes.string,
-		cats: PropTypes.array.isRequired,
-		requestCats: PropTypes.func.isRequired,
-		setSelected: PropTypes.func.isRequired,
-	}
-	
+interface CardListProps {
+	catSelected?: string,
+	cats?: Array<CardProps>,
+	requestCats?: Function,
+	setSelected?: Function
+}
+
+export class CardList extends Component<CardListProps> {
 	componentDidMount() {
 		!this.props.cats.length && this.props.requestCats();
 	}
 	
-	shouldComponentUpdate({ cats, catSelected }) {
-		return cats.length !== this.props.cats.length
-				|| catSelected !== this.props.catSelected;
+	shouldComponentUpdate(nextProps) {
+		const { cats, catSelected } = nextProps;
+		
+		return cats.length !== this.props.cats.length || catSelected !== this.props.catSelected;
 	}
 	
 	private renderCards = () => {
@@ -58,4 +59,4 @@ const mapDispatchToProps = dispatch => ({
 	setSelected: id => () => dispatch(actionCreators.setSelected(id))
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(CardList);
+export default connect<{}, {}, CardListProps>(mapStateToProps, mapDispatchToProps)(CardList);

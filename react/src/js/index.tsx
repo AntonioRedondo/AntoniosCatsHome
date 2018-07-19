@@ -5,7 +5,7 @@ import { whyDidYouUpdate } from "why-did-you-update";
 
 import globalCss from "./style/global";
 
-import App from "./app.jsx";
+import App from "./app";
 
 // #if DEV
 whyDidYouUpdate(React);

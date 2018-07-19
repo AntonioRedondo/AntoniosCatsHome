@@ -4,7 +4,7 @@ import { HashRouter } from "react-router-dom";
 
 import Store from "./redux/store";
 
-import Routes from "./routes.jsx";
+import Routes from "./routes";
 
 export default function App() {
 	return (

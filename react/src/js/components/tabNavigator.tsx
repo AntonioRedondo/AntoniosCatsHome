@@ -6,12 +6,8 @@ import styled from "styled-components";
 
 import v from "../style/variables";
 
-import HowToAdopt from "../pages/howToAdopt.jsx";
-import Cats from "../pages/cats.jsx";
-
-interface TOwnProps extends RouteComponentProps<{}> {
-    username: string;
-}
+import HowToAdopt from "../pages/howToAdopt";
+import Cats from "../pages/cats";
 
 const Navigation = styled.nav`
 	height: 64px;
@@ -72,13 +68,13 @@ const TransitionGroupStyled = styled(TransitionGroup)`
 	position: relative;
 `;
 
-export class TabNavigator extends Component<RouteComponentProps, undefined> {
+export class TabNavigator extends Component<RouteComponentProps> {
 	static propTypes = {
 		location: PropTypes.object
 	}
 	
 	private getPage = (pathname: string) => {
-		let component;
+		let component: any;
 		
 		switch (pathname) {
 			case "/": component = <Cats/>; break;

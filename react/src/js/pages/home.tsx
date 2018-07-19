@@ -3,7 +3,7 @@ import styled from "styled-components";
 
 import v from "../style/variables";
 
-import TabNavigator from "../components/tabNavigator.jsx";
+import TabNavigator from "../components/tabNavigator";
 
 const BodyContainer = styled.section`
 	min-height: 100%;

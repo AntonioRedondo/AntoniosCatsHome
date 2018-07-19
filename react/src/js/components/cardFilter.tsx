@@ -36,7 +36,7 @@ const Filter = styled.input`
 `;
 
 interface CardFilterProps {
-	onChange: Function,
+	onChange: (event: React.ChangeEvent<HTMLInputElement>) => void,
 	value?: string,
 }
 

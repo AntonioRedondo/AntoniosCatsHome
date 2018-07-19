@@ -1,9 +1,9 @@
 import React from "react";
 import { Route } from "react-router-dom";
 
-import Footer from "./components/footer.jsx";
-import Header from "./components/header.jsx";
-import Home from "./pages/home.jsx";
+import Footer from "./components/footer";
+import Header from "./components/header";
+import Home from "./pages/home";
 
 export default function Routes() {
 	return (

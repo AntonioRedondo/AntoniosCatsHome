@@ -1,10 +1,11 @@
 import { createSelector } from "reselect";
+import { CardProps } from "../components/card";
 
 
 export const filterCats = createSelector(
 	[
-		state => state.cats,
-		state => state.filterString
+		(state: any): CardProps[] => state.cats,
+		(state: any): string => state.filterString
 	],
 	(cats, filterString) => {
 		if (filterString)

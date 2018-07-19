@@ -4,7 +4,15 @@ import styled from "styled-components";
 
 import v from "../style/variables";
 
-const CardContainer = styled.article`
+export interface CardProps {
+	catSelected?: string,
+	description?: string,
+	id?: string,
+	name?: string,
+	onClick?: Function
+}
+
+const CardContainer = styled.article<CardProps>`
 	width: 100%;
 	height: 250px;
 	margin: 0 0 40px;
@@ -14,7 +22,7 @@ const CardContainer = styled.article`
 	justify-content: space-between;
 	align-items: center;
 	
-	background: ${ props => props.catSelected ? "papayawhip" : v.grayE };
+	background: ${ props => props.catSelected === props.id ? "papayawhip" : v.grayE };
 	box-shadow: 0 -5px 0 ${ v.purple2 }, 0 0 10px ${ v.shadow1 };
 	
 	color: ${ v.gray3 };
@@ -29,7 +37,7 @@ const CardContainer = styled.article`
 	}
 	
 	&:hover {
-		background: ${ props => props.catSelected ? "papayawhip" : "white" };
+		background: ${ props => props.catSelected === props.id ? "papayawhip" : "white" };
 		box-shadow: 0 -5px 0 orange, 10px 10px 30px ${ v.shadow2 };
 		cursor: pointer;
 		transform: scale(1.025);
@@ -87,9 +95,9 @@ const BodyText = styled.div`
 	}
 `;
 
-function Card(props) {
+function Card(props: CardProps) {
 	return (
-		<CardContainer onClick={ props.onClick(props.id) } catSelected={ props.catSelected === props.id }>
+		<CardContainer onClick={ props.onClick(props.id) }>
 			<Photo id={ props.id }></Photo>
 			<Body>
 				<BodyTitle>{ props.name }</BodyTitle>
@@ -98,13 +106,5 @@ function Card(props) {
 		</CardContainer>
 	);
 }
-
-Card.propTypes = {
-	catSelected: PropTypes.string,
-	description: PropTypes.string,
-	id: PropTypes.string.isRequired,
-	name: PropTypes.string.isRequired,
-	onClick: PropTypes.func.isRequired
-};
 
 export default Card;

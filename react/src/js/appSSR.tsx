@@ -7,7 +7,7 @@ import { injectGlobal } from "styled-components";
 import globalCss from "./style/global";
 import Store from "./redux/store";
 
-import Routes from "./routes.jsx";
+import Routes from "./routes";
 
 injectGlobal`${ globalCss }`;
 

@@ -97,7 +97,8 @@ gulp.task("buildJs", () => {
 			rollupCommonjs({
 				include: "node_modules/**",
 				namedExports: {
-					"node_modules/react/index.js": [ "createElement", "cloneElement", "Children", "Component", "PureComponent", "Fragment" ]
+					"node_modules/react/index.js": [ "createElement", "cloneElement", "Children", "Component", "PureComponent", "Fragment" ],
+					"node_modules/react-is/index.js": ["isValidElementType"]
 				}
 			}),
 			rollupTypeScript({
