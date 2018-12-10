@@ -31,7 +31,7 @@ if (!isNode()) {
 	store = createStore(
 		reducers,
 		setInitialState(),
-		compose(applyMiddleware(logger, thunk), (window as any).devToolsExtension ? (window as any).devToolsExtension() : f => f )
+		compose(applyMiddleware(logger, thunk), (window as any).__REDUX_DEVTOOLS_EXTENSION__ ? (window as any).__REDUX_DEVTOOLS_EXTENSION__() : f => f )
 	);
 	// #endif
 	

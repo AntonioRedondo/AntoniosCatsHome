@@ -12,7 +12,6 @@ const stylelint = require("gulp-stylelint");
 const rollup = require("rollup");
 const rollupRe = require("rollup-plugin-re");
 const rollupNodeResolve = require("rollup-plugin-node-resolve");
-const rollupBabel = require("rollup-plugin-babel");
 const rollupGlobals = require("rollup-plugin-node-globals");
 const rollupJson = require("rollup-plugin-json");
 const rollupBuiltins = require("rollup-plugin-node-builtins");
@@ -87,12 +86,6 @@ gulp.task("buildJs", () => {
 					"process.env.NODE_ENV": JSON.stringify(process.env.NODE_ENV || "development")
 				}
 			}),
-			// rollupBabel({
-			// 	babelrc: false,
-			// 	exclude: "node_modules/**",
-			// 	presets: [ [ "env", { modules: false } ], "react" ],
-			// 	plugins: [ "external-helpers", "babel-plugin-transform-react-display-name", "transform-class-properties" ]
-			// }),
 			rollupNodeResolve({
 				jsnext: true,
 				preferBuiltins: true,
@@ -107,7 +100,7 @@ gulp.task("buildJs", () => {
 			}),
 			rollupTypeScript({
 				rollupCommonJSResolveHack: true,
-				include: [ "*.ts+(|x)", "**/*.ts+(|x)" ]
+				include: [ "**/*.ts+(|x)" ]
 			}),
 			rollupJson(),
 			rollupGlobals(),
@@ -172,12 +165,6 @@ gulp.task("buildSsrJs", () => {
 					"process.env.NODE_ENV": JSON.stringify(process.env.NODE_ENV || "development")
 				}
 			}),
-			rollupBabel({
-				babelrc: false,
-				exclude: "node_modules/**",
-				presets: [ [ "env", { modules: false } ], "react" ],
-				plugins: [ "external-helpers", "transform-react-display-name", "transform-class-properties" ]
-			}),
 			rollupNodeResolve({ jsnext: true, preferBuiltins: true, browser: true }),
 			rollupCommonjs({
 				include: "node_modules/**",
@@ -185,6 +172,10 @@ gulp.task("buildSsrJs", () => {
 					"node_modules/react/index.js": [ "cloneElement", "createElement", "Children", "Component" ]
 				}
 			}),
+            rollupTypeScript({
+                rollupCommonJSResolveHack: true,
+                include: [ "**/*.ts+(|x)" ]
+            }),
 			rollupJson(),
 			rollupGlobals(),
 			rollupBuiltins(),
