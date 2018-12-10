@@ -1,18 +1,17 @@
 import React from "react";
-import PropTypes from "prop-types";
 import styled from "styled-components";
 
 import v from "../style/variables";
 
-export interface CardProps {
-	catSelected?: string,
-	description?: string,
-	id?: string,
-	name?: string,
-	onClick?: Function
+export interface ICardProps {
+	catSelected?: string;
+	description?: string;
+	id: string;
+	name?: string;
+	onClick?: (id: string) => any;
 }
 
-const CardContainer = styled.article<CardProps>`
+const CardContainer = styled.article`
 	width: 100%;
 	height: 250px;
 	margin: 0 0 40px;
@@ -22,7 +21,7 @@ const CardContainer = styled.article<CardProps>`
 	justify-content: space-between;
 	align-items: center;
 	
-	background: ${ props => props.catSelected === props.id ? "papayawhip" : v.grayE };
+	background: ${ props => props.catSelected ? "papayawhip" : v.grayE };
 	box-shadow: 0 -5px 0 ${ v.purple2 }, 0 0 10px ${ v.shadow1 };
 	
 	color: ${ v.gray3 };
@@ -95,10 +94,10 @@ const BodyText = styled.div`
 	}
 `;
 
-function Card(props: CardProps) {
+function Card(props: ICardProps) {
 	return (
-		<CardContainer onClick={ props.onClick(props.id) }>
-			<Photo id={ props.id }></Photo>
+		<CardContainer onClick={ props.onClick(props.id) } catSelected={ props.catSelected === props.id }>
+			<Photo id={ props.id } />
 			<Body>
 				<BodyTitle>{ props.name }</BodyTitle>
 				<BodyText>{ props.description }</BodyText>

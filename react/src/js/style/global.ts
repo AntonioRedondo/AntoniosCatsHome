@@ -2,7 +2,7 @@ import v from "./variables";
 
 export default `
 	@import "https://fonts.googleapis.com/css?family=Open+Sans:300,400,800|Rokkitt:400,700";
-
+	
 	body {
 		height: 100%;
 		min-height: 100%;
@@ -15,25 +15,29 @@ export default `
 		color: ${ v.gray3 };
 		font-family: "Open Sans", sans-serif;
 	}
-
+	
 	a {
 		color: ${ v.grayB };
 		text-decoration: none;
 		font-weight: bold;
 	}
-
+	
 	input:focus {
 		outline: none;
 	}
-
+	
 	* {
 		box-sizing: border-box;
 	}
 	
-	.tab-navigator--active {
-		background: ${ v.purple2 };
+	.tab-navigator {
+		position: relative;
+		
+		&--active {
+			background: ${ v.purple2 };
+		}
 	}
-
+	
 	.navigation-loader {
 		&-enter&-enter {
 			width: 100%;

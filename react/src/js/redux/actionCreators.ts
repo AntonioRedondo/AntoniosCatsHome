@@ -3,7 +3,6 @@ import axios from "axios";
 import { sortByName } from "../helpers";
 import actionTypes from "./actionTypes";
 
-
 export default {
 	requestCats(url = "data/cats.json") {
 		return dispatch => {
@@ -15,15 +14,15 @@ export default {
 	
 	setSelected(id) {
 		return {
-			type: actionTypes.CAT_SELECTED,
-			id
+			id,
+			type: actionTypes.CAT_SELECTED
 		};
 	},
 	
 	setFilterString(filterString) {
 		return {
-			type: actionTypes.FILTER_STRING_SET,
-			filterString
+			filterString,
+			type: actionTypes.FILTER_STRING_SET
 		};
 	}
 };

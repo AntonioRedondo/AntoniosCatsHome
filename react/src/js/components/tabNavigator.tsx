@@ -1,7 +1,6 @@
-import React, { Component, Fragment } from "react";
-import PropTypes from "prop-types";
-import { TransitionGroup, CSSTransition } from "react-transition-group";
-import { NavLink, withRouter, RouteComponentProps } from "react-router-dom";
+import React, { Component } from "react";
+import { CSSTransition, TransitionGroup } from "react-transition-group";
+import { withRouter, NavLink, RouteComponentProps } from "react-router-dom";
 import styled from "styled-components";
 
 import v from "../style/variables";
@@ -64,21 +63,19 @@ const NavLinkStyled = styled(NavLink)`
 	}
 `;
 
-const TransitionGroupStyled = styled(TransitionGroup)`
-	position: relative;
-`;
+// This prevents TransitionGroup from working correctly
+// const TransitionGroupStyled = styled(TransitionGroup)`
+// 	position: relative;
+// `;
 
 export class TabNavigator extends Component<RouteComponentProps> {
-	static propTypes = {
-		location: PropTypes.object
-	}
-	
-	private getPage = (pathname: string) => {
+	getPage = (pathname: string) => {
 		let component: any;
 		
 		switch (pathname) {
 			case "/": component = <Cats/>; break;
-			case "/how-to-adopt": component = <HowToAdopt/>;
+			case "/how-to-adopt": component = <HowToAdopt/>; break;
+			default: component = "404 Page not found!";
 		}
 		
 		return <CSSTransition key={ pathname } timeout={ v.time2 } classNames="navigation-loader">{ component }</CSSTransition>;
@@ -86,7 +83,7 @@ export class TabNavigator extends Component<RouteComponentProps> {
 	
 	render() {
 		return (
-			<Fragment>
+			<>
 				<Navigation>
 					<ul>
 						<li>
@@ -95,14 +92,14 @@ export class TabNavigator extends Component<RouteComponentProps> {
 							</NavLinkStyled>
 						</li>
 						<li>
-							<NavLinkStyled to="/how-to-adopt" activeClassName="tab-navigator--active" className="tab-navigator">
+							<NavLinkStyled to="/how-to-adopt" activeClassName="tab-navigator--active">
 								How to adopt
 							</NavLinkStyled>
 						</li>
 					</ul>
 				</Navigation>
-				<TransitionGroupStyled>{ this.getPage(this.props.location.pathname) }</TransitionGroupStyled>
-			</Fragment>
+				<TransitionGroup className="tab-navigator">{ this.getPage(this.props.location.pathname) }</TransitionGroup>
+			</>
 		);
 	}
 }

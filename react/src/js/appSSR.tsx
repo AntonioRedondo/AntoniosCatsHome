@@ -1,5 +1,4 @@
 import React from "react";
-import PropTypes from "prop-types";
 import { Provider } from "react-redux";
 import { StaticRouter } from "react-router-dom";
 import { injectGlobal } from "styled-components";
@@ -9,7 +8,7 @@ import Store from "./redux/store";
 
 import Routes from "./routes";
 
-injectGlobal`${ globalCss }`;
+injectGlobal`${ globalCss }`; // tslint:disable-line
 
 function AppSSR(props) {
 	const context = {};
@@ -22,9 +21,5 @@ function AppSSR(props) {
 		</Provider>
 	);
 }
-
-AppSSR.propTypes = {
-	url: PropTypes.string.isRequired
-};
 
 export default AppSSR;

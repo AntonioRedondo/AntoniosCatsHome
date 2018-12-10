@@ -5,7 +5,7 @@ const newer = require("gulp-newer");
 const runSequence = require("run-sequence");
 
 // Lint
-const esLint = require("gulp-eslint");
+const tsLint = require("gulp-tslint");
 const stylelint = require("gulp-stylelint");
 
 // Build
@@ -35,12 +35,12 @@ const isProduction = process.env.NODE_ENV === "production";
 
 
 gulp.task("watch", ["lint", "build"], () => {
-	gulp.watch([`${SRC}/js/**/*.jsx`, `${SRC}/js/**/*.js`], ["esLint", "buildJs"]);
-	gulp.watch([`${SRC}/js/**/*.jsx`], ["stylelint"]);
+	gulp.watch([`${SRC}/js/**/*.tsx`, `${SRC}/js/**/*.ts`], ["tsLint", "buildJs"]);
+	gulp.watch([`${SRC}/js/**/*.tsx`], ["stylelint"]);
 	gulp.watch([`${SRC}/index.htm`], ["buildHtml"]);
 	gulp.watch([`${SRC}/img/**`], ["copyAssets"]);
 });
-gulp.task("lint", ["esLint", "stylelint"]);
+gulp.task("lint", ["tsLint", "stylelint"]);
 gulp.task("build", ["buildJs", "buildHtml", "copyAssets"]);
 gulp.task("default", ["build"]);
 
@@ -50,15 +50,18 @@ gulp.task("clean", () => del(DEST));
 
 // ---------- LINT ---------- //
 
-gulp.task("esLint", () => {
-	return gulp.src([`${SRC}/js/**/*.jsx`, `${SRC}/js/**/*.js`, "gulpfile.js"])
-		.pipe(esLint())
-		.pipe(esLint.format())
-		.pipe(esLint.failOnError());
+gulp.task("tsLint", () => {
+	return gulp.src([`${SRC}/js/**/*.tsx`, `${SRC}/js/**/*.ts`])
+		.pipe(tsLint({
+			formatter: "stylish"
+		}))
+		.pipe(tsLint.report({
+			emitError: false // defaults to true
+		}));
 });
 
 gulp.task("stylelint", () => {
-	return gulp.src([`${SRC}/js/**/*.jsx`])
+	return gulp.src([`${SRC}/js/**/*.tsx`])
 		.pipe(stylelint({ reporters: [{ formatter: "string", console: true }] }));
 });
 
@@ -72,7 +75,7 @@ gulp.task("buildJs", () => {
 		plugins: [
 		// rollupReplace({
 		// 	"process.env.NODE_ENV": JSON.stringify(process.env.NODE_ENV || "development"),
-		// 	"/(\/\* buildDev:start \*\/)[\s\S]+(\/\* buildDev:end \*\/)/" : "" // eslint-disable-line
+		// 	"/(\/\* buildDev:start \*\/)[\s\S]+(\/\* buildDev:end \*\/)/" : "" // tsLint-disable-line
 		// }),
 			rollupRe({
 				// exclude: "node_modules/**",
@@ -97,8 +100,9 @@ gulp.task("buildJs", () => {
 			rollupCommonjs({
 				include: "node_modules/**",
 				namedExports: {
-					"node_modules/react/index.js": [ "createElement", "cloneElement", "Children", "Component", "PureComponent", "Fragment" ],
-					"node_modules/react-is/index.js": ["isValidElementType"]
+					"node_modules/react/index.js": [ "createElement", "createContext", "cloneElement", "Children", "Component", "PureComponent", "Fragment" ],
+					"node_modules/react-is/index.js": ["isValidElementType"],
+					"node_modules/styled-components/node_modules/react-is/index.js": ["isElement", "isValidElementType", "ForwardRef"]
 				}
 			}),
 			rollupTypeScript({

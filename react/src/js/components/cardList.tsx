@@ -1,22 +1,21 @@
 import React, { Component } from "react";
-import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import { TransitionGroup, CSSTransition } from "react-transition-group";
+import { CSSTransition, TransitionGroup } from "react-transition-group";
 
 import actionCreators from "../redux/actionCreators";
 import { filterCats } from "../redux/selectors";
 
-import Card, { CardProps } from "./card";
+import Card, { ICardProps } from "./card";
 import v from "../style/variables";
 
-interface CardListProps {
-	catSelected?: string,
-	cats?: Array<CardProps>,
-	requestCats?: Function,
-	setSelected?: Function
+interface ICardListProps {
+	catSelected?: string
+	cats?: ICardProps[]
+	requestCats?: () => void
+	setSelected?: (id: string) => any
 }
 
-export class CardList extends Component<CardListProps> {
+export class CardList extends Component<ICardListProps> {
 	componentDidMount() {
 		!this.props.cats.length && this.props.requestCats();
 	}
@@ -27,7 +26,7 @@ export class CardList extends Component<CardListProps> {
 		return cats.length !== this.props.cats.length || catSelected !== this.props.catSelected;
 	}
 	
-	private renderCards = () => {
+	renderCards = () => {
 		return this.props.cats.map(cat =>
 			<CSSTransition
 				key={ cat.id }
@@ -39,8 +38,7 @@ export class CardList extends Component<CardListProps> {
 					name={ cat.name }
 					description={ cat.description }
 					catSelected={ this.props.catSelected }
-					onClick={ this.props.setSelected } >
-				</Card>
+					onClick={ this.props.setSelected } />
 			</CSSTransition>
 		);
 	}
@@ -51,12 +49,12 @@ export class CardList extends Component<CardListProps> {
 }
 
 const mapStateToProps = state => ({
-	cats: filterCats(state),
-	catSelected: state.catSelected
+	catSelected: state.catSelected,
+	cats: filterCats(state)
 });
 const mapDispatchToProps = dispatch => ({
 	requestCats: () => dispatch(actionCreators.requestCats()),
 	setSelected: id => () => dispatch(actionCreators.setSelected(id))
 });
 
-export default connect<{}, {}, CardListProps>(mapStateToProps, mapDispatchToProps)(CardList);
+export default connect<{}, {}, ICardListProps>(mapStateToProps, mapDispatchToProps)(CardList);

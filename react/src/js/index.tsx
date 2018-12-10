@@ -1,9 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import { injectGlobal } from "styled-components";
 import { whyDidYouUpdate } from "why-did-you-update";
-
-import globalCss from "./style/global";
 
 import App from "./app";
 
@@ -11,6 +8,10 @@ import App from "./app";
 whyDidYouUpdate(React);
 // #endif
 
-injectGlobal`${ globalCss }`;
+// #if DEV
+ReactDOM.render(<App/>, document.getElementsByClassName("react-app")[0]);
+// #endif
 
+// #if PROD
 ReactDOM.hydrate(<App/>, document.getElementsByClassName("react-app")[0]);
+// #endif

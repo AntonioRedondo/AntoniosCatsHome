@@ -1,8 +1,12 @@
 import React from "react";
-import PropTypes from "prop-types";
 import styled from "styled-components";
 
 import v from "../style/variables";
+
+interface ICardFilterProps {
+	onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
+	value?: string;
+}
 
 const Filter = styled.input`
 	width: 100%;
@@ -35,12 +39,7 @@ const Filter = styled.input`
 	}
 `;
 
-interface CardFilterProps {
-	onChange: (event: React.ChangeEvent<HTMLInputElement>) => void,
-	value?: string,
-}
-
-function CardFilter(props: CardFilterProps) {
+function CardFilter(props: ICardFilterProps) {
 	return <Filter type="text" placeholder="Filter by name or description" onChange={ props.onChange } value={ props.value } />;
 }
 
