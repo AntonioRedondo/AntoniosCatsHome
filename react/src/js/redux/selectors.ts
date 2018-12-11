@@ -9,11 +9,9 @@ export const filterCats = createSelector(
 	(cats, filterString) => {
 		if (filterString)
 			return cats.filter(cat => {
-				const catKeys = Object.keys(cat);
-				for (const catKey of catKeys)
-					if (catKey && catKey.toLowerCase().indexOf(filterString.toLowerCase()) > -1)
+				for (const catKey of Object.values(cat))
+					if (catKey.toLowerCase().includes(filterString.toLowerCase()))
 						return true;
-				return false;
 			});
 		return cats;
 	}

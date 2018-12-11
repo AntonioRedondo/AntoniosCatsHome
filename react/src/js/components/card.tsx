@@ -4,14 +4,14 @@ import styled from "styled-components";
 import v from "../style/variables";
 
 export interface ICardProps {
-	catSelected?: string;
+	catSelected?: boolean;
 	description?: string;
 	id: string;
 	name?: string;
 	onClick?: (id: string) => any;
 }
 
-const CardContainer = styled.article`
+const CardContainer = styled.article<{catSelected: boolean}>`
 	width: 100%;
 	height: 250px;
 	margin: 0 0 40px;
@@ -36,7 +36,7 @@ const CardContainer = styled.article`
 	}
 	
 	&:hover {
-		background: ${ props => props.catSelected === props.id ? "papayawhip" : "white" };
+		background: ${ props => props.catSelected ? "papayawhip" : "white" };
 		box-shadow: 0 -5px 0 orange, 10px 10px 30px ${ v.shadow2 };
 		cursor: pointer;
 		transform: scale(1.025);
@@ -96,7 +96,7 @@ const BodyText = styled.div`
 
 function Card(props: ICardProps) {
 	return (
-		<CardContainer onClick={ props.onClick(props.id) } catSelected={ props.catSelected === props.id }>
+		<CardContainer onClick={ props.onClick(props.id) } catSelected={ props.catSelected }>
 			<Photo id={ props.id } />
 			<Body>
 				<BodyTitle>{ props.name }</BodyTitle>

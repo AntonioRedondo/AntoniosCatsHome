@@ -63,10 +63,9 @@ const NavLinkStyled = styled(NavLink)`
 	}
 `;
 
-// This prevents TransitionGroup from working correctly
-// const TransitionGroupStyled = styled(TransitionGroup)`
-// 	position: relative;
-// `;
+const TransitionGroupStyled = styled(TransitionGroup)`
+	position: relative;
+`;
 
 export class TabNavigator extends Component<RouteComponentProps> {
 	getPage = (pathname: string) => {
@@ -98,7 +97,7 @@ export class TabNavigator extends Component<RouteComponentProps> {
 						</li>
 					</ul>
 				</Navigation>
-				<TransitionGroup className="tab-navigator">{ this.getPage(this.props.location.pathname) }</TransitionGroup>
+				<TransitionGroupStyled className="tab-navigator">{ this.getPage(this.props.location.pathname) }</TransitionGroupStyled>
 			</>
 		);
 	}

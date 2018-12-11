@@ -37,7 +37,7 @@ export class CardList extends Component<ICardListProps> {
 					id={ cat.id }
 					name={ cat.name }
 					description={ cat.description }
-					catSelected={ this.props.catSelected }
+					catSelected={ this.props.catSelected === cat.id }
 					onClick={ this.props.setSelected } />
 			</CSSTransition>
 		);

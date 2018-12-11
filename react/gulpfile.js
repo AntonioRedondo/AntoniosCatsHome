@@ -2,7 +2,6 @@
 const del = require("del");
 const gulp = require("gulp");
 const newer = require("gulp-newer");
-const runSequence = require("run-sequence");
 
 // Lint
 const tsLint = require("gulp-tslint");
@@ -16,7 +15,6 @@ const rollupGlobals = require("rollup-plugin-node-globals");
 const rollupJson = require("rollup-plugin-json");
 const rollupBuiltins = require("rollup-plugin-node-builtins");
 const rollupCommonjs = require("rollup-plugin-commonjs");
-const rollupUglify = require("rollup-plugin-uglify");
 const rollupTypeScript = require("rollup-plugin-typescript2");
 // const rollupClosure = require("rollup-plugin-closure-compiler-js"); // https://github.com/google/closure-compiler-js/issues/23
 const replace = require("gulp-replace");
@@ -33,23 +31,9 @@ const isProduction = process.env.NODE_ENV === "production";
 
 
 
-gulp.task("watch", ["lint", "build"], () => {
-	gulp.watch([`${SRC}/js/**/*.tsx`, `${SRC}/js/**/*.ts`], ["tsLint", "buildJs"]);
-	gulp.watch([`${SRC}/js/**/*.tsx`], ["stylelint"]);
-	gulp.watch([`${SRC}/index.htm`], ["buildHtml"]);
-	gulp.watch([`${SRC}/img/**`], ["copyAssets"]);
-});
-gulp.task("lint", ["tsLint", "stylelint"]);
-gulp.task("build", ["buildJs", "buildHtml", "copyAssets"]);
-gulp.task("default", ["build"]);
-
-gulp.task("clean", () => del(DEST));
-
-
-
 // ---------- LINT ---------- //
 
-gulp.task("tsLint", () => {
+const tsLintTask = () => {
 	return gulp.src([`${SRC}/js/**/*.tsx`, `${SRC}/js/**/*.ts`])
 		.pipe(tsLint({
 			formatter: "stylish"
@@ -57,19 +41,19 @@ gulp.task("tsLint", () => {
 		.pipe(tsLint.report({
 			emitError: false // defaults to true
 		}));
-});
+};
 
-gulp.task("stylelint", () => {
+const stylelintTask = () => {
 	return gulp.src([`${SRC}/js/**/*.tsx`])
 		.pipe(stylelint({ reporters: [{ formatter: "string", console: true }] }));
-});
+};
 
 
 
 // ---------- BUILD ---------- //
 
-gulp.task("buildJs", () => {
-	return rollup.rollup({
+const buildJsTask = async () => {
+	const bundle = await rollup.rollup({
 		input: `${SRC}/js/index.tsx`,
 		plugins: [
 		// rollupReplace({
@@ -95,6 +79,7 @@ gulp.task("buildJs", () => {
 				namedExports: {
 					"node_modules/react/index.js": [ "createElement", "createContext", "cloneElement", "Children", "Component", "PureComponent", "Fragment" ],
 					"node_modules/react-is/index.js": ["isValidElementType"],
+					"node_modules/react-redux/node_modules/react-is/index.js": ["isValidElementType"],
 					"node_modules/styled-components/node_modules/react-is/index.js": ["isElement", "isValidElementType", "ForwardRef"]
 				}
 			}),
@@ -105,34 +90,33 @@ gulp.task("buildJs", () => {
 			rollupJson(),
 			rollupGlobals(),
 			rollupBuiltins(),
-			// isProduction && rollupClosure(),
-			isProduction && rollupUglify()
+			// isProduction && rollupClosure()
 		]
-	}).then(bundle => {
-		return bundle.write({
-			format: "iife",
-			file: `${DEST}/bundle.js`,
-			sourcemap: !isProduction
-		});
 	});
-});
+	
+	return bundle.write({
+		format: "iife",
+		file: `${DEST}/bundle.js`,
+		sourcemap: !isProduction
+	});
+};
 
-gulp.task("buildHtml", () => {
+const buildHtmlTask = () => {
 	return gulp.src([`${SRC}/index.htm`, `${SRC}/indexSSR.htm`])
 		.pipe(gulp.dest(`${DEST}`));
-});
+};
 
-gulp.task("copyAssets", () => {
+const copyAssetsTask = () => {
 	return gulp.src([`${SRC}/*img/*`, `${SRC}/*data/*`])
 		.pipe(newer(DEST))
 		.pipe(gulp.dest(`${DEST}`));
-});
+};
 
 
 
 // ---------- PRODUCTION ---------- //
 
-gulp.task("prod", ["build"], () => {
+const prodTask = () => {
 	return gulp.src([`${DEST}/index.htm`])
 		.pipe(inline({
 			// base: DEST,
@@ -150,10 +134,14 @@ gulp.task("prod", ["build"], () => {
 			removeRedundantAttributes: true
 		}))
 		.pipe(gulp.dest(DEST));
-});
+};
 
-gulp.task("buildSsrJs", () => {
-	return rollup.rollup({
+
+
+// ---------- SSR ---------- //
+
+const buildSsrJsTask = async () => {
+	const bundle = await rollup.rollup({
 		input: "serverSSR.jsx",
 		plugins: [
 			rollupRe({
@@ -172,38 +160,50 @@ gulp.task("buildSsrJs", () => {
 					"node_modules/react/index.js": [ "cloneElement", "createElement", "Children", "Component" ]
 				}
 			}),
-            rollupTypeScript({
-                rollupCommonJSResolveHack: true,
-                include: [ "**/*.ts+(|x)" ]
-            }),
+			rollupTypeScript({
+				rollupCommonJSResolveHack: true,
+				include: [ "**/*.ts+(|x)" ]
+			}),
 			rollupJson(),
 			rollupGlobals(),
-			rollupBuiltins(),
-			isProduction && rollupUglify()
+			rollupBuiltins()
 		]
-	}).then(bundle => {
-		return bundle.write({
-			format: "iife",
-			file: `${DEST}/bundleSSR.js`,
-			sourcemap: !isProduction
-		});
 	});
-});
+	
+	return bundle.write({
+		format: "iife",
+		file: `${DEST}/bundleSSR.js`,
+		sourcemap: !isProduction
+	});
+};
 
-gulp.task("buildSsr", () => {
-	runSequence("build", "buildSsrJs", () => {
-		return gulp.src([`${DEST}/indexSSR.htm`])
-			.pipe(inline({
-				disabledTypes: ["img"],
-			}))
-			.pipe(htmlMin({
-				collapseWhitespace: true,
-				minifyCSS: true,
-				minifyJS: true,
-				removeAttributeQuotes: true,
-				removeComments: false,
-				removeRedundantAttributes: true
-			}))
-			.pipe(gulp.dest(DEST));
-	});
+const buildSsrTask = () => {
+	return gulp.src([`${DEST}/indexSSR.htm`])
+		.pipe(inline({
+			disabledTypes: ["img"],
+		}))
+		.pipe(htmlMin({
+			collapseWhitespace: true,
+			minifyCSS: true,
+			minifyJS: true,
+			removeAttributeQuotes: true,
+			removeComments: false,
+			removeRedundantAttributes: true
+		}))
+		.pipe(gulp.dest(DEST));
+};
+
+
+
+const buildTask = gulp.parallel(buildJsTask, buildHtmlTask, copyAssetsTask);
+
+exports.lint = gulp.series(tsLintTask, stylelintTask);
+exports.watch = gulp.series(buildTask, function watchTask() {
+	gulp.watch([`${SRC}/js/**/*.ts+(|x)`], gulp.parallel(tsLintTask, stylelintTask, buildJsTask));
+	gulp.watch([`${SRC}/index.htm`], gulp.parallel(buildHtmlTask));
+	gulp.watch([`${SRC}/img/**`], gulp.parallel(copyAssetsTask));
 });
+exports.prod = gulp.series(buildTask, prodTask);
+exports.buildSsr = gulp.series(buildSsrJsTask, buildSsrTask);
+exports.clean = () => del(DEST);
+exports.default = exports.watch;
