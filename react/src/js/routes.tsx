@@ -1,6 +1,6 @@
 import React from "react";
 import { Route } from "react-router-dom";
-import {createGlobalStyle} from "styled-components";
+import { createGlobalStyle } from "styled-components";
 
 import globalCss from "./style/global";
 

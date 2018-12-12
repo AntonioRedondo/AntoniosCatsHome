@@ -8,8 +8,8 @@
 	"license": "CC-BY-NC-ND-4.0",
 	"scripts": {
 		"lint": "gulp lint",
-		"build:watch": "gulp watch",
-		"build:prod": "cross-env NODE_ENV=production gulp prod",
+		"build:watch": "gulp buildWatch",
+		"build:prod": "cross-env NODE_ENV=production gulp buildProd",
 		"build:ssr": "cross-env NODE_ENV=production gulp buildSsr",
 		"clean": "gulp clean",
 		"serve": "node dist/bundleSSR.js",
@@ -71,6 +71,7 @@
 		"@types/styled-components": "4.1",
 		
 		"jest": "23.6",
+		"ts-jest": "23.10",
 		"enzyme": "3.8",
 		"nock": "10.0",
 		"redux-mock-store": "1.5",
@@ -88,5 +89,17 @@
 			"pre-commit": "npm run lint",
 			"pre-push": "npm run lint && npm t"
 		}
+	},
+	"jest": {
+		"moduleFileExtensions": [
+			"ts",
+			"tsx"
+		],
+		"transform": {
+			"^.+\\.(ts|tsx)$": "ts-jest"
+		},
+		"testMatch": [
+			"**/*.+(ts|tsx)"
+		]
 	}
 }

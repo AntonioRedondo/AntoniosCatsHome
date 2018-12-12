@@ -12,7 +12,7 @@ import AppSSR from "./src/js/appSSR.jsx";
 
 const url = "http://localhost:3000";
 const indexTemplate = fs.readFileSync(path.join(__dirname, "indexSSR.htm"), { encoding: "utf8" });
-const stateToHydrate = {};
+const stateToHydrate: any = {};
 
 axios.get("http://localhost:3000/data/cats.json")
 	.then(results => {
@@ -31,7 +31,7 @@ app.get("/", (req, res) => {
 	const reactApp = ReactDOMServer.renderToString(sheet.collectStyles(<AppSSR url={ req.url } />));
 	const css = sheet.getStyleTags();
 	const finalString = indexTemplate.replace(`<!-- #reactApp -->`, reactApp)
-		.replace(`<!-- #stateToHydrate -->`, `<script>window.stateToHydrate=${JSON.stringify(stateToHydrate)}</script>`)
+		.replace(`<!-- #stateToHydrate -->`, `<script>(window as any).stateToHydrate=${JSON.stringify(stateToHydrate)}</script>`)
 		.replace(`<!-- #reactCSS -->`, css);
 	
 	res.send(finalString);
@@ -39,5 +39,5 @@ app.get("/", (req, res) => {
 
 app.listen(3000, () => {
 	opn(url);
-	console.log("App started on " + url + "\nThe system default browser should open automatically."); // eslint-disable-line no-console
+	console.log("App started on " + url + "\nThe system default browser should open automatically.");
 });

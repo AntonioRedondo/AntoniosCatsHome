@@ -1,14 +1,17 @@
 import React from "react";
 import { Provider } from "react-redux";
 import { StaticRouter } from "react-router-dom";
-import { injectGlobal } from "styled-components";
+import { createGlobalStyle } from "styled-components";
 
 import globalCss from "./style/global";
 import Store from "./redux/store";
 
 import Routes from "./routes";
 
-injectGlobal`${ globalCss }`; // tslint:disable-line
+// tslint:disable-next-line no-unused-expression
+createGlobalStyle`
+	${ globalCss }
+`;
 
 function AppSSR(props) {
 	const context = {};
