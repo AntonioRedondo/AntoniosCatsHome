@@ -1,8 +1,8 @@
-import React from "react";
-import Renderer from "react-test-renderer";
+import * as React from "react";
+import * as Renderer from "react-test-renderer";
 import "jest-styled-components";
 
-import Card from "../../src/js/components/card.jsx";
+import Card from "../../src/js/components/card";
 import v from "../../src/js/style/variables";
 
 
@@ -36,7 +36,7 @@ describe("Given the Card component", () => {
 					id="2"
 					name="Fluffy"
 					onClick={ mockFunction }
-					catSelected="2" />
+					catSelected={ true } />
 			);
 			tree = component.toJSON();
 			

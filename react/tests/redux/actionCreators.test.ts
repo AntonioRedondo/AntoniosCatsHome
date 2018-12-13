@@ -1,16 +1,17 @@
-import nock from "nock";
-import configureMockStore from "redux-mock-store";
-import thunk from "redux-thunk";
-import XML from "xmlhttprequest";
+import * as nock from "nock";
+import * as configureMockStore from "redux-mock-store";
+import * as thunk from "redux-thunk";
+import * as XML from "xmlhttprequest";
 
-import actionCreators from "../../src/js/redux/actionCreators.js";
-import actionTypes from "../../src/js/redux/actionTypes.js";
-import catList from "../../src/data/cats.json";
-import catListSorted from "../../tests/catsSortedByName.json";
+import actionCreators from "../../src/js/redux/actionCreators";
+import actionTypes from "../../src/js/redux/actionTypes";
+import catList from "../cats";
+import catListSorted from "../../tests/catsSortedByName";
 
 
 describe("Given Redux actionCreators", () => {
-	const mockStore = configureMockStore([ thunk ]);
+	console.log(configureMockStore)
+	const mockStore = configureMockStore.default([ thunk ]);
 	const store = mockStore({ transactions: [] });
 	
 	describe("When the requestCats action creator is executed", () => {

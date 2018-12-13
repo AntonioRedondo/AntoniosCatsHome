@@ -1,8 +1,8 @@
-import React from "react";
-import Renderer  from "react-test-renderer/shallow";
+import * as React from "react";
+import * as Renderer  from "react-test-renderer/shallow";
 import "jest-styled-components";
 
-import CardFilter from "../../src/js/components/cardFilter.jsx";
+import CardFilter from "../../src/js/components/cardFilter";
 
 
 describe("Given the CardFilter component", () => {

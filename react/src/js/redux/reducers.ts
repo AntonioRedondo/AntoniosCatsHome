@@ -1,15 +1,22 @@
 import { combineReducers } from "redux";
 
 import c from "./actionTypes";
+import {ICardProps} from "../components/card";
 
-function catSelected(state = "", action) {
+export interface IReduxState {
+	catSelected: string
+	cats: ICardProps[]
+	filterString: string
+}
+
+function catSelected(state = "", action): string {
 	switch (action.type) {
 		case c.CAT_SELECTED:		return state === action.id ? "" : action.id;
 		default:					return state;
 	}
 }
 
-function cats(state = [], action) {
+function cats(state = [], action) : ICardProps[] {
 	switch (action.type) {
 		case c.CATS_REQUESTED:		return state;
 		case c.CATS_RECEIVED:		return action.payload;
@@ -18,14 +25,14 @@ function cats(state = [], action) {
 	}
 }
 
-function filterString(state = "", action) {
+function filterString(state = "", action): string {
 	switch (action.type) {
 		case c.FILTER_STRING_SET:	return action.filterString;
 		default:					return state;
 	}
 }
 
-export default combineReducers({
+export default combineReducers<IReduxState>({
 	catSelected,
 	cats,
 	filterString

@@ -1,13 +1,19 @@
-import reducers from "../../src/js/redux/reducers";
+import reducers, {IReduxState} from "../../src/js/redux/reducers";
 import actionTypes from "../../src/js/redux/actionTypes";
-import catList from "../../src/data/cats.json";
+import catList from "../cats";
 
 
 describe("Given reducer functions", () => {
+	const mockDefaultState: IReduxState = {
+		catSelected: "",
+		cats: [],
+		filterString: ""
+	}
+	
 	describe("When the CATS_RECEIVED action is received", () => {
 		it("It should modify state accordingly", () => {
-			const state = reducers(
-				{},
+			const state: IReduxState = reducers(
+				mockDefaultState,
 				{
 					type: actionTypes.CATS_RECEIVED,
 					payload: catList
@@ -23,7 +29,7 @@ describe("Given reducer functions", () => {
 	describe("When the CAT_SELECTED action is received", () => {
 		it("It should modify state accordingly", () => {
 			const state = reducers(
-				{},
+				mockDefaultState,
 				{
 					type: actionTypes.CAT_SELECTED,
 					id: "4"
@@ -36,7 +42,7 @@ describe("Given reducer functions", () => {
 	describe("When the FILTER_STRING_SET action is received", () => {
 		it("It should modify state accordingly", () => {
 			const state = reducers(
-				{},
+				mockDefaultState,
 				{
 					type: actionTypes.FILTER_STRING_SET,
 					filterString: "fuffly"

@@ -1,0 +1,3 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Given the HowToAdopt component When the component is mounted Should render children 1`] = `undefined`;

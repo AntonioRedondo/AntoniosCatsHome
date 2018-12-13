@@ -64,6 +64,7 @@
 		"rollup-plugin-json": "3.1",
 		"rollup-plugin-closure-compiler-js": "1.0",
 		"typescript": "3.2",
+		"@types/jest": "23.3",
 		"@types/react": "16.7",
 		"@types/react-dom": "16.0",
 		"@types/react-redux": "6.0",
@@ -87,19 +88,20 @@
 	"husky": {
 		"hooks": {
 			"pre-commit": "npm run lint",
-			"pre-push": "npm run lint && npm t"
+			"pre-push": "npm t"
 		}
 	},
 	"jest": {
 		"moduleFileExtensions": [
 			"ts",
-			"tsx"
+			"tsx",
+			"js"
 		],
 		"transform": {
 			"^.+\\.(ts|tsx)$": "ts-jest"
 		},
 		"testMatch": [
-			"**/*.+(ts|tsx)"
+			"**/*.test.+(ts|tsx)"
 		]
 	}
 }

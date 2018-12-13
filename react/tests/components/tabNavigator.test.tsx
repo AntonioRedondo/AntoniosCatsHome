@@ -2,7 +2,7 @@ import React from "react";
 import Renderer  from "react-test-renderer/shallow";
 import "jest-styled-components";
 
-import TabNavigator from "../../src/js/components/tabNavigator.jsx";
+import TabNavigator from "../../src/js/components/tabNavigator";
 
 
 describe("Given the TabNavigator component", () => {

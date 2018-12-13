@@ -1,6 +1,6 @@
 import { sortByName } from "../src/js/helpers";
-import catList from "../src/data/cats.json";
-import catListSorted from "../tests/catsSortedByName.json";
+import catList from "../tests/cats";
+import catListSorted from "../tests/catsSortedByName";
 
 
 describe("Given helper functions", () => {
