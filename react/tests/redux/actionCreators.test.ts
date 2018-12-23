@@ -1,7 +1,6 @@
-import * as nock from "nock";
-import * as configureMockStore from "redux-mock-store";
-import * as thunk from "redux-thunk";
-import * as XML from "xmlhttprequest";
+import nock from "nock";
+import configureMockStore from "redux-mock-store";
+import thunk from "redux-thunk";
 
 import actionCreators from "../../src/js/redux/actionCreators";
 import actionTypes from "../../src/js/redux/actionTypes";
@@ -10,14 +9,12 @@ import catListSorted from "../../tests/catsSortedByName";
 
 
 describe("Given Redux actionCreators", () => {
-	console.log(configureMockStore)
-	const mockStore = configureMockStore.default([ thunk ]);
+	const mockStore = configureMockStore([ thunk ]);
 	const store = mockStore({ transactions: [] });
 	
 	describe("When the requestCats action creator is executed", () => {
 		beforeAll(() => {
-			XMLHttpRequest = XML.XMLHttpRequest; // eslint-disable-line no-global-assign
-			nock(/localhost:3000/).get("/data/cats.json").reply(200, catList);
+			nock(/http:\/\/localhost:3001/).get("/data/cats.json").reply(200, catList);
 		});
 		
 		beforeEach(() => {
@@ -25,14 +22,14 @@ describe("Given Redux actionCreators", () => {
 		});
 		
 		it("Should dispatch the CATS_RECEIVED action with expected type and data load", () => {
-			return store.dispatch(actionCreators.requestCats("http://localhost:3000/data/cats.json")).then(() => {
+			return store.dispatch(actionCreators.requestCats("/data/cats.json")).then(() => {
 				expect(store.getActions()[0]).toEqual({ type: actionTypes.CATS_RECEIVED, payload: catListSorted });
 			});
 		});
 		
 		describe("When there is some connection error", () => {
 			it("Should dispatch the CATS_RECEIVED_ERROR action with expected type and data load", () => {
-				return store.dispatch(actionCreators.requestCats("http://wrongurl.bad")).then(() => {
+				return store.dispatch(actionCreators.requestCats("http://incorrectTestingUrl.com")).then(() => {
 					expect(store.getActions()[0].type).toEqual(actionTypes.CATS_RECEIVED_ERROR);
 				});
 			});

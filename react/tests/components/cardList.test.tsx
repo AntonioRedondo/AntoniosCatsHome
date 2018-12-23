@@ -1,5 +1,5 @@
-import * as React from "react";
-import * as Renderer from "react-test-renderer/shallow";
+import React from "react";
+import Renderer from "react-test-renderer/shallow";
 
 import mockCatList from "../../src/data/cats.json";
 import { CardList } from "../../src/js/components/cardList";

@@ -16,7 +16,7 @@ function catSelected(state = "", action): string {
 	}
 }
 
-function cats(state = [], action) : ICardProps[] {
+function cats(state = [], action): ICardProps[] {
 	switch (action.type) {
 		case c.CATS_REQUESTED:		return state;
 		case c.CATS_RECEIVED:		return action.payload;

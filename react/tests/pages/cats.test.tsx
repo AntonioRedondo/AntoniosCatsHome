@@ -1,5 +1,5 @@
 import React from "react";
-import Renderer  from "react-test-renderer/shallow";
+import Renderer from "react-test-renderer/shallow";
 import "jest-styled-components";
 
 import { Cats } from "../../src/js/pages/cats";

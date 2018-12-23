@@ -1,5 +1,5 @@
-import * as React from "react";
-import * as Renderer from "react-test-renderer/shallow";
+import React from "react";
+import Renderer from "react-test-renderer/shallow";
 import "jest-styled-components";
 
 import HowToAdopt from "../../src/js/pages/howToAdopt";

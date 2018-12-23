@@ -1,5 +1,5 @@
-import * as React from "react";
-import * as Renderer from "react-test-renderer";
+import React from "react";
+import Renderer from "react-test-renderer";
 import "jest-styled-components";
 
 import Card from "../../src/js/components/card";

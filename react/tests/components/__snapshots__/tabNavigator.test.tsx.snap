@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Given the TabNavigator component When the component is mounted Should render children 1`] = `
-<Route
-  render={[Function]}
-/>
+<Route>
+  [Function]
+</Route>
 `;
