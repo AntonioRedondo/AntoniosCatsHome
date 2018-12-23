@@ -10,7 +10,7 @@
 		"lint": "gulp lint",
 		"build:watch": "gulp buildWatch",
 		"build:prod": "cross-env NODE_ENV=production gulp buildProd",
-		"build:ssr": "cross-env NODE_ENV=production gulp buildSsr",
+		"build:ssr": "cross-env NODE_ENV=production SSR=true gulp buildSsr",
 		"clean": "gulp clean",
 		"serve": "node dist/bundleSSR.js",
 		"test": "jest --coverage",

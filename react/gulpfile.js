@@ -52,16 +52,9 @@ const stylelintTask = () => {
 
 // ---------- BUILD ---------- //
 
-const namedExports = {
-	"node_modules/react/index.js": [ "createElement", "createContext", "cloneElement", "Children", "Component", "PureComponent", "Fragment" ],
-	"node_modules/react-is/index.js": ["isValidElementType"],
-	"node_modules/react-redux/node_modules/react-is/index.js": ["isValidElementType"],
-	"node_modules/styled-components/node_modules/react-is/index.js": ["isElement", "isValidElementType", "ForwardRef"]
-};
-
 const buildJsTask = async () => {
 	const bundle = await rollup.rollup({
-		input: `${SRC}/js/index.tsx`,
+		input: process.env.SSR ? "serverSSR.tsx" : `${SRC}/js/index.tsx`,
 		plugins: [
 			rollupRe({
 				// exclude: "node_modules/**",
@@ -79,7 +72,12 @@ const buildJsTask = async () => {
 				browser: true }),
 			rollupCommonjs({
 				include: "node_modules/**",
-				namedExports
+				namedExports: {
+					"node_modules/react/index.js": [ "createElement", "createContext", "cloneElement", "Children", "Component", "PureComponent", "Fragment" ],
+					"node_modules/react-is/index.js": ["isValidElementType"],
+					"node_modules/react-redux/node_modules/react-is/index.js": ["isValidElementType"],
+					"node_modules/styled-components/node_modules/react-is/index.js": ["isElement", "isValidElementType", "ForwardRef"]
+				}
 			}),
 			rollupTypeScript({
 				rollupCommonJSResolveHack: true,
@@ -94,7 +92,7 @@ const buildJsTask = async () => {
 	
 	return bundle.write({
 		format: "iife",
-		file: `${DEST}/bundle.js`,
+		file: process.env.SSR ? `${DEST}/bundleSSR.js` : `${DEST}/bundle.js`,
 		sourcemap: !isProduction
 	});
 };
@@ -137,43 +135,6 @@ const prodTask = () => {
 
 // ---------- SSR ---------- //
 
-const buildSsrJsTask = async () => {
-	const bundle = await rollup.rollup({
-		input: "serverSSR.tsx",
-		plugins: [
-			rollupRe({
-				defines: {
-					DEV: !isProduction,
-					PROD: isProduction,
-				},
-				replaces: {
-					"process.env.NODE_ENV": JSON.stringify(process.env.NODE_ENV || "development")
-				}
-			}),
-			rollupNodeResolve({ jsnext: true,
-				preferBuiltins: true,
-				browser: true }),
-			rollupCommonjs({
-				include: "node_modules/**",
-				namedExports
-			}),
-			rollupTypeScript({
-				rollupCommonJSResolveHack: true,
-				include: [ "**/*.ts+(|x)" ]
-			}),
-			rollupJson(),
-			rollupGlobals(),
-			rollupBuiltins()
-		]
-	});
-	
-	return bundle.write({
-		format: "iife",
-		file: `${DEST}/bundleSSR.js`,
-		sourcemap: !isProduction
-	});
-};
-
 const buildSsrTask = () => {
 	return gulp.src([`${DEST}/indexSSR.htm`])
 		.pipe(inline({
@@ -194,13 +155,13 @@ const buildSsrTask = () => {
 
 const buildTask = gulp.parallel(buildJsTask, buildHtmlTask, copyAssetsTask);
 
-exports.lint = gulp.series(tsLintTask, stylelintTask);
+exports.lint = gulp.parallel(tsLintTask, stylelintTask);
 exports.buildWatch = gulp.series(buildTask, function watchTask() {
 	gulp.watch([`${SRC}/js/**/*.ts+(|x)`], gulp.parallel(tsLintTask, stylelintTask, buildJsTask));
 	gulp.watch([`${SRC}/index.htm`], gulp.parallel(buildHtmlTask));
 	gulp.watch([`${SRC}/img/**`], gulp.parallel(copyAssetsTask));
 });
 exports.buildProd = gulp.series(buildTask, prodTask);
-exports.buildSsr = gulp.series(buildSsrJsTask, buildSsrTask);
+exports.buildSsr = gulp.series(buildJsTask, buildSsrTask);
 exports.clean = () => del(DEST);
 exports.default = exports.watch;

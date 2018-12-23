@@ -1,4 +1,4 @@
-import * as keyMirror from "keymirror";
+import keyMirror from "keymirror";
 
 export default keyMirror({
 	CATS_RECEIVED: null,
