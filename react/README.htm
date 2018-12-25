@@ -182,7 +182,7 @@
 				The project lints JavaScript and CSS code with <a href="https://www.npmjs.com/package/gulp-eslint" target="_blank"><code>ESLint</code></a> and <a href="https://www.npmjs.com/package/gulp-stylelint" target="_blank"><code>stylelint</code></a> repectively. The linting tasks are executed with its own task <code>npm run lint</code> or with the <code>npm run build:watch</code> task. JavaScript linting also works within the most common IDEs if you have them properly configured. CSS within the React components is also linted with <a href="https://www.npmjs.com/package/stylelint-processor-styled-components" target="_blank"><code>stylelint-processor-styled-components</code></a>.
 			</p>
 			<p class="p">
-				Thanks to <a href="https://www.npmjs.com/package/husky" target="_blank">Husky</a> the linting task is also executed when commiting or pushing changes. If linting fails changes aren't commited or pushed.
+				Thanks to <a href="https://www.npmjs.com/package/husky" target="_blank">Husky</a> the linting task is also executed when committing. If linting fails changes aren't committed.
 			</p>
 			<h2>
 				Testing
@@ -197,7 +197,7 @@
 				Jest is the testing framework. Snapshots are used to test components. Code coverage information is shown after tests have run. Thanks to <a href="https://www.npmjs.com/package/xmlhttprequest" target="_blank"><code>xmlhttprequest</code></a> tests are executed on Node.js, not in the browser (faster and no need for Karma and PhamtonJS).
 			</p>
 			<p class="p">
-				Thanks to <a href="https://www.npmjs.com/package/husky" target="_blank">Husky</a> the testing task is also executed when pushing changes. If tests fail changes aren't pushed.
+				Thanks to <a href="https://www.npmjs.com/package/husky" target="_blank">Husky</a> the testing task is also executed when committing changes. If tests fail changes aren't committed.
 			</p>
 			<h2>
 				Command tools
@@ -213,13 +213,7 @@
 					<code>npm i</code> (alias for <code>npm install</code>): installs all dependencies so that the project can be developed, tested and deployed. You must execute <code>npm i</code> before executing any other npm command.
 				</li>
 				<li>
-					<code>npm run clean</code>: removes the <code>dist</code> folder with all its content.
-				</li>
-				<li>
 					<code>npm run lint</code>: lints JavaScript and CSS code.
-				</li>
-				<li>
-					<code>npm run build</code>: generates the usable web in the <code>dist</code> folder.
 				</li>
 				<li>
 					<code>npm run build:watch</code>: executes the <code>default</code> task every time a file from the <code>src</code> folder is modified. This is the script you should run most of the time when developing together with the script <code>npm start</code>.
@@ -231,16 +225,16 @@
 					<code>npm run build:ssr</code>: creates the bundle used for server-side rendering. The server using this bundled is started with <code>npm run serve</code>.
 				</li>
 				<li>
-					<code>npm t</code> (alias for <code>npm test</code>): executes <code>.test.jsx</code> tests.
+					<code>npm run clean</code>: removes the <code>dist</code> folder with all its content.
 				</li>
 				<li>
-					<code>npm run test:watch</code>: runs tests in watch mode.
-				</li>
-				<li>
-					<code>npm run test:update</code>: updates Jest snapshots.
+					<code>npm t</code> (alias for <code>npm test</code>): executes tests.
 				</li>
 				<li>
 					<code>npm start</code>: initiates a Node.js server configured on <code>server.js</code> and automatically opens the default browser with the project page.
+				</li>
+				<li>
+					<code>npm serve</code>: initiates a Node.js server with the SSR bundled created with <code>npm run build:ssr</code>.
 				</li>
 			</ul>
 			<h2>

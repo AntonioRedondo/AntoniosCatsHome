@@ -15,8 +15,6 @@
 		"build:ssr": "cross-env NODE_ENV=production gulp buildSsr",
 		"serve": "node dist/bundleSSR.js",
 		"test": "jest --coverage",
-		"test:watch": "jest --watch",
-		"test:update": "jest --updateSnapshot",
 		"precommit": "npm run lint",
 		"prepush": "npm run lint && npm t"
 
