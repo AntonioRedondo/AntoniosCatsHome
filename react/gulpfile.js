@@ -16,7 +16,7 @@ const rollupJson = require("rollup-plugin-json");
 const rollupBuiltins = require("rollup-plugin-node-builtins");
 const rollupCommonjs = require("rollup-plugin-commonjs");
 const rollupTypeScript = require("rollup-plugin-typescript2");
-// const rollupClosure = require("rollup-plugin-closure-compiler-js"); // https://github.com/google/closure-compiler-js/issues/23
+const rollupClosure = require("@ampproject/rollup-plugin-closure-compiler");
 const replace = require("gulp-replace");
 const inline = require("gulp-inline");
 
@@ -27,7 +27,7 @@ const htmlMin = require("gulp-htmlmin");
 
 const SRC = "src";
 const DEST = "dist";
-const isProduction = process.env.NODE_ENV === "production";
+const isProd = process.env.NODE_ENV === "production";
 
 
 
@@ -59,8 +59,8 @@ const buildJsTask = async () => {
 			rollupRe({
 				// exclude: "node_modules/**",
 				defines: {
-					DEV: !isProduction,
-					PROD: isProduction,
+					DEV: !isProd,
+					PROD: isProd,
 				},
 				replaces: {
 					"process.env.NODE_ENV": JSON.stringify(process.env.NODE_ENV || "development")
@@ -80,20 +80,20 @@ const buildJsTask = async () => {
 				}
 			}),
 			rollupTypeScript({
-				rollupCommonJSResolveHack: true,
+				rollupCommonJSResolveHack: false,
 				include: [ "**/*.ts+(|x)" ]
 			}),
 			rollupJson(),
 			rollupGlobals(),
 			rollupBuiltins(),
-			// isProduction && rollupClosure()
+            // isProd && rollupClosure(), // Error: Unknown object type "asyncfunction"
 		]
 	});
 	
 	return bundle.write({
 		format: "iife",
 		file: process.env.SSR ? `${DEST}/bundleSSR.js` : `${DEST}/bundle.js`,
-		sourcemap: !isProduction
+		sourcemap: !isProd
 	});
 };
 
@@ -116,8 +116,8 @@ const prodTask = () => {
 	return gulp.src([`${DEST}/index.htm`])
 		.pipe(inline({
 			// base: DEST,
+            // ignore: [""]
 			disabledTypes: ["img"/*, "svg", "js", "css"*/],
-			// ignore: [""]
 		}))
 		.pipe(replace(/(<!-- buildDev:start -->)[\s\S]+(<!-- buildDev:end -->)/, ""))
 		.pipe(htmlMin({
@@ -145,7 +145,7 @@ const buildSsrTask = () => {
 			minifyCSS: true,
 			minifyJS: true,
 			removeAttributeQuotes: true,
-			removeComments: false,
+			removeComments: true,
 			removeRedundantAttributes: true
 		}))
 		.pipe(gulp.dest(DEST));
