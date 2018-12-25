@@ -1,7 +1,7 @@
 ## Antonio's Cats Home
 
-. <img src="readmeImages/final.png" height="600px" />
-<img src="readmeImages/finalMobile.png" height="600px" />
+. <img src="designFinal.png" height="600px" />
+<img src="designFinalMobile.png" height="600px" />
 
 Antonio's Cats Home is a skills' demonstration exercise where I implement the same web project with multiple front-end technologies:
 - [Vanilla ES5 JavaScript](https://antonioredondo.github.io/AntoniosCatsHome/vanillaJavaScript/README.htm) ([source code](https://github.com/AntonioRedondo/AntoniosCatsHome/tree/master/vanillaJavaScript)): no dependencies, tiny size, pure functions, functional programming.
@@ -20,7 +20,7 @@ I also use these implementations as best-practices reference and skeleton code b
 
 The starting point is the below mockup:
 
-<img align="center" src="https://github.com/AntonioRedondo/AntoniosCatsHome/raw/master/readmeImages/mockup.png" height="600px" />
+<img align="center" src="https://github.com/AntonioRedondo/AntoniosCatsHome/raw/master/designMockup.png" height="600px" />
 
 Given I am only provided with the above mockup representing a common use case, four images of cats and a JSON file containing a list of cat names and descriptions:
 
