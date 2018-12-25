@@ -1,0 +1,101 @@
+{
+	"name": "AntoniosCatsHomeReact",
+	"author": "Antonio Redondo",
+	"homepage": "http://antonioredondo.com",
+	"description": "A same web project implemented in vanilla ES5 JavaScript, AngularJS 1.6 and React 16.2",
+	"version": "1.0.0",
+	"repository": "antonioredondo/antonioscatshome",
+	"license": "CC-BY-NC-ND-4.0",
+	"scripts": {
+		"lint": "gulp lint",
+		"build:watch": "gulp buildWatch",
+		"build:prod": "cross-env NODE_ENV=production gulp buildProd",
+		"build:ssr": "cross-env NODE_ENV=production SSR=true gulp buildSsr",
+		"clean": "gulp clean",
+		"serve": "node dist/bundleSSR.js",
+		"test": "jest --coverage",
+		"test:watch": "jest --watch"
+	},
+	"dependencies": {
+		"axios": "0.18",
+		"keymirror": "0.1",
+		"react": "16.7",
+		"react-dom": "16.7",
+		"react-redux": "6.0",
+		"react-router-dom": "4.3",
+		"react-transition-group": "2.5",
+		"redux": "4.0",
+		"redux-thunk": "2.3",
+		"reselect": "4.0",
+		"styled-components": "4.1"
+	},
+	"//": "Grouped by concern: basics, lint, build, test, server",
+	"devDependencies": {
+		"cross-env": "5.2.0",
+		"del": "3.0.0",
+		"gulp": "4.0.0",
+		"gulp-newer": "1.4.0",
+		"gulp-sourcemaps": "2.6.4",
+		"gulp-tslint": "8.1.3",
+		"tslint": "5.12.0",
+		"tslint-react": "3.6.0",
+		"why-did-you-update": "1.0.6",
+		"gulp-stylelint": "8.0.0",
+		"stylelint": "9.9.0",
+		"stylelint-config-standard": "18.2.0",
+		"stylelint-config-styled-components": "0.1.1",
+		"stylelint-processor-styled-components": "1.5.1",
+		"husky": "1.2.1",
+		"gulp-concat": "2.6.1",
+		"gulp-replace": "1.0.0",
+		"gulp-inline": "0.1.3",
+		"gulp-htmlmin": "5.0.1",
+		"rollup": "0.68.2",
+		"rollup-plugin-typescript2": "0.18.1",
+		"rollup-plugin-node-resolve": "4.0.0",
+		"rollup-plugin-commonjs": "9.2.0",
+		"rollup-plugin-re": "1.0.7",
+		"rollup-plugin-node-builtins": "2.1.2",
+		"rollup-plugin-node-globals": "1.4.0",
+		"rollup-plugin-json": "3.1.0",
+		"@ampproject/rollup-plugin-closure-compiler": "0.8.5",
+		"typescript": "3.2.2",
+		"@types/jest": "23.3.10",
+		"@types/react": "16.7.18",
+		"@types/react-dom": "16.0.11",
+		"@types/react-redux": "6.0.11",
+		"@types/react-router": "4.4.3",
+		"@types/styled-components": "4.1.4",
+		"jest": "23.6.0",
+		"ts-jest": "23.10.5",
+		"enzyme": "3.8.0",
+		"nock": "10.0.5",
+		"redux-mock-store": "1.5.3",
+		"react-test-renderer": "16.7.0",
+		"jest-styled-components": "6.3.1",
+		"connect": "3.6.6",
+		"serve-static": "1.13.2",
+		"express": "4.16.4",
+		"opn": "5.4.0"
+	},
+	"husky": {
+		"hooks": {
+			"pre-commit": "npm run lint",
+			"pre-push": "npm t"
+		}
+	},
+	"jest": {
+		"testURL": "http://localhost:3001",
+		"moduleFileExtensions": [
+			"ts",
+			"tsx",
+			"js"
+		],
+		"transform": {
+			"^.+\\.(ts|tsx)$": "ts-jest"
+		},
+		"testMatch": [
+			"**/*.test.+(ts|tsx)"
+		]
+	}
+}

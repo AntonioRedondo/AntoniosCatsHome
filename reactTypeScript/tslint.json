@@ -1,0 +1,37 @@
+{
+	"defaultSeverity": "error",
+	"extends": [
+		"tslint:recommended",
+		"tslint-react"
+	],
+	"jsRules": {},
+	"rules": {
+		"arrow-parens": [true, "ban-single-arg-parens"],
+		"curly": [true, "as-needed"],
+		"indent": [true, "tabs", 4],
+		"jsx-alignment": false,
+		"jsx-boolean-value": false,
+		"jsx-curly-spacing": ["always"],
+		"jsx-wrap-multiline": false,
+		"max-line-length": [false, 200],
+		"member-access": [true, "no-public"],
+		"no-trailing-whitespace": [true, "ignore-blank-lines"],
+		"no-unused-expression": [true, "allow-fast-null-checks"],
+		"ordered-imports": [
+			true,
+			{
+				"import-sources-order": "any",
+				"named-imports-order": "lowercase-first"
+			}
+		],
+		"semicolon": [true, "always", "ignore-interfaces"],
+		"trailing-comma": [
+			true,
+			{
+				"multiline": false,
+				"esSpecCompliant": true
+			}
+		]
+	},
+	"rulesDirectory": []
+}

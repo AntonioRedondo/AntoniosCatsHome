@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Antonio's Cats Home - React implementation</title>
+
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width" />
+
+		<style>
+			html {
+				padding: 30px 0 50px;
+				font-family: sans-serif;
+				background: #eee;
+				color: #222;
+			}
+			h2 {
+				margin-bottom: 0;
+			}
+			li {
+				margin-bottom: 5px;
+			}
+			code {
+				padding: 2px 5px;
+				display: inline-block;
+				background: #ddd;
+			}
+			table {
+				margin: 30px 0;
+				font-size: 0.6em;
+			}
+			thead {
+				background-color: lightgray;
+			}
+			td {
+				padding: 5px;
+			}
+			img {
+				max-width: 100%;
+				margin: 20px auto;
+				display: block;
+				border: none;
+			}
+			.main {
+				width: 70%;
+				margin: 0 auto;
+			}
+			.screenshotContainer {
+				text-align: center;
+			}
+			.screenshotLink {
+				margin: 50px auto;
+				display: inline-block;
+			}
+			.screenshot {
+				max-height: 800px;
+				margin: 0;
+				box-shadow: 4px 4px 15px rgba(0, 0, 0, 0.2);
+			}
+			.separator {
+				width: 70%;
+				margin: 60px auto 80px;
+				border-bottom: 2px solid lightgray;
+			}
+		</style>
+
+	</head>
+
+	<body>
+
+		<div class="main">
+			<h1>Antonio's Cats Home - React implementation</h1>
+			<p class="p">
+				Hi,
+			</p>
+			<p class="p">
+				This is the <strong>React</strong> implementation for Antonio's Cats Home. The project is configured with <strong>npm</strong> and <strong>Gulp</strong>. CSS code is written with  <strong>PostCSS</strong> using the <strong>BEM</strong> pattern. <a href="https://www.npmjs.com/package/styled-components"><strong>styled-components</strong></a> is used for the styling on React components. Most of the CSS is on the React components. Just a few classes dealing with edge cases are on `scss` files.
+			</p>
+			<p class="p">
+				The project is implemented from scratch, without using any quick starter project like <a href="https://github.com/facebookincubator/create-react-app" target="_blank">Create React App</a> or <a href="https://github.com/kriasoft/react-starter-kit" target="_blank">React Starter Kit</a>.
+			</p>
+			<table>
+				<thead>
+					<tr>
+						<td>JS (Kb minified)</td>
+						<td>CSS (Kb minified)</td>
+						<td>JS imports</td>
+						<td>CSS imports</td>
+						<td>Front-end framework</td>
+						<td>HTTP requests</td>
+						<td>Routing</td>
+						<td>Transitions</td>
+						<td>Other libraries</td>
+						<td>CSS framework</td>
+						<td>Building tools</td>
+						<td>Linting</td>
+						<td>Tests</td>
+						<td>Server-side rendering</td>
+						<td>Server</td>
+						<td>Readme file</td>
+						<td>Ready out of the box</td>
+					</tr>
+				</thead>
+				<tr>
+					<td>260</td>
+					<td>- (no native CSS)</td>
+					<td>1</td>
+					<td>0 (plus fonts)</td>
+					<td>React 16.7</td>
+					<td><a href="https://www.npmjs.com/package/axios" target="_blank">Axios</a></td>
+					<td><a href="https://www.npmjs.com/package/react-router" target="_blank">React Router</a></td>
+					<td><a href="https://www.npmjs.com/package/react-transition-group" target="_blank">ReactTransitionGroup</a></td>
+					<td>Redux, Reselect</td>
+					<td><a href="https://www.npmjs.com/package/styled-components" target="_blank">styled-components</a> using <a href="http://getbem.com/naming" target="_blank">BEM</a></td>
+					<td>npm, Gulp, Rollup</td>
+					<td><a href="https://www.npmjs.com/package/tslint" target="_blank">TSLint</a>, <a href="https://stylelint.io" target="_blank">stylelint</a></td>
+					<td>Jest on Node.js</td>
+					<td>Yes</td>
+					<td>Node.js</td>
+					<td>In HTML</td>
+					<td>On <code>dist</code> folder</td>
+				</tr>
+			</table>
+			<p class="p">
+				JavaScript is written using TypeScript. <strong>Rollup</strong> is used to bundle all modules together.
+			</p>
+			<p class="p">
+				<strong>Redux</strong> with <strong>Reselect</strong> is used to implement the model layer and decouple state from React views. The app stores the state on <code>localStorage</code>. So if you refresh the window or reopen it on another tab the cat selected and the filtering string will load automatically.
+			</p>
+			<p class="p">
+				<strong>React Router</strong> is used to implement routing between tabs. Every of the two tabs can be accessed straightaway from its URL.
+			</p>
+			<p class="p">
+				The projects implements <strong>server-side rendering</strong>. In order to make it work firstly a bundle is created for the server with the <code>npm run build:ssr</code>. Then this bundled is execuded on a Node.js server with <code>npm run serve</code> accessible from <code>http://localhost:3000</code>.
+			</p>
+			<p class="p">
+				You do not need to run any npm command or Gulp task since all the processed files are already generated in the <code>dist</code> folder.
+			</p>
+			<div class="screenshotContainer">
+				<a class="screenshotLink" href="https://antonioredondo.github.io/AntoniosCatsHome/react/dist">
+					<img src="https://github.com/AntonioRedondo/AntoniosCatsHome/raw/master/readmeImages/final.png" class="screenshot">
+				</a>
+			</div>
+			<p class="p">
+				In order to see the project working:
+			</p>
+			<ul>
+				<li>
+					Visit <a href="https://antonioredondo.github.io/AntoniosCatsHome/react/dist">https://antonioredondo.github.io/AntoniosCatsHome/react/dist</a>.
+				</li>
+				<li>
+					Or download the repository and with a browser supporting the <code>file:///</code> standard with <a href="https://en.wikipedia.org/wiki/Cross-origin_resource_sharing" target="_blank">CORS</a> (Firefox on Windows supports it) open <a href="dist/index.htm"><code>dist/index.htm</code></a>.
+				</li>
+				<li>
+					Or download the repository and run <code>npm i &amp;&amp; npm start</code>. A Node.js server will start and the system default browser will open automatically at <a href="http://localhost:3000/dist/index.htm">http://localhost:3000/dist/index.htm</a>. A server with React server-side rendering can be started with <code>npm run serve</code>.
+				</li>
+			</ul>
+			<p class="p">
+				JavaScript dependencies are React, Redux, React Router, styled-components, some supporting libs and a couple of shims (see <code>package.json</code> for details). No jQuery, no Bootstrap. No real need for polyfills like Webshim or babel-polyfill, or browser compatibility libraries like Modernizr.
+			</p>
+			<h2>
+				Dependencies
+			</h2>
+			<p class="p">
+				JavaScript dependencies are React, Redux, React Router, styled-components, some supporting libs and a couple of shims (see <code>package.json</code> for details). No jQuery, no Bootstrap. No real need for polyfills like Webshim or babel-polyfill, or browser compatibility libraries like Modernizr.
+			</p>
+			<p class="p">
+				The only CSS dependency are the fonts downloaded from Google Fonts.
+			</p>
+			<p class="p">
+				The application has a small code size: no CSS and ~250 KB of minified JavaScript. The CSS is generated by styled-components and stored on each corresponding React component. The JavaScript is inlined in the HTML delivered from the server thanks to the code in <a href="https://github.com/AntonioRedondo/AntoniosCatsHome/blob/master/react/serverSSR.jsx#L30"><code>serverSSR.jsx</code></a> and the <a href="https://www.npmjs.com/package/gulp-inline"><code>gulp-inline</code></a> Gulp plugin.
+			</p>
+			<h2>
+				Best practices
+			</h2>
+			<p class="p">
+				Strict practices and habits are paramount for good software development. For this project the <a href="https://facebook.github.io/react/docs/getting-started.html" target="_blank">React official documentation</a> is followed. TDD was applied to build the project (see Testing section).
+			</p>
+			<h2>
+				Linting
+			</h2>
+			<p class="p">
+				The project lints JavaScript and CSS code with <a href="https://www.npmjs.com/package/gulp-eslint" target="_blank"><code>ESLint</code></a> and <a href="https://www.npmjs.com/package/gulp-stylelint" target="_blank"><code>stylelint</code></a> repectively. The linting tasks are executed with its own task <code>npm run lint</code> or with the <code>npm run build:watch</code> task. JavaScript linting also works within the most common IDEs if you have them properly configured. CSS within the React components is also linted with <a href="https://www.npmjs.com/package/stylelint-processor-styled-components" target="_blank"><code>stylelint-processor-styled-components</code></a>.
+			</p>
+			<p class="p">
+				Thanks to <a href="https://www.npmjs.com/package/husky" target="_blank">Husky</a> the linting task is also executed when commiting or pushing changes. If linting fails changes aren't commited or pushed.
+			</p>
+			<h2>
+				Testing
+			</h2>
+			<p class="p">
+				Tests cover every React component, Redux actions and Redux reducer. They are on the <code>tests</code> folder.
+			</p>
+			<p class="p">
+				To run the tests execute <code>npm t</code> (you must have executed <code>npm i</code> before).
+			</p>
+			<p class="p">
+				Jest is the testing framework. Snapshots are used to test components. Code coverage information is shown after tests have run. Thanks to <a href="https://www.npmjs.com/package/xmlhttprequest" target="_blank"><code>xmlhttprequest</code></a> tests are executed on Node.js, not in the browser (faster and no need for Karma and PhamtonJS).
+			</p>
+			<p class="p">
+				Thanks to <a href="https://www.npmjs.com/package/husky" target="_blank">Husky</a> the testing task is also executed when pushing changes. If tests fail changes aren't pushed.
+			</p>
+			<h2>
+				Command tools
+			</h2>
+			<p class="p">
+				There are several npm scripts configured dealing with project tasks. The project makes uses of Gulp but it's not necessary to have it installed globally since Gulp tasks are mapped to npm scripts which call Gulp from the <code>node_modules</code> folder:
+			</p>
+			<p class="p">
+				Available npm scripts:
+			</p>
+			<ul>
+				<li>
+					<code>npm i</code> (alias for <code>npm install</code>): installs all dependencies so that the project can be developed, tested and deployed. You must execute <code>npm i</code> before executing any other npm command.
+				</li>
+				<li>
+					<code>npm run clean</code>: removes the <code>dist</code> folder with all its content.
+				</li>
+				<li>
+					<code>npm run lint</code>: lints JavaScript and CSS code.
+				</li>
+				<li>
+					<code>npm run build</code>: generates the usable web in the <code>dist</code> folder.
+				</li>
+				<li>
+					<code>npm run build:watch</code>: executes the <code>default</code> task every time a file from the <code>src</code> folder is modified. This is the script you should run most of the time when developing together with the script <code>npm start</code>.
+				</li>
+				<li>
+					<code>npm run build:prod</code>: generates the usable web in the <code>dist</code> folder by minimising the JavaScript, HTML and CSS code, removing dev code and inlining JavaScript, CSS and SVGs files. This script execute the <coded>npm run build</coded> script first.
+				</li>
+				<li>
+					<code>npm run build:ssr</code>: creates the bundle used for server-side rendering. The server using this bundled is started with <code>npm run serve</code>.
+				</li>
+				<li>
+					<code>npm t</code> (alias for <code>npm test</code>): executes <code>.test.jsx</code> tests.
+				</li>
+				<li>
+					<code>npm run test:watch</code>: runs tests in watch mode.
+				</li>
+				<li>
+					<code>npm run test:update</code>: updates Jest snapshots.
+				</li>
+				<li>
+					<code>npm start</code>: initiates a Node.js server configured on <code>server.js</code> and automatically opens the default browser with the project page.
+				</li>
+			</ul>
+			<h2>
+				Folder structure
+			</h2>
+			<p class="p">
+				Source code and distributable code are stored in <code>src</code> and <code>dist</code> folders respectively. Tests are on the <code>tests</code> folder with <code>.test.jsx</code> extension. This folder copies <code>src</code> folder structure.
+			</p>
+			<h2>
+				Screen sizes
+			</h2>
+			<p class="p">
+				The page has two different layouts: one desktop view with a max-width of 1100px, and a mobile view.
+			</p>
+			<p class="p separator">.
+			</p>
+			<p class="p">
+				I hope I have explained my approach properly. For sure you have many other doubts that you will like to answer. I am very happy to discuss them with you.
+			</p>
+			<p class="p">
+				On the project, when you see something weird or wrong I would like to please ask you not to automatically consider that part wrong. There will be a satisfactory explanation so that that code or approach has a reason to exist in peace with the rest of best web coding standards and practices.
+			</p>
+			<p class="p">
+				Regards,
+			</p>
+			<p class="p">
+				Antonio
+			</p>
+		</div>
+
+	</body>
+</html>
