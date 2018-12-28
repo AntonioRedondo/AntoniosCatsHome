@@ -9,13 +9,13 @@ import Header from "./components/header";
 import Home from "./pages/home";
 
 export default function Routes() {
-	const GlobalState = createGlobalStyle`
+	const GlobalStyle = createGlobalStyle`
 		${ globalCss }
 	`;
 	
 	return (
 		<>
-			<GlobalState />
+			<GlobalStyle/>
 			<Header/>
 			<Route path="/" component={ Home } />
 			<Footer/>

@@ -99,7 +99,6 @@ exports[`Given the Card component When the component is mounted Should render ch
 
 <article
   className="c0"
-  onClick={undefined}
 >
   <div
     className="c1"

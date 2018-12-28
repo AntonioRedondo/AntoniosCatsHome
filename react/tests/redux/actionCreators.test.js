@@ -1,7 +1,6 @@
 import nock from "nock";
 import configureMockStore from "redux-mock-store";
 import thunk from "redux-thunk";
-import XML from "xmlhttprequest";
 
 import actionCreators from "../../src/js/redux/actionCreators.js";
 import actionTypes from "../../src/js/redux/actionTypes.js";
@@ -15,8 +14,9 @@ describe("Given Redux actionCreators", () => {
 	
 	describe("When the requestCats action creator is executed", () => {
 		beforeAll(() => {
-			XMLHttpRequest = XML.XMLHttpRequest; // eslint-disable-line no-global-assign
-			nock(/localhost:3000/).get("/data/cats.json").reply(200, catList);
+			nock(/http:\/\/localhost:3001/)
+				.get("/wrongPath").reply(404)
+				.get("/data/cats.json").reply(200, catList);
 		});
 		
 		beforeEach(() => {
@@ -24,14 +24,14 @@ describe("Given Redux actionCreators", () => {
 		});
 		
 		it("Should dispatch the CATS_RECEIVED action with expected type and data load", () => {
-			return store.dispatch(actionCreators.requestCats("http://localhost:3000/data/cats.json")).then(() => {
+			return store.dispatch(actionCreators.requestCats("/data/cats.json")).then(() => {
 				expect(store.getActions()[0]).toEqual({ type: actionTypes.CATS_RECEIVED, payload: catListSorted });
 			});
 		});
 		
 		describe("When there is some connection error", () => {
 			it("Should dispatch the CATS_RECEIVED_ERROR action with expected type and data load", () => {
-				return store.dispatch(actionCreators.requestCats("http://wrongurl.bad")).then(() => {
+				return store.dispatch(actionCreators.requestCats("/wrongPath")).then(() => {
 					expect(store.getActions()[0].type).toEqual(actionTypes.CATS_RECEIVED_ERROR);
 				});
 			});

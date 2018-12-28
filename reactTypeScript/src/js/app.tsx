@@ -2,12 +2,13 @@ import React from "react";
 import { Provider } from "react-redux";
 import { HashRouter } from "react-router-dom";
 
-import Store from "./redux/store";
+import store from "./redux/store";
+
 import Routes from "./routes";
 
 export default function App() {
 	return (
-		<Provider store={ Store } >
+		<Provider store={ store } >
 			<HashRouter >
 				<Routes/>
 			</HashRouter>

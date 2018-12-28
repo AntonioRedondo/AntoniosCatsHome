@@ -10,12 +10,10 @@ function setInitialState() {
 		if ((window as any).stateToHydrate)
 			initialState = Object.assign(initialState, (window as any).stateToHydrate);
 		return initialState;
-	} else return;
+	}
 }
 
-let store;
-
-store = createStore(
+let store = createStore(
 	reducers,
 	setInitialState(),
 	applyMiddleware(thunk)

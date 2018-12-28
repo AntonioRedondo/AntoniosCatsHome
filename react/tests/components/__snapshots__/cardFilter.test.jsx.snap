@@ -1,10 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Given the CardFilter component When the component is mounted Should render children 1`] = `
-<styled.input
+<ForwardRef
   onChange={[Function]}
   placeholder="Filter by name or description"
   type="text"
-  value={undefined}
 />
 `;

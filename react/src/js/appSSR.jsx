@@ -2,14 +2,16 @@ import React from "react";
 import PropTypes from "prop-types";
 import { Provider } from "react-redux";
 import { StaticRouter } from "react-router-dom";
-import { injectGlobal } from "styled-components";
+import { createGlobalStyle } from "styled-components";
 
 import globalCss from "./style/global";
 import Store from "./redux/store";
 
 import Routes from "./routes.jsx";
 
-injectGlobal`${ globalCss }`;
+createGlobalStyle`
+	${ globalCss }
+`;
 
 function AppSSR(props) {
 	const context = {};

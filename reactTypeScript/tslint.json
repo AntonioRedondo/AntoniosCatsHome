@@ -1,9 +1,9 @@
 {
-	"defaultSeverity": "error",
 	"extends": [
 		"tslint:recommended",
 		"tslint-react"
 	],
+	"defaultSeverity": "error",
 	"jsRules": {},
 	"rules": {
 		"arrow-parens": [true, "ban-single-arg-parens"],

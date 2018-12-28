@@ -16,7 +16,7 @@ const rollupJson = require("rollup-plugin-json");
 const rollupBuiltins = require("rollup-plugin-node-builtins");
 const rollupCommonjs = require("rollup-plugin-commonjs");
 const rollupTypeScript = require("rollup-plugin-typescript2");
-const rollupClosure = require("@ampproject/rollup-plugin-closure-compiler");
+// const rollupClosure = require("@ampproject/rollup-plugin-closure-compiler");
 const replace = require("gulp-replace");
 const inline = require("gulp-inline");
 
@@ -33,7 +33,7 @@ const isProd = process.env.NODE_ENV === "production";
 
 // ---------- LINT ---------- //
 
-const tsLintTask = () => {
+const jsLintTask = () => {
 	return gulp.src([`${SRC}/js/**/*.tsx`, `${SRC}/js/**/*.ts`])
 		.pipe(tsLint({
 			formatter: "stylish"
@@ -66,10 +66,15 @@ const buildJsTask = async () => {
 					"process.env.NODE_ENV": JSON.stringify(process.env.NODE_ENV || "development")
 				}
 			}),
+			rollupTypeScript({
+				rollupCommonJSResolveHack: false,
+				include: [ "**/*.ts+(|x)" ]
+			}),
 			rollupNodeResolve({
 				jsnext: true,
 				preferBuiltins: true,
-				browser: true }),
+				browser: true
+			}),
 			rollupCommonjs({
 				include: "node_modules/**",
 				namedExports: {
@@ -78,10 +83,6 @@ const buildJsTask = async () => {
 					"node_modules/react-redux/node_modules/react-is/index.js": ["isValidElementType"],
 					"node_modules/styled-components/node_modules/react-is/index.js": ["isElement", "isValidElementType", "ForwardRef"]
 				}
-			}),
-			rollupTypeScript({
-				rollupCommonJSResolveHack: false,
-				include: [ "**/*.ts+(|x)" ]
 			}),
 			rollupJson(),
 			rollupGlobals(),
@@ -155,13 +156,13 @@ const buildSsrTask = () => {
 
 const buildTask = gulp.parallel(buildJsTask, buildHtmlTask, copyAssetsTask);
 
-exports.lint = gulp.parallel(tsLintTask, stylelintTask);
+exports.lint = gulp.parallel(jsLintTask, stylelintTask);
 exports.buildWatch = gulp.series(buildTask, function watchTask() {
-	gulp.watch([`${SRC}/js/**/*.ts+(|x)`], gulp.parallel(tsLintTask, stylelintTask, buildJsTask));
+	gulp.watch([`${SRC}/js/**/*.ts+(|x)`], gulp.parallel(jsLintTask, stylelintTask, buildJsTask));
 	gulp.watch([`${SRC}/index.htm`], gulp.parallel(buildHtmlTask));
 	gulp.watch([`${SRC}/img/**`], gulp.parallel(copyAssetsTask));
 });
 exports.buildProd = gulp.series(buildTask, prodTask);
-exports.buildSsr = gulp.series(buildJsTask, buildSsrTask);
+exports.buildSsr = gulp.series(buildTask, buildSsrTask);
 exports.clean = () => del(DEST);
 exports.default = exports.watch;

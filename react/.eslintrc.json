@@ -22,6 +22,11 @@
 		"jest": true,
 		"node": true
 	},
+	"settings": {
+		"react": {
+			"version": "16.7"
+		}
+	},
 	"rules": {
 		"comma-dangle": [2, "only-multiline"],
 		"no-console": [1, { "allow": ["error"] } ],
@@ -29,7 +34,6 @@
 		"indent": [2, "tab", { "SwitchCase": 1}],
 		"quotes": [2, "double", { "allowTemplateLiterals": true }],
 		"jsx-quotes": 2,
-		"no-console": 1,
 		"no-debugger": 1,
 		"no-trailing-spaces": [2, { "skipBlankLines": true }],
 		"no-var": 1,
@@ -37,7 +41,11 @@
 		"no-lone-blocks": 1,
 		"object-curly-spacing": [2, "always"],
 		"semi": [1, "always"],
-		"space-before-function-paren": [2, "never"],
+		"space-before-function-paren": [2, {
+			"anonymous": "never",
+			"named": "never",
+			"asyncArrow": "always"
+		}],
 		"react/display-name": [1, { "ignoreTranspilerName": false }],
 		"react/jsx-boolean-value": 1,
 		"react/jsx-curly-spacing": [2, "always"],

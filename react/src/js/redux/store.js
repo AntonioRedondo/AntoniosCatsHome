@@ -11,13 +11,11 @@ function setInitialState() {
 			initialState = Object.assign(initialState, window.stateToHydrate);
 		}
 		return initialState;
-	} else return;
+	}
 }
 
 
-let store;
-
-store = createStore(
+let store = createStore(
 	reducers,
 	setInitialState(),
 	applyMiddleware(thunk)
@@ -33,7 +31,7 @@ if (!isNode()) {
 	store = createStore(
 		reducers,
 		setInitialState(),
-		compose(applyMiddleware(logger, thunk), window.devToolsExtension ? window.devToolsExtension() : f => f )
+		compose(applyMiddleware(logger, thunk), window.__REDUX_DEVTOOLS_EXTENSION__ ? window.__REDUX_DEVTOOLS_EXTENSION__() : f => f )
 	);
 	// #endif
 	
