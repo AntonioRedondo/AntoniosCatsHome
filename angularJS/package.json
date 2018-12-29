@@ -1,58 +1,62 @@
 {
-	"name": "AntoniosCatsHomeAngular1.5",
+	"name": "AntoniosCatsHomeAngularJS",
 	"author": "Antonio Redondo",
 	"homepage": "http://antonioredondo.com",
 	"description": "A same web project implemented in vanilla ES5 JavaScript, AngularJS 1.6 and React 16.2",
 	"version": "1.0.0",
 	"repository": "antonioredondo/antonioscatshome",
 	"license": "CC-BY-NC-ND-4.0",
-	"main": "",
 	"scripts": {
-		"clean": "gulp clean",
 		"lint": "gulp lint",
-		"build": "gulp",
 		"build:watch": "gulp watch",
 		"build:prod": "gulp prod",
+		"clean": "gulp clean",
 		"test": "karma start",
-		"test:watch": "karma start --singleRun false",
-		"precommit": "npm run lint",
-		"prepush": "npm run lint && npm t"
+		"test:watch": "karma start --singleRun false"
 	},
+	"//": "versions 1.x of angular-ui-router are +70kb more of minified JS",
 	"dependencies": {
-		"angular": "~1.6.8",
-		"angular-animate": "~1.6.8",
-		"angular-ui-router": "~1.0.3"
+		"angular": "1.7.5",
+		"angular-animate": "1.7.5",
+		"@uirouter/angularjs": "0.4.3"
 	},
-	"//": "Grouped by concern: basics, lint, build, test, server",
+	"//": "Grouped by concern: basics, lint, build, production, test, server",
 	"devDependencies": {
-		"del": "~3.0.0",
-		"gulp": "~3.9.1",
+		"del": "3.0.0",
+		"gulp": "3.9.1",
 		
-		"jshint": "~2.9.2",
-		"jshint-stylish": "~2.2.1",
-		"gulp-jshint": "~2.1.0",
-		"gulp-htmllint": "~0.0.8",
-		"gulp-lesshint": "~4.0.0",
-		"husky": "~0.14.0",
+		"jshint": "2.9.7",
+		"jshint-stylish": "2.2.1",
+		"gulp-jshint": "2.1.0",
+		"gulp-htmllint": "0.0.16",
+		"gulp-lesshint": "6.0.0",
+		"husky": "1.2.1",
 		
-		"gulp-concat": "~2.6.0",
-		"gulp-replace": "~0.6.1",
-		"gulp-less": "~3.4.0",
-		"gulp-uglify": "~3.0.0",
-		"gulp-htmlmin": "~4.0.0",
-		"gulp-clean-css": "~3.9.2",
+		"gulp-concat": "2.6.1",
+		"gulp-replace": "1.0.0",
+		"gulp-less": "4.0.1",
 		
-		"connect": "~3.6.5",
-		"serve-static": "~1.13.1",
-		"opn": "~5.1.0",
+		"gulp-uglify": "3.0.1",
+		"gulp-htmlmin": "5.0.1",
+		"gulp-clean-css": "4.0.0",
 		
-		"jasmine-core": "~2.8.0",
-		"phantomjs": "~2.1.3",
-		"phantomjs-prebuilt": "~2.1.4",
-		"karma": "~2.0.0",
-		"karma-jasmine": "~1.1.1",
-		"karma-spec-reporter": "~0.0.24",
-		"karma-phantomjs-launcher": "~1.0.4",
-		"angular-mocks": "~1.6.8"
+		"jasmine-core": "3.3.0",
+		"phantomjs": "2.1.7",
+		"phantomjs-prebuilt": "2.1.16",
+		"karma": "3.1.4",
+		"karma-jasmine": "2.0.1",
+		"karma-spec-reporter": "0.0.32",
+		"karma-phantomjs-launcher": "1.0.4",
+		"angular-mocks": "1.7.5",
+		
+		"connect": "3.6.6",
+		"serve-static": "1.13.2",
+		"opn": "5.4.0"
+	},
+	"husky": {
+		"hooks": {
+			"pre-commit": "npm run lint",
+			"pre-push": "npm t"
+		}
 	}
 }

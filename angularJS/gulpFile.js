@@ -1,5 +1,4 @@
-"use strict";
-
+// Basics
 const del = require("del");
 const gulp = require("gulp");
 
@@ -103,27 +102,26 @@ gulp.task("lessHint", () => {
 
 
 const jsSrc = [
-		"node_modules/angular/angular.js",
-		"node_modules/angular-animate/angular-animate.js",
-		"node_modules/angular-ui-router/release/angular-ui-router.js",
-		`${src}/js/main.js`,
-		`${src}/js/*.js`,
-		`${src}/angularDirectives/**/*.js`,
-		`!${src}/js/*.spec.js`,
-		`!${src}/angularDirectives/**/*.spec.js`
-	];
-		
+	"node_modules/angular/angular.js",
+	"node_modules/angular-animate/angular-animate.js",
+	"node_modules/@uirouter/angularjs/release/angular-ui-router.js",
+	`${src}/js/main.js`,
+	`${src}/js/*.js`,
+	`${src}/angularDirectives/**/*.js`,
+	`!**/*.spec.js`
+];
+
 const htmlSrc = [
-		`${src}/*angularDirectives/**/*.tpl.htm`,
-		`${src}/*angularTpl/*.tpl.htm`,
-		`${src}/index.htm`
-	];
-		
+	`${src}/*angularDirectives/**/*.tpl.htm`,
+	`${src}/*angularTpl/*.tpl.htm`,
+	`${src}/index.htm`
+];
+
 const cssSrc = [
-		`${src}/style/*.less`,
-		`${src}/angularTpl/*.less`,
-		`${src}/angularDirectives/**/*.less`
-	];
+	`${src}/style/*.less`,
+	`${src}/angularTpl/*.less`,
+	`${src}/angularDirectives/**/*.less`
+];
 
 
 

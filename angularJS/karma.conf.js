@@ -11,6 +11,8 @@ module.exports = function (config) {
 		// list of files / patterns to load in the browser
 		files: [
 			"node_modules/angular/angular.js",
+			"node_modules/angular-animate/angular-animate.js",
+			"node_modules/@uirouter/angularjs/release/angular-ui-router.js",
 			"node_modules/angular-mocks/angular-mocks.js",
 			"src/js/main.js", // ctm module is created here. Must be first.
 			"src/js/*.js" // ctm providers
