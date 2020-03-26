@@ -50,13 +50,13 @@ React (TypeScript) | 260 | - (no native CSS) | 1 | 0 (plus fonts) | React 16.7 |
 
 ### How to best understand my skills with the test
 
-There are a few points where attention can be paid to find out how good the exercise is and therefore to assess my programming skills. The implementations contain a set of general technologies, software patterns and best practices normally used on front-end software development.
+There are a few points where attention can be paid to find out how good the exercise is and assess my programming skills. The implementations contain a set of general technologies, software patterns and best practices normally used on front-end software development.
 
 We can check:
 - **Code simplicity:** there must be a balance between the number of technologies used to showcase skills and the real need and number of requirements in order to avoid feature overload. The balance pursued is quality over quantity. A couple of features well implemented counts more than five features poorly implemented ([KISS principle](https://en.wikipedia.org/wiki/KISS_principle])). On the test statement there are no explicit instructions about libraries or features to be used. This gives freedom of choice at the same time interviewers have less scripted results.
-- **Front-end framework:** when using a front-end framework like Angular or React I try to do the best use of these frameworks. Every of these front-end frameworks are a world by themselves and getting used to its opinionated patterns, component life cycles and complex APIs has a learning curve. A pure JavaScript approach shows how basics are not forgotten.
-- **Animations:** CSS animations is a must-have in modern front-end development. They add interface continuity and provide extra feedback to the user about the expected behaviour of the GUI. There are three basic ways animations can be added to HTML elements: with CSS transitions, with CSS key frames and with JavaScript by changing element properties. A not so good way to add animations would be using a library like [`jQuery.animate()`](http://api.jquery.com/animate). In a test like this a bad way to animate elements would be using CSS key frames.
-- **Folder structure:** a folder structure organises files in a way it is easy to find files as the project grows in size. Often front-end libraries have its own folder structure guidelines. For Angular [this](http://stackoverflow.com/questions/18542353/angularjs-folder-structure) is a good guideline. A general approach would be the below one. Source code must be separated from distributable/built code.
+- **Front-end framework:** when using a front-end framework like Angular or React I try to do the best use of them according to its official documentation. Each of these frameworks are a world by themselves and getting used to its opinionated patterns, component life cycles and complex APIs has a learning curve. A pure JavaScript approach shows how basics are not forgotten.
+- **Animations:** GUI animations are a must-have in modern front-end development. They add user flow continuity and provide extra feedback about the GUI expected behaviour. There are three basic ways animations can be added to HTML elements: with CSS transitions, with CSS animation keyframes and with JavaScript by changing DOM element properties. There are JavaScript libraries with which animations can be implemented. But under the hood they make use of the aforementioned animation techniques. For the use cases of this project a not so good way to add animations would be by using a library like [`jQuery.animate()`](http://api.jquery.com/animate) or by using CSS animation keyframes.
+- **Folder structure:** a folder structure organises files in a way it is easy to find files as the project grows in size. Roughly files can be arranged by type or by concern. Often front-end libraries have its own folder structure guidelines. For Angular [this](http://stackoverflow.com/questions/18542353/angularjs-folder-structure) is a good guideline. A general approach would be the below one. Source code must be separated from distributable/built code.
 ```
     root
       dist
@@ -71,10 +71,10 @@ We can check:
 ```
 - **`Readme` file:** a readme file with explanations and instructions must be always present in the root folder. A lack of this file makes harder for interviewers to understand a candidate test.
 - **Technical tricks and traps:** on the tests the code will provide tips about the candidate seniority level:
-  - Conversion of SVG images to png: common mistake. There is no need to convert SVG to png. Even old versions of Internet Explorer support SVG. Doing so the vectorial nature of SVG is lost.
-  - Many CSS and/or JavaScript imports: increases number of HTTP calls and page weight affecting execution performance and loading time.
+  - Many CSS and/or JavaScript imports in the final distributable `index.htm` file: increases number of HTTP calls and page weight affecting execution performance and loading time.
   - Lack of use of semantic HTML elements: in addition to `<div>`s and `<span>`s, elements like `<header>`, `<footer>`, `<section>`, or `<article>` should be used.
   - Many temporarary/unneeded files created with a boilerplate project: the use of a generator or a reference project is a good starting base as long as the rest of not used files are removed and the files used are cleaned out from unused code.
+  - Conversion of SVG images to png: common mistake. There is no need to convert SVG to png. Even old versions of Internet Explorer support SVG. Doing so the vectorial nature of SVG is lost.
 
 
 ### Extra information
