@@ -16,7 +16,7 @@
 		"test": "jest --coverage"
 	},
 	"dependencies": {
-		"axios": "0.18.0",
+		"axios": "0.21.1",
 		"keymirror": "0.1.1",
 		"prop-types": "15.6.2",
 		"react": "16.7.0",
