@@ -21,7 +21,7 @@
 	"//": "Grouped by concern: basics, lint, build, test, server",
 	"devDependencies": {
 		"del": "~3.0.0",
-		"gulp": "~3.9.1",
+		"gulp": "~4.0.2",
 		
 		"jshint": "~2.9.2",
 		"jshint-stylish": "~2.2.1",
