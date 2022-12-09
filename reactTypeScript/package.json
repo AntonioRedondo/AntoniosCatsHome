@@ -79,7 +79,7 @@
 		
 		"connect": "3.6.6",
 		"serve-static": "1.13.2",
-		"express": "4.16.4",
+		"express": "4.17.3",
 		"opn": "5.4.0"
 	},
 	"husky": {
