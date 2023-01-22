@@ -3,6 +3,15 @@
 . <img src="designFinal.png" height="600px" />
 <img src="designFinalMobile.png" height="600px" />
 
+## Table of Contents
+
+1. [Introduction](#introduction)
+1. [Exercise statement](#exercise-statement)
+1. [Comparison between implementations](#comparison-between-implementations)
+1. [How to best understand my skills with the test](#how-to-best-understand-my-skills-with-the-test)
+
+## Introduction
+
 Antonio's Cats Home is a skills' demonstration exercise where I implement the same web project with multiple front-end technologies:
 - [Vanilla ES5 JavaScript](https://antonioredondo.github.io/AntoniosCatsHome/vanillaJavaScript/README.htm) ([source code](https://github.com/AntonioRedondo/AntoniosCatsHome/tree/master/vanillaJavaScript)): no dependencies, tiny size, pure functions, functional programming.
 - [AngularJS 1.7](https://antonioredondo.github.io/AntoniosCatsHome/angularJS/README.htm) ([source code](https://github.com/AntonioRedondo/AntoniosCatsHome/tree/master/angularJS)): services, directives, isolated scopes, [UI-Router](https://www.npmjs.com/package/angular-ui-router) and [ngAnimate](https://docs.angularjs.org/api/ngAnimate).
@@ -16,7 +25,7 @@ This project is intended to help recruiters and hiring IT managers when time com
 I also use these implementations as best-practices reference and skeleton code base for new projects. None of the three implementations use boilerplate projects for its creation. They have been coded from scratch.
 
 
-### Exercise statement
+## Exercise statement
 
 The starting point is the below mockup:
 
@@ -35,7 +44,7 @@ Given I am only provided with the above mockup representing a common use case, f
 - The GUI must be also responsive and adapt to mobile devices. An attractive design is a plus.
 
 
-### Comparison between implementations
+## Comparison between implementations
 
 On the below table you can see technical differences between implementations (SCROLL RIGHT TO SEE THE REST OF THE TABLE):
 
@@ -48,7 +57,7 @@ React (Babel) | 255 | - (no native CSS) | 1 | 0 (plus fonts) | React 16.7 | [Axi
 React (TypeScript) | 260 | - (no native CSS) | 1 | 0 (plus fonts) | React 16.7 | Axios | React Router | ReactTransitionGroup | Redux, Reselect | styled-components using BEM | npm, Gulp, Rollup | [TSLint](https://www.npmjs.com/package/gulp-tslint), stylelint | Jest on Node.js | :heavy_check_mark: | Node.js | [HTML](https://antonioredondo.github.io/AntoniosCatsHome/reactTypeScript/README.htm) | On [`dist`](reactTypeScript/dist) folder
 
 
-### How to best understand my skills with the test
+## How to best understand my skills with the test
 
 There are a few points where attention can be paid to find out how good the exercise is and assess my programming skills. The implementations contain a set of general technologies, software patterns and best practices normally used on front-end software development.
 
